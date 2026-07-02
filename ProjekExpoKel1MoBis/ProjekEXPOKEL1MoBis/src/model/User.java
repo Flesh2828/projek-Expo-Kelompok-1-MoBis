@@ -16,9 +16,23 @@ public class User {
     private String password; // Dikembalikan lagi biar strukturnya lengkap seperti awal
     private String role;
 
-    private static final String FILE_PATH = "ProjekEXPOKEL1MoBis/data/users.xml";
+   // Ganti baris FILE_PATH lama kamu dengan blok kode dinamis ini:
+private static final String FILE_PATH;
 
-    // Constructor lengkap seperti versi pertama
+static {
+    String currentDir = System.getProperty("user.dir");
+    // Jika terminal aktif di folder luar, tambahkan folder kapital ke jalurnya
+    if (currentDir.endsWith("projek-Expo-Kelompok-1-MoBis")) {
+        FILE_PATH = "ProjekExpoKel1MoBis/ProjekEXPOKEL1MoBis/data/users.xml";
+    } else if (currentDir.endsWith("ProjekExpoKel1MoBis")) {
+        FILE_PATH = "ProjekEXPOKEL1MoBis/data/users.xml";
+    } else {
+        // Jika sudah pas di dalam folder utama
+        FILE_PATH = "data/users.xml";
+    }
+}
+
+    // Constructor lengkap seperti versi pertama    
     public User(String username, String password, String role) {
         this.username = username;
         this.password = password;
