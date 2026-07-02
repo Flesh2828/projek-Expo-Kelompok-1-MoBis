@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" prefHeight="300.0" prefWidth="400.0" spacing="15.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController.java">
+<VBox alignment="CENTER" prefHeight="300.0" prefWidth="400.0" spacing="15.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
     
     <Text style="-fx-font-weight: bold; -fx-font-size: 18;" text="SISTEM SINARING - LOGIN" />
     
