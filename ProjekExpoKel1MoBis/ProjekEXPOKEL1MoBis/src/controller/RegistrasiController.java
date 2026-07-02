@@ -1,9 +1,15 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import model.User;
 
 public class RegistrasiController {
@@ -17,21 +23,27 @@ public class RegistrasiController {
         String userBaru = txtRegUsername.getText();
         String passBaru = txtRegPassword.getText();
 
-        // CONTROLLER menyuruh MODEL untuk mengeksekusi pendaftaran data baru
         boolean sukses = User.laksanakanRegistrasi(userBaru, passBaru);
 
         if (sukses) {
             lblPesanStatus.setStyle("-fx-text-fill: green;");
-            lblPesanStatus.setText("Akun Pelanggan Berhasil Dibuat!");
+            lblPesanStatus.setText("Registrasi Berhasil! Silakan kembali ke Login.");
         } else {
             lblPesanStatus.setStyle("-fx-text-fill: red;");
-            lblPesanStatus.setText("Gagal! Username/Password tidak boleh kosong.");
+            lblPesanStatus.setText("Gagal! Username sudah ada atau kolom kosong.");
         }
     }
 
     @FXML
-    public void keHalamanLogin() {
-        System.out.println("Pindah scene ke Login.fxml");
-        // Kode FXMLLoader untuk balik ke layar login
+    public void keHalamanLogin(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/View/Login.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("SINARING - Login");
+            stage.setScene(new Scene(root, 400, 300));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

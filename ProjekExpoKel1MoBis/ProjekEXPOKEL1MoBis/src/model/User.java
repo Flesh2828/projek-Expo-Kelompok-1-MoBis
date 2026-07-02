@@ -1,43 +1,146 @@
 package model;
 
+import java.io.File;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+
 public class User {
     private String username;
-    private String password;
-    private String role; // "Pelanggan", "Admin", atau "Owner"
+    private String password; // Dikembalikan lagi biar strukturnya lengkap seperti awal
+    private String role;
 
-    // Constructor untuk membuat objek User baru (saat registrasi)
+    private static final String FILE_PATH = "ProjekEXPOKEL1MoBis/data/users.xml";
+
+    // Constructor lengkap seperti versi pertama
     public User(String username, String password, String role) {
         this.username = username;
         this.password = password;
         this.role = role;
     }
 
-    // --- LOGIKA BISNIS (Fungsi Inti) ---
+    // Getter tetap aman
+    public String getUsername() { return username; }
+    public String getPassword() { return password; }
+    public String getRole() { return role; }
 
-    // Fungsi simulasi untuk mengecek login (Koki mengecek bahan/data)
-    public static User laksanakanLogin(String username, String password) {
-        // Contoh data bawaan (hardcoded) untuk simulasi proyekmu
-        if (username.equals("hafidz") && password.equals("123")) {
-            return new User("hafidz", "123", "Pelanggan");
-        } else if (username.equals("admin1") && password.equals("admin123")) {
-            return new User("admin1", "admin123", "Admin");
-        } else if (username.equals("owner1") && password.equals("owner123")) {
-            return new User("owner1", "owner123", "Owner");
-        }
-        return null; // Jika user tidak ditemukan
-    }
-
-    // Fungsi simulasi untuk mendaftarkan pelanggan baru
+    // --- FITUR SAVE KE XML (REGISTRASI) ---
     public static boolean laksanakanRegistrasi(String username, String password) {
         if (username.isEmpty() || password.isEmpty()) {
-            return false; // Validasi gagal jika kosong
+            return false;
         }
-        // Di sini nanti tempat kode untuk menyimpan data ke Database (MySQL)
-        System.out.println("Akun baru pelanggan berhasil disimpan ke database: " + username);
-        return true;
+
+        try {
+            File xmlFile = new File(FILE_PATH);
+            
+            // Membuat folder "data" otomatis jika belum ada
+            File folderData = xmlFile.getParentFile();
+            if (folderData != null && !folderData.exists()) {
+                folderData.mkdirs();
+            }
+
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc;
+
+            if (xmlFile.exists()) {
+                doc = dBuilder.parse(xmlFile);
+                doc.getDocumentElement().normalize();
+                
+                // Validasi ASD/RPL: Cek duplikasi username
+                NodeList nList = doc.getElementsByTagName("user");
+                for (int i = 0; i < nList.getLength(); i++) {
+                    Element element = (Element) nList.item(i);
+                    if (element.getElementsByTagName("username").item(0).getTextContent().equals(username)) {
+                        return false; 
+                    }
+                }
+            } else {
+                // Jika file XML baru pertama kali dibuat, jalankan fungsi pembuat data awal (Admin & Owner)
+                doc = dBuilder.newDocument();
+                Element rootElement = doc.createElement("users");
+                doc.appendChild(rootElement);
+                
+                // Suntik data default Admin dan Owner biar langsung siap pakai
+                tambahUserKeDoc(doc, "admin1", "admin123", "Admin");
+                tambahUserKeDoc(doc, "owner1", "owner123", "Owner");
+            }
+
+            // Tambah elemen pelanggan baru hasil ketikan dari menu registrasi
+            tambahUserKeDoc(doc, username, password, "Pelanggan");
+
+            // Tulis/Save kembali ke file XML
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(xmlFile);
+            transformer.transform(source, result);
+
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
-    // --- Getter dan Setter ---
-    public String getUsername() { return username; }
-    public String getRole() { return role; }
+    // --- FITUR BACA DARI XML (LOGIN) ---
+    public static User laksanakanLogin(String username, String password) {
+        try {
+            File xmlFile = new File(FILE_PATH);
+            
+            // JIKA FILE XML BELUM ADA (Belum ada yang registrasi), kita buatkan dulu biar akun default admin/owner langsung aktif
+            if (!xmlFile.exists()) {
+                laksanakanRegistrasi("dummyUserHarusDihapus", "dummy123");
+            }
+
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(xmlFile);
+            doc.getDocumentElement().normalize();
+
+            NodeList nList = doc.getElementsByTagName("user");
+
+            // Algoritma Pencarian (ASD): Mencari data di dalam nodelist XML
+            for (int i = 0; i < nList.getLength(); i++) {
+                Element element = (Element) nList.item(i);
+                String u = element.getElementsByTagName("username").item(0).getTextContent();
+                String p = element.getElementsByTagName("password").item(0).getTextContent();
+                String r = element.getElementsByTagName("role").item(0).getTextContent();
+
+                if (u.equals(username) && p.equals(password)) {
+                    return new User(u, p, r); // Data COCOK, kembalikan objek User
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null; 
+    }
+
+    // Helper Method internal untuk menyederhanakan penulisan struktur elemen XML
+    private static void tambahUserKeDoc(Document doc, String username, String password, String role) {
+        Element root = doc.getDocumentElement();
+        Element newUser = doc.createElement("user");
+
+        Element uname = doc.createElement("username");
+        uname.appendChild(doc.createTextNode(username));
+        newUser.appendChild(uname);
+
+        Element upass = doc.createElement("password");
+        upass.appendChild(doc.createTextNode(password));
+        newUser.appendChild(upass);
+
+        Element urole = doc.createElement("role");
+        urole.appendChild(doc.createTextNode(role));
+        newUser.appendChild(urole);
+
+        root.appendChild(newUser);
+    }
 }

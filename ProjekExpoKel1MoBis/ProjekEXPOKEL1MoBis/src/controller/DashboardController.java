@@ -1,0 +1,25 @@
+package controller;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class DashboardController {
+    
+    @FXML
+    public void handleLogout(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/View/Login.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("SINARING - Login");
+            stage.setScene(new Scene(root, 400, 300));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
