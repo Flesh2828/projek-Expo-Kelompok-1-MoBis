@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="CENTER" prefHeight="300.0" prefWidth="400.0" spacing="15.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrasiController.java">
+    
+    <Text style="-fx-font-weight: bold; -fx-font-size: 18;" text="SISTEM SINARING - LOGIN" />
+    
+    <TextField fx:id="txtUsername" maxWidth="250.0" promptText="Masukkan Username" />
+    <PasswordField fx:id="txtPassword" maxWidth="250.0" promptText="Masukkan Password" />
+    
+    <Button onAction="#handleLogin" prefWidth="100.0" text="Masuk" />
+    <Label fx:id="lblPesanError" text="" textFill="RED" />
+    
+    <Hyperlink onAction="#keHalamanRegistrasi" text="Belum punya akun? Daftar di sini" />
+</VBox>
