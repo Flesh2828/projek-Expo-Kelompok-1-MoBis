@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><users><user><username>admin1</username><password>admin123</password><role>Admin</role></user><user><username>owner1</username><password>owner123</password><role>Owner</role></user><user><username>dummyUserHarusDihapus</username><password>dummy123</password><role>Pelanggan</role></user><user><username>satya</username><password>satya</password><role>Pelanggan</role></user><user><username>Hafidz</username><password>TryHard</password><role>Pelanggan</role></user><user><username>meswara</username><password>meswara123</password><role>Pelanggan</role></user></users>
-=======
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <users>
     <user>
@@ -34,4 +32,3 @@
         <role>Pelanggan</role>
     </user>
 </users>
->>>>>>> 82093db49d8eabdb9e2a9df3e0f71bbec7e2c448
