@@ -16,7 +16,7 @@ public class User {
     private String password; // Dikembalikan lagi biar strukturnya lengkap seperti awal
     private String role;
 
-   // Ganti baris FILE_PATH lama kamu dengan blok kode dinamis ini:
+   
 private static final String FILE_PATH;
 
 static {
@@ -27,19 +27,18 @@ static {
     } else if (currentDir.endsWith("ProjekExpoKel1MoBis")) {
         FILE_PATH = "ProjekEXPOKEL1MoBis/data/users.xml";
     } else {
-        // Jika sudah pas di dalam folder utama
         FILE_PATH = "data/users.xml";
     }
 }
 
-    // Constructor lengkap seperti versi pertama    
+    // Constructor lengkap     
     public User(String username, String password, String role) {
         this.username = username;
         this.password = password;
         this.role = role;
     }
 
-    // Getter tetap aman
+    // Getter 
     public String getUsername() { return username; }
     public String getPassword() { return password; }
     public String getRole() { return role; }
@@ -52,8 +51,6 @@ static {
 
         try {
             File xmlFile = new File(FILE_PATH);
-            
-            // Membuat folder "data" otomatis jika belum ada
             File folderData = xmlFile.getParentFile();
             if (folderData != null && !folderData.exists()) {
                 folderData.mkdirs();
@@ -129,7 +126,7 @@ static {
                 String r = element.getElementsByTagName("role").item(0).getTextContent();
 
                 if (u.equals(username) && p.equals(password)) {
-                    return new User(u, p, r); // Data COCOK, kembalikan objek User
+                    return new User(u, p, r); 
                 }
             }
         } catch (Exception e) {
