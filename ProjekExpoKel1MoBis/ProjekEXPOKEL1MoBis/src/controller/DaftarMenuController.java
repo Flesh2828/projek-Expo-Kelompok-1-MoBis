@@ -10,7 +10,31 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 
 public class DaftarMenuController {
-
+    private void pindahKeFormPemesanan(ActionEvent event, String namaMenu) {
+        try {
+            // 1. Ambil loader Form Pemesanan
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuatPesanan.fxml"));
+            Parent halamanForm = loader.load();
+            
+            // 2. Suntikkan nama menu ke BuatPesananController
+            BuatPesananController formController = loader.getController();
+            formController.setMenuPilihan(namaMenu);
+            
+            // 3. Cari di mana letak paneKontenTengah yang sedang aktif di window saat ini
+            Node nodeSumber = (Node) event.getSource();
+            AnchorPane paneKontenTengah = (AnchorPane) nodeSumber.getScene().lookup("#paneKontenTengah");
+            
+            if (paneKontenTengah != null) {
+                // 4. Masukkan form pemesanan ke dalam konten tengah dashboard utama!
+                paneKontenTengah.getChildren().setAll(halamanForm);
+            } else {
+                System.out.println("Eror: paneKontenTengah tidak ditemukan!");
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     @FXML
     private void handlePesanNasiBox(ActionEvent event) {
         bukaBuatPesanan(event, "Nasi Box Spesial", 25000);

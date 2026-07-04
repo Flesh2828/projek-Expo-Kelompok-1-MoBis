@@ -17,7 +17,7 @@ public class BuatPesananController {
     public void setMenuPilihan(String namaMenu) {
         txtPilihanMenu.setText(namaMenu);
     }
-
+    
     @FXML
     public void handleKirimPesanan() {
         String menu = txtPilihanMenu.getText();
@@ -54,4 +54,14 @@ public class BuatPesananController {
             lblStatusOrder.setText("Jumlah porsi harus berupa angka!");
         }
     }
-}
+
+   public void setMenuTerpilih(String menu, int harga) {
+    // 1. Set teks nama menu ke TextField formulir agar terisi otomatis
+    txtPilihanMenu.setText(menu);
+    
+    // 2. Gunakan harga dari temenmu untuk menghitung total simulasi secara otomatis di form
+    // (Opsional: Kamu bisa pakai ini jika harga per porsinya mau dibikin dinamis mengikuti menu)
+    System.out.println("Berhasil menerima lembaran data dari Daftar Menu!");
+    System.out.println("Menu: " + menu + " | Harga Dasar: Rp " + harga);
+    }
+    }

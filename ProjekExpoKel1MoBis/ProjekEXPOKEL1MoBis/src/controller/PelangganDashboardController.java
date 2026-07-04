@@ -17,15 +17,34 @@ public class PelangganDashboardController {
     private String userAktifSession = "Pelanggan Aktif";
 
     @FXML
-    void pesanNasiBox(ActionEvent event) {
+    void handlepesanNasiBox(ActionEvent event) {
         bukaFormPemesananDenganMenu("Nasi Box Spesial");
     }
 
     @FXML
-    void pesanNasiGudeg(ActionEvent event) {
+    void handlepesanNasiGudeg(ActionEvent event) {
         bukaFormPemesananDenganMenu("Nasi Gudeg Komplit");
     }
+    
+    @FXML
+    void handlePesanMieGoreng(ActionEvent event) {
+    bukaFormPemesananDenganMenu("Mie Goreng Spesial");
+    }
+    
+    @FXML
+    void handlePesanPrasmanan(ActionEvent event) {
+    bukaFormPemesananDenganMenu("Catering Prasmanan");
+    }
 
+    @FXML
+    void handlePesanNasiPadang(ActionEvent event) {
+    bukaFormPemesananDenganMenu("Nasi Padang");
+    }
+
+    @FXML
+    void handlePesanAyamBakar(ActionEvent event) {
+    bukaFormPemesananDenganMenu("Ayam Bakar Komplit");
+    }
     // Fungsi pembantu untuk memuat halaman baru sekaligus melempar data menu
     private void bukaFormPemesananDenganMenu(String namaMenu) {
         try {
