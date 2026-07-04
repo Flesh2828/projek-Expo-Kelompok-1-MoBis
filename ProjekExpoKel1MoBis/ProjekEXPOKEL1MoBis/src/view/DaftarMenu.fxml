@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+    <VBox spacing="20.0">
+        <padding>
+            <Insets top="25.0" right="25.0" bottom="25.0" left="25.0"/>
+        </padding>
+        
+        <VBox spacing="5.0">
+            <Text text="Daftar Menu" style="-fx-font-weight: bold; -fx-font-size: 24; -fx-fill: #2C3E50;"/>
+            <Text text="Pilih menu favorit Anda dari dapur Sari Rahayu" style="-fx-font-size: 14; -fx-fill: #7F8C8D;"/>
+        </VBox>
+        
+        <GridPane hgap="20.0" vgap="20.0">
+            <VBox spacing="10.0" style="-fx-background-color: #FEF9E7; -fx-background-radius: 10; -fx-border-color: #F9E79F; -fx-border-radius: 10;" GridPane.columnIndex="0" GridPane.rowIndex="0" prefWidth="220.0">
+                <padding><Insets top="15.0" right="15.0" bottom="15.0" left="15.0"/></padding>
+                <Text text="🍽️" style="-fx-font-size: 40; -fx-alignment: center;"/>
+                <Text text="Nasi Box Spesial" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+                <Text text="Nasi putih, ayam goreng, tempe, sayur, sambal" style="-fx-font-size: 11; -fx-fill: #7F8C8D;" wrappingWidth="190.0"/>
+                <HBox alignment="CENTER_LEFT" spacing="35.0">
+                    <Text text="Rp 25.000/porsi" style="-fx-font-weight: bold; -fx-fill: #D35400;"/>
+                    <Button text="Pesan" style="-fx-background-color: #E67E22; -fx-text-fill: white; -fx-font-size: 11;"/>
+                </HBox>
+            </VBox>
+
+            <VBox spacing="10.0" style="-fx-background-color: #E8F8F5; -fx-background-radius: 10; -fx-border-color: #A3E4D7; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="220.0">
+                <padding><Insets top="15.0" right="15.0" bottom="15.0" left="15.0"/></padding>
+                <Text text="🍲" style="-fx-font-size: 40;"/>
+                <Text text="Nasi Gudeg Komplit" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+                <Text text="Nasi, gudeg, ayam, krecek, telur bacem" style="-fx-font-size: 11; -fx-fill: #7F8C8D;" wrappingWidth="190.0"/>
+                <HBox alignment="CENTER_LEFT" spacing="35.0">
+                    <Text text="Rp 28.000/porsi" style="-fx-font-weight: bold; -fx-fill: #D35400;"/>
+                    <Button text="Pesan" style="-fx-background-color: #E67E22; -fx-text-fill: white; -fx-font-size: 11;"/>
+                </HBox>
+            </VBox>
+        </GridPane>
+    </VBox>
+</ScrollPane>
