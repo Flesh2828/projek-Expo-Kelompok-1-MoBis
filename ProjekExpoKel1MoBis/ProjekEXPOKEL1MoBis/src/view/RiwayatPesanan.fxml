@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefWidth="730.0" prefHeight="600.0" style="-fx-background-color: #FDFEFE;">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20" />
+    </padding>
+
+    <VBox spacing="15.0" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+
+        <Text text="Riwayat Pesanan" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-fill: #2E7D32;" />
+        <Text text="Lihat semua pesanan Anda" style="-fx-font-size: 14; -fx-fill: #666666;" />
+
+        <Separator />
+
+        <!-- Card 1 -->
+        <VBox spacing="5.0" style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);">
+            <HBox spacing="10.0">
+                <Text text="ORD-011" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #2E7D32;" />
+                <Text text="✅ Dikirim" style="-fx-font-size: 12; -fx-fill: white; -fx-background-color: #2E7D32; -fx-padding: 2 8 2 8; -fx-background-radius: 4;" />
+                <Text text="✅ Lunas" style="-fx-font-size: 12; -fx-fill: white; -fx-background-color: #1B5E20; -fx-padding: 2 8 2 8; -fx-background-radius: 4;" />
+            </HBox>
+            <Text text="Nasi Box Spesial" style="-fx-font-size: 14; -fx-font-weight: bold;" />
+            <Text text="10 porsi • 25 Jun 2026" style="-fx-font-size: 12; -fx-fill: #666666;" />
+            <HBox spacing="15.0">
+                <Text text="Rp 250.000" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #D35400;" />
+                <Button text="Pesan Ulang" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold;" />
+            </HBox>
+        </VBox>
+
+        <!-- Card 2 -->
+        <VBox spacing="5.0" style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);">
+            <HBox spacing="10.0">
+                <Text text="ORD-009" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #2E7D32;" />
+                <Text text="✅ Dikirim" style="-fx-font-size: 12; -fx-fill: white; -fx-background-color: #2E7D32; -fx-padding: 2 8 2 8; -fx-background-radius: 4;" />
+                <Text text="✅ Lunas" style="-fx-font-size: 12; -fx-fill: white; -fx-background-color: #1B5E20; -fx-padding: 2 8 2 8; -fx-background-radius: 4;" />
+            </HBox>
+            <Text text="Nasi Gudeq Komplit" style="-fx-font-size: 14; -fx-font-weight: bold;" />
+            <Text text="5 porsi • 18 Jun 2026" style="-fx-font-size: 12; -fx-fill: #666666;" />
+            <HBox spacing="15.0">
+                <Text text="Rp 140.000" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #D35400;" />
+                <Button text="Pesan Ulang" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold;" />
+            </HBox>
+        </VBox>
+
+        <!-- Card 3 -->
+        <VBox spacing="5.0" style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);">
+            <HBox spacing="10.0">
+                <Text text="ORD-012" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #2E7D32;" />
+                <Text text="🕐 Dikonfirmasi" style="-fx-font-size: 12; -fx-fill: white; -fx-background-color: #F39C12; -fx-padding: 2 8 2 8; -fx-background-radius: 4;" />
+                <Text text="💰 DP" style="-fx-font-size: 12; -fx-fill: white; -fx-background-color: #E67E22; -fx-padding: 2 8 2 8; -fx-background-radius: 4;" />
+            </HBox>
+            <Text text="Catering Prasmanan" style="-fx-font-size: 14; -fx-font-weight: bold;" />
+            <Text text="50 porsi • 10 Jul 2026" style="-fx-font-size: 12; -fx-fill: #666666;" />
+            <HBox spacing="15.0">
+                <Text text="Rp 2.250.000" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #D35400;" />
+                <Button text="Pesan Ulang" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold;" />
+            </HBox>
+        </VBox>
+
+    </VBox>
+</AnchorPane>

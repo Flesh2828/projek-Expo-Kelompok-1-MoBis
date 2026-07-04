@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefWidth="730.0" prefHeight="600.0" style="-fx-background-color: #FDFEFE;">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20" />
+    </padding>
+
+    <VBox spacing="15.0" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+
+        <Text text="Paket Langganan" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-fill: #2E7D32;" />
+
+        <Separator />
+
+        <GridPane hgap="15" vgap="10">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50" />
+                <ColumnConstraints percentWidth="50" />
+            </columnConstraints>
+
+            <VBox spacing="8.0" style="-fx-background-color: #E8F5E9; -fx-border-color: #A5D6A7; -fx-border-radius: 8; -fx-padding: 15;" GridPane.columnIndex="0">
+                <Text text="Paket Bulanan" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #2E7D32;" />
+                <Text text="Sisa Hari: 14" style="-fx-font-size: 14;" />
+                <Text text="Berakhir Pada: 17 Juli 2026" style="-fx-font-size: 14; -fx-fill: #666666;" />
+            </VBox>
+
+            <VBox spacing="8.0" style="-fx-background-color: #FFF3E0; -fx-border-color: #FFCC80; -fx-border-radius: 8; -fx-padding: 15;" GridPane.columnIndex="1">
+                <Text text="Detail Paket" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #E65100;" />
+                <Text text="Menu: Nasi Box Spesial" style="-fx-font-size: 14; -fx-fill: #666666;" />
+                <Text text="Durasi: 30 hari" style="-fx-font-size: 14; -fx-fill: #666666;" />
+                <Text text="Status: Lunas" style="-fx-font-size: 14; -fx-fill: #2E7D32; -fx-font-weight: bold;" />
+            </VBox>
+        </GridPane>
+
+        <HBox spacing="15.0">
+            <VBox spacing="3.0" style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-alignment: center;" HBox.hgrow="ALWAYS">
+                <Text text="Total Pengiriman" style="-fx-font-size: 12; -fx-fill: #666666;" />
+                <Text text="16" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-fill: #2E7D32;" />
+            </VBox>
+            <VBox spacing="3.0" style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-alignment: center;" HBox.hgrow="ALWAYS">
+                <Text text="Berhasil Dikirim" style="-fx-font-size: 12; -fx-fill: #666666;" />
+                <Text text="16" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-fill: #2E7D32;" />
+            </VBox>
+            <VBox spacing="3.0" style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-alignment: center;" HBox.hgrow="ALWAYS">
+                <Text text="Hari Izin" style="-fx-font-size: 12; -fx-fill: #666666;" />
+                <Text text="0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-fill: #D35400;" />
+            </VBox>
+        </HBox>
+
+        <Separator />
+
+        <Text text="Kelola Izin Langganan" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #2E7D32;" />
+        <Text text="Pilih tanggal yang tidak ingin menerima pesanan. Pengaturan harus dilakukan H-2 sebelumnya." style="-fx-font-size: 12; -fx-fill: #666666;" />
+
+        <GridPane hgap="5" vgap="5">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="14.28" /><ColumnConstraints percentWidth="14.28" />
+                <ColumnConstraints percentWidth="14.28" /><ColumnConstraints percentWidth="14.28" />
+                <ColumnConstraints percentWidth="14.28" /><ColumnConstraints percentWidth="14.28" />
+                <ColumnConstraints percentWidth="14.28" />
+            </columnConstraints>
+
+            <Label text="Sen" style="-fx-font-weight: bold; -fx-font-size: 12;" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <Label text="Sel" style="-fx-font-weight: bold; -fx-font-size: 12;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <Label text="Rab" style="-fx-font-weight: bold; -fx-font-size: 12;" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+            <Label text="Kam" style="-fx-font-weight: bold; -fx-font-size: 12;" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+            <Label text="Jum" style="-fx-font-weight: bold; -fx-font-size: 12;" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+            <Label text="Sab" style="-fx-font-weight: bold; -fx-font-size: 12;" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+            <Label text="Min" style="-fx-font-weight: bold; -fx-font-size: 12;" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+
+            <Label text="1" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label text="2" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Label text="3" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Label text="4" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <Label text="5" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+        </GridPane>
+
+        <HBox spacing="10.0">
+            <Button text="← Prev" style="-fx-background-color: #E0E0E0; -fx-text-fill: #333;" />
+            <Button text="Next →" style="-fx-background-color: #E0E0E0; -fx-text-fill: #333;" />
+        </HBox>
+
+    </VBox>
+</AnchorPane>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" prefWidth="730.0" prefHeight="600.0" style="-fx-background-color: #FDFEFE;">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20" />
+    </padding>
+
+    <VBox spacing="15.0" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+
+        <Text text="Formulir Pesanan" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-fill: #2E7D32;" />
+        <Text text="Isi detail pesanan Anda di bawah ini" style="-fx-font-size: 14; -fx-fill: #666666;" />
+
+        <Separator />
+
+        <GridPane hgap="15" vgap="15">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="25" />
+                <ColumnConstraints percentWidth="75" />
+            </columnConstraints>
+
+            <Label text="Pilih Menu" style="-fx-font-weight: bold; -fx-font-size: 14;" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <ComboBox prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Nasi Box Spesial" />
+                        <String fx:value="Nasi Gudeq Komplit" />
+                        <String fx:value="Nasi Padang" />
+                        <String fx:value="Ayam Bakar Komplit" />
+                        <String fx:value="Mie Goreng Spesial" />
+                        <String fx:value="Catering Prasmanan" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <Label text="Jumlah Porsi" style="-fx-font-weight: bold; -fx-font-size: 14;" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField promptText="Masukkan jumlah porsi" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            <Label text="Tanggal Pengiriman" style="-fx-font-weight: bold; -fx-font-size: 14;" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="200.0" />
+
+            <Label text="Alamat Pengiriman" style="-fx-font-weight: bold; -fx-font-size: 14;" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <TextArea promptText="Jl. Contoh No. 1, Kelurahan, Kecamatan, Kota" prefHeight="60.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+            <Label text="Catatan Khusus (opsional)" style="-fx-font-weight: bold; -fx-font-size: 14;" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <TextArea promptText="Contoh: tidak pedas, alergi kacang, dll." prefHeight="50.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        </GridPane>
+
+        <Button text="📤 Kirim Pesanan" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16;" prefWidth="200.0" />
+
+    </VBox>
+</AnchorPane>

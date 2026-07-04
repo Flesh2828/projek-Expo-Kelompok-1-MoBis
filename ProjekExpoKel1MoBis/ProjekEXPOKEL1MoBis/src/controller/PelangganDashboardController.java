@@ -11,14 +11,48 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 public class PelangganDashboardController {
+    
     @FXML private AnchorPane paneKontenTengah;
     @FXML private Text txtNamaUser;
-    private String userAktifSession = "Pelanggan Aktif"; // Placeholder sementara, nanti diganti dengan session user yang login
+    private String userAktifSession = "Pelanggan Aktif";
+
+    @FXML
+    void pesanNasiBox(ActionEvent event) {
+        bukaFormPemesananDenganMenu("Nasi Box Spesial");
+    }
+
+    @FXML
+    void pesanNasiGudeg(ActionEvent event) {
+        bukaFormPemesananDenganMenu("Nasi Gudeg Komplit");
+    }
+
+    // Fungsi pembantu untuk memuat halaman baru sekaligus melempar data menu
+    private void bukaFormPemesananDenganMenu(String namaMenu) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuatPesanan.fxml"));
+            Parent halamanForm = loader.load();
+            
+            // Panggil Controller milik BuatPesanan untuk menyuntikkan data menu pilihan
+            BuatPesananController formController = loader.getController();
+            formController.setMenuPilihan(namaMenu);
+            
+            // Ganti konten tengah dashboard dengan form yang sudah terisi data
+            paneKontenTengah.getChildren().setAll(halamanForm);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Getter untuk diakses dari controller lain
+    public AnchorPane getPaneKontenTengah() {
+        return paneKontenTengah;
+    }
     
     public void initialize() {
         txtNamaUser.setText(userAktifSession);
         bukaHalamanKonten("/view/DaftarMenu.fxml");
     }
+    
     private void bukaHalamanKonten(String fxmlPath) {
         try {
             Parent halaman = FXMLLoader.load(getClass().getResource(fxmlPath));
