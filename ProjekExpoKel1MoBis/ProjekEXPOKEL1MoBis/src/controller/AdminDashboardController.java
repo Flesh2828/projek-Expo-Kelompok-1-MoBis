@@ -7,8 +7,33 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.layout.AnchorPane;
 
 public class AdminDashboardController {
+    @FXML private AnchorPane paneKontenAdmin; // Wadah tengah halaman admin
+
+    @FXML
+    public void initialize() {
+        // Halaman default saat pertama kali admin masuk
+        bukaHalamanAdmin("/view/AdminRingkasan.fxml"); 
+    }
+
+    // Fungsi pembantu untuk menukar konten halaman tengah admin
+    public void bukaHalamanAdmin(String fxmlPath) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent halaman = loader.load();
+            paneKontenAdmin.getChildren().setAll(halaman);
+        } catch (Exception e) {
+            System.out.println("Gagal memuat halaman admin: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    @FXML void tampilkanRingkasan(ActionEvent event) { bukaHalamanAdmin("/view/AdminRingkasan.fxml"); }
+    @FXML void tampilkanKelolaPesanan(ActionEvent event) { bukaHalamanAdmin("/view/KelolaPesanan.fxml"); }
+    @FXML void tampilkanKelolaMenu(ActionEvent event) { bukaHalamanAdmin("/view/KelolaMenu.fxml"); }
+    
     @FXML
     public void handleLogout(ActionEvent event) {
         try {
