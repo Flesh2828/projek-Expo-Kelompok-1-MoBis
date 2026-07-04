@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><users>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<users>
     <user>
         <username>admin1</username>
         <password>admin123</password>
@@ -29,4 +30,9 @@
         <password>apaya</password>
         <role>Pelanggan</role>
     </user>
-<user><username>nasywananjai</username><password>musyaffa</password><role>Pelanggan</role></user></users>
+    <user>
+        <username>nasywananjai</username>
+        <password>musyaffa</password>
+        <role>Pelanggan</role>
+    </user>
+</users>

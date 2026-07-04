@@ -34,15 +34,24 @@ public class LoginController {
         if (userAktif != null) {
             try {
                 // Sesuai prinsip RPL: Arahkan scene berdasarkan Role akun 
-                String fxmlPath = "/View/Dashboard.fxml"; // Default sementara gabungan
-                String judulWindow = "SINARING - Dashboard " + userAktif.getRole();
+                String fxmlPath = ""; // Default sementara gabungan
+                String judulWindow = "" + userAktif.getRole();
 
                 // Catatan Kelompok: Jika nanti file FXML tiap aktor sudah dipisah, tinggal aktifkan ini:
                 /*
                 if (userAktif.getRole().equals("Admin")) fxmlPath = "/View/AdminMain.fxml";
                 else if (userAktif.getRole().equals("Owner")) fxmlPath = "/View/OwnerMain.fxml";
                 */
-
+                if (userAktif.getRole().equalsIgnoreCase("Pelanggan")){
+                    fxmlPath = "/view/PelangganDashboard.fxml";
+                    judulWindow = "SINARING - Dashboard Pelanggan";
+                } else if (userAktif.getRole().equalsIgnoreCase("Owner")){
+                    fxmlPath = "/view/OwnerDashboard.fxml";
+                    judulWindow = "SINARING - Dashboard Owner";
+                } else if (userAktif.getRole().equalsIgnoreCase("Admin")){
+                    fxmlPath = "/view/AdminDashboard.fxml";
+                    judulWindow = "SINARING - Dashboard Admin";
+                }
                 Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setTitle(judulWindow);
