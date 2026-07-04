@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import controller.DaftarMenuController; // ← TAMBAHKAN
 
 public class PelangganDashboardController {
     
@@ -28,34 +29,33 @@ public class PelangganDashboardController {
     
     @FXML
     void handlePesanMieGoreng(ActionEvent event) {
-    bukaFormPemesananDenganMenu("Mie Goreng Spesial");
+        bukaFormPemesananDenganMenu("Mie Goreng Spesial");
     }
     
     @FXML
     void handlePesanPrasmanan(ActionEvent event) {
-    bukaFormPemesananDenganMenu("Catering Prasmanan");
+        bukaFormPemesananDenganMenu("Catering Prasmanan");
     }
 
     @FXML
     void handlePesanNasiPadang(ActionEvent event) {
-    bukaFormPemesananDenganMenu("Nasi Padang");
+        bukaFormPemesananDenganMenu("Nasi Padang");
     }
 
     @FXML
     void handlePesanAyamBakar(ActionEvent event) {
-    bukaFormPemesananDenganMenu("Ayam Bakar Komplit");
+        bukaFormPemesananDenganMenu("Ayam Bakar Komplit");
     }
+
     // Fungsi pembantu untuk memuat halaman baru sekaligus melempar data menu
     private void bukaFormPemesananDenganMenu(String namaMenu) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuatPesanan.fxml"));
             Parent halamanForm = loader.load();
             
-            // Panggil Controller milik BuatPesanan untuk menyuntikkan data menu pilihan
             BuatPesananController formController = loader.getController();
             formController.setMenuPilihan(namaMenu);
             
-            // Ganti konten tengah dashboard dengan form yang sudah terisi data
             paneKontenTengah.getChildren().setAll(halamanForm);
         } catch (Exception e) {
             e.printStackTrace();
@@ -74,18 +74,45 @@ public class PelangganDashboardController {
     
     private void bukaHalamanKonten(String fxmlPath) {
         try {
-            Parent halaman = FXMLLoader.load(getClass().getResource(fxmlPath));
-            paneKontenTengah.getChildren().setAll(halaman);
+            if (fxmlPath.equals("/view/DaftarMenu.fxml")) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+                Parent halaman = loader.load();
+                DaftarMenuController controller = loader.getController();
+                controller.setPaneKontenTengah(paneKontenTengah);
+                paneKontenTengah.getChildren().setAll(halaman);
+            } else {
+                Parent halaman = FXMLLoader.load(getClass().getResource(fxmlPath));
+                paneKontenTengah.getChildren().setAll(halaman);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    @FXML void tampilkanDaftarMenu(ActionEvent event) { bukaHalamanKonten("/view/DaftarMenu.fxml"); }
-    @FXML void tampilkanBuatPesanan(ActionEvent event) { bukaHalamanKonten("/view/BuatPesanan.fxml"); }
-    @FXML void tampilkanRiwayatPesanan(ActionEvent event) { bukaHalamanKonten("/view/RiwayatPesanan.fxml"); }
-    @FXML void tampilkanLangganan(ActionEvent event) { bukaHalamanKonten("/view/Langganan.fxml"); }
-    @FXML void tampilkanPembayaran(ActionEvent event) { bukaHalamanKonten("/view/Pembayaran.fxml"); }
+    @FXML 
+    void tampilkanDaftarMenu(ActionEvent event) { 
+        bukaHalamanKonten("/view/DaftarMenu.fxml"); 
+    }
+    
+    @FXML 
+    void tampilkanBuatPesanan(ActionEvent event) { 
+        bukaHalamanKonten("/view/BuatPesanan.fxml"); 
+    }
+    
+    @FXML 
+    void tampilkanRiwayatPesanan(ActionEvent event) { 
+        bukaHalamanKonten("/view/RiwayatPesanan.fxml"); 
+    }
+    
+    @FXML 
+    void tampilkanLangganan(ActionEvent event) { 
+        bukaHalamanKonten("/view/Langganan.fxml"); 
+    }
+    
+    @FXML 
+    void tampilkanPembayaran(ActionEvent event) { 
+        bukaHalamanKonten("/view/Pembayaran.fxml"); 
+    }
 
     public void handleLogout(ActionEvent event) {
         try {

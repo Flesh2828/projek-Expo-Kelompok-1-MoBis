@@ -21,8 +21,8 @@ public class Pesanan {
     private String tanggalPengiriman;
     private String alamatPengiriman;
     private String catatanKhusus;
-    private String statusPesanan; // "Dikonfirmasi", "Dikirim", "Selesai"
-    private String statusPembayaran; // "Belum Lunas", "DP", "Lunas"
+    private String statusPesanan;
+    private String statusPembayaran;
     private double totalHarga;
 
     private static final String FILE_PATH;
@@ -55,10 +55,12 @@ public class Pesanan {
 
     // Getters
     public String getIdPesanan() { return idPesanan; }
+    public String getUsernamePelanggan() { return usernamePelanggan; }
     public String getNamaMenu() { return namaMenu; }
     public int getJumlahPorsi() { return jumlahPorsi; }
     public String getTanggalPengiriman() { return tanggalPengiriman; }
     public String getAlamatPengiriman() { return alamatPengiriman; }
+    public String getCatatanKhusus() { return catatanKhusus; }
     public String getStatusPesanan() { return statusPesanan; }
     public String getStatusPembayaran() { return statusPembayaran; }
     public double getTotalHarga() { return totalHarga; }
@@ -134,6 +136,38 @@ public class Pesanan {
                         Double.parseDouble(el.getElementsByTagName("total").item(0).getTextContent())
                     ));
                 }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    // --- AMBIL SEMUA PESANAN ---
+    public static List<Pesanan> getAllPesanan() {
+        List<Pesanan> list = new ArrayList<>();
+        try {
+            File xmlFile = new File(FILE_PATH);
+            if (!xmlFile.exists()) return list;
+
+            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(xmlFile);
+            doc.getDocumentElement().normalize();
+            NodeList nList = doc.getElementsByTagName("order");
+
+            for (int i = 0; i < nList.getLength(); i++) {
+                Element el = (Element) nList.item(i);
+                list.add(new Pesanan(
+                    el.getAttribute("id"),
+                    el.getElementsByTagName("username").item(0).getTextContent(),
+                    el.getElementsByTagName("menu").item(0).getTextContent(),
+                    Integer.parseInt(el.getElementsByTagName("porsi").item(0).getTextContent()),
+                    el.getElementsByTagName("tanggal").item(0).getTextContent(),
+                    el.getElementsByTagName("alamat").item(0).getTextContent(),
+                    el.getElementsByTagName("catatan").item(0).getTextContent(),
+                    el.getElementsByTagName("status_pesanan").item(0).getTextContent(),
+                    el.getElementsByTagName("status_bayar").item(0).getTextContent(),
+                    Double.parseDouble(el.getElementsByTagName("total").item(0).getTextContent())
+                ));
             }
         } catch (Exception e) {
             e.printStackTrace();

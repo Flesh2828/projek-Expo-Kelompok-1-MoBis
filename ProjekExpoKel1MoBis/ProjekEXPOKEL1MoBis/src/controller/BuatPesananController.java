@@ -64,4 +64,24 @@ public class BuatPesananController {
     System.out.println("Berhasil menerima lembaran data dari Daftar Menu!");
     System.out.println("Menu: " + menu + " | Harga Dasar: Rp " + harga);
     }
+
+    // Tambahkan method ini untuk menerima data pesanan lama dari Riwayat
+    public void setDataPesanLama(Pesanan pesananLama) {
+        if (pesananLama != null) {
+            txtPilihanMenu.setText(pesananLama.getNamaMenu());
+            txtJumlahPorsi.setText(String.valueOf(pesananLama.getJumlahPorsi()));
+            txtTanggalKirim.setText(pesananLama.getTanggalPengiriman());
+            txtAlamatKirim.setText(pesananLama.getAlamatPengiriman());
+            txtCatatan.setText(pesananLama.getCatatanKhusus());
+            
+            lblStatusOrder.setStyle("-fx-text-fill: #2E7D32;");
+            lblStatusOrder.setText("✏️ Data pesanan lama telah diisi. Silakan edit jika perlu.");
+        }
+    }
+
+   public void setMenuTerpilih(String namaMenu, double harga) {
+    txtPilihanMenu.setText(namaMenu);
+    lblStatusOrder.setStyle("-fx-text-fill: #2E7D32;");
+    lblStatusOrder.setText("📝 Menu dipilih: " + namaMenu + " (Rp " + String.format("%,.0f", harga) + "/porsi)");
+}
     }

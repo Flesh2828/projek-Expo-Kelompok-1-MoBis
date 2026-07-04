@@ -5,13 +5,16 @@
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 
-<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.DaftarMenuController" prefWidth="730.0" prefHeight="600.0" style="-fx-background-color: #FDFEFE;">
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" 
+            fx:controller="controller.DaftarMenuController"
+            prefWidth="730.0" prefHeight="600.0" style="-fx-background-color: #FDFEFE;">
 
     <padding>
         <Insets top="20" right="20" bottom="20" left="20" />
     </padding>
 
-    <VBox spacing="15.0" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+    <!-- INI DITAMBAHKAN fx:id="menuContainer" -->
+    <VBox fx:id="menuContainer" spacing="15.0" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
 
         <Text text="Daftar Menu" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-fill: #2E7D32;" />
         <Text text="Pilih menu favorit Anda dari dapur Sari Rahayu" style="-fx-font-size: 14; -fx-fill: #666666;" />
