@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" 
+            fx:controller="controller.KonfirmasiPembayaranController"
+            prefWidth="730.0" prefHeight="600.0" style="-fx-background-color: #FDFEFE;">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20" />
+    </padding>
+
+    <VBox spacing="15.0" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+
+        <!-- Judul -->
+        <Text text="Konfirmasi Pembayaran" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-fill: #2E7D32;" />
+        <Text text="Beritahu admin bahwa Anda sudah melakukan pembayaran" style="-fx-font-size: 14; -fx-fill: #666666;" />
+
+        <Separator />
+
+        <!-- Form Detail Pembayaran -->
+        <GridPane hgap="15" vgap="10">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="30" />
+                <ColumnConstraints percentWidth="70" />
+            </columnConstraints>
+
+            <!-- Jumlah Transfer -->
+            <Text text="Jumlah Transfer" style="-fx-font-size: 14; -fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="txtJumlahTransfer" promptText="0" style="-fx-font-size: 14;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+            <!-- Tanggal Transfer -->
+            <Text text="Tanggal Transfer" style="-fx-font-size: 14; -fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <DatePicker fx:id="dpTanggalTransfer" promptText="0" style="-fx-font-size: 14;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            <!-- Metode Pembayaran -->
+            <Text text="Metode Pembayaran" style="-fx-font-size: 14; -fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <ComboBox fx:id="cmbMetodePembayaran" promptText="Metode Pembayaran" style="-fx-font-size: 14;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+            <!-- Nama Pengirim -->
+            <Text text="Nama Pengirim" style="-fx-font-size: 14; -fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <TextField fx:id="txtNamaPengirim" promptText="Nama sesuai rekening pengirim" style="-fx-font-size: 14;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+            <!-- Catatan Opsional -->
+            <Text text="Catatan (Opsional)" style="-fx-font-size: 14; -fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <TextArea fx:id="txtCatatan" promptText="Tambahkan catatan jika diperlukan" prefHeight="60" style="-fx-font-size: 14;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        </GridPane>
+
+        <Separator />
+
+        <!-- Informasi -->
+        <Text text="Admin akan segera menerima notifikasi konfirmasi pembayaran Anda dan akan memverifikasi dalam 1x24 jam." 
+              style="-fx-font-size: 12; -fx-fill: #666666; -fx-font-style: italic;" />
+
+        <Separator />
+
+        <!-- Tombol Batal & Kirim -->
+        <HBox spacing="10.0" alignment="CENTER_RIGHT">
+            <Button text="Batal" onAction="#handleBatal" style="-fx-background-color: #E0E0E0; -fx-text-fill: #333; -fx-font-weight: bold; -fx-padding: 8 20;" />
+            <Button text="Kirim Konfirmasi" onAction="#handleKirimKonfirmasi" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;" />
+        </HBox>
+
+    </VBox>
+</AnchorPane>

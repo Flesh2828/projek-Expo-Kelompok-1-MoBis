@@ -6,18 +6,23 @@ import model.Pesanan;
 
 public class BuatPesananController {
 
-    @FXML private TextField txtPilihanMenu;
-    @FXML private TextField txtJumlahPorsi;
-    @FXML private TextField txtTanggalKirim;
-    @FXML private TextArea txtAlamatKirim;
-    @FXML private TextField txtCatatan;
-    @FXML private Label lblStatusOrder;
+    @FXML
+    private TextField txtPilihanMenu;
+    @FXML
+    private TextField txtJumlahPorsi;
+    @FXML
+    private TextField txtTanggalKirim;
+    @FXML
+    private TextArea txtAlamatKirim;
+    @FXML
+    private TextField txtCatatan;
+    @FXML
+    private Label lblStatusOrder;
 
-    // Method khusus untuk menerima lemparan nama menu dari halaman depan
     public void setMenuPilihan(String namaMenu) {
         txtPilihanMenu.setText(namaMenu);
     }
-    
+
     @FXML
     public void handleKirimPesanan() {
         String menu = txtPilihanMenu.getText();
@@ -34,18 +39,34 @@ public class BuatPesananController {
 
         try {
             int porsi = Integer.parseInt(porsiStr);
-            String idPesanan = "ORD-0" + (int)(Math.random() * 100); // Generate ID acak sederhana
-            
-            // Hitung harga dasar acak simulasi
-            double totalHarga = porsi * 25000; 
+            String idPesanan = "ORD-0" + (int) (Math.random() * 100);
+            double totalHarga = porsi * 25000;
 
-            // Buat objek pesanan baru (Default Status: Dikonfirmasi, Belum Lunas)
             Pesanan baru = new Pesanan(idPesanan, "Pelanggan Aktif", menu, porsi, tanggal, alamat, catatan, "Dikonfirmasi", "Belum Lunas", totalHarga);
-            
             boolean sukses = Pesanan.simpanPesananBaru(baru);
+
             if (sukses) {
                 lblStatusOrder.setStyle("-fx-text-fill: green;");
-                lblStatusOrder.setText("Pesanan Berhasil Dibuat! ID: " + idPesanan);
+                lblStatusOrder.setText("✅ Pesanan Berhasil Dibuat! ID: " + idPesanan);
+
+                // Reset form setelah 3 detik
+                new java.util.Timer().schedule(
+                    new java.util.TimerTask() {
+                        @Override
+                        public void run() {
+                            javafx.application.Platform.runLater(() -> {
+                                txtPilihanMenu.clear();
+                                txtJumlahPorsi.setText("1");
+                                txtTanggalKirim.clear();
+                                txtAlamatKirim.clear();
+                                txtCatatan.clear();
+                                lblStatusOrder.setText("");
+                            });
+                        }
+                    },
+                    3000
+                );
+
             } else {
                 lblStatusOrder.setStyle("-fx-text-fill: red;");
                 lblStatusOrder.setText("Gagal menyimpan ke database XML!");
@@ -55,17 +76,12 @@ public class BuatPesananController {
         }
     }
 
-   public void setMenuTerpilih(String menu, int harga) {
-    // 1. Set teks nama menu ke TextField formulir agar terisi otomatis
-    txtPilihanMenu.setText(menu);
-    
-    // 2. Gunakan harga dari temenmu untuk menghitung total simulasi secara otomatis di form
-    // (Opsional: Kamu bisa pakai ini jika harga per porsinya mau dibikin dinamis mengikuti menu)
-    System.out.println("Berhasil menerima lembaran data dari Daftar Menu!");
-    System.out.println("Menu: " + menu + " | Harga Dasar: Rp " + harga);
+    public void setMenuTerpilih(String menu, int harga) {
+        txtPilihanMenu.setText(menu);
+        System.out.println("Berhasil menerima lembaran data dari Daftar Menu!");
+        System.out.println("Menu: " + menu + " | Harga Dasar: Rp " + harga);
     }
 
-    // Tambahkan method ini untuk menerima data pesanan lama dari Riwayat
     public void setDataPesanLama(Pesanan pesananLama) {
         if (pesananLama != null) {
             txtPilihanMenu.setText(pesananLama.getNamaMenu());
@@ -73,15 +89,15 @@ public class BuatPesananController {
             txtTanggalKirim.setText(pesananLama.getTanggalPengiriman());
             txtAlamatKirim.setText(pesananLama.getAlamatPengiriman());
             txtCatatan.setText(pesananLama.getCatatanKhusus());
-            
+
             lblStatusOrder.setStyle("-fx-text-fill: #2E7D32;");
             lblStatusOrder.setText("✏️ Data pesanan lama telah diisi. Silakan edit jika perlu.");
         }
     }
 
-   public void setMenuTerpilih(String namaMenu, double harga) {
-    txtPilihanMenu.setText(namaMenu);
-    lblStatusOrder.setStyle("-fx-text-fill: #2E7D32;");
-    lblStatusOrder.setText("📝 Menu dipilih: " + namaMenu + " (Rp " + String.format("%,.0f", harga) + "/porsi)");
-}
+    public void setMenuTerpilih(String namaMenu, double harga) {
+        txtPilihanMenu.setText(namaMenu);
+        lblStatusOrder.setStyle("-fx-text-fill: #2E7D32;");
+        lblStatusOrder.setText("📝 Menu dipilih: " + namaMenu + " (Rp " + String.format("%,.0f", harga) + "/porsi)");
     }
+}

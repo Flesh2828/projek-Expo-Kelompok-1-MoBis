@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import model.Menu;
@@ -16,10 +15,7 @@ public class DaftarMenuController {
     @FXML
     private VBox menuContainer;
 
-    // ===== INI DITAMBAHKAN =====
-    private AnchorPane paneKontenTengah;  // ← VARIABEL
-    // ===========================
-
+    private AnchorPane paneKontenTengah;
     private List<Menu> daftarMenu;
 
     @FXML
@@ -37,11 +33,9 @@ public class DaftarMenuController {
         }
     }
 
-    // ===== INI DITAMBAHKAN (METHOD SETTER) =====
     public void setPaneKontenTengah(AnchorPane pane) {
         this.paneKontenTengah = pane;
     }
-    // ===========================================
 
     @FXML
     private void handlePesanNasiBox(ActionEvent event) {
@@ -94,6 +88,6 @@ public class DaftarMenuController {
 
     @FXML
     private void handleBuatPesanan() {
-        // Method untuk tombol sidebar "Buat Pesanan"
+        // Method untuk tombol sidebar
     }
 }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" 
+            fx:controller="controller.KonfirmasiBerhasilController"
+            prefWidth="730.0" prefHeight="600.0" style="-fx-background-color: #FDFEFE;">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20" />
+    </padding>
+
+    <VBox spacing="15.0" alignment="CENTER" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+
+        <Text text="✅" style="-fx-font-size: 64;" />
+
+        <Text text="Konfirmasi Pembayaran Berhasil!" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-fill: #2E7D32;" />
+
+        <Text text="Terima kasih! Admin telah menerima konfirmasi pembayaran Anda." style="-fx-font-size: 14; -fx-fill: #666666;" />
+
+        <Text text="Pembayaran akan diverifikasi dalam 1x24 jam." style="-fx-font-size: 14; -fx-fill: #666666;" />
+
+        <Separator />
+
+        <HBox spacing="15.0" alignment="CENTER">
+            <Button text="Kembali ke Dashboard" onAction="#handleKembali" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;" />
+            <Button text="Lihat Riwayat Pesanan" onAction="#handleLihatRiwayat" style="-fx-background-color: #F57C00; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;" />
+        </HBox>
+
+    </VBox>
+</AnchorPane>
