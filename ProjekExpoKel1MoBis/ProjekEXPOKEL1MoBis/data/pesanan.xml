@@ -1,1 +1,51 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><orders><order id="ORD-06"><username>Pelanggan Aktif</username><menu>Nasi Box Spesial</menu><porsi>10</porsi><tanggal>25 Jun 2026</tanggal><alamat>Jl. Contoh No. 1</alamat><catatan/><status_pesanan>Dikonfirmasi</status_pesanan><status_bayar>Belum Lunas</status_bayar><total>250000.0</total></order><order id="ORD-078"><username>Pelanggan Aktif</username><menu>Nasi Box Spesial</menu><porsi>10</porsi><tanggal>25 Jun 2026</tanggal><alamat>Jl. Contoh No. 1</alamat><catatan/><status_pesanan>Dikonfirmasi</status_pesanan><status_bayar>Belum Lunas</status_bayar><total>250000.0</total></order><order id="ORD-028"><username>Pelanggan Aktif</username><menu>Nasi Box Spesial</menu><porsi>10</porsi><tanggal>25 Jun 2026</tanggal><alamat>Jl. Contoh No. 1</alamat><catatan/><status_pesanan>Dikonfirmasi</status_pesanan><status_bayar>Belum Lunas</status_bayar><total>250000.0</total></order><order id="ORD-055"><username>Pelanggan Aktif</username><menu>Nasi Box Spesial</menu><porsi>10</porsi><tanggal>25 Jun 2026</tanggal><alamat>Jl. Contoh No. 1</alamat><catatan/><status_pesanan>Dikonfirmasi</status_pesanan><status_bayar>Belum Lunas</status_bayar><total>250000.0</total></order></orders>
+=======
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<orders>
+    <order id="ORD-06">
+        <username>Pelanggan Aktif</username>
+        <menu>Nasi Box Spesial</menu>
+        <porsi>10</porsi>
+        <tanggal>25 Jun 2026</tanggal>
+        <alamat>Jl. Contoh No. 1</alamat>
+        <catatan />
+        <status_pesanan>Dikonfirmasi</status_pesanan>
+        <status_bayar>Belum Lunas</status_bayar>
+        <total>250000.0</total>
+    </order>
+    <order id="ORD-078">
+        <username>Pelanggan Aktif</username>
+        <menu>Nasi Box Spesial</menu>
+        <porsi>10</porsi>
+        <tanggal>25 Jun 2026</tanggal>
+        <alamat>Jl. Contoh No. 1</alamat>
+        <catatan />
+        <status_pesanan>Dikonfirmasi</status_pesanan>
+        <status_bayar>Belum Lunas</status_bayar>
+        <total>250000.0</total>
+    </order>
+    <order id="ORD-028">
+        <username>Pelanggan Aktif</username>
+        <menu>Nasi Box Spesial</menu>
+        <porsi>10</porsi>
+        <tanggal>25 Jun 2026</tanggal>
+        <alamat>Jl. Contoh No. 1</alamat>
+        <catatan />
+        <status_pesanan>Dikonfirmasi</status_pesanan>
+        <status_bayar>Belum Lunas</status_bayar>
+        <total>250000.0</total>
+    </order>
+    <order id="ORD-097">
+        <username>Pelanggan Aktif</username>
+        <menu>Mie Goreng Spesial</menu>
+        <porsi>1</porsi>
+        <tanggal>3 juni 2007</tanggal>
+        <alamat>jalan godean perum tambakmas</alamat>
+        <catatan>dibikin enak ya</catatan>
+        <status_pesanan>Dikonfirmasi</status_pesanan>
+        <status_bayar>Belum Lunas</status_bayar>
+        <total>25000.0</total>
+    </order>
+</orders>
+>>>>>>> 678d2379434a9829fb8cfa21ad72d7df0edfa03f
