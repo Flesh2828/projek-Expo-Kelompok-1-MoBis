@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="540.0" prefWidth="710.0" style="-fx-background-color: FFFAF0;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BuatPesananController">
+<AnchorPane prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: FFFAF0;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BuatPesananController">
     <children>
         <Text layoutX="30.0" layoutY="50.0" style="-fx-font-weight: bold; -fx-font-size: 24; -fx-fill: #00000;" text="Formulir Pesanan" />
         <Text layoutX="30.0" layoutY="75.0" style="-fx-font-size: 14; -fx-fill: #7F8C8D;" text="Isi detail pesanan Anda di bawah ini" />

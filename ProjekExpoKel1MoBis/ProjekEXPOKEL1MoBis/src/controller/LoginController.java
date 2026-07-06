@@ -56,6 +56,7 @@ public class LoginController {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setTitle(judulWindow);
                 stage.setScene(new Scene(root, 600, 400)); 
+                stage.setMaximized(true); 
                 stage.show();
             } catch (Exception e) {
                 lblPesanError.setText("Gagal memuat halaman dashboard!");
@@ -73,6 +74,7 @@ public class LoginController {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("SINARING - Registrasi");
             stage.setScene(new Scene(root, 400, 300));
+            stage.setMaximized(true);
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
