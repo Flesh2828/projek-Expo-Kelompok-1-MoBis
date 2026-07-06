@@ -9,9 +9,18 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.scene.control.Button;
+import javafx.fxml.FXML;
+import javafx.event.ActionEvent;
 
 public class PelangganDashboardController {
+    @FXML private Button btnDaftarMenu;
+    @FXML private Button btnBuatPesanan;
+    @FXML private Button btnRiwayat;
+    @FXML private Button btnLangganan;
+    @FXML private Button btnPembayaran;
 
+   
     @FXML
     private AnchorPane paneKontenTengah;  // ← HURUF K BESAR!
     @FXML
@@ -29,7 +38,25 @@ public class PelangganDashboardController {
         txtNamaUser.setText(userAktifSession);
         bukaHalamanKonten("/view/DaftarMenu.fxml");
     }
+    @FXML
+    private void setTombolAktif(Button tombolAktif) {
+    // Kumpulkan semua variabel tombol sidebar yang terdaftar via fx:id
+    Button[] semuaTombol = {btnDaftarMenu, btnBuatPesanan, btnRiwayat, btnLangganan, btnPembayaran};
+    
+    // Reset class aktif dari semua tombol
+    for (Button btn : semuaTombol) {
+        if (btn != null) {
+            btn.getStyleClass().remove("aktif");
+        }
+    }
+    
+    // Tambahkan class aktif ke tombol yang baru saja diklik
+    if (tombolAktif != null) {
+        tombolAktif.getStyleClass().add("aktif");
+    }
+}
 
+// Lakukan hal yang sama untuk tombol Riwayat, Langganan, dan Pembayaran...
     // ==================== METHOD UNTUK BUKA HALAMAN ====================
 
     private void bukaHalamanKonten(String fxmlPath) {
@@ -69,29 +96,34 @@ public class PelangganDashboardController {
 
     // ==================== NAVIGASI SIDEBAR ====================
 
-    @FXML
+   @FXML
     void tampilkanDaftarMenu(ActionEvent event) {
         bukaHalamanKonten("/view/DaftarMenu.fxml");
+        setTombolAktif(btnDaftarMenu);
     }
 
     @FXML
     void tampilkanBuatPesanan(ActionEvent event) {
         bukaHalamanKonten("/view/BuatPesanan.fxml");
+        setTombolAktif(btnBuatPesanan);
     }
 
     @FXML
     void tampilkanRiwayatPesanan(ActionEvent event) {
-        bukaHalamanKonten("/view/RiwayatPesanan.fxml");
+        bukaHalamanKonten("/view/RiwayatPesanan.fxml"); // sesuaikan dengan nama file fxml riwayat kalian
+        setTombolAktif(btnRiwayat);
     }
 
     @FXML
     void tampilkanLangganan(ActionEvent event) {
-        bukaHalamanKonten("/view/Langganan.fxml");
+        bukaHalamanKonten("/view/Langganan.fxml"); // sesuaikan dengan nama file fxml langganan kalian
+        setTombolAktif(btnLangganan);
     }
 
     @FXML
     void tampilkanPembayaran(ActionEvent event) {
-        bukaHalamanKonten("/view/Pembayaran.fxml");
+        bukaHalamanKonten("/view/Pembayaran.fxml"); // sesuaikan dengan nama file fxml pembayaran kalian
+        setTombolAktif(btnPembayaran);
     }
 
     // ==================== UNTUK FORM PEMESANAN DARI MENU ====================
