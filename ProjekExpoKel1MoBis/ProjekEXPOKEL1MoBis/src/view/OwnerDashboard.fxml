@@ -6,13 +6,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
+<<<<<<< HEAD
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0" style="-fx-background-color: #FFFAF0;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OwnerDashboardController">
+=======
 <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0" style="-fx-background-color: #e8f8f5;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OwnerDashboardController">
+>>>>>>> 62fbfc134789ae13c847927ece4d5aa85c01061a
     <Text style="-fx-font-weight: bold; -fx-font-size: 22; -fx-fill: #16a085;" text="PANEL OWNER - SINARING" />
     <Label style="-fx-font-size: 14;" text="Selamat Datang, Owner! Berikut ringkasan performa finansial bisnis Anda." />
 
     <HBox alignment="CENTER" spacing="10.0">
+<<<<<<< HEAD
+        <Button prefHeight="26.0" prefWidth="149.0" style="-fx-background-color: C35E2A;" text="Lihat Grafik Keuangan" />
+        <Button prefHeight="26.0" prefWidth="149.0" style="-fx-background-color: C35E2A;" text="Pantau Piutang" />
+=======
         <Button text="Lihat Grafik Keuangan" />
         <Button text="Pantau Piutang" />
+>>>>>>> 62fbfc134789ae13c847927ece4d5aa85c01061a
     </HBox>
 
     <Button onAction="#handleLogout" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Logout" />
