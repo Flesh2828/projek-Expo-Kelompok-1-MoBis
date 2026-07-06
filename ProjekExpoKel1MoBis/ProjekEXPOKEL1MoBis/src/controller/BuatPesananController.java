@@ -49,7 +49,6 @@ public class BuatPesananController {
                 lblStatusOrder.setStyle("-fx-text-fill: green;");
                 lblStatusOrder.setText("✅ Pesanan Berhasil Dibuat! ID: " + idPesanan);
 
-                // Reset form setelah 3 detik
                 new java.util.Timer().schedule(
                     new java.util.TimerTask() {
                         @Override
@@ -76,12 +75,14 @@ public class BuatPesananController {
         }
     }
 
+    // ===== DIPANGGIL DARI DAFTAR MENU (HARGA INT) =====
     public void setMenuTerpilih(String menu, int harga) {
         txtPilihanMenu.setText(menu);
         System.out.println("Berhasil menerima lembaran data dari Daftar Menu!");
         System.out.println("Menu: " + menu + " | Harga Dasar: Rp " + harga);
     }
 
+    // ===== DIPANGGIL DARI RIWAYAT PESANAN (PESANAN LAMA) =====
     public void setDataPesanLama(Pesanan pesananLama) {
         if (pesananLama != null) {
             txtPilihanMenu.setText(pesananLama.getNamaMenu());
@@ -95,6 +96,7 @@ public class BuatPesananController {
         }
     }
 
+    // ===== DIPANGGIL DARI DAFTAR MENU (HARGA DOUBLE) =====
     public void setMenuTerpilih(String namaMenu, double harga) {
         txtPilihanMenu.setText(namaMenu);
         lblStatusOrder.setStyle("-fx-text-fill: #2E7D32;");

@@ -2,7 +2,10 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -10,84 +13,110 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1200.0" prefWidth="1500.0" style="-fx-background-color: #FFFAF0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DaftarMenuController">
+<AnchorPane prefHeight="1200.0" prefWidth="1500.0" style="-fx-background-color: fffffff;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DaftarMenuController">
 
     <padding>
-        <Insets top="20" right="20" bottom="20" left="20" />
+        <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
 
-    <VBox fx:id="menuContainer" spacing="15.0" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+    <VBox spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
+        <!-- HEADER -->
         <Text style="-fx-font-size: 28; -fx-font-weight: bold; -fx-fill: #000000;" text="Daftar Menu" />
         <Text style="-fx-font-size: 14; -fx-fill: #666666;" text="Pilih menu favorit Anda dari dapur Sari Rahayu" />
 
         <Separator />
 
+        <!-- GRID 3 KOLOM -->
         <GridPane hgap="15" vgap="15">
             <columnConstraints>
-                <ColumnConstraints percentWidth="50" />
-                <ColumnConstraints percentWidth="50" />
+                <ColumnConstraints percentWidth="33.33" />
+                <ColumnConstraints percentWidth="33.33" />
+                <ColumnConstraints percentWidth="33.33" />
             </columnConstraints>
-
-            <!-- Menu 1: Nasi Box Spesial -->
-            <VBox spacing="8.0" style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-radius: 10; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);" GridPane.columnIndex="0" GridPane.rowIndex="0" prefHeight="200.0">
-                <Text style="-fx-font-size: 36;" text="🍱" />
-                <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #000000;" text="Nasi Box Spesial" />
-                <Text style="-fx-font-size: 11; -fx-fill: #666666;" text="Nasi putih, ayam goreng, tempe, sambal" wrapText="true" />
-                <Text style="-fx-font-size: 15; -fx-font-weight: bold; -fx-fill: #F54D2D;" text="Rp 25.000/porsi" />
-                <Button onAction="#handlePesanNasiBox" prefWidth="160.0" style="-fx-background-color: #F54D2D; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-font-size: 13; -fx-padding: 6 0;" text="Pesan" />
-            </VBox>
-
-            <!-- Menu 2: Nasi Gudeg Komplit -->
-            <VBox spacing="8.0" style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-radius: 10; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);" GridPane.columnIndex="1" GridPane.rowIndex="0" prefHeight="200.0">
-                <Text style="-fx-font-size: 36;" text="🍲" />
-                <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #000000;" text="Nasi Gudeg Komplit" />
-                <Text style="-fx-font-size: 11; -fx-fill: #666666;" text="Nasi gudeg, ayam, krecek, telur" wrapText="true" />
-                <Text style="-fx-font-size: 15; -fx-font-weight: bold; -fx-fill: #F54D2D;" text="Rp 28.000/porsi" />
-                <Button onAction="#handlePesanNasiGudeg" prefWidth="160.0" style="-fx-background-color: #F54D2D; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-font-size: 13; -fx-padding: 6 0;" text="Pesan" />
-            </VBox>
-
-            <!-- Menu 3: Nasi Padang -->
-            <VBox spacing="8.0" style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-radius: 10; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);" GridPane.columnIndex="0" GridPane.rowIndex="1" prefHeight="200.0">
-                <Text style="-fx-font-size: 36;" text="🍛" />
-                <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #000000;" text="Nasi Padang" />
-                <Text style="-fx-font-size: 11; -fx-fill: #666666;" text="Rendang, gulai, sambal" wrapText="true" />
-                <Text style="-fx-font-size: 15; -fx-font-weight: bold; -fx-fill: #F54D2D;" text="Rp 30.000/porsi" />
-                <Button onAction="#handlePesanNasiPadang" prefWidth="160.0" style="-fx-background-color: #F54D2D; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-font-size: 13; -fx-padding: 6 0;" text="Pesan" />
-            </VBox>
-
-            <!-- Menu 4: Ayam Bakar Komplit -->
-            <VBox spacing="8.0" style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-radius: 10; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);" GridPane.columnIndex="1" GridPane.rowIndex="1" prefHeight="200.0">
-                <Text style="-fx-font-size: 36;" text="🍗" />
-                <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #000000;" text="Ayam Bakar Komplit" />
-                <Text style="-fx-font-size: 11; -fx-fill: #666666;" text="Ayam bakar, nasi, lalapan, sambal" wrapText="true" />
-                <Text style="-fx-font-size: 15; -fx-font-weight: bold; -fx-fill: #F54D2D;" text="Rp 32.000/porsi" />
-                <Button onAction="#handlePesanAyamBakar" prefWidth="160.0" style="-fx-background-color: #F54D2D; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-font-size: 13; -fx-padding: 6 0;" text="Pesan" />
-            </VBox>
-
-            <!-- Menu 5: Mie Goreng Spesial -->
-            <VBox spacing="8.0" style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-radius: 10; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);" GridPane.columnIndex="0" GridPane.rowIndex="2" prefHeight="200.0">
-                <Text style="-fx-font-size: 36;" text="🍜" />
-                <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #000000;" text="Mie Goreng Spesial" />
-                <Text style="-fx-font-size: 11; -fx-fill: #666666;" text="Mie, udang, telur, sayuran segar" wrapText="true" />
-                <Text style="-fx-font-size: 15; -fx-font-weight: bold; -fx-fill: #F54D2D;" text="Rp 20.000/porsi" />
-                <Button onAction="#handlePesanMieGoreng" prefWidth="160.0" style="-fx-background-color: #F54D2D; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-font-size: 13; -fx-padding: 6 0;" text="Pesan" />
-            </VBox>
-
-            <!-- Menu 6: Catering Prasmanan -->
-            <VBox spacing="8.0" style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-radius: 10; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);" GridPane.columnIndex="1" GridPane.rowIndex="2" prefHeight="200.0">
-                <Text style="-fx-font-size: 36;" text="🎉" />
-                <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #000000;" text="Catering Prasmanan" />
-                <Text style="-fx-font-size: 11; -fx-fill: #666666;" text="Paket lengkap acara, min. 50 porsi" wrapText="true" />
-                <Text style="-fx-font-size: 15; -fx-font-weight: bold; -fx-fill: #F54D2D;" text="Rp 45.000/porsi" />
-                <Button onAction="#handlePesanPrasmanan" prefWidth="160.0" style="-fx-background-color: #F54D2D; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-font-size: 13; -fx-padding: 6 0;" text="Pesan" />
-            </VBox>
-
             <rowConstraints>
                 <RowConstraints />
                 <RowConstraints />
-                <RowConstraints />
             </rowConstraints>
+
+            <!-- ===== MENU 1: Nasi Box Spesial ===== -->
+            <VBox prefHeight="200.0" spacing="5.0" style="-fx-background-color: FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 10; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);" GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <ImageView fitHeight="192.0" fitWidth="231.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@nasiboxspecial.jpg" />
+               </image>
+            </ImageView>
+                <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-fill: #000000;" text="Nasi Box Spesial" />
+                <Label style="-fx-font-size: 11; -fx-fill: #666666;" text="Nasi putih, ayam goreng, tempe, sambal" wrapText="true" />
+                <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-fill: #F54D2D;" text="Rp 25.000/porsi" />
+                <Button onAction="#handlePesanNasiBox" prefHeight="31.0" prefWidth="463.0" style="-fx-background-color: B8541F; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-font-size: 13; -fx-padding: 6 0;" text="Pesan" />
+            </VBox>
+
+            <!-- ===== MENU 2: Nasi Gudeg Komplit ===== -->
+            <VBox prefHeight="200.0" spacing="5.0" style="-fx-background-color: FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 10; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);" GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <ImageView fitHeight="200.0" fitWidth="194.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@nasigudeg.jpg" />
+               </image>
+            </ImageView>
+                <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-fill: #000000;" text="Nasi Gudeg Komplit" />
+                <Label style="-fx-font-size: 11; -fx-fill: #666666;" text="Nasi gudeg, ayam, krecek, telur" wrapText="true" />
+                <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-fill: #F54D2D;" text="Rp 28.000/porsi" />
+                <Button onAction="#handlePesanNasiGudeg" prefHeight="31.0" prefWidth="465.0" style="-fx-background-color: B8541F; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-font-size: 13; -fx-padding: 6 0;" text="Pesan" />
+            </VBox>
+
+            <!-- ===== MENU 3: Nasi Padang ===== -->
+            <VBox prefHeight="200.0" spacing="5.0" style="-fx-background-color: FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 10; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);" GridPane.columnIndex="2" GridPane.rowIndex="0">
+            <ImageView fitHeight="195.0" fitWidth="192.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@naspad.jpg" />
+               </image>
+            </ImageView>
+                <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-fill: #000000;" text="Nasi Padang" />
+                <Label style="-fx-font-size: 11; -fx-fill: #666666;" text="Nasi, rendang, gulai, sayur, sambal" wrapText="true" />
+                <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-fill: #F54D2D;" text="Rp 30.000/porsi" />
+                <Button onAction="#handlePesanNasiPadang" prefHeight="31.0" prefWidth="459.0" style="-fx-background-color: B8541F; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-font-size: 13; -fx-padding: 6 0;" text="Pesan" />
+            </VBox>
+
+            <!-- ===== MENU 4: Ayam Bakar Komplit ===== -->
+            <VBox prefHeight="200.0" spacing="5.0" style="-fx-background-color: FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 10; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);" GridPane.rowIndex="1">
+            <ImageView fitHeight="174.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@ayambakar.jpg" />
+               </image>
+            </ImageView>
+                <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-fill: #000000;" text="Ayam Bakar Komplit" />
+                <Label style="-fx-font-size: 11; -fx-fill: #666666;" text="Ayam bakar, nasi, lalapan, sambal" wrapText="true" />
+                <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-fill: #F54D2D;" text="Rp 32.000/porsi" />
+                <Button onAction="#handlePesanAyamBakar" prefHeight="31.0" prefWidth="597.0" style="-fx-background-color: B8541F; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-font-size: 13; -fx-padding: 6 0;" text="Pesan" />
+            </VBox>
+
+            <!-- ===== MENU 5: Mie Goreng Spesial ===== -->
+            <VBox prefHeight="200.0" spacing="5.0" style="-fx-background-color: FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 10; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <ImageView fitHeight="192.0" fitWidth="190.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@migoreng.jpg" />
+               </image>
+            </ImageView>
+                <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-fill: #000000;" text="Mie Goreng Spesial" />
+                <Label style="-fx-font-size: 11; -fx-fill: #666666;" text="Mie, udang, telur, sayuran segar" wrapText="true" />
+                <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-fill: #F54D2D;" text="Rp 20.000/porsi" />
+                <Button onAction="#handlePesanMieGoreng" prefHeight="31.0" prefWidth="462.0" style="-fx-background-color: B8541F; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-font-size: 13; -fx-padding: 6 0;" text="Pesan" />
+            </VBox>
+
+            <!-- ===== MENU 6: Catering Prasmanan ===== -->
+            <VBox prefHeight="200.0" spacing="5.0" style="-fx-background-color: FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 10; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 3);" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <ImageView fitHeight="178.0" fitWidth="191.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@catering.jpg" />
+               </image>
+            </ImageView>
+                <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-fill: #000000;" text="Catering Prasmanan" />
+                <Label style="-fx-font-size: 11; -fx-fill: #666666;" text="Paket lengkap acara, min. 50 porsi" wrapText="true" />
+                <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-fill: #F54D2D;" text="Rp 20.000/porsi" />
+                <Button onAction="#handlePesanPrasmanan" prefHeight="31.0" prefWidth="473.0" style="-fx-background-color: B8541F; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-font-size: 13; -fx-padding: 6 0;" text="Pesan" />
+            </VBox>
+
         </GridPane>
 
     </VBox>
