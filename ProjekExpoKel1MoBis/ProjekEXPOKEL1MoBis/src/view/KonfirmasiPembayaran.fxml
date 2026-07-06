@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="730.0" style="-fx-background-color: #FDFEFE;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KonfirmasiPembayaranController">
+<AnchorPane prefHeight="1200.0" prefWidth="1500.0" style="-fx-background-color: #FFFAF0;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KonfirmasiPembayaranController">
 
     <padding>
         <Insets bottom="20" left="20" right="20" top="20" />

@@ -13,10 +13,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="600.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PelangganDashboardController">
+<BorderPane prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PelangganDashboardController">
     
     <left>
-        <VBox prefHeight="600.0" prefWidth="330.0" spacing="15.0" style="-fx-background-color: #ffffff;">
+        <VBox prefHeight="600.0" prefWidth="330.0" spacing="15.0" style="-fx-background-color: FFFAF0;">
             <padding>
                 <Insets bottom="30.0" left="15.0" right="15.0" top="30.0" />
             </padding>
@@ -85,12 +85,12 @@
                 </VBox>
             </HBox>
             
-            <Button onAction="#handleLogout" style="-fx-background-color: C35E2A; -fx-text-fill: white;" text="🚪 Keluar" />
+            <Button onAction="#handleLogout" prefHeight="25.0" prefWidth="390.0" style="-fx-background-color: C35E2A; -fx-text-fill: white;" text="🚪 Keluar" />
         </VBox>
     </left>
     
     <center>
-        <AnchorPane fx:id="paneKontenTengah" style="-fx-background-color: #FFFAF0;" />
+        <AnchorPane fx:id="paneKontenTengah" style="-fx-background-color: FFFAF0;" />
     </center>
     
 </BorderPane>
