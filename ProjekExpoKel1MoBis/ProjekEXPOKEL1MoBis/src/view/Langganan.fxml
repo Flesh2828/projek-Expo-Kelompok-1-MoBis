@@ -30,13 +30,13 @@
                 <ColumnConstraints percentWidth="50" />
             </columnConstraints>
 
-            <VBox spacing="8.0" style="-fx-background-color: #E8F5E9; -fx-border-color: #A5D6A7; -fx-border-radius: 8; -fx-padding: 15;" GridPane.columnIndex="0">
+            <VBox spacing="8.0" style="-fx-background-color: #FFFAF0; -fx-border-color: #A5D6A7; -fx-border-radius: 8; -fx-padding: 15;" GridPane.columnIndex="0">
                 <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #000000;" text="Paket Bulanan" />
                 <Text style="-fx-font-size: 14;" text="Sisa Hari: 14" />
                 <Text style="-fx-font-size: 14; -fx-fill: #666666;" text="Berakhir Pada: 17 Juli 2026" />
             </VBox>
 
-            <VBox spacing="8.0" style="-fx-background-color: #E8F5E9; -fx-border-color: #A5D6A7; -fx-border-radius: 8; -fx-padding: 15;" GridPane.columnIndex="1">
+            <VBox spacing="8.0" style="-fx-background-color: #FFFAF0; -fx-border-color: #A5D6A7; -fx-border-radius: 8; -fx-padding: 15;" GridPane.columnIndex="1">
                 <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #000000;" text="Detail Paket" />
                 <Text style="-fx-font-size: 14; -fx-fill: #666666;" text="Menu: Nasi Box Spesial" />
                 <Text style="-fx-font-size: 14; -fx-fill: #666666;" text="Durasi: 30 hari" />
@@ -48,15 +48,15 @@
         </GridPane>
 
         <HBox spacing="15.0">
-            <VBox spacing="3.0" style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-alignment: center;" HBox.hgrow="ALWAYS">
+            <VBox spacing="3.0" style="-fx-background-color: #FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-alignment: center;" HBox.hgrow="ALWAYS">
                 <Text style="-fx-font-size: 12; -fx-fill: #666666;" text="Total Pengiriman" />
                 <Text style="-fx-font-size: 20; -fx-font-weight: bold; -fx-fill: #2E7D32;" text="16" />
             </VBox>
-            <VBox spacing="3.0" style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-alignment: center;" HBox.hgrow="ALWAYS">
+            <VBox spacing="3.0" style="-fx-background-color: #FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-alignment: center;" HBox.hgrow="ALWAYS">
                 <Text style="-fx-font-size: 12; -fx-fill: #666666;" text="Berhasil Dikirim" />
                 <Text style="-fx-font-size: 20; -fx-font-weight: bold; -fx-fill: #2E7D32;" text="16" />
             </VBox>
-            <VBox spacing="3.0" style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-alignment: center;" HBox.hgrow="ALWAYS">
+            <VBox spacing="3.0" style="-fx-background-color: #FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-alignment: center;" HBox.hgrow="ALWAYS">
                 <Text style="-fx-font-size: 12; -fx-fill: #666666;" text="Hari Izin" />
                 <Text style="-fx-font-size: 20; -fx-font-weight: bold; -fx-fill: #D35400;" text="0" />
             </VBox>
@@ -67,7 +67,7 @@
         <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #00000;" text="Kelola Izin Langganan" />
         <Text style="-fx-font-size: 12; -fx-fill: #666666;" text="Pilih tanggal yang tidak ingin menerima pesanan. Pengaturan harus dilakukan H-2 sebelumnya." />
 
-        <GridPane hgap="5" vgap="5">
+        <GridPane hgap="5" style="-fx-background-color: #FFFAF0;" vgap="5">
             <columnConstraints>
                 <ColumnConstraints percentWidth="14.28" /><ColumnConstraints percentWidth="14.28" />
                 <ColumnConstraints percentWidth="14.28" /><ColumnConstraints percentWidth="14.28" />
@@ -95,8 +95,8 @@
         </GridPane>
 
         <HBox spacing="10.0">
-            <Button style="-fx-background-color: #E0E0E0; -fx-text-fill: #333;" text="← Prev" />
-            <Button style="-fx-background-color: #E0E0E0; -fx-text-fill: #333;" text="Next →" />
+            <Button style="-fx-background-color: #2e8b57; -fx-text-fill: #333;" text="← Prev" />
+            <Button style="-fx-background-color: #2e8b57; -fx-text-fill: #333;" text="Next →" />
         </HBox>
 
     </VBox>

@@ -22,12 +22,12 @@
         </VBox>
         
         <HBox spacing="15.0">
-            <VBox prefWidth="160.0" spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #E0E0E0; -fx-border-radius: 10;">
+            <VBox prefWidth="160.0" spacing="8.0" style="-fx-background-color: #FFFAF0; -fx-background-radius: 10; -fx-border-color: #E0E0E0; -fx-border-radius: 10;">
                 <padding><Insets bottom="15.0" left="15.0" right="15.0" top="15.0" /></padding>
                 <Text style="-fx-font-size: 22; -fx-font-weight: bold;" text="📋 7" />
                 <Text style="-fx-font-size: 11; -fx-fill: #7F8C8D;" text="Total Pesanan" />
             </VBox>
-            <VBox prefWidth="160.0" spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #E0E0E0; -fx-border-radius: 10;">
+            <VBox prefWidth="160.0" spacing="8.0" style="-fx-background-color: #FFFAF0; -fx-background-radius: 10; -fx-border-color: #E0E0E0; -fx-border-radius: 10;">
                 <padding><Insets bottom="15.0" left="15.0" right="15.0" top="15.0" /></padding>
                 <Text style="-fx-font-size: 22; -fx-font-weight: bold;" text="🕒 1" />
                 <Text style="-fx-font-size: 11; -fx-fill: #7F8C8D;" text="Pesanan Hari Ini" />
@@ -37,7 +37,7 @@
                 <Text style="-fx-font-size: 22; -fx-font-weight: bold; -fx-fill: white;" text="Rp 28 Jt" />
                 <Text style="-fx-font-size: 11; -fx-fill: #FADBD8;" text="Pendapatan Bulan Ini" />
             </VBox>
-            <VBox prefWidth="160.0" spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #E0E0E0; -fx-border-radius: 10;">
+            <VBox prefWidth="160.0" spacing="8.0" style="-fx-background-color: #FFFAF0; -fx-background-radius: 10; -fx-border-color: #E0E0E0; -fx-border-radius: 10;">
                 <padding><Insets bottom="15.0" left="15.0" right="15.0" top="15.0" /></padding>
                 <Text style="-fx-font-size: 22; -fx-font-weight: bold;" text="🍱 6" />
                 <Text style="-fx-font-size: 11; -fx-fill: #7F8C8D;" text="Menu Aktif" />
@@ -56,7 +56,7 @@
         
         <VBox spacing="10.0">
             <Text style="-fx-font-weight: bold; -fx-font-size: 16;" text="Pesanan Terbaru" />
-            <TableView fx:id="tablePesananTerbaru" prefHeight="250.0" prefWidth="700.0">
+            <TableView fx:id="tablePesananTerbaru" prefHeight="250.0" prefWidth="700.0" style="-fx-background-color: #FFFAF0;">
                 <columns>
                     <TableColumn fx:id="colId" prefWidth="90.0" text="ID PESANAN" />
                     <TableColumn fx:id="colPelanggan" prefWidth="130.0" text="PELANGGAN" />

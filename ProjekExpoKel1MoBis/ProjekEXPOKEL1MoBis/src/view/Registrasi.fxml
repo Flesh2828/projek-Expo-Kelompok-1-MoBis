@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" spacing="15.0" prefWidth="400.0" prefHeight="300.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.RegistrasiController">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="CENTER" prefHeight="300.0" prefWidth="400.0" spacing="15.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrasiController">
     
-    <Text text="DAFTAR AKUN PELANGGAN BARU" style="-fx-font-weight: bold; -fx-font-size: 16;"/>
+    <Text style="-fx-font-weight: bold; -fx-font-size: 16;" text="DAFTAR AKUN PELANGGAN BARU" />
     
-    <TextField fx:id="txtRegUsername" promptText="Buat Username Baru" maxWidth="250.0"/>
-    <PasswordField fx:id="txtRegPassword" promptText="Buat Password" maxWidth="250.0"/>
+    <TextField fx:id="txtRegUsername" maxWidth="250.0" promptText="Buat Username Baru" style="-fx-background-color: #FFFAF0;" />
+    <PasswordField fx:id="txtRegPassword" maxWidth="250.0" promptText="Buat Password" style="-fx-background-color: #FFFAF0;" />
     
-    <Button text="Daftar Sekarang" onAction="#handleRegistrasi" prefWidth="150.0"/>
-    <Label fx:id="lblPesanStatus" text="" textFill="GREEN"/>
+    <Button onAction="#handleRegistrasi" prefWidth="150.0" style="-fx-background-color: #ffc0cb;" text="Daftar Sekarang" />
+    <Label fx:id="lblPesanStatus" text="" textFill="GREEN" />
     
-    <Hyperlink text="Sudah punya akun? Kembali ke Login" onAction="#keHalamanLogin"/>
+    <Hyperlink onAction="#keHalamanLogin" text="Sudah punya akun? Kembali ke Login" textFill="#e70404" />
 </VBox>

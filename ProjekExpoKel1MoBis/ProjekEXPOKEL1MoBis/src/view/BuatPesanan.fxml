@@ -10,12 +10,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="540.0" prefWidth="710.0" style="-fx-background-color: FFFAF0;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BuatPesananController">
+<AnchorPane prefHeight="540.0" prefWidth="710.0" style="-fx-background-color: FFFAF0;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BuatPesananController">
     <children>
         <Text layoutX="30.0" layoutY="50.0" style="-fx-font-weight: bold; -fx-font-size: 24; -fx-fill: #2C3E50;" text="Formulir Pesanan" />
         <Text layoutX="30.0" layoutY="75.0" style="-fx-font-size: 14; -fx-fill: #7F8C8D;" text="Isi detail pesanan Anda di bawah ini" />
         
-        <VBox layoutX="30.0" layoutY="100.0" prefWidth="650.0" spacing="15.0" style="-fx-background-color: #FAFAFA; -fx-background-radius: 10; -fx-border-color: FFFAF0; -fx-border-radius: 10;">
+        <VBox layoutX="23.0" layoutY="79.0" prefHeight="440.0" prefWidth="665.0" spacing="15.0" style="-fx-background-color: #FFFAF0; -fx-background-radius: 10; -fx-border-color: FFFAF0; -fx-border-radius: 10;">
             <padding><Insets bottom="20.0" left="20.0" right="20.0" top="20.0" /></padding>
             
             <Label style="-fx-font-weight: bold;" text="Pilih Menu" />
@@ -24,19 +24,19 @@
             <HBox spacing="20.0">
                 <VBox spacing="5.0" HBox.hgrow="ALWAYS">
                     <Label style="-fx-font-weight: bold;" text="Jumlah Porsi" />
-                    <TextField fx:id="txtJumlahPorsi" text="1" />
+                    <TextField fx:id="txtJumlahPorsi" style="-fx-background-color: #EEEEEE;" text="1" />
                 </VBox>
                 <VBox spacing="5.0" HBox.hgrow="ALWAYS">
                     <Label style="-fx-font-weight: bold;" text="Tanggal Pengiriman" />
-                    <TextField fx:id="txtTanggalKirim" promptText="Contoh: 10 Jul 2026" />
+                    <TextField fx:id="txtTanggalKirim" promptText="Contoh: 10 Jul 2026" style="-fx-background-color: #EEEEEE;" />
                 </VBox>
             </HBox>
             
             <Label style="-fx-font-weight: bold;" text="Alamat Pengiriman" />
-            <TextArea fx:id="txtAlamatKirim" prefHeight="80.0" promptText="Jl. Contoh No. 1, Kelurahan, Kecamatan, Kota" />
+            <TextArea fx:id="txtAlamatKirim" prefHeight="80.0" promptText="Jl. Contoh No. 1, Kelurahan, Kecamatan, Kota" style="-fx-background-color: #EEEEEE;" />
             
             <Label style="-fx-font-weight: bold;" text="Catatan Khusus (Opsional)" />
-            <TextField fx:id="txtCatatan" promptText="Contoh: tidak pedas, alergi kacang, dll." />
+            <TextField fx:id="txtCatatan" promptText="Contoh: tidak pedas, alergi kacang, dll." style="-fx-background-color: #EEEEEE;" />
             
             <Button onAction="#handleKirimPesanan" prefWidth="610.0" style="-fx-background-color: #D35400; -fx-text-fill: white; -fx-font-weight: bold;" text="Kirim Pesanan" />
             <Label fx:id="lblStatusOrder" style="-fx-font-size: 13;" text="" />
