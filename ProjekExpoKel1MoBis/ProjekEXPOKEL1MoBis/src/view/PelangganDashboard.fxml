@@ -34,7 +34,7 @@
                   </font></Text>
                <ImageView fitHeight="97.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@logoumami.jpeg" />
+                     <Image url="@../../../../../../../../Downloads/logo.png2.png" />
                   </image>
                </ImageView>
             </children>
