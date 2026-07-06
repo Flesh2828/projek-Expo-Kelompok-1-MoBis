@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="730.0" style="-fx-background-color: #FDFEFE;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RiwayatPesananController">
+<AnchorPane prefHeight="800.0" prefWidth="900.0" style="-fx-background-color: #FDFEFE;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RiwayatPesananController">
 
     <padding>
         <Insets bottom="20" left="20" right="20" top="20" />
@@ -22,7 +22,7 @@
         <Separator />
 
         <!-- Card 1 -->
-        <VBox spacing="5.0" style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);">
+        <VBox spacing="5.0" style="-fx-background-color: #FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);">
             <HBox spacing="10.0">
                 <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #2E7D32;" text="ORD-011" />
                 <Text style="-fx-font-size: 12; -fx-fill: white; -fx-background-color: #2E7D32; -fx-padding: 2 8 2 8; -fx-background-radius: 4;" text="✅ Dikirim" />
@@ -32,13 +32,13 @@
             <Text style="-fx-font-size: 12; -fx-fill: #666666;" text="10 porsi • 25 Jun 2026" />
             <HBox spacing="15.0">
                 <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: C35E2A;" text="Rp 250.000" />
-                <Button fx:id="btnPesanUlang1" onAction="#handlePesanUlang" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold;" text="Pesan Ulang" />
+                <Button fx:id="btnPesanUlang1" onAction="#handlePesanUlang" prefHeight="26.0" prefWidth="105.0" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold;" text="Pesan Ulang" />
             </HBox>
         </VBox>
 
         <!-- Card 2 -->
-        <VBox spacing="5.0" style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);">
-            <HBox spacing="10.0">
+        <VBox spacing="5.0" style="-fx-background-color: #FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);">
+            <HBox spacing="10.0" style="-fx-background-color: #FFFAF0;">
                 <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #2E7D32;" text="ORD-009" />
                 <Text style="-fx-font-size: 12; -fx-fill: white; -fx-background-color: #2E7D32; -fx-padding: 2 8 2 8; -fx-background-radius: 4;" text="✅ Dikirim" />
                 <Text style="-fx-font-size: 12; -fx-fill: white; -fx-background-color: #1B5E20; -fx-padding: 2 8 2 8; -fx-background-radius: 4;" text="✅ Lunas" />
@@ -47,12 +47,12 @@
             <Text style="-fx-font-size: 12; -fx-fill: #666666;" text="5 porsi • 18 Jun 2026" />
             <HBox spacing="15.0">
                 <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: C35E2A;" text="Rp 140.000" />
-                <Button fx:id="btnPesanUlang2" onAction="#handlePesanUlang" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold;" text="Pesan Ulang" />
+                <Button fx:id="btnPesanUlang2" onAction="#handlePesanUlang" prefHeight="26.0" prefWidth="106.0" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold;" text="Pesan Ulang" />
             </HBox>
         </VBox>
 
         <!-- Card 3 -->
-        <VBox spacing="5.0" style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);">
+        <VBox spacing="5.0" style="-fx-background-color: #FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);">
             <HBox spacing="10.0">
                 <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #2E7D32;" text="ORD-012" />
                 <Text style="-fx-font-size: 12; -fx-fill: white; -fx-background-color: #F39C12; -fx-padding: 2 8 2 8; -fx-background-radius: 4;" text="🕐 Dikonfirmasi" />
@@ -62,7 +62,7 @@
             <Text style="-fx-font-size: 12; -fx-fill: #666666;" text="50 porsi • 10 Jul 2026" />
             <HBox spacing="15.0">
                 <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: C35E2A;" text="Rp 2.250.000" />
-                <Button fx:id="btnPesanUlang3" onAction="#handlePesanUlang" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold;" text="Pesan Ulang" />
+                <Button fx:id="btnPesanUlang3" onAction="#handlePesanUlang" prefHeight="26.0" prefWidth="105.0" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold;" text="Pesan Ulang" />
             </HBox>
         </VBox>
 

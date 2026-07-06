@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" 
-            fx:controller="controller.KonfirmasiBerhasilController"
-            prefWidth="730.0" prefHeight="600.0" style="-fx-background-color: #FDFEFE;">
+<AnchorPane prefHeight="600.0" prefWidth="730.0" style="-fx-background-color: #FDFEFE;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KonfirmasiBerhasilController">
 
     <padding>
-        <Insets top="20" right="20" bottom="20" left="20" />
+        <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
 
-    <VBox spacing="15.0" alignment="CENTER" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+    <VBox alignment="CENTER" spacing="15.0" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20">
 
-        <Text text="✅" style="-fx-font-size: 64;" />
+        <Text style="-fx-font-size: 64;" text="✅" />
 
-        <Text text="Konfirmasi Pembayaran Berhasil!" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-fill: #2E7D32;" />
+        <Text style="-fx-font-size: 24; -fx-font-weight: bold; -fx-fill: #2E7D32;" text="Konfirmasi Pembayaran Berhasil!" />
 
-        <Text text="Terima kasih! Admin telah menerima konfirmasi pembayaran Anda." style="-fx-font-size: 14; -fx-fill: #666666;" />
+        <Text style="-fx-font-size: 14; -fx-fill: #666666;" text="Terima kasih! Admin telah menerima konfirmasi pembayaran Anda." />
 
-        <Text text="Pembayaran akan diverifikasi dalam 1x24 jam." style="-fx-font-size: 14; -fx-fill: #666666;" />
+        <Text style="-fx-font-size: 14; -fx-fill: #666666;" text="Pembayaran akan diverifikasi dalam 1x24 jam." />
 
         <Separator />
 
-        <HBox spacing="15.0" alignment="CENTER">
-            <Button text="Kembali ke Dashboard" onAction="#handleKembali" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;" />
-            <Button text="Lihat Riwayat Pesanan" onAction="#handleLihatRiwayat" style="-fx-background-color: #F57C00; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;" />
+        <HBox alignment="CENTER" spacing="15.0">
+            <Button onAction="#handleKembali" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;" text="Kembali ke Dashboard" />
+            <Button onAction="#handleLihatRiwayat" style="-fx-background-color: C35E2A; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;" text="Lihat Riwayat Pesanan" />
         </HBox>
 
     </VBox>
