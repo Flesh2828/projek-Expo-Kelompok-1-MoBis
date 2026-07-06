@@ -45,27 +45,27 @@
             <children>
                   <Text style="-fx-font-size: 25; -fx-fill: grey; -fx-font-weight: bold;" text="MENU UTAMA" />
                   
-                           <Button onAction="#tampilkanDaftarMenu" prefHeight="2.0" prefWidth="374.0" style="-fx-background-color: transparent; -fx-text-fill: black; -fx-alignment: center-left;" text="Daftar Menu">
+                           <Button fx:id="btnDaftarMenu" onAction="#tampilkanDaftarMenu" prefHeight="2.0" prefWidth="374.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Daftar Menu">
                   <font>
                      <Font name="Calibri" size="25.0" />
                   </font>
                </Button>
-                  <Button onAction="#tampilkanBuatPesanan" prefWidth="500.0" style="-fx-background-color: transparent; -fx-text-fill: black; -fx-alignment: center-left;" text="Buat Pesanan">
+                  <Button fx:id="btnBuatPesanan" onAction="#tampilkanBuatPesanan" prefWidth="500.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Buat Pesanan">
                   <font>
                      <Font name="Calibri" size="25.0" />
                   </font>
                </Button>
-                  <Button onAction="#tampilkanRiwayatPesanan" prefWidth="500.0" style="-fx-background-color: transparent; -fx-text-fill: black; -fx-alignment: center-left;" text="Riwayat Pesanan">
+                  <Button fx:id="btnRiwayat" onAction="#tampilkanRiwayatPesanan" prefWidth="500.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Riwayat Pesanan">
                   <font>
                      <Font name="Calibri" size="25.0" />
                   </font>
                </Button>
-                  <Button onAction="#tampilkanLangganan" prefWidth="500.0" style="-fx-background-color: transparent; -fx-text-fill: black; -fx-alignment: center-left;" text="Langganan">
+                  <Button fx:id="btnLangganan" onAction="#tampilkanLangganan" prefWidth="500.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Langganan">
                   <font>
                      <Font name="Calibri" size="25.0" />
                   </font>
                </Button>
-                  <Button onAction="#tampilkanPembayaran" prefWidth="500.0" style="-fx-background-color: transparent; -fx-text-fill: black; -fx-alignment: center-left;" text="Pembayaran">
+                  <Button fx:id="btnPembayaran" onAction="#tampilkanPembayaran" prefWidth="500.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Pembayaran">
                   <font>
                      <Font name="Calibri" size="25.0" />
                   </font>
