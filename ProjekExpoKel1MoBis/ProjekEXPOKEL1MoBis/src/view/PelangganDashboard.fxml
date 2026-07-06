@@ -13,84 +13,94 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PelangganDashboardController">
+<BorderPane prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PelangganDashboardController">
     
     <left>
-        <VBox prefHeight="600.0" prefWidth="330.0" spacing="15.0" style="-fx-background-color: FFFAF0;">
+        <VBox prefHeight="650.0" prefWidth="330.0" spacing="15.0" style="-fx-background-color: #FFFAF0;">
             <padding>
                 <Insets bottom="30.0" left="15.0" right="15.0" top="30.0" />
             </padding>
-         <AnchorPane>
-            <children>
-                  
-                  <VBox spacing="2.0" />
-                   <Text layoutX="220.0" layoutY="93.0" style="-fx-font-size: 25; -fx-fill: grey; -fx-font-weight: light;" text="SARI RAHAYU">
-                  <font>
-                     <Font name="Amiri Regular" size="12.0" />
-                  </font></Text>
-                   <Text layoutX="113.0" layoutY="54.0" style="-fx-font-weight: bold; -fx-font-size: 50; -fx-fill: C35E2A;" text="SINARING">
-                  <font>
-                     <Font name="Bookman Old Style" size="12.0" />
-                  </font></Text>
-               <ImageView fitHeight="97.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@logo.png2.png" />
-                  </image>
-               </ImageView>
-            </children>
-         </AnchorPane>
+            
+            <!-- ===== LOGO (PERTAHANKAN SEBAGAIMANA ADANYA) ===== -->
+            <AnchorPane>
+                <children>
+                    <VBox spacing="2.0" />
+                    <Text layoutX="220.0" layoutY="93.0" style="-fx-font-size: 25; -fx-fill: grey; -fx-font-weight: light;" text="SARI RAHAYU">
+                        <font>
+                            <Font name="Amiri Regular" size="12.0" />
+                        </font>
+                    </Text>
+                    <Text layoutX="113.0" layoutY="54.0" style="-fx-font-weight: bold; -fx-font-size: 50; -fx-fill: #C35E2A;" text="SINARING">
+                        <font>
+                            <Font name="Bookman Old Style" size="12.0" />
+                        </font>
+                    </Text>
+                    <ImageView fitHeight="97.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@logo.png2.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </AnchorPane>
             
             <Separator opacity="0.3" />
-         <VBox>
-            <children>
-                  <Text style="-fx-font-size: 35; -fx-fill: grey; -fx-font-weight: bold;" text="MENU UTAMA">
-                  <font>
-                     <Font size="41.0" />
-                  </font></Text>
-                  
-                           <Button fx:id="btnDaftarMenu" onAction="#tampilkanDaftarMenu" styleClass="tombol-navigasi" stylesheets="@style.css" text="Daftar Menu">
-                  <font>
-                     <Font name="Tahoma" size="25.0" />
-                  </font>
-               </Button>
-                  <Button fx:id="btnBuatPesanan" onAction="#tampilkanBuatPesanan" styleClass="tombol-navigasi" stylesheets="@style.css" text="Buat Pesanan">
-                  <font>
-                     <Font name="Tahoma" size="25.0" />
-                  </font>
-               </Button>
-                  <Button fx:id="btnRiwayat" onAction="#tampilkanRiwayatPesanan" styleClass="tombol-navigasi" stylesheets="@style.css" text="Riwayat Pesanan">
-                  <font>
-                     <Font name="Tahoma" size="25.0" />
-                  </font>
-               </Button>
-                  <Button fx:id="btnLangganan" onAction="#tampilkanLangganan" styleClass="tombol-navigasi" stylesheets="@style.css" text="Langganan">
-                  <font>
-                     <Font name="Tahoma" size="25.0" />
-                  </font>
-               </Button>
-                  <Button fx:id="btnPembayaran" onAction="#tampilkanPembayaran" styleClass="tombol-navigasi" stylesheets="@style.css" text="Pembayaran">
-                  <font>
-                     <Font name="Tahoma" size="25.0" />
-                  </font>
-               </Button>
-            </children>
-         </VBox>
             
+            <!-- ===== MENU UTAMA (PERTAHANKAN) ===== -->
+            <VBox>
+                <children>
+                    <Text style="-fx-font-size: 35; -fx-fill: grey; -fx-font-weight: bold;" text="MENU UTAMA">
+                        <font>
+                            <Font size="41.0" />
+                        </font>
+                    </Text>
+                    
+                    <Button fx:id="btnDaftarMenu" onAction="#tampilkanDaftarMenu" styleClass="tombol-navigasi" stylesheets="@style.css" text="Daftar Menu">
+                        <font>
+                            <Font name="Tahoma" size="25.0" />
+                        </font>
+                    </Button>
+                    <Button fx:id="btnBuatPesanan" onAction="#tampilkanBuatPesanan" styleClass="tombol-navigasi" stylesheets="@style.css" text="Buat Pesanan">
+                        <font>
+                            <Font name="Tahoma" size="25.0" />
+                        </font>
+                    </Button>
+                    <Button fx:id="btnRiwayat" onAction="#tampilkanRiwayatPesanan" styleClass="tombol-navigasi" stylesheets="@style.css" text="Riwayat Pesanan">
+                        <font>
+                            <Font name="Tahoma" size="25.0" />
+                        </font>
+                    </Button>
+                    <Button fx:id="btnLangganan" onAction="#tampilkanLangganan" styleClass="tombol-navigasi" stylesheets="@style.css" text="Langganan">
+                        <font>
+                            <Font name="Tahoma" size="25.0" />
+                        </font>
+                    </Button>
+                    <Button fx:id="btnPembayaran" onAction="#tampilkanPembayaran" styleClass="tombol-navigasi" stylesheets="@style.css" text="Pembayaran">
+                        <font>
+                            <Font name="Tahoma" size="25.0" />
+                        </font>
+                    </Button>
+                </children>
+            </VBox>
+            
+            <!-- ===== SPACER (MENDORONG TOMBOL LOGOUT KE BAWAH) ===== -->
             <Region VBox.vgrow="ALWAYS" />
             
+            <!-- ===== USER ===== -->
             <HBox alignment="CENTER_LEFT" spacing="10.0">
-                <Text style="-fx-font-size: 30; -fx-fill: C35E2A;" text="👤" />
+                <Text style="-fx-font-size: 30; -fx-fill: #C35E2A;" text="👤" />
                 <VBox>
-                    <Text fx:id="txtNamaUser" style="-fx-font-size: 25; -fx-fill: C35E2A;" text="Pelanggan" />
+                    <Text fx:id="txtNamaUser" style="-fx-font-size: 25; -fx-fill: #C35E2A;" text="Pelanggan" />
                 </VBox>
             </HBox>
             
-            <Button onAction="#handleLogout" prefHeight="25.0" prefWidth="390.0" style="-fx-background-color: C35E2A; -fx-text-fill: white;" text="🚪 Keluar" />
+            <!-- ===== TOMBOL LOGOUT (PASTI MUNCUL) ===== -->
+            <Button onAction="#handleLogout" prefWidth="300.0" style="-fx-background-color: #C35E2A; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-font-size: 16; -fx-padding: 10 0;" text="🚪 Keluar" />
+            
         </VBox>
     </left>
     
     <center>
-        <AnchorPane fx:id="paneKontenTengah" style="-fx-background-color: FFFAF0;" />
+        <AnchorPane fx:id="paneKontenTengah" style="-fx-background-color: #FFFAF0;" />
     </center>
     
 </BorderPane>

@@ -37,6 +37,7 @@ public class PelangganDashboardController {
     public void initialize() {
         txtNamaUser.setText(userAktifSession);
         bukaHalamanKonten("/view/DaftarMenu.fxml");
+        
     }
     @FXML
     private void setTombolAktif(Button tombolAktif) {
