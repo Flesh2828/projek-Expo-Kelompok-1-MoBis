@@ -13,10 +13,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="600.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PelangganDashboardController">
+<BorderPane prefHeight="600.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PelangganDashboardController">
     
     <left>
-        <VBox prefWidth="380.0" spacing="15.0" style="-fx-background-color: #B8541F;">
+        <VBox prefWidth="380.0" spacing="15.0" style="-fx-background-color: #ffffff;">
             <padding>
                 <Insets bottom="30.0" left="15.0" right="15.0" top="30.0" />
             </padding>
@@ -24,8 +24,14 @@
             <children>
                   
                   <VBox spacing="2.0" />
-                   <Text layoutX="156.0" layoutY="106.0" style="-fx-font-size: 30; -fx-fill: white; -fx-font-weight: bold;" text="SARI RAHAYU" />
-                   <Text layoutX="90.0" layoutY="54.0" style="-fx-font-weight: bold; -fx-font-size: 50; -fx-fill: white;" text="SINARING" />
+                   <Text layoutX="220.0" layoutY="93.0" style="-fx-font-size: 25; -fx-fill: grey; -fx-font-weight: light;" text="SARI RAHAYU">
+                  <font>
+                     <Font name="Amiri Regular" size="12.0" />
+                  </font></Text>
+                   <Text layoutX="113.0" layoutY="54.0" style="-fx-font-weight: bold; -fx-font-size: 50; -fx-fill: C35E2A;" text="SINARING">
+                  <font>
+                     <Font name="Bookman Old Style" size="12.0" />
+                  </font></Text>
                <ImageView fitHeight="97.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@logoumami.jpeg" />
@@ -35,26 +41,29 @@
          </AnchorPane>
             
             <Separator opacity="0.3" />
-            <Text style="-fx-font-size: 25; -fx-fill: #FADBD8; -fx-font-weight: bold;" text="MENU UTAMA" />
+            <Text style="-fx-font-size: 25; -fx-fill: grey; -fx-font-weight: bold;" text="MENU UTAMA" />
             
-               <Button onAction="#tampilkanDaftarMenu" prefWidth="500.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: center-left;" text="Daftar Menu">
+                     <Button onAction="#tampilkanDaftarMenu" prefHeight="239.0" prefWidth="374.0" style="-fx-background-color: transparent; -fx-text-fill: black; -fx-alignment: center-left;" text="Daftar Menu">
             <font>
                <Font name="Calibri" size="25.0" />
             </font>
          </Button>
-            <Button onAction="#tampilkanBuatPesanan" prefWidth="500.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: center-left;" text="Buat Pesanan">
+            <Button onAction="#tampilkanBuatPesanan" prefWidth="500.0" style="-fx-background-color: transparent; -fx-text-fill: black; -fx-alignment: center-left;" text="Buat Pesanan">
             <font>
                <Font name="Calibri" size="25.0" />
-            </font></Button>
-            <Button onAction="#tampilkanRiwayatPesanan" prefWidth="500.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: center-left;" text="Riwayat Pesanan">
+            </font>
+         </Button>
+            <Button onAction="#tampilkanRiwayatPesanan" prefWidth="500.0" style="-fx-background-color: transparent; -fx-text-fill: black; -fx-alignment: center-left;" text="Riwayat Pesanan">
             <font>
                <Font name="Calibri" size="25.0" />
-            </font></Button>
-            <Button onAction="#tampilkanLangganan" prefWidth="500.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: center-left;" text="Langganan">
+            </font>
+         </Button>
+            <Button onAction="#tampilkanLangganan" prefWidth="500.0" style="-fx-background-color: transparent; -fx-text-fill: black; -fx-alignment: center-left;" text="Langganan">
             <font>
                <Font name="Calibri" size="25.0" />
-            </font></Button>
-            <Button onAction="#tampilkanPembayaran" prefWidth="500.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-alignment: center-left;" text="Pembayaran">
+            </font>
+         </Button>
+            <Button onAction="#tampilkanPembayaran" prefWidth="500.0" style="-fx-background-color: transparent; -fx-text-fill: black; -fx-alignment: center-left;" text="Pembayaran">
             <font>
                <Font name="Calibri" size="25.0" />
             </font>
@@ -63,19 +72,18 @@
             <Region VBox.vgrow="ALWAYS" />
             
             <HBox alignment="CENTER_LEFT" spacing="10.0">
-                <Text style="-fx-font-size: 18; -fx-fill: white;" text="👤" />
+                <Text style="-fx-font-size: 18; -fx-fill: C35E2A;" text="👤" />
                 <VBox>
-                    <Text fx:id="txtNamaUser" style="-fx-font-weight: bold; -fx-fill: white;" text="Pelanggan" />
-                    <Text style="-fx-font-size: 11; -fx-fill: #E67E22;" text="Pelanggan" />
+                    <Text style="-fx-font-size: 18; -fx-fill: C35E2A;" text="Pelanggan" />
                 </VBox>
             </HBox>
             
-            <Button onAction="#handleLogout" prefWidth="200.0" style="-fx-background-color: #C0392B; -fx-text-fill: white;" text="🚪 Keluar" />
+            <Button onAction="#handleLogout" prefWidth="200.0" style="-fx-background-color: C35E2A; -fx-text-fill: white;" text="🚪 Keluar" />
         </VBox>
     </left>
     
     <center>
-        <AnchorPane fx:id="paneKontenTengah" style="-fx-background-color: #FDFEFE;" />
+        <AnchorPane fx:id="paneKontenTengah" style="-fx-background-color: #FFFAF0;" />
     </center>
     
 </BorderPane>
