@@ -25,19 +25,27 @@
 
     <VBox spacing="15.0" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20">
 
+<<<<<<< HEAD
+        <Text style="-fx-font-size: 24; -fx-font-weight: bold; -fx-fill: #2E7D32;" text="Formulir Pesanan" />
+=======
         <Text style="-fx-font-size: 24; -fx-font-weight: bold; -fx-fill: #00000;" text="Formulir Pesanan" />
+>>>>>>> 62fbfc134789ae13c847927ece4d5aa85c01061a
         <Text style="-fx-font-size: 14; -fx-fill: #666666;" text="Isi detail pesanan Anda di bawah ini" />
 
         <Separator />
 
-        <GridPane hgap="15" vgap="15">
+        <GridPane hgap="15" style="-fx-background-color: ;" vgap="15">
             <columnConstraints>
                 <ColumnConstraints percentWidth="25" />
                 <ColumnConstraints percentWidth="75" />
             </columnConstraints>
 
             <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="Pilih Menu" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+<<<<<<< HEAD
+            <ComboBox prefWidth="300.0" style="-fx-background-color: #FFFAF0;" GridPane.columnIndex="1" GridPane.rowIndex="0">
+=======
             <ComboBox prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+>>>>>>> 62fbfc134789ae13c847927ece4d5aa85c01061a
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="Nasi Box Spesial" />
@@ -51,6 +59,23 @@
             </ComboBox>
 
             <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="Jumlah Porsi" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+<<<<<<< HEAD
+            <TextField promptText="Masukkan jumlah porsi" style="-fx-background-color: #FFFAF0;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="Tanggal Pengiriman" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <DatePicker prefWidth="200.0" style="-fx-background-insets: #FFFAF0;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+            <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="Alamat Pengiriman" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <TextArea prefHeight="60.0" promptText="Jl. Contoh No. 1, Kelurahan, Kecamatan, Kota" style="-fx-background-color: #FFFAF0;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+            <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="Catatan Khusus (opsional)" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <TextArea prefHeight="50.0" promptText="Contoh: tidak pedas, alergi kacang, dll." style="-fx-background-color: #FFFAF0;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints maxHeight="61.60001525878906" minHeight="30.40001831054687" prefHeight="43.20002136230468" />
+            <RowConstraints maxHeight="55.19998168945311" minHeight="23.999984741210938" prefHeight="42.39997863769531" />
+=======
             <TextField promptText="Masukkan jumlah porsi" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
             <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="Tanggal Pengiriman" GridPane.columnIndex="0" GridPane.rowIndex="2" />
@@ -66,11 +91,18 @@
             <RowConstraints />
             <RowConstraints />
             <RowConstraints />
+>>>>>>> 62fbfc134789ae13c847927ece4d5aa85c01061a
             <RowConstraints />
          </rowConstraints>
         </GridPane>
 
+<<<<<<< HEAD
+    </VBox>
+
+     <Button layoutX="40.0" layoutY="490.0" prefWidth="200.0" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16;" text="📤 Kirim Pesanan" />
+=======
         <Button prefWidth="200.0" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16;" text="📤 Kirim Pesanan" />
 
     </VBox>
+>>>>>>> 62fbfc134789ae13c847927ece4d5aa85c01061a
 </AnchorPane>
