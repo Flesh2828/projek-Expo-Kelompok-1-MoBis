@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="730.0" style="-fx-background-color: FFFAF0;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DaftarMenuController">
+<AnchorPane prefHeight="600.0" prefWidth="730.0" style="-fx-background-color: FFFAF0;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DaftarMenuController">
 
     <padding>
         <Insets bottom="20" left="20" right="20" top="20" />
@@ -19,7 +19,7 @@
     <!-- INI DITAMBAHKAN fx:id="menuContainer" -->
     <VBox fx:id="menuContainer" spacing="15.0" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20">
 
-        <Text style="-fx-font-size: 24; -fx-font-weight: bold; -fx-fill: #2E7D32;" text="Daftar Menu" />
+        <Text style="-fx-font-size: 24; -fx-font-weight: bold; -fx-fill: #000000;" text="Daftar Menu" />
         <Text style="-fx-font-size: 14; -fx-fill: #666666;" text="Pilih menu favorit Anda dari dapur Sari Rahayu" />
 
         <Separator />
@@ -64,17 +64,17 @@
 
             <!-- Menu 5: Mie Goreng Spesial -->
             <VBox spacing="5.0" style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);" GridPane.columnIndex="0">
-                <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #2E7D32;" text="🍜 Mie Goreng Spesial" />
+                <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #000000;" text="🍜 Mie Goreng Spesial" />
                 <Text style="-fx-font-size: 12; -fx-fill: #666666;" text="Mie goreng dengan telur, udang, sayuran segar" />
-                <Text style="-fx-font-size: 14; -fx-font-weight: bold; -fx-fill: #D35400;" text="Rp 20.000/porsi" />
+                <Text style="-fx-font-size: 14; -fx-font-weight: bold; -fx-fill: #C35E2A;" text="Rp 20.000/porsi" />
                 <Button onAction="#handlePesanMieGoreng" prefWidth="150.0" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold;" text="Pesan" />
             </VBox>
 
             <!-- Menu 6: Catering Prasmanan -->
             <VBox spacing="5.0" style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);" GridPane.columnIndex="1">
-                <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #2E7D32;" text="🎉 Catering Prasmanan" />
+                <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #000000;" text="🎉 Catering Prasmanan" />
                 <Text style="-fx-font-size: 12; -fx-fill: #666666;" text="Paket lengkap untuk acara, min. 50 porsi" />
-                <Text style="-fx-font-size: 14; -fx-font-weight: bold; -fx-fill: #D35400;" text="Rp 45.000/porsi" />
+                <Text style="-fx-font-size: 14; -fx-font-weight: bold; -fx-fill: #C35E2A;" text="Rp 45.000/porsi" />
                 <Button onAction="#handlePesanPrasmanan" prefWidth="150.0" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold;" text="Pesan" />
             </VBox>
          <rowConstraints>
