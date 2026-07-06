@@ -16,7 +16,7 @@
 <BorderPane prefHeight="600.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PelangganDashboardController">
     
     <left>
-        <VBox prefWidth="380.0" spacing="15.0" style="-fx-background-color: #ffffff;">
+        <VBox prefHeight="600.0" prefWidth="330.0" spacing="15.0" style="-fx-background-color: #ffffff;">
             <padding>
                 <Insets bottom="30.0" left="15.0" right="15.0" top="30.0" />
             </padding>
@@ -43,31 +43,34 @@
             <Separator opacity="0.3" />
          <VBox>
             <children>
-                  <Text style="-fx-font-size: 25; -fx-fill: grey; -fx-font-weight: bold;" text="MENU UTAMA" />
+                  <Text style="-fx-font-size: 35; -fx-fill: grey; -fx-font-weight: bold;" text="MENU UTAMA">
+                  <font>
+                     <Font size="41.0" />
+                  </font></Text>
                   
-                           <Button fx:id="btnDaftarMenu" onAction="#tampilkanDaftarMenu" prefHeight="2.0" prefWidth="374.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Daftar Menu">
+                           <Button fx:id="btnDaftarMenu" onAction="#tampilkanDaftarMenu" styleClass="tombol-navigasi" stylesheets="@style.css" text="Daftar Menu">
                   <font>
-                     <Font name="Calibri" size="25.0" />
+                     <Font name="Tahoma" size="25.0" />
                   </font>
                </Button>
-                  <Button fx:id="btnBuatPesanan" onAction="#tampilkanBuatPesanan" prefWidth="500.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Buat Pesanan">
+                  <Button fx:id="btnBuatPesanan" onAction="#tampilkanBuatPesanan" styleClass="tombol-navigasi" stylesheets="@style.css" text="Buat Pesanan">
                   <font>
-                     <Font name="Calibri" size="25.0" />
+                     <Font name="Tahoma" size="25.0" />
                   </font>
                </Button>
-                  <Button fx:id="btnRiwayat" onAction="#tampilkanRiwayatPesanan" prefWidth="500.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Riwayat Pesanan">
+                  <Button fx:id="btnRiwayat" onAction="#tampilkanRiwayatPesanan" styleClass="tombol-navigasi" stylesheets="@style.css" text="Riwayat Pesanan">
                   <font>
-                     <Font name="Calibri" size="25.0" />
+                     <Font name="Tahoma" size="25.0" />
                   </font>
                </Button>
-                  <Button fx:id="btnLangganan" onAction="#tampilkanLangganan" prefWidth="500.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Langganan">
+                  <Button fx:id="btnLangganan" onAction="#tampilkanLangganan" styleClass="tombol-navigasi" stylesheets="@style.css" text="Langganan">
                   <font>
-                     <Font name="Calibri" size="25.0" />
+                     <Font name="Tahoma" size="25.0" />
                   </font>
                </Button>
-                  <Button fx:id="btnPembayaran" onAction="#tampilkanPembayaran" prefWidth="500.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Pembayaran">
+                  <Button fx:id="btnPembayaran" onAction="#tampilkanPembayaran" styleClass="tombol-navigasi" stylesheets="@style.css" text="Pembayaran">
                   <font>
-                     <Font name="Calibri" size="25.0" />
+                     <Font name="Tahoma" size="25.0" />
                   </font>
                </Button>
             </children>
@@ -76,13 +79,13 @@
             <Region VBox.vgrow="ALWAYS" />
             
             <HBox alignment="CENTER_LEFT" spacing="10.0">
-                <Text style="-fx-font-size: 18; -fx-fill: C35E2A;" text="👤" />
+                <Text style="-fx-font-size: 30; -fx-fill: C35E2A;" text="👤" />
                 <VBox>
-                    <Text fx:id="txtNamaUser" style="-fx-font-size: 18; -fx-fill: C35E2A;" text="Pelanggan" />
+                    <Text fx:id="txtNamaUser" style="-fx-font-size: 25; -fx-fill: C35E2A;" text="Pelanggan" />
                 </VBox>
             </HBox>
             
-            <Button onAction="#handleLogout" prefWidth="200.0" style="-fx-background-color: C35E2A; -fx-text-fill: white;" text="🚪 Keluar" />
+            <Button onAction="#handleLogout" style="-fx-background-color: C35E2A; -fx-text-fill: white;" text="🚪 Keluar" />
         </VBox>
     </left>
     
