@@ -21,33 +21,21 @@
     <VBox spacing="15.0" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20">
 
         <!-- Judul -->
-<<<<<<< HEAD
-        <Text style="-fx-font-size: 24; -fx-font-weight: bold; -fx-fill: #2E7D32;" text="Pembayaran" />
-=======
         <Text style="-fx-font-size: 24; -fx-font-weight: bold; -fx-fill: #00000;" text="Pembayaran" />
->>>>>>> 62fbfc134789ae13c847927ece4d5aa85c01061a
         <Text style="-fx-font-size: 14; -fx-fill: #666666;" text="Informasi rekening dan upload bukti pembayaran" />
 
         <Separator />
 
         <!-- Tagihan Belum Lunas -->
         <VBox spacing="5.0" style="-fx-background-color: #FFF3E0; -fx-border-color: #FFCC80; -fx-border-radius: 8; -fx-padding: 15;">
-<<<<<<< HEAD
-            <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #E65100;" text="Tagihan Belum Lunas" />
-=======
             <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: C35E2A;" text="Tagihan Belum Lunas" />
->>>>>>> 62fbfc134789ae13c847927ece4d5aa85c01061a
             <Text fx:id="txtNoPesanan" style="-fx-font-size: 14; -fx-fill: #666666;" text="ORD-012 - Catering Prasmanan (50 porsi)" />
             <Text fx:id="txtDpDibayar" style="-fx-font-size: 13; -fx-fill: #666666;" text="DP sudah dibayar: Rp 225.000" />
             <Text fx:id="txtSisaTagihan" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-fill: #C0392B;" text="Rp 2.025.000" />
         </VBox>
 
         <!-- Transfer Bank -->
-<<<<<<< HEAD
-        <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #2E7D32;" text="Transfer Bank" />
-=======
         <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #00000;" text="Transfer Bank" />
->>>>>>> 62fbfc134789ae13c847927ece4d5aa85c01061a
 
         <GridPane hgap="15" vgap="10">
             <columnConstraints>
@@ -57,29 +45,6 @@
             </columnConstraints>
 
             <!-- BCA -->
-<<<<<<< HEAD
-            <VBox spacing="3.0" style="-fx-background-color: #FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 6; -fx-padding: 10; -fx-alignment: center;" GridPane.columnIndex="0">
-                <Text style="-fx-font-size: 14; -fx-font-weight: bold; -fx-fill: #2E7D32;" text="BCA" />
-                <Text fill="#f4f0f0" style="-fx-font-size: 12; -fx-fill: #333;" text="1234 5678 90" />
-                <Text style="-fx-font-size: 11; -fx-fill: #666666;" text="a/n Sari Rahayu" />
-                <Button onAction="#handleSalinRekening" prefWidth="60.0" style="-fx-background-color: #F3F4F6; -fx-text-fill: #333; -fx-font-size: 11;" text="Salin" />
-            </VBox>
-
-            <!-- BRI -->
-            <VBox spacing="3.0" style="-fx-background-color: #FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 6; -fx-padding: 10; -fx-alignment: center;" GridPane.columnIndex="1">
-                <Text style="-fx-font-size: 14; -fx-font-weight: bold; -fx-fill: #2E7D32;" text="BRI" />
-                <Text style="-fx-font-size: 12; -fx-fill: #333;" text="0987 6543 21" />
-                <Text style="-fx-font-size: 11; -fx-fill: #666666;" text="a/n Sari Rahayu" />
-                <Button onAction="#handleSalinRekening" prefWidth="60.0" style="-fx-background-color: #F3F4F6; -fx-text-fill: #333; -fx-font-size: 11;" text="Salin" />
-            </VBox>
-
-            <!-- Mandiri -->
-            <VBox spacing="3.0" style="-fx-background-color: #FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 6; -fx-padding: 10; -fx-alignment: center;" GridPane.columnIndex="2">
-                <Text style="-fx-font-size: 14; -fx-font-weight: bold; -fx-fill: #2E7D32;" text="Mandiri" />
-                <Text style="-fx-font-size: 12; -fx-fill: #333;" text="1122 3344 55" />
-                <Text style="-fx-font-size: 11; -fx-fill: #666666;" text="a/n Sari Rahayu" />
-                <Button onAction="#handleSalinRekening" prefWidth="60.0" style="-fx-background-color: #F3F4F6; -fx-text-fill: #333; -fx-font-size: 11;" text="Salin" />
-=======
             <VBox spacing="3.0" style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-radius: 6; -fx-padding: 10; -fx-alignment: center;" GridPane.columnIndex="0">
                 <Text style="-fx-font-size: 14; -fx-font-weight: bold; -fx-fill: #2E7D32;" text="BCA" />
                 <Text style="-fx-font-size: 12; -fx-fill: #333;" text="1234 5678 90" />
@@ -101,7 +66,6 @@
                 <Text style="-fx-font-size: 12; -fx-fill: #333;" text="1122 3344 55" />
                 <Text style="-fx-font-size: 11; -fx-fill: #666666;" text="a/n Sari Rahayu" />
                 <Button onAction="#handleSalinRekening" prefWidth="60.0" style="-fx-background-color: #E0E0E0; -fx-text-fill: #333; -fx-font-size: 11;" text="Salin" />
->>>>>>> 62fbfc134789ae13c847927ece4d5aa85c01061a
             </VBox>
          <rowConstraints>
             <RowConstraints />
@@ -109,15 +73,9 @@
         </GridPane>
 
         <!-- QRIS -->
-<<<<<<< HEAD
-        <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #2E7D32;" text="QRIS" />
-
-        <VBox spacing="5.0" style="-fx-background-color: #FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-alignment: center;">
-=======
         <Text style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #00000;" text="QRIS" />
 
         <VBox spacing="5.0" style="-fx-background-color: white; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-alignment: center;">
->>>>>>> 62fbfc134789ae13c847927ece4d5aa85c01061a
             <Label style="-fx-font-size: 48;" text="📱" />
             <Text style="-fx-font-size: 12; -fx-fill: #888888;" text="Scan dengan GoPay, OVO, Dana, atau m-Banking" />
         </VBox>
