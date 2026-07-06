@@ -9,14 +9,14 @@
 
 /* Keadaan otomatis saat kursor mouse menyorot tombol (HOVER ORANYE) */
 .tombol-navigasi:hover {
-    -fx-background-color: #E67E22; /* Warna Kapsul Oranye Cerah */
+    -fx-background-color: #C6764C; /* Warna Kapsul Oranye Cerah */
     -fx-text-fill: white;          /* Mengubah teks menjadi PUTIH biar kontras di atas warna oranye */
     -fx-background-radius: 20;
     -fx-alignment: center-left;
 }
 /* Keadaan ketika halaman SEDANG AKTIF (Tetap oranye meskipun mouse pergi) */
 .tombol-navigasi.aktif {
-    -fx-background-color: #E67E22; /* Tetap kapsul oranye */
+    -fx-background-color: #C35E2A; /* Tetap kapsul oranye */
     -fx-text-fill: white;          /* Teks tetep putih bersih */
     -fx-background-radius: 20;
     -fx-alignment: center-left;
