@@ -3,6 +3,7 @@ package controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -14,19 +15,26 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
+import org.w3c.dom.Node;
+import javax.xml.parsers.DocumentBuilder;
 
 public class AdminRingkasanController {
+    @FXML private Label lblTotalPesanan;
+    @FXML private Label lblPesananHariIni;
+    @FXML private Label lblPendapatan;
 
     @FXML private TableView<Pesanan> tablePesananTerbaru;
     @FXML private TableColumn<Pesanan, String> colId;
     @FXML private TableColumn<Pesanan, String> colPelanggan;
     @FXML private TableColumn<Pesanan, String> colMenu;
-    @FXML private TableColumn<Pesanan, Integer> colQty;
+    @FXML private TableColumn<Pesanan, String> colQty;
     @FXML private TableColumn<Pesanan, String> colTglKirim;
     @FXML private TableColumn<Pesanan, String> colStatus;
     
     @FXML private VBox boxAlertKapasitas;
     @FXML private ProgressBar progressKapasitas;
+
+    private final ObservableList<Pesanan> dataPesanan = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
@@ -39,13 +47,17 @@ public class AdminRingkasanController {
         colStatus.setCellValueFactory(new PropertyValueFactory<>("statusPesanan"));
 
         // 2. Ambil data gabungan langsung dari data/pesanan.xml untuk dimasukkan ke tabel ringkasan
+        dataPesanan.clear();
         muatDataPesananTerbaru();
+        if (tablePesananTerbaru != null) {
+            tablePesananTerbaru.setItems(dataPesanan);
+            tablePesananTerbaru.refresh(); // Paksa UI merefresh baris data
+        }
     }
-
+    
     private void muatDataPesananTerbaru() {
-        ObservableList<Pesanan> dataPesanan = FXCollections.observableArrayList();
         int totalPorsiHariIni = 0;
-        String xmlPath = "data/pesanan.xml";
+        String xmlPath = "src/data/pesanan.xml";
 
         try {
             File xmlFile = new File(xmlPath);
