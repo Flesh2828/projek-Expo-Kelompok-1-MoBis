@@ -49,12 +49,13 @@ public class AdminRingkasanController {
         // 2. Ambil data gabungan langsung dari data/pesanan.xml untuk dimasukkan ke tabel ringkasan
         dataPesanan.clear();
         muatDataPesananTerbaru();
+        javafx.application.Platform.runLater(() ->{
         if (tablePesananTerbaru != null) {
             tablePesananTerbaru.setItems(dataPesanan);
             tablePesananTerbaru.refresh(); // Paksa UI merefresh baris data
         }
+    });
     }
-    
     private void muatDataPesananTerbaru() {
         int totalPorsiHariIni = 0;
         String xmlPath = "src/data/pesanan.xml";
@@ -85,6 +86,7 @@ public class AdminRingkasanController {
                     // Masukkan ke list tabel ringkasan
                     if (i < jumlahData) {
                         dataPesanan.add(p);
+                        System.out.println("LOG SINARING -> Berhasil membaca order: " + id + " oleh " + user);
                     }
                     
                     // Hitung akumulasi porsi untuk indikator bar kapasitas produksi
