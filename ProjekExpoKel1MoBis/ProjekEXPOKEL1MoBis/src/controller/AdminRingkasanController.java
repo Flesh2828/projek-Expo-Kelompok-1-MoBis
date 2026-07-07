@@ -74,7 +74,7 @@ public class AdminRingkasanController {
                     if (i < jumlahData) {
                         dataPesanan.add(p);
                     }
-                    
+    
                     // Hitung akumulasi porsi untuk indikator bar kapasitas produksi
                     totalPorsiHariIni += porsi;
                 }
@@ -97,6 +97,9 @@ public class AdminRingkasanController {
         } catch (Exception e) {
             System.out.println("Gagal membaca data ringkasan admin: " + e.getMessage());
             e.printStackTrace();
+
+
+
         }
     }
 }

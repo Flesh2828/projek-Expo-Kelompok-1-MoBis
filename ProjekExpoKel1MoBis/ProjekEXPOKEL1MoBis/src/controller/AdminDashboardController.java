@@ -31,8 +31,16 @@ public class AdminDashboardController {
     }
 
     @FXML void tampilkanRingkasan(ActionEvent event) { bukaHalamanAdmin("/view/AdminRingkasan.fxml"); }
-    @FXML void tampilkanKelolaPesanan(ActionEvent event) { bukaHalamanAdmin("/view/KelolaPesanan.fxml"); }
-    @FXML void tampilkanKelolaMenu(ActionEvent event) { bukaHalamanAdmin("/view/KelolaMenu.fxml"); }
+
+    @FXML 
+    void tampilkanKelolaPesanan(ActionEvent event) { 
+        bukaHalamanAdmin("/view/BuatPesanan.fxml"); 
+    }
+
+    @FXML
+    void tampilkanKelolaMenu(ActionEvent event) {
+        bukaHalamanAdmin("/view/DaftarMenu.fxml");
+}
     
     @FXML
     public void handleLogout(ActionEvent event) {
