@@ -56,7 +56,7 @@ public class LoginController {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setTitle(judulWindow);
                 stage.setScene(new Scene(root, 600, 400)); 
-                stage.setMaximized(true); 
+                stage.setMaximized(true);
                 stage.show();
             } catch (Exception e) {
                 lblPesanError.setText("Gagal memuat halaman dashboard!");

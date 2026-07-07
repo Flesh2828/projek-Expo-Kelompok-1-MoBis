@@ -8,20 +8,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PelangganDashboardController">
+<BorderPane prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PelangganDashboardController">
     
     <left>
-        <VBox prefHeight="650.0" prefWidth="330.0" spacing="15.0" style="-fx-background-color: #FFFAF0;">
+        <VBox prefHeight="744.0" prefWidth="404.0" spacing="15.0" style="-fx-background-color: #FFFAF0;">
             <padding>
                 <Insets bottom="30.0" left="15.0" right="15.0" top="30.0" />
             </padding>
             
-            <!-- ===== LOGO (PERTAHANKAN SEBAGAIMANA ADANYA) ===== -->
+                                          <!-- ===== LOGO (PERTAHANKAN SEBAGAIMANA ADANYA) ===== -->
             <AnchorPane>
                 <children>
                     <VBox spacing="2.0" />
@@ -43,10 +42,10 @@
                 </children>
             </AnchorPane>
             
-            <Separator opacity="0.3" />
+                                          <Separator opacity="0.3" />
             
-            <!-- ===== MENU UTAMA (PERTAHANKAN) ===== -->
-            <VBox>
+                                          <!-- ===== MENU UTAMA (PERTAHANKAN) ===== -->
+            <VBox prefHeight="674.0" prefWidth="374.0">
                 <children>
                     <Text style="-fx-font-size: 35; -fx-fill: grey; -fx-font-weight: bold;" text="MENU UTAMA">
                         <font>
@@ -54,53 +53,54 @@
                         </font>
                     </Text>
                     
-                    <Button fx:id="btnDaftarMenu" onAction="#tampilkanDaftarMenu" styleClass="tombol-navigasi" stylesheets="@style.css" text="Daftar Menu">
+                                                  <Button fx:id="btnDaftarMenu" onAction="#tampilkanDaftarMenu" prefHeight="19.0" prefWidth="374.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Daftar Menu">
                         <font>
                             <Font name="Tahoma" size="25.0" />
                         </font>
                     </Button>
-                    <Button fx:id="btnBuatPesanan" onAction="#tampilkanBuatPesanan" styleClass="tombol-navigasi" stylesheets="@style.css" text="Buat Pesanan">
+                    <Button fx:id="btnBuatPesanan" onAction="#tampilkanBuatPesanan" prefHeight="48.0" prefWidth="384.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Buat Pesanan">
                         <font>
                             <Font name="Tahoma" size="25.0" />
                         </font>
                     </Button>
-                    <Button fx:id="btnRiwayat" onAction="#tampilkanRiwayatPesanan" styleClass="tombol-navigasi" stylesheets="@style.css" text="Riwayat Pesanan">
+                    <Button fx:id="btnRiwayat" onAction="#tampilkanRiwayatPesanan" prefHeight="48.0" prefWidth="389.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Riwayat Pesanan">
                         <font>
                             <Font name="Tahoma" size="25.0" />
                         </font>
                     </Button>
-                    <Button fx:id="btnLangganan" onAction="#tampilkanLangganan" styleClass="tombol-navigasi" stylesheets="@style.css" text="Langganan">
+                    <Button fx:id="btnLangganan" onAction="#tampilkanLangganan" prefHeight="48.0" prefWidth="379.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Langganan">
                         <font>
                             <Font name="Tahoma" size="25.0" />
                         </font>
                     </Button>
-                    <Button fx:id="btnPembayaran" onAction="#tampilkanPembayaran" styleClass="tombol-navigasi" stylesheets="@style.css" text="Pembayaran">
+                    <Button fx:id="btnPembayaran" onAction="#tampilkanPembayaran" prefHeight="48.0" prefWidth="376.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Pembayaran">
                         <font>
                             <Font name="Tahoma" size="25.0" />
                         </font>
                     </Button>
                 </children>
             </VBox>
+         <VBox prefHeight="200.0" prefWidth="100.0">
+            <children>
+                  
+                                                      <!-- ===== USER ===== -->
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                      <Text style="-fx-font-size: 30; -fx-fill: #C35E2A;" text="👤" />
+                      <VBox>
+                          <Text fx:id="txtNamaUser" style="-fx-font-size: 25; -fx-fill: #C35E2A;" text="Pelanggan" />
+                      </VBox>
+                  </HBox>
+                  
+                                                      <!-- ===== TOMBOL LOGOUT (PASTI MUNCUL) ===== -->
+                  <Button onAction="#handleLogout" prefWidth="300.0" style="-fx-background-color: #C35E2A; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-font-size: 16; -fx-padding: 10 0;" text="🚪 Keluar" />
+            </children>
+         </VBox>
             
-            <!-- ===== SPACER (MENDORONG TOMBOL LOGOUT KE BAWAH) ===== -->
-            <Region VBox.vgrow="ALWAYS" />
-            
-            <!-- ===== USER ===== -->
-            <HBox alignment="CENTER_LEFT" spacing="10.0">
-                <Text style="-fx-font-size: 30; -fx-fill: #C35E2A;" text="👤" />
-                <VBox>
-                    <Text fx:id="txtNamaUser" style="-fx-font-size: 25; -fx-fill: #C35E2A;" text="Pelanggan" />
-                </VBox>
-            </HBox>
-            
-            <!-- ===== TOMBOL LOGOUT (PASTI MUNCUL) ===== -->
-            <Button onAction="#handleLogout" prefWidth="300.0" style="-fx-background-color: #C35E2A; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-font-size: 16; -fx-padding: 10 0;" text="🚪 Keluar" />
-            
-        </VBox>
+                                      </VBox>
     </left>
     
     <center>
-        <AnchorPane fx:id="paneKontenTengah" style="-fx-background-color: #FFFAF0;" />
+        <AnchorPane fx:id="paneKontenTengah" style="-fx-background-color: ffffff;" />
     </center>
     
 </BorderPane>
