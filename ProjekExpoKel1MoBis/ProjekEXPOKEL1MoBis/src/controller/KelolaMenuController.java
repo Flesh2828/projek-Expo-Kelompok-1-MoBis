@@ -22,7 +22,7 @@ public class KelolaMenuController {
     @FXML private TableColumn<Menu, Double> colHarga;
 
     private ObservableList<Menu> listMasterMenu = FXCollections.observableArrayList();
-    private final String xmlPath = "ProjekEXPOKEL1MoBis/src/data/menu.xml";
+    private final String xmlPath = "/data/menu.xml"; 
 
     @FXML
     public void initialize() {
@@ -40,7 +40,12 @@ public class KelolaMenuController {
         try {
             File file = new File(xmlPath);
             if (!file.exists()) return;
-
+            java.net.URL menuResource = getClass().getResource("/data/menu.xml");
+            
+            if (menuResource == null) {
+                System.out.println("LOG SINARING -> WARNING: File /data/menu.xml tidak ditemukan di classpath!");
+                return;
+            }
             Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
             NodeList nList = doc.getElementsByTagName("menu");
 
@@ -90,6 +95,8 @@ public class KelolaMenuController {
             String randomId = "MNU-" + (int)(Math.random() * 900 + 100);
             simpanKeXML(randomId, txtNama.getText(), txtDeskripsi.getText(), Double.parseDouble(txtHarga.getText()), cmbStatus.getValue());
             loadMenuDariXML();
+            tableMenu.setItems(listMasterMenu);
+            tableMenu.refresh();
         }
     }
 
