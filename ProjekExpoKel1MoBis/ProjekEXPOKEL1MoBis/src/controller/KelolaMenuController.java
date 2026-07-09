@@ -22,7 +22,7 @@ public class KelolaMenuController {
     @FXML private TableColumn<Menu, Double> colHarga;
 
     private ObservableList<Menu> listMasterMenu = FXCollections.observableArrayList();
-    private final String xmlPath = "/data/menu.xml"; 
+    private final String xmlPath = "data/menu.xml";
 
     @FXML
     public void initialize() {
@@ -40,12 +40,7 @@ public class KelolaMenuController {
         try {
             File file = new File(xmlPath);
             if (!file.exists()) return;
-            java.net.URL menuResource = getClass().getResource("/data/menu.xml");
-            
-            if (menuResource == null) {
-                System.out.println("LOG SINARING -> WARNING: File /data/menu.xml tidak ditemukan di classpath!");
-                return;
-            }
+
             Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
             NodeList nList = doc.getElementsByTagName("menu");
 
@@ -90,20 +85,82 @@ public class KelolaMenuController {
 
         dialog.getDialogPane().setContent(grid);
 
+        // Tombol Simpan tidak langsung menutup dialog kalau validasi gagal,
+        // supaya user bisa memperbaiki isian tanpa kehilangan data yang sudah diketik.
+        Button btnSimpan = (Button) dialog.getDialogPane().lookupButton(simpanButtonType);
+        btnSimpan.addEventFilter(javafx.event.ActionEvent.ACTION, event -> {
+            String pesanError = validasiInputMenu(txtNama.getText(), txtDeskripsi.getText(), txtHarga.getText());
+            if (pesanError != null) {
+                tampilkanAlert(pesanError, Alert.AlertType.WARNING);
+                event.consume(); // batalkan penutupan dialog
+            }
+        });
+
         Optional<ButtonType> result = dialog.showAndWait();
         if (result.isPresent() && result.get() == simpanButtonType) {
-            String randomId = "MNU-" + (int)(Math.random() * 900 + 100);
-            simpanKeXML(randomId, txtNama.getText(), txtDeskripsi.getText(), Double.parseDouble(txtHarga.getText()), cmbStatus.getValue());
-            loadMenuDariXML();
-            tableMenu.setItems(listMasterMenu);
-            tableMenu.refresh();
+            double harga = Double.parseDouble(bersihkanAngka(txtHarga.getText()));
+            String id = buatIdBaru();
+
+            boolean sukses = simpanKeXML(id, txtNama.getText().trim(), txtDeskripsi.getText().trim(), harga, cmbStatus.getValue());
+            if (sukses) {
+                loadMenuDariXML();
+                tampilkanAlert("Menu \"" + txtNama.getText().trim() + "\" berhasil ditambahkan.", Alert.AlertType.INFORMATION);
+            } else {
+                tampilkanAlert("Gagal menyimpan menu baru. Periksa apakah file data/menu.xml dapat diakses.", Alert.AlertType.ERROR);
+            }
         }
     }
 
-    private void simpanKeXML(String id, String nama, String deskripsi, double harga, String status) {
+    /** Validasi isian form. Mengembalikan pesan error, atau null jika valid. */
+    private String validasiInputMenu(String nama, String deskripsi, String hargaText) {
+        if (nama == null || nama.trim().isEmpty()) return "Nama menu wajib diisi.";
+        if (deskripsi == null || deskripsi.trim().isEmpty()) return "Deskripsi menu wajib diisi.";
+        if (hargaText == null || hargaText.trim().isEmpty()) return "Harga wajib diisi.";
+        try {
+            double harga = Double.parseDouble(bersihkanAngka(hargaText));
+            if (harga <= 0) return "Harga harus lebih besar dari 0.";
+        } catch (NumberFormatException e) {
+            return "Harga harus berupa angka, contoh: 25000.";
+        }
+        return null;
+    }
+
+    /** Menghapus karakter non-angka seperti "Rp", spasi, atau titik ribuan agar parseDouble tidak gagal. */
+    private String bersihkanAngka(String input) {
+        return input.trim().replaceAll("[^0-9.]", "");
+    }
+
+    /** Membuat ID baru yang dijamin unik terhadap data menu yang sudah ada. */
+    private String buatIdBaru() {
+        String id;
+        do {
+            id = "MNU-" + (int) (Math.random() * 900 + 100);
+        } while (idSudahAda(id));
+        return id;
+    }
+
+    private boolean idSudahAda(String id) {
+        for (Menu m : listMasterMenu) {
+            if (m.getId().equals(id)) return true;
+        }
+        return false;
+    }
+
+    private boolean simpanKeXML(String id, String nama, String deskripsi, double harga, String status) {
         try {
             File file = new File(xmlPath);
-            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
+            Document doc;
+
+            if (file.exists()) {
+                doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
+            } else {
+                // Kalau file XML belum ada, buat dokumen baru dengan root <menus>
+                File parentDir = file.getParentFile();
+                if (parentDir != null && !parentDir.exists()) parentDir.mkdirs();
+                doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+                doc.appendChild(doc.createElement("menus"));
+            }
+
             Element root = doc.getDocumentElement();
 
             Element newMenu = doc.createElement("menu");
@@ -118,28 +175,68 @@ public class KelolaMenuController {
 
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
             transformer.transform(new DOMSource(doc), new StreamResult(file));
-        } catch (Exception e) { e.printStackTrace(); }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @FXML
     void handleHapusMenu() {
         Menu selected = tableMenu.getSelectionModel().getSelectedItem();
-        if (selected == null) return;
+        if (selected == null) {
+            tampilkanAlert("Pilih menu yang ingin dihapus terlebih dahulu.", Alert.AlertType.WARNING);
+            return;
+        }
+
+        Alert konfirmasi = new Alert(Alert.AlertType.CONFIRMATION);
+        konfirmasi.setTitle("Konfirmasi Hapus");
+        konfirmasi.setHeaderText(null);
+        konfirmasi.setContentText("Yakin ingin menghapus menu \"" + selected.getNamaMenu() + "\"?");
+        Optional<ButtonType> hasil = konfirmasi.showAndWait();
+        if (hasil.isEmpty() || hasil.get() != ButtonType.OK) return;
 
         try {
             File file = new File(xmlPath);
+            if (!file.exists()) {
+                tampilkanAlert("File data/menu.xml tidak ditemukan.", Alert.AlertType.ERROR);
+                return;
+            }
+
             Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
             NodeList nList = doc.getElementsByTagName("menu");
+            boolean ditemukan = false;
             for (int i = 0; i < nList.getLength(); i++) {
                 Element el = (Element) nList.item(i);
                 if (el.getAttribute("id").equals(selected.getId())) {
                     el.getParentNode().removeChild(el);
+                    ditemukan = true;
                     break;
                 }
             }
+
+            if (!ditemukan) {
+                tampilkanAlert("Menu tidak ditemukan di data (mungkin sudah dihapus sebelumnya).", Alert.AlertType.WARNING);
+                loadMenuDariXML();
+                return;
+            }
+
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
             transformer.transform(new DOMSource(doc), new StreamResult(file));
             loadMenuDariXML();
-        } catch (Exception e) { e.printStackTrace(); }
+            tampilkanAlert("Menu \"" + selected.getNamaMenu() + "\" berhasil dihapus.", Alert.AlertType.INFORMATION);
+        } catch (Exception e) {
+            e.printStackTrace();
+            tampilkanAlert("Gagal menghapus menu: " + e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+
+    private void tampilkanAlert(String pesan, Alert.AlertType tipe) {
+        Alert alert = new Alert(tipe);
+        alert.setTitle("Kelola Menu");
+        alert.setHeaderText(null);
+        alert.setContentText(pesan);
+        alert.showAndWait();
     }
 }

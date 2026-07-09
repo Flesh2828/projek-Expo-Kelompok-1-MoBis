@@ -72,32 +72,41 @@ public class PelangganDashboardController {
                 Parent halaman = loader.load();
                 DaftarMenuController controller = loader.getController();
                 controller.setPaneKontenTengah(paneKontenTengah);
-                paneKontenTengah.getChildren().setAll(halaman);
+                tampilkanDiPanel(halaman);
             } else if (fxmlPath.equals("/view/RiwayatPesanan.fxml")) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
                 Parent halaman = loader.load();
                 RiwayatPesananController controller = loader.getController();
                 controller.setPaneKontenTengah(paneKontenTengah);
-                paneKontenTengah.getChildren().setAll(halaman);
+                tampilkanDiPanel(halaman);
             } else if (fxmlPath.equals("/view/Pembayaran.fxml")) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
                 Parent halaman = loader.load();
                 PembayaranController controller = loader.getController();
                 controller.setPaneKontenTengah(paneKontenTengah);
-                paneKontenTengah.getChildren().setAll(halaman);
+                tampilkanDiPanel(halaman);
             } else if (fxmlPath.equals("/view/KonfirmasiPembayaran.fxml")) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
                 Parent halaman = loader.load();
                 KonfirmasiPembayaranController controller = loader.getController();
                 controller.setPaneKontenTengah(paneKontenTengah);
-                paneKontenTengah.getChildren().setAll(halaman);
+                tampilkanDiPanel(halaman);
             } else {
                 Parent halaman = FXMLLoader.load(getClass().getResource(fxmlPath));
-                paneKontenTengah.getChildren().setAll(halaman);
+                tampilkanDiPanel(halaman);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    // Menampilkan halaman di paneKontenTengah dan meregangkannya agar pas dengan jendela
+    private void tampilkanDiPanel(Parent halaman) {
+        paneKontenTengah.getChildren().setAll(halaman);
+        AnchorPane.setTopAnchor(halaman, 0.0);
+        AnchorPane.setBottomAnchor(halaman, 0.0);
+        AnchorPane.setLeftAnchor(halaman, 0.0);
+        AnchorPane.setRightAnchor(halaman, 0.0);
     }
 
     // ==================== NAVIGASI SIDEBAR ====================
@@ -172,7 +181,7 @@ public class PelangganDashboardController {
             BuatPesananController formController = loader.getController();
             formController.setMenuPilihan(namaMenu);
 
-            paneKontenTengah.getChildren().setAll(halamanForm);
+            tampilkanDiPanel(halamanForm);
         } catch (Exception e) {
             e.printStackTrace();
         }
