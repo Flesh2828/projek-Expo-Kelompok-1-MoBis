@@ -1,13 +1,17 @@
 package controller;
 
-import java.io.IOException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.scene.Scene;
+
+import java.io.IOException;
 
 public class OwnerDashboardController {
 
@@ -15,14 +19,11 @@ public class OwnerDashboardController {
     @FXML private Button btnLaporan;
     @FXML private Button btnPiutang;
     @FXML private LineChart<String, Number> chartDashboard;
+    @FXML private AnchorPane paneKontenTengah;
 
     @FXML
     public void initialize() {
         System.out.println("=== OwnerDashboardController Berhasil Diinisialisasi ===");
-        
-        if (btnDashboard == null) System.out.println("Peringatan: btnDashboard tidak terhubung ke FXML!");
-        if (btnLaporan == null) System.out.println("Peringatan: btnLaporan tidak terhubung ke FXML!");
-        if (btnPiutang == null) System.out.println("Peringatan: btnPiutang tidak terhubung ke FXML!");
 
         btnDashboard.setOnAction(event -> {
             System.out.println("Tombol Dashboard diklik!");
@@ -61,61 +62,61 @@ public class OwnerDashboardController {
     @FXML
     private void showDashboardContent() {
         setMenuActive(btnDashboard);
+        tampilkanHalaman("/view/OwnerDashboard.fxml");
     }
 
     @FXML
     private void showLaporanContent() {
         setMenuActive(btnLaporan);
-        switchScene("/view/OwnerLaporan.fxml");
+        tampilkanHalaman("/view/OwnerLaporan.fxml");
     }
 
     @FXML
     private void showPiutangContent() {
         setMenuActive(btnPiutang);
-        switchScene("/view/OwnerPiutang.fxml");
+        tampilkanHalaman("/view/OwnerPiutang.fxml");
     }
 
-    private void switchScene(String fxmlPath) {
-        System.out.println("Mencoba berpindah halaman ke: " + fxmlPath);
+    // ===== TAMPILKAN HALAMAN DI DALAM ANCHORPANE =====
+    private void tampilkanHalaman(String fxmlPath) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-            Parent newRoot = loader.load();
-            
-            if (newRoot == null) {
-                System.out.println("ERROR: File FXML ditemukan tapi isinya kosong/null: " + fxmlPath);
-                return;
+            Parent halaman = loader.load();
+
+            if (paneKontenTengah != null) {
+                paneKontenTengah.getChildren().setAll(halaman);
+                System.out.println("BERHASIL: Halaman " + fxmlPath + " dimuat!");
+            } else {
+                System.out.println("ERROR: paneKontenTengah null!");
             }
 
-            if (btnDashboard.getScene() == null) {
-                System.out.println("ERROR: Scene dari btnDashboard bernilai null!");
-                return;
-            }
-
-            Stage stage = (Stage) btnDashboard.getScene().getWindow();
-            if (stage == null) {
-                System.out.println("ERROR: Windows Stage tidak ditemukan!");
-                return;
-            }
-
-            stage.getScene().setRoot(newRoot);
-            System.out.println("BERHASIL: Scene Root sukses diganti ke " + fxmlPath);
-            
         } catch (IOException e) {
-            System.out.println("CRITICAL ERROR saat memuat fxml: " + e.getMessage());
-            e.printStackTrace();
-        } catch (Exception e) {
-            System.out.println("UNKNOWN ERROR: " + e.getMessage());
+            System.out.println("ERROR saat memuat " + fxmlPath + ": " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     private void setMenuActive(Button activeButton) {
-        String defaultStyle = "-fx-background-color: transparent; -fx-text-fill: #F0D0C0; -fx-font-size: 14; -fx-font-weight: medium; -fx-alignment: LEFT; -fx-background-radius: 12; -fx-padding: 12;";
+        String defaultStyle = "-fx-background-color: transparent; -fx-text-fill: #333333; -fx-font-size: 25; -fx-background-radius: 8;";
+        String activeStyle = "-fx-background-color: #C35E2A; -fx-text-fill: white; -fx-font-size: 25; -fx-font-weight: bold; -fx-background-radius: 8;";
+
         btnDashboard.setStyle(defaultStyle);
         btnLaporan.setStyle(defaultStyle);
         btnPiutang.setStyle(defaultStyle);
 
-        String activeStyle = "-fx-background-color: rgba(255, 255, 255, 0.15); -fx-text-fill: white; -fx-font-size: 14; -fx-font-weight: bold; -fx-alignment: LEFT; -fx-background-radius: 12; -fx-padding: 12;";
         activeButton.setStyle(activeStyle);
+    }
+
+    @FXML
+    public void handleLogout(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
+            Stage stage = (Stage) btnDashboard.getScene().getWindow();
+            stage.setTitle("SINARING - Login");
+            stage.setScene(new Scene(root, 400, 300));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

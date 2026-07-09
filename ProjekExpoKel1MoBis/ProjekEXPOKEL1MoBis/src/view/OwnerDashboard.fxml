@@ -15,186 +15,138 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox fx:id="mainRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #FAF5EF;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OwnerDashboardController">
+<HBox fx:id="mainRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #FAF5EF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OwnerDashboardController">
+
    <children>
-      <!-- ==================== SIDEBAR OWNER (LEFT) ==================== -->
-      <VBox prefHeight="744.0" prefWidth="404.0" spacing="0.0" style="-fx-background-color: #FFFAF0;">
+      <!-- ==================== SIDEBAR OWNER ==================== -->
+      <VBox prefHeight="720.0" prefWidth="260.0" spacing="0.0" style="-fx-background-color: #FFFAF0;">
          <padding>
             <Insets bottom="30.0" left="20.0" right="20.0" top="30.0" />
          </padding>
          <children>
+            <!-- LOGO -->
             <AnchorPane>
                <children>
-                  <VBox spacing="2.0" />
                   <Text layoutX="220.0" layoutY="93.0" style="-fx-font-size: 25; -fx-fill: #000000; -fx-font-weight: light;" text="SARI RAHAYU">
-                     <font>
-                        <Font name="Amiri Regular" size="12.0" />
-                     </font>
+                     <font><Font name="Amiri Regular" size="12.0" /></font>
                   </Text>
                   <Text layoutX="113.0" layoutY="54.0" style="-fx-font-weight: bold; -fx-font-size: 50; -fx-fill: #C35E2A;" text="SINARING">
-                     <font>
-                        <Font name="Bookman Old Style" size="12.0" />
-                     </font>
+                     <font><Font name="Bookman Old Style" size="12.0" /></font>
                   </Text>
                   <ImageView fitHeight="97.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@logo.png2.png" />
-                     </image>
+                     <image><Image url="@logo.png2.png" /></image>
                   </ImageView>
                </children>
             </AnchorPane>
-            
-                                    <Label contentDisplay="TOP" minHeight="0.0" prefHeight="94.0" prefWidth="249.0" style="-fx-text-fill: grey; -fx-font-size: 35; -fx-font-weight: bold; -fx-padding: 40 0 10 5;" text="MENU UTAMA" />
-            <VBox prefHeight="353.0" prefWidth="374.0">
+
+            <!-- MENU UTAMA -->
+            <Label contentDisplay="TOP" minHeight="0.0" prefHeight="94.0" prefWidth="249.0" style="-fx-text-fill: #999999; -fx-font-size: 35; -fx-font-weight: bold; -fx-padding: 40 0 10 5;" text="MENU UTAMA" />
+
+            <VBox spacing="8.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Button fx:id="btnDashboard" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="52.0" prefWidth="377.0" style="-fx-font-size: 25; -fx-font-style: tahoma;" text="Dashboard">
-                     <font>
-                        <Font name="Tahoma" size="25.0" />
-                     </font>
+                  <Button fx:id="btnDashboard" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#tampilkanDashboard" prefHeight="52.0" prefWidth="377.0" style="-fx-background-color: #C35E2A; -fx-text-fill: white; -fx-font-size: 25; -fx-font-weight: bold; -fx-background-radius: 8;" text="Dashboard">
+                     <font><Font name="Tahoma" size="25.0" /></font>
                   </Button>
-                  <Button fx:id="btnLaporan" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="52.0" prefWidth="376.0" style="-fx-font-size: 25;" text="Laporan Keuangan">
-                     <font>
-                        <Font name="Tahoma" size="25.0" />
-                     </font>
+                  <Button fx:id="btnLaporan" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#tampilkanLaporan" prefHeight="52.0" prefWidth="377.0" style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-font-size: 25; -fx-background-radius: 8;" text="Laporan Keuangan">
+                     <font><Font name="Tahoma" size="25.0" /></font>
                   </Button>
-                  <Button fx:id="btnPiutang" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="52.0" prefWidth="377.0" style="-fx-font-size: 25;" text="Piutang">
-                     <font>
-                        <Font name="Tahoma" size="25.0" />
-                     </font>
+                  <Button fx:id="btnPiutang" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#tampilkanPiutang" prefHeight="52.0" prefWidth="377.0" style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-font-size: 25; -fx-background-radius: 8;" text="Piutang">
+                     <font><Font name="Tahoma" size="25.0" /></font>
                   </Button>
                </children>
             </VBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="374.0" spacing="10.0">
+
+            <!-- USER & LOGOUT -->
+            <VBox spacing="15.0">
                <children>
-                  <Text style="-fx-font-size: 30; -fx-fill: #C35E2A;" text="👤" />
-                  <VBox prefHeight="89.0" prefWidth="180.0">
-                     <children>
-                        <Text fx:id="txtNamaUser" style="-fx-font-size: 25; -fx-fill: #C35E2A;" text="Sari Rahayu" wrappingWidth="150.09619140625" />
-                        <Text fill="#c35e2a" strokeType="OUTSIDE" strokeWidth="0.0" text="Pemilik" />
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <VBox>
-               <children>
-                  <Button alignment="BASELINE_LEFT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="279.0" style="-fx-background-color: #C35E2A; -fx-text-fill: ffffff; -fx-font-size: 16; -fx-padding: 5 0 0 5; -fx-font-weight: bold;" text="                       🚪  Keluar" textAlignment="CENTER">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Button>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <Text style="-fx-font-size: 30; -fx-fill: #C35E2A;" text="👤" />
+                     <VBox>
+                        <Text fx:id="txtNamaUser" style="-fx-font-size: 25; -fx-fill: #C35E2A;" text="Sari Rahayu" wrappingWidth="150.0" />
+                        <Text fill="#C35E2A" text="Pemilik" />
+                     </VBox>
+                  </HBox>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleLogout" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #C35E2A; -fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold; -fx-background-radius: 6;" text="🚪 Keluar" />
                </children>
             </VBox>
          </children>
       </VBox>
 
-      <!-- ==================== CONTENT AREA (RIGHT) ==================== -->
-      <ScrollPane fitToWidth="true" style="-fx-background-color: ffffff; -fx-background-radius: 0; -fx-border-color: transparent;" HBox.hgrow="ALWAYS">
-         <content>
-            <VBox spacing="25.0" style="-fx-background-color: ffffff;">
-               <padding>
-                  <Insets bottom="35.0" left="35.0" right="35.0" top="35.0" />
-               </padding>
+      <!-- ==================== CONTENT (DENGAN ANCHORPANE) ==================== -->
+      <AnchorPane fx:id="paneKontenTengah" style="-fx-background-color: #FFFFFF;" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+         <children>
+            <!-- ===== ISI KONTEN DEFAULT (DASHBOARD) ===== -->
+            <VBox spacing="25.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <padding><Insets bottom="35.0" left="35.0" right="35.0" top="35.0" /></padding>
                <children>
-                  
-                  <!-- Top Title & Badge Filter Row -->
+
+                  <!-- HEADER -->
                   <HBox alignment="CENTER_LEFT" spacing="20.0">
-                     <children>
-                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-font-family: 'Segoe UI';" text="Dashboard Pemilik" />
-                              <Label style="-fx-font-size: 14; -fx-text-fill: #8A7A75;" text="Ringkasan keuangan Sari Rahayu Catering · Juli 2026" />
-                           </children>
-                        </VBox>
-                        <!-- Pill Badge Laporan Keuangan -->
-                        <HBox alignment="CENTER" spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 8 18 8 18; -fx-border-color: #E2DDD7; -fx-border-radius: 20;">
-                           <children>
-                              <Label style="-fx-text-fill: #B54D22; -fx-font-weight: bold;" text="📊" />
-                              <Label style="-fx-text-fill: #B54D22; -fx-font-weight: bold; -fx-font-size: 13;" text="Laporan Keuangan" />
-                           </children>
-                        </HBox>
-                     </children>
+                     <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                        <Label style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #2B1B15;" text="Dashboard Pemilik" />
+                        <Label style="-fx-font-size: 14; -fx-text-fill: #8A7A75;" text="Ringkasan keuangan Sari Rahayu Catering · Juli 2026" />
+                     </VBox>
+                     <HBox alignment="CENTER" spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 8 18; -fx-border-color: #E2DDD7; -fx-border-radius: 20;">
+                        <Label style="-fx-text-fill: #B54D22; -fx-font-weight: bold;" text="📊" />
+                        <Label style="-fx-text-fill: #B54D22; -fx-font-weight: bold; -fx-font-size: 13;" text="Laporan Keuangan" />
+                     </HBox>
                   </HBox>
 
-                  <!-- 4 KARTU RINGKASAN KEUANGAN -->
+                  <!-- 4 KARTU -->
                   <HBox prefHeight="150.0" spacing="15.0">
-                     <children>
-                        <!-- Kartu 1: Pendapatan (Terracotta) -->
-                        <VBox prefWidth="230.0" style="-fx-background-color: #B54D22; -fx-background-radius: 20; -fx-padding: 20;" HBox.hgrow="ALWAYS">
-                           <children>
-                              <VBox alignment="CENTER" maxWidth="36.0" prefHeight="36.0" prefWidth="36.0" style="-fx-background-color: rgba(255,255,255,0.2); -fx-background-radius: 10;">
-                                 <children>
-                                    <Label style="-fx-text-fill: white; -fx-font-size: 16;" text="📈" />
-                                 </children>
-                              </VBox>
-                              <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: white; -fx-padding: 15 0 2 0;" text="Rp 138,5 Jt" />
-                              <Label style="-fx-font-size: 13; -fx-text-fill: #E6BCAB;" text="Pendapatan (6 Bln)" />
-                           </children>
+                     <!-- Kartu 1: Pendapatan -->
+                     <VBox style="-fx-background-color: #B54D22; -fx-background-radius: 20; -fx-padding: 20;" HBox.hgrow="ALWAYS">
+                        <VBox alignment="CENTER" maxWidth="36.0" prefHeight="36.0" prefWidth="36.0" style="-fx-background-color: rgba(255,255,255,0.2); -fx-background-radius: 10;">
+                           <Label style="-fx-text-fill: white; -fx-font-size: 16;" text="📈" />
                         </VBox>
+                        <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: white; -fx-padding: 15 0 2 0;" text="Rp 138,5 Jt" />
+                        <Label style="-fx-font-size: 13; -fx-text-fill: #E6BCAB;" text="Pendapatan (6 Bln)" />
+                     </VBox>
 
-                        <!-- Kartu 2: Pengeluaran (Putih) -->
-                        <VBox prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 15, 0, 0, 5);" HBox.hgrow="ALWAYS">
-                           <children>
-                              <VBox alignment="CENTER" maxWidth="36.0" prefHeight="36.0" prefWidth="36.0" style="-fx-background-color: #FAF5EF; -fx-background-radius: 10;">
-                                 <children>
-                                    <Label style="-fx-text-fill: #B54D22; -fx-font-size: 16;" text="📦" />
-                                 </children>
-                              </VBox>
-                              <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 15 0 2 0;" text="Rp 88 Jt" />
-                              <Label style="-fx-font-size: 13; -fx-text-fill: #6E5E59; -fx-font-weight: bold;" text="Pengeluaran (6 Bln)" />
-                              <Label style="-fx-font-size: 11; -fx-text-fill: #8A7A75;" text="Bahan baku &amp; operasional" />
-                           </children>
+                     <!-- Kartu 2: Pengeluaran -->
+                     <VBox style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 15, 0, 0, 5);" HBox.hgrow="ALWAYS">
+                        <VBox alignment="CENTER" maxWidth="36.0" prefHeight="36.0" prefWidth="36.0" style="-fx-background-color: #FAF5EF; -fx-background-radius: 10;">
+                           <Label style="-fx-text-fill: #B54D22; -fx-font-size: 16;" text="📦" />
                         </VBox>
+                        <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 15 0 2 0;" text="Rp 88 Jt" />
+                        <Label style="-fx-font-size: 13; -fx-text-fill: #6E5E59; -fx-font-weight: bold;" text="Pengeluaran (6 Bln)" />
+                        <Label style="-fx-font-size: 11; -fx-text-fill: #8A7A75;" text="Bahan baku &amp; operasional" />
+                     </VBox>
 
-                        <!-- Kartu 3: Laba Bersih (Putih) -->
-                        <VBox prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 15, 0, 0, 5);" HBox.hgrow="ALWAYS">
-                           <children>
-                              <VBox alignment="CENTER" maxWidth="36.0" prefHeight="36.0" prefWidth="36.0" style="-fx-background-color: #FAF5EF; -fx-background-radius: 10;">
-                                 <children>
-                                    <Label style="-fx-text-fill: #B54D22; -fx-font-size: 16;" text="👛" />
-                                 </children>
-                              </VBox>
-                              <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 15 0 2 0;" text="Rp 50,5 Jt" />
-                              <Label style="-fx-font-size: 13; -fx-text-fill: #6E5E59; -fx-font-weight: bold;" text="Laba Bersih (6 Bln)" />
-                              <Label style="-fx-font-size: 11; -fx-text-fill: #8A7A75;" text="Margin rata-rata 36%" />
-                           </children>
+                     <!-- Kartu 3: Laba Bersih -->
+                     <VBox style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 15, 0, 0, 5);" HBox.hgrow="ALWAYS">
+                        <VBox alignment="CENTER" maxWidth="36.0" prefHeight="36.0" prefWidth="36.0" style="-fx-background-color: #FAF5EF; -fx-background-radius: 10;">
+                           <Label style="-fx-text-fill: #B54D22; -fx-font-size: 16;" text="👛" />
                         </VBox>
+                        <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 15 0 2 0;" text="Rp 50,5 Jt" />
+                        <Label style="-fx-font-size: 13; -fx-text-fill: #6E5E59; -fx-font-weight: bold;" text="Laba Bersih (6 Bln)" />
+                        <Label style="-fx-font-size: 11; -fx-text-fill: #8A7A75;" text="Margin rata-rata 36%" />
+                     </VBox>
 
-                        <!-- Kartu 4: Total Piutang (Putih) -->
-                        <VBox prefWidth="230.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 15, 0, 0, 5);" HBox.hgrow="ALWAYS">
-                           <children>
-                              <VBox alignment="CENTER" maxWidth="36.0" prefHeight="36.0" prefWidth="36.0" style="-fx-background-color: #FAF5EF; -fx-background-radius: 10;">
-                                 <children>
-                                    <Label style="-fx-text-fill: #B54D22; -fx-font-size: 16;" text="⚠️" />
-                                 </children>
-                              </VBox>
-                              <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 15 0 2 0;" text="Rp 12.920.000" />
-                              <Label style="-fx-font-size: 13; -fx-text-fill: #6E5E59; -fx-font-weight: bold;" text="Total Piutang" />
-                              <Label style="-fx-font-size: 11; -fx-text-fill: #B54D22; -fx-font-weight: bold;" text="2 tagihan lewat jatuh tempo" />
-                           </children>
+                     <!-- Kartu 4: Piutang -->
+                     <VBox style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 15, 0, 0, 5);" HBox.hgrow="ALWAYS">
+                        <VBox alignment="CENTER" maxWidth="36.0" prefHeight="36.0" prefWidth="36.0" style="-fx-background-color: #FAF5EF; -fx-background-radius: 10;">
+                           <Label style="-fx-text-fill: #B54D22; -fx-font-size: 16;" text="⚠️" />
                         </VBox>
-                     </children>
+                        <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 15 0 2 0;" text="Rp 12.920.000" />
+                        <Label style="-fx-font-size: 13; -fx-text-fill: #6E5E59; -fx-font-weight: bold;" text="Total Piutang" />
+                        <Label style="-fx-font-size: 11; -fx-text-fill: #B54D22; -fx-font-weight: bold;" text="2 tagihan lewat jatuh tempo" />
+                     </VBox>
                   </HBox>
 
-                  <!-- GRAFIK TREN LABA BERSIH -->
+                  <!-- GRAFIK TREN LABA -->
                   <VBox style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 25; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 15, 0, 0, 5);" VBox.vgrow="ALWAYS">
-                     <children>
-                        <Label style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #2B1B15;" text="Tren Laba Bersih" />
-                        <Label style="-fx-font-size: 13; -fx-text-fill: #8A7A75; -fx-padding: 0 0 15 0;" text="Feb - Jul 2026" />
-                        
-                        <LineChart fx:id="chartDashboard" alternativeRowFillVisible="false" createSymbols="true" horizontalGridLinesVisible="true" legendVisible="false" prefHeight="320.0" verticalGridLinesVisible="false">
-                           <xAxis>
-                              <CategoryAxis side="BOTTOM" />
-                           </xAxis>
-                           <yAxis>
-                              <NumberAxis side="LEFT" />
-                           </yAxis>
-                        </LineChart>
-                     </children>
+                     <Label style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #2B1B15;" text="Tren Laba Bersih" />
+                     <Label style="-fx-font-size: 13; -fx-text-fill: #8A7A75; -fx-padding: 0 0 15 0;" text="Feb - Jul 2026" />
+                     <LineChart fx:id="chartDashboard" alternativeRowFillVisible="false" createSymbols="true" horizontalGridLinesVisible="true" legendVisible="false" prefHeight="320.0" verticalGridLinesVisible="false">
+                        <xAxis><CategoryAxis side="BOTTOM" /></xAxis>
+                        <yAxis><NumberAxis side="LEFT" /></yAxis>
+                     </LineChart>
                   </VBox>
 
                </children>
             </VBox>
-         </content>
-      </ScrollPane>
+         </children>
+      </AnchorPane>
    </children>
 </HBox>
