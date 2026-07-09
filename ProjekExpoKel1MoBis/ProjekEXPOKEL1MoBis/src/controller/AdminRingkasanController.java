@@ -10,13 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import model.Pesanan;
-import java.io.File;
 import java.util.List;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Node;
-import javax.xml.parsers.DocumentBuilder;
 
 public class AdminRingkasanController {
     @FXML private Label lblTotalPesanan;
@@ -57,42 +51,30 @@ public class AdminRingkasanController {
      }
     private void muatDataPesananTerbaru() {
         int totalPorsiHariIni = 0;
-        String xmlPath = "ProjekExpoKelompok1MoBis/ProjekEXPOKELOMPOK1MoBis/data/pesanan.xml";
 
         try {
-            File xmlFile = new File(xmlPath);
-            if (xmlFile.exists()) {
-                Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(xmlFile);
-                doc.getDocumentElement().normalize();
-                NodeList nList = doc.getElementsByTagName("order");
+            // PENTING: pakai Pesanan.getAllPesanan() supaya path yang dibaca SAMA PERSIS
+            // dengan path yang dipakai saat pelanggan menyimpan pesanan baru (model/Pesanan.java).
+            // Sebelumnya controller ini punya path hardcoded sendiri yang salah ketik/salah folder
+            // ("ProjekExpoKelompok1MoBis/ProjekEXPOKELOMPOK1MoBis/data/pesanan.xml") sehingga
+            // file.exists() selalu false dan tabel ringkasan selalu kosong.
+            List<Pesanan> semuaPesanan = Pesanan.getAllPesanan();
 
-                // Batasi maksimal 5-7 pesanan terbaru untuk ringkasan dashboard
-                int jumlahData = Math.min(nList.getLength(), 7);
-                for (int i = 0; i < nList.getLength(); i++) {
-                    org.w3c.dom.Element el = (org.w3c.dom.Element) nList.item(i);
-                    
-                    String id = el.getAttribute("id");
-                    String user = el.getElementsByTagName("username").item(0).getTextContent();
-                    String menu = el.getElementsByTagName("menu").item(0).getTextContent();
-                    int porsi = Integer.parseInt(el.getElementsByTagName("porsi").item(0).getTextContent());
-                    String tanggal = el.getElementsByTagName("tanggal").item(0).getTextContent();
-                    String statPesanan = el.getElementsByTagName("status_pesanan").item(0).getTextContent();
-                    String statBayar = el.getElementsByTagName("status_bayar").item(0).getTextContent();
-                    double total = Double.parseDouble(el.getElementsByTagName("total").item(0).getTextContent());
+            // Batasi maksimal 5-7 pesanan terbaru untuk ringkasan dashboard
+            int jumlahData = Math.min(semuaPesanan.size(), 7);
+            for (int i = 0; i < semuaPesanan.size(); i++) {
+                Pesanan p = semuaPesanan.get(i);
 
-                    Pesanan p = new Pesanan(id, user, menu, porsi, tanggal, "", "", statPesanan, statBayar, total);
-                    
-                    // Masukkan ke list tabel ringkasan
-                    if (i < jumlahData) {
-                        dataPesanan.add(p);
-                        System.out.println("LOG SINARING -> Berhasil membaca order: " + id + " oleh " + user);
-                    }
-                    
-                    // Hitung akumulasi porsi untuk indikator bar kapasitas produksi
-                    totalPorsiHariIni += porsi;
+                // Masukkan ke list tabel ringkasan
+                if (i < jumlahData) {
+                    dataPesanan.add(p);
+                    System.out.println("LOG SINARING -> Berhasil membaca order: " + p.getIdPesanan() + " oleh " + p.getUsernamePelanggan());
                 }
-            }   
-            
+
+                // Hitung akumulasi porsi untuk indikator bar kapasitas produksi
+                totalPorsiHariIni += p.getJumlahPorsi();
+            }
+
             tablePesananTerbaru.setItems(dataPesanan);
             
             // 3. Logika atur Progress Bar Kapasitas Maksimal Produksi (Contoh batas: 500 porsi)

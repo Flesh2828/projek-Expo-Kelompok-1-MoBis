@@ -8,11 +8,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.beans.property.*;
 import model.Pesanan;
 import java.io.File;
-import javax.xml.parsers.*;
-import javax.xml.transform.*;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import org.w3c.dom.*;
+import java.util.List;
 
 public class KelolaPesananController {
     @FXML private TableView<Pesanan> tableKelolaPesanan;
@@ -26,7 +22,6 @@ public class KelolaPesananController {
 
     private ObservableList<Pesanan> listMasterPesanan = FXCollections.observableArrayList();
     private String currentFilter = "Semua";
-    private final String xmlPath = "/data/pesanan.xml"; // Sesuaikan folder root laptopmu
 
     @FXML
     public void initialize() {
@@ -50,41 +45,17 @@ public class KelolaPesananController {
  private void loadDataDariXML() {
     listMasterPesanan.clear();
     try {
-        File file = new File(xmlPath);
-        System.out.println("LOG SINARING -> Mencoba membaca XML di jalur: " + file.getAbsolutePath());
-        
-        if (!file.exists()) {
-            System.out.println("LOG SINARING -> WARNING: File pesanan.xml TIDAK DITEMUKAN!");
-            return;
-        }
+        // PENTING: pakai Pesanan.getAllPesanan() supaya path yang dibaca SAMA PERSIS
+        // dengan path yang dipakai saat pelanggan menyimpan pesanan baru (model/Pesanan.java).
+        // Sebelumnya controller ini punya path hardcoded sendiri ("/data/pesanan.xml", path absolut)
+        // yang tidak pernah cocok dengan file tempat data pelanggan benar-benar tersimpan.
+        System.out.println("LOG SINARING -> Mencoba membaca XML di jalur: " + new File(Pesanan.getFilePath()).getAbsolutePath());
 
-        Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
-        NodeList nList = doc.getElementsByTagName("order");
-        System.out.println("LOG SINARING -> Jumlah order yang terdeteksi di XML: " + nList.getLength());
+        List<Pesanan> semuaPesanan = Pesanan.getAllPesanan();
+        System.out.println("LOG SINARING -> Jumlah order yang terdeteksi di XML: " + semuaPesanan.size());
 
-        for (int i = 0; i < nList.getLength(); i++) {
-            Element el = (Element) nList.item(i);
-            
-            // Bungkus dengan try-catch internal biar kalau ada 1 baris XML yang korup, baris lain tetap tampil
-            try {
-                Pesanan p = new Pesanan(
-                    el.getAttribute("id"),
-                    el.getElementsByTagName("username").item(0).getTextContent(),
-                    el.getElementsByTagName("menu").item(0).getTextContent(),
-                    Integer.parseInt(el.getElementsByTagName("porsi").item(0).getTextContent()),
-                    el.getElementsByTagName("tanggal").item(0).getTextContent(),
-                    el.getElementsByTagName("alamat").item(0).getTextContent(),
-                    el.getElementsByTagName("catatan").item(0).getTextContent(),
-                    el.getElementsByTagName("status_pesanan").item(0).getTextContent(),
-                    el.getElementsByTagName("status_bayar").item(0).getTextContent(),
-                    Double.parseDouble(el.getElementsByTagName("total").item(0).getTextContent())
-                );
-                listMasterPesanan.add(p);
-            } catch (Exception inner) {
-                System.out.println("Gagal parsing salah satu item order pada indeks ke-" + i);
-            }
-        }
-        
+        listMasterPesanan.addAll(semuaPesanan);
+
         // PENTING: Set items ke table visual
         tableKelolaPesanan.setItems(listMasterPesanan);
         tableKelolaPesanan.refresh();
@@ -129,20 +100,11 @@ public class KelolaPesananController {
     }
 
     private void updateXMLStatus(String id, String statusBaru) {
-        try {
-            File file = new File(xmlPath);
-            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
-            NodeList nList = doc.getElementsByTagName("order");
-            for (int i = 0; i < nList.getLength(); i++) {
-                Element el = (Element) nList.item(i);
-                if (el.getAttribute("id").equals(id)) {
-                    el.getElementsByTagName("status_pesanan").item(0).setTextContent(statusBaru);
-                    break;
-                }
-            }
-            Transformer transformer = TransformerFactory.newInstance().newTransformer();
-            transformer.transform(new DOMSource(doc), new StreamResult(file));
-        } catch (Exception e) { e.printStackTrace(); }
+        // Pakai method di model Pesanan supaya path yang ditulis juga konsisten
+        boolean sukses = Pesanan.updateStatusPesanan(id, statusBaru);
+        if (!sukses) {
+            System.out.println("LOG SINARING -> Gagal update status pesanan id=" + id);
+        }
     }
 
     @FXML

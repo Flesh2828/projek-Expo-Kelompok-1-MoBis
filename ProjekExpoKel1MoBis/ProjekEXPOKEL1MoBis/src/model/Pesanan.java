@@ -53,6 +53,9 @@ public class Pesanan {
         this.totalHarga = totalHarga;
     }
 
+    // Getter path file (dipakai controller lain biar tidak hardcode path sendiri-sendiri)
+    public static String getFilePath() { return FILE_PATH; }
+
     // Getters
     public String getIdPesanan() { return idPesanan; }
     public String getUsernamePelanggan() { return usernamePelanggan; }
@@ -173,6 +176,36 @@ public class Pesanan {
             e.printStackTrace();
         }
         return list;
+    }
+
+    // --- UPDATE STATUS PESANAN (DIPAKAI ADMIN, PAKAI FILE_PATH YANG SAMA) ---
+    public static boolean updateStatusPesanan(String idPesanan, String statusBaru) {
+        try {
+            File xmlFile = new File(FILE_PATH);
+            if (!xmlFile.exists()) return false;
+
+            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(xmlFile);
+            doc.getDocumentElement().normalize();
+            NodeList nList = doc.getElementsByTagName("order");
+
+            boolean ditemukan = false;
+            for (int i = 0; i < nList.getLength(); i++) {
+                Element el = (Element) nList.item(i);
+                if (el.getAttribute("id").equals(idPesanan)) {
+                    el.getElementsByTagName("status_pesanan").item(0).setTextContent(statusBaru);
+                    ditemukan = true;
+                    break;
+                }
+            }
+            if (!ditemukan) return false;
+
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            transformer.transform(new DOMSource(doc), new StreamResult(xmlFile));
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     private static void tambahChild(Document doc, Element parent, String tag, String value) {
