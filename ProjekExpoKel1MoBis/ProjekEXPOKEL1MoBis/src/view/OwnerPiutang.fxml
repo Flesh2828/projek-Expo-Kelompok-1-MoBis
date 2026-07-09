@@ -1,182 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #FAF5EF;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OwnerDashboardController">
+<VBox spacing="25.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OwnerPiutangController">
+   <padding>
+      <Insets bottom="35.0" left="35.0" right="35.0" top="35.0" />
+   </padding>
    <children>
-      <!-- ==================== SIDEBAR OWNER (LEFT) ==================== -->
-      <VBox prefHeight="720.0" prefWidth="260.0" spacing="0.0" style="-fx-background-color: FFFAF0;">
-         <padding>
-            <Insets bottom="30.0" left="20.0" right="20.0" top="30.0" />
-         </padding>
-         <children>
-            <AnchorPane>
-               <children>
-                  <VBox spacing="2.0" />
-                  <Text layoutX="220.0" layoutY="93.0" style="-fx-font-size: 25; -fx-fill: #000000; -fx-font-weight: light;" text="SARI RAHAYU">
-                     <font>
-                        <Font name="Amiri Regular" size="12.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="113.0" layoutY="54.0" style="-fx-font-weight: bold; -fx-font-size: 50; -fx-fill: #C35E2A;" text="SINARING">
-                     <font>
-                        <Font name="Bookman Old Style" size="12.0" />
-                     </font>
-                  </Text>
-                  <ImageView fitHeight="97.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@logo.png2.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-            <Label contentDisplay="TOP" minHeight="0.0" prefHeight="94.0" prefWidth="249.0" style="-fx-text-fill: grey; -fx-font-size: 35; -fx-font-weight: bold; -fx-padding: 40 0 10 5;" text="MENU UTAMA" />
-            
-            <!-- Navigation Links (Sekaruh Menu Piutang yang Aktif) -->
-            <VBox spacing="8.0" VBox.vgrow="ALWAYS">
-               <children>
-                  <Button fx:id="btnDashboard" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="379.0" style="-fx-background-color: transparent; -fx-text-fill: black; -fx-font-size: 25; -fx-padding: 0 0 0 15;" text="Dashboard" />
-                  <Button fx:id="btnLaporan" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="378.0" style="-fx-background-color: transparent; -fx-text-fill: #black; -fx-font-size: 25; -fx-padding: 0 0 0 15;" text="Laporan Keuangan" />
-                  <Button fx:id="btnPiutang" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="378.0" style="-fx-background-color: rgba(255, 255, 255, 0.15); -fx-text-fill: black; -fx-font-size: 25; -fx-padding: 0 0 0 15;" text="Piutang" />
-               </children>
-            </VBox>
-            
-            <!-- Footer User Info & Keluar -->
-            <VBox spacing="15.0">
-               <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="374.0" spacing="10.0">
-                     <children>
-                        <Text style="-fx-font-size: 30; -fx-fill: #C35E2A;" text="👤" />
-                        <VBox prefHeight="89.0" prefWidth="180.0">
-                           <children>
-                              <Text fx:id="txtNamaUser" style="-fx-font-size: 25; -fx-fill: #C35E2A;" text="Sari Rahayu" wrappingWidth="150.09619140625" />
-                              <Text fill="#c35e2a" strokeType="OUTSIDE" strokeWidth="0.0" text="Pemilik" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="25.0" prefWidth="301.0" style="-fx-background-color: C35E2A; -fx-text-fill: white; -fx-font-size: 16; -fx-padding: 5 0 0 5;" text="                         🚪  Keluar" />
-               </children>
-            </VBox>
-         </children>
+      <VBox spacing="5.0">
+         <Label style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #2B1B15;" text="Piutang Pelanggan" />
+         <Label style="-fx-font-size: 14; -fx-text-fill: #8A7A75;" text="Daftar tagihan belum lunas dari seluruh pelanggan" />
       </VBox>
 
-      <!-- ==================== CONTENT AREA (RIGHT) ==================== -->
-      <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background-radius: 0; -fx-border-color: transparent;" HBox.hgrow="ALWAYS">
-         <content>
-            <VBox spacing="25.0" style="-fx-background-color: ffffff;">
-               <padding>
-                  <Insets bottom="35.0" left="35.0" right="35.0" top="35.0" />
-               </padding>
-               <children>
-                  
-                  <!-- Title Halaman -->
-                  <VBox spacing="5.0">
-                     <children>
-                        <Label style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-font-family: 'Segoe UI';" text="Piutang Pelanggan" />
-                        <Label style="-fx-font-size: 14; -fx-text-fill: #8A7A75;" text="Daftar tagihan belum lunas dari seluruh pelanggan" />
-                     </children>
-                  </VBox>
+      <HBox prefHeight="140.0" spacing="20.0">
+         <VBox style="-fx-background-color: #FFFAF0; -fx-background-radius: 20; -fx-padding: 20;" HBox.hgrow="ALWAYS">
+            <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 12 0 2 0;" text="Rp 12.920.000" />
+            <Label style="-fx-font-size: 13; -fx-text-fill: #8A7A75;" text="Total Piutang" />
+         </VBox>
 
-                  <!-- 3 KARTU RINGKASAN INFO PIUTANG -->
-                  <HBox prefHeight="140.0" spacing="20.0">
-                     <children>
-                        <!-- Kartu 1: Total Piutang -->
-                        <VBox prefWidth="300.0" style="-fx-background-color: FFFAF0; -fx-background-radius: 20; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 15, 0, 0, 5);" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 12 0 2 0;" text="Rp 12.920.000" />
-                              <Label style="-fx-font-size: 13; -fx-text-fill: #8A7A75;" text="Total Piutang" />
-                           </children>
-                        </VBox>
+         <VBox style="-fx-background-color: #FFFAF0; -fx-background-radius: 20; -fx-padding: 20;" HBox.hgrow="ALWAYS">
+            <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 12 0 2 0;" text="2" />
+            <Label style="-fx-font-size: 13; -fx-text-fill: #6E5E59; -fx-font-weight: bold;" text="Melewati Jatuh Tempo" />
+            <Label style="-fx-font-size: 11; -fx-text-fill: #8A7A75;" text="&gt; 7 hari" />
+         </VBox>
 
-                        <!-- Kartu 2: Melewati Jatuh Tempo -->
-                        <VBox prefWidth="300.0" style="-fx-background-color: FFFAF0; -fx-background-radius: 20; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 15, 0, 0, 5);" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 12 0 2 0;" text="2" />
-                              <Label style="-fx-font-size: 13; -fx-text-fill: #6E5E59; -fx-font-weight: bold;" text="Melewati Jatuh Tempo" />
-                              <Label style="-fx-font-size: 11; -fx-text-fill: #8A7A75;" text="&gt; 7 hari" />
-                           </children>
-                        </VBox>
+         <VBox style="-fx-background-color: #FFFAF0; -fx-background-radius: 20; -fx-padding: 20;" HBox.hgrow="ALWAYS">
+            <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 12 0 2 0;" text="1" />
+            <Label style="-fx-font-size: 13; -fx-text-fill: #6E5E59; -fx-font-weight: bold;" text="Akan Jatuh Tempo" />
+            <Label style="-fx-font-size: 11; -fx-text-fill: #8A7A75;" text="dalam 7 hari ke depan" />
+         </VBox>
+      </HBox>
 
-                        <!-- Kartu 3: Akan Jatuh Tempo -->
-                        <VBox prefWidth="300.0" style="-fx-background-color: FFFAF0; -fx-background-radius: 20; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 15, 0, 0, 5);" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 12 0 2 0;" text="1" />
-                              <Label style="-fx-font-size: 13; -fx-text-fill: #6E5E59; -fx-font-weight: bold;" text="Akan Jatuh Tempo" />
-                              <Label style="-fx-font-size: 11; -fx-text-fill: #8A7A75;" text="dalam 7 hari ke depan" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
+      <VBox style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 25;">
+         <HBox alignment="CENTER_LEFT" style="-fx-padding: 0 0 15 0;">
+            <Label style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #2B1B15;" text="Daftar Piutang" HBox.hgrow="ALWAYS" />
+            <Label alignment="CENTER_RIGHT" style="-fx-font-size: 12; -fx-text-fill: #8A7A75;" text="5 tagihan" />
+         </HBox>
 
-                  <!-- SEKSYEN TABEL: DAFTAR PIUTANG -->
-                  <VBox style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 25; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 15, 0, 0, 5);" VBox.vgrow="ALWAYS">
-                     <children>
-                        <!-- Header Atas Tabel beserta Legenda Status -->
-                        <HBox alignment="CENTER_LEFT" style="-fx-padding: 0 0 15 0;">
-                           <children>
-                              <Label style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #2B1B15;" text="Daftar Piutang" HBox.hgrow="ALWAYS" />
-                              <Label alignment="CENTER_RIGHT" prefWidth="700.0" style="-fx-font-size: 12; -fx-text-fill: #8A7A75;" text="5 tagihan" HBox.hgrow="ALWAYS" />
-                           </children>
-                        </HBox>
-                        
-                        <!-- Mini Bar Legend Status Kebijakan Warna -->
-                        <HBox spacing="15.0" style="-fx-padding: 0 0 15 5;">
-                           <children>
-                              <HBox alignment="CENTER" spacing="5.0">
-                                 <children>
-                                    <Label style="-fx-text-fill: #E9B4B4; -fx-font-size: 14;" text="●" />
-                                    <Label style="-fx-font-size: 12; -fx-text-fill: #8A7A75;" text="Lewat &gt;7 hari" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" spacing="5.0">
-                                 <children>
-                                    <Label style="-fx-text-fill: #F5E3A1; -fx-font-size: 14;" text="●" />
-                                    <Label style="-fx-font-size: 12; -fx-text-fill: #8A7A75;" text="Jatuh tempo 1-7 hari" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER" spacing="5.0">
-                                 <children>
-                                    <Label style="-fx-text-fill: #A0E7CD; -fx-font-size: 14;" text="●" />
-                                    <Label style="-fx-font-size: 12; -fx-text-fill: #8A7A75;" text="Belum jatuh tempo" />
-                                 </children>
-                              </HBox>
-                           </children>
-                        </HBox>
-                        
-                        <!-- TableView Konten Utama Piutang -->
-                        <TableView fx:id="tablePiutang" prefHeight="280.0" style="-fx-background-radius: 12; -fx-border-color: #E2DDD7; -fx-border-radius: 12; -fx-background-color: white;">
-                          <columns>
-                            <TableColumn fx:id="colPelanggan" prefWidth="180.0" style="-fx-alignment: CENTER-LEFT; -fx-font-weight: bold;" text="PELANGGAN" />
-                            <TableColumn fx:id="colIdPesanan" prefWidth="110.0" style="-fx-alignment: CENTER_LEFT; -fx-text-fill: #8A7A75;" text="ID PESANAN" />
-                            <TableColumn fx:id="colTotalTagihan" prefWidth="140.0" style="-fx-alignment: CENTER_LEFT; -fx-font-weight: bold;" text="TOTAL TAGIHAN" />
-                            <TableColumn fx:id="colDpDibayar" prefWidth="130.0" style="-fx-alignment: CENTER_LEFT; -fx-text-fill: #00A86B;" text="DP DIBAYAR" />
-                            <TableColumn fx:id="colSisaTagihan" prefWidth="140.0" style="-fx-alignment: CENTER_LEFT; -fx-text-fill: #B54D22; -fx-font-weight: bold;" text="SISA TAGIHAN" />
-                            <TableColumn fx:id="colJatuhTempo" prefWidth="130.0" style="-fx-alignment: CENTER_LEFT;" text="JATUH TEMPO" />
-                            <TableColumn fx:id="colStatus" prefWidth="130.0" style="-fx-alignment: CENTER;" text="STATUS" />
-                          </columns>
-                           <columnResizePolicy>
-                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                           </columnResizePolicy>
-                        </TableView>
-                     </children>
-                  </VBox>
+         <HBox spacing="15.0" style="-fx-padding: 0 0 15 5;">
+            <HBox alignment="CENTER" spacing="5.0">
+               <Label style="-fx-text-fill: #E9B4B4; -fx-font-size: 14;" text="●" />
+               <Label style="-fx-font-size: 12; -fx-text-fill: #8A7A75;" text="Lewat &gt;7 hari" />
+            </HBox>
+            <HBox alignment="CENTER" spacing="5.0">
+               <Label style="-fx-text-fill: #F5E3A1; -fx-font-size: 14;" text="●" />
+               <Label style="-fx-font-size: 12; -fx-text-fill: #8A7A75;" text="Jatuh tempo 1-7 hari" />
+            </HBox>
+            <HBox alignment="CENTER" spacing="5.0">
+               <Label style="-fx-text-fill: #A0E7CD; -fx-font-size: 14;" text="●" />
+               <Label style="-fx-font-size: 12; -fx-text-fill: #8A7A75;" text="Belum jatuh tempo" />
+            </HBox>
+         </HBox>
 
-               </children>
-            </VBox>
-         </content>
-      </ScrollPane>
+         <TableView fx:id="tablePiutang" prefHeight="280.0">
+            <columns>
+               <TableColumn fx:id="colPelanggan" prefWidth="180.0" text="PELANGGAN" />
+               <TableColumn fx:id="colIdPesanan" prefWidth="110.0" text="ID PESANAN" />
+               <TableColumn fx:id="colTotalTagihan" prefWidth="140.0" text="TOTAL TAGIHAN" />
+               <TableColumn fx:id="colDpDibayar" prefWidth="130.0" text="DP DIBAYAR" />
+               <TableColumn fx:id="colSisaTagihan" prefWidth="140.0" text="SISA TAGIHAN" />
+               <TableColumn fx:id="colJatuhTempo" prefWidth="130.0" text="JATUH TEMPO" />
+               <TableColumn fx:id="colStatus" prefWidth="130.0" text="STATUS" />
+            </columns>
+         </TableView>
+      </VBox>
    </children>
-</HBox>
+</VBox>
