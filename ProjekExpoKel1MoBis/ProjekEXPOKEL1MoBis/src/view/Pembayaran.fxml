@@ -15,15 +15,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1247.0" prefWidth="1491.0" style="-fx-background-color: #FfffFE;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PembayaranController">
+<AnchorPane prefHeight="1247.0" prefWidth="1477.0" style="-fx-background-color: #FfffFE;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PembayaranController">
 
     <padding>
         <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
 
-    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="84.0" layoutY="74.0" prefHeight="913.0" prefWidth="1359.0" style="-fx-background-color: transparent; -fx-background: transparent;" vbarPolicy="AS_NEEDED" AnchorPane.bottomAnchor="280.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="68.0" AnchorPane.topAnchor="54.0">
+    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="50.0" layoutY="75.0" prefHeight="1094.0" prefWidth="1446.0" style="-fx-background-color: transparent; -fx-background: transparent;" vbarPolicy="AS_NEEDED" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="55.0">
         <content>
-            <VBox prefHeight="1274.0" prefWidth="1412.0" spacing="15.0">
+            <VBox prefHeight="1549.0" prefWidth="1365.0" spacing="15.0">
 
                 <!-- Judul -->
                 <Text style="-fx-font-size: 28; -fx-font-weight: bold; -fx-fill: black;" text="Pembayaran" />
@@ -32,7 +32,7 @@
                 <Separator />
 
                 <!-- Tagihan Belum Lunas -->
-                <VBox spacing="5.0" style="-fx-background-color: FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15;">
+                <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" spacing="5.0" style="-fx-background-color: FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15;">
                     <Text style="-fx-font-size: 28; -fx-font-weight: bold; -fx-fill: red;" text="Tagihan Belum Lunas">
                         <font>
                             <Font name="System Bold" size="28.0" />
@@ -57,7 +57,7 @@
                     </font>
                 </Text>
 
-                <GridPane hgap="15" vgap="10">
+                <GridPane hgap="15" prefHeight="169.0" prefWidth="1389.0" vgap="10">
                     <columnConstraints>
                         <ColumnConstraints percentWidth="33" />
                         <ColumnConstraints percentWidth="33" />
@@ -88,7 +88,7 @@
                     </VBox>
 
                     <!-- Mandiri -->
-                    <VBox spacing="3.0" style="-fx-background-color: #FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 6; -fx-padding: 10; -fx-alignment: center;" GridPane.columnIndex="2">
+                    <VBox prefHeight="169.0" prefWidth="475.0" spacing="3.0" style="-fx-background-color: #FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 6; -fx-padding: 10; -fx-alignment: center;" GridPane.columnIndex="2">
                         <Text style="-fx-font-size: 28; -fx-font-weight: bold; -fx-fill: black;" text="Mandiri">
                             <font>
                                 <Font name="System Bold" size="28.0" />
@@ -110,7 +110,7 @@
                     </font>
                 </Text>
 
-                <VBox prefHeight="324.0" prefWidth="1384.0" spacing="5.0" style="-fx-background-color: #FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-alignment: center;">
+                <VBox prefHeight="335.0" prefWidth="1224.0" spacing="5.0" style="-fx-background-color: #FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-alignment: center;">
                     <ImageView fitHeight="557.0" fitWidth="312.0" pickOnBounds="true" preserveRatio="true">
                         <image>
                             <Image url="@qris.png" />
