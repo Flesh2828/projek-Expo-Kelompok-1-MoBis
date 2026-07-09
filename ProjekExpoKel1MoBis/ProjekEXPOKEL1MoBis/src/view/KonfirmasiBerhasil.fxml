@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: #FFFfff; -fx-padding: 20;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="controller.KonfirmasiBerhasilController">
+<VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: #FFFfff; -fx-padding: 20;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KonfirmasiBerhasilController">
 
     <Text style="-fx-font-size: 64;" text="✅" />
 
@@ -19,7 +19,7 @@
     <Separator />
 
     <HBox alignment="CENTER" spacing="15.0">
-        <Button onAction="#handleLihatRiwayat" style="-fx-background-color: #C35E2A; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;" text="Lihat Riwayat Pesanan" />
+        <Button onAction="#handleLihatRiwayat" style="-fx-background-color: #E74C3C; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;" text="Lihat Riwayat Pesanan" />
     </HBox>
 
 </VBox>
