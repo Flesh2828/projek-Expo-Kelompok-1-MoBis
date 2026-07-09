@@ -82,7 +82,7 @@
                   <HBox alignment="CENTER_LEFT" spacing="10.0">
                       <Text style="-fx-font-size: 30; -fx-fill: #C35E2A;" text="👤" />
                       <VBox>
-                          <Text fx:id="txtNamaUser" style="-fx-font-size: 25; -fx-fill: #C35E2A;" text="Pelanggan" />
+                          <Text fx:id="txtNamaUser" style="-fx-font-size: 25; -fx-fill: #C35E2A;" text="Ahmad " />
                       </VBox>
                   </HBox>
                   
