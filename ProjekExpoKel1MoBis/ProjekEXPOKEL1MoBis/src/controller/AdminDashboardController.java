@@ -14,11 +14,11 @@ public class AdminDashboardController {
 
     @FXML
     public void initialize() {
-        // Halaman default saat pertama kali admin masuk
+        // default admin masuk
         bukaHalamanAdmin("/view/AdminRingkasan.fxml"); 
     }
 
-    // Fungsi pembantu untuk menukar konten halaman tengah admin
+    // ubah konten tengah admin
     public void bukaHalamanAdmin(String fxmlPath) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
@@ -31,16 +31,8 @@ public class AdminDashboardController {
     }
 
     @FXML void tampilkanRingkasan(ActionEvent event) { bukaHalamanAdmin("/view/AdminRingkasan.fxml"); }
-
-    @FXML 
-    void tampilkanKelolaPesanan(ActionEvent event) { 
-        bukaHalamanAdmin("/view/BuatPesanan.fxml"); 
-    }
-
-    @FXML
-    void tampilkanKelolaMenu(ActionEvent event) {
-        bukaHalamanAdmin("/view/DaftarMenu.fxml");
-}
+    @FXML void tampilkanKelolaPesanan(ActionEvent event) { bukaHalamanAdmin("/view/KelolaPesanan.fxml"); }
+    @FXML void tampilkanKelolaMenu(ActionEvent event) { bukaHalamanAdmin("/view/KelolaMenu.fxml"); }
     
     @FXML
     public void handleLogout(ActionEvent event) {
