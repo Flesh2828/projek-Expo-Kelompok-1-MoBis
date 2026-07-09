@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="25.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OwnerPiutangController">
+<VBox prefHeight="1200.0" prefWidth="1500.0" spacing="25.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OwnerPiutangController">
    <padding>
       <Insets bottom="35.0" left="35.0" right="35.0" top="35.0" />
    </padding>
@@ -19,12 +19,12 @@
 
       <HBox prefHeight="140.0" spacing="20.0">
          <VBox style="-fx-background-color: #FFFAF0; -fx-background-radius: 20; -fx-padding: 20;" HBox.hgrow="ALWAYS">
-            <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 12 0 2 0;" text="Rp 12.920.000" />
+            <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 12 0 2 0;" text="Rp 800.000" />
             <Label style="-fx-font-size: 13; -fx-text-fill: #8A7A75;" text="Total Piutang" />
          </VBox>
 
          <VBox style="-fx-background-color: #FFFAF0; -fx-background-radius: 20; -fx-padding: 20;" HBox.hgrow="ALWAYS">
-            <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 12 0 2 0;" text="2" />
+            <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 12 0 2 0;" text="0" />
             <Label style="-fx-font-size: 13; -fx-text-fill: #6E5E59; -fx-font-weight: bold;" text="Melewati Jatuh Tempo" />
             <Label style="-fx-font-size: 11; -fx-text-fill: #8A7A75;" text="&gt; 7 hari" />
          </VBox>
@@ -38,8 +38,7 @@
 
       <VBox style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 25;">
          <HBox alignment="CENTER_LEFT" style="-fx-padding: 0 0 15 0;">
-            <Label style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #2B1B15;" text="Daftar Piutang" HBox.hgrow="ALWAYS" />
-            <Label alignment="CENTER_RIGHT" style="-fx-font-size: 12; -fx-text-fill: #8A7A75;" text="5 tagihan" />
+            <Label style="-fx-font-size: 25; -fx-font-weight: bold; -fx-text-fill: #2B1B15;" text="Daftar Piutang" HBox.hgrow="ALWAYS" />
          </HBox>
 
          <HBox spacing="15.0" style="-fx-padding: 0 0 15 5;">
