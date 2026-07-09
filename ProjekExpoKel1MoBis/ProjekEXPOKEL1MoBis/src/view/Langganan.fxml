@@ -58,7 +58,7 @@
             </VBox>
             <VBox spacing="3.0" style="-fx-background-color: #FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-alignment: center;" HBox.hgrow="ALWAYS">
                 <Text style="-fx-font-size: 12; -fx-fill: #666666;" text="Hari Izin" />
-                <Text style="-fx-font-size: 20; -fx-font-weight: bold; -fx-fill: #D35400;" text="0" />
+                <Text fill="RED" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-fill: #ff0000;" text="0" />
             </VBox>
         </HBox>
 
@@ -81,7 +81,7 @@
             <Label style="-fx-font-weight: bold; -fx-font-size: 12;" text="Kam" GridPane.columnIndex="3" GridPane.rowIndex="0" />
             <Label style="-fx-font-weight: bold; -fx-font-size: 12;" text="Jum" GridPane.columnIndex="4" GridPane.rowIndex="0" />
             <Label style="-fx-font-weight: bold; -fx-font-size: 12;" text="Sab" GridPane.columnIndex="5" GridPane.rowIndex="0" />
-            <Label style="-fx-font-weight: bold; -fx-font-size: 12;" text="Min" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+            <Label style="-fx-font-weight: bold; -fx-font-size: 12;" text="Min" textFill="RED" GridPane.columnIndex="6" GridPane.rowIndex="0" />
 
             <Label text="1" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Label text="2" GridPane.columnIndex="3" GridPane.rowIndex="1" />

@@ -25,8 +25,8 @@
 
     <VBox spacing="15.0" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20">
 
-        <Text style="-fx-font-size: 24; -fx-font-weight: bold; -fx-fill: #2E7D32;" text="Formulir Pesanan" />
-        <Text style="-fx-font-size: 14; -fx-fill: #666666;" text="Isi detail pesanan Anda di bawah ini" />
+        <Text style="-fx-font-size: 24; -fx-font-weight: bold; -fx-fill: #000000;" text="Formulir Pesanan" />
+        <Text style="-fx-font-size: 14; -fx-fill: #000000;" text="Isi detail pesanan Anda di bawah ini" />
 
         <Separator />
 
@@ -57,7 +57,7 @@
             <DatePicker prefWidth="200.0" style="-fx-background-insets: #FFFAF0;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
             <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="Alamat Pengiriman" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-            <TextArea prefHeight="60.0" promptText="Jl. Contoh No. 1, Kelurahan, Kecamatan, Kota" style="-fx-background-color: #FFFAF0;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextArea prefHeight="60.0" promptText="Jl. Contoh No. 1, Kelurahan, Kecamatan, Kota" style="-fx-background-image: #FFFAF0;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
             <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="Catatan Khusus (opsional)" GridPane.columnIndex="0" GridPane.rowIndex="4" />
             <TextArea prefHeight="50.0" promptText="Contoh: tidak pedas, alergi kacang, dll." style="-fx-background-color: #FFFAF0;" GridPane.columnIndex="1" GridPane.rowIndex="4" />

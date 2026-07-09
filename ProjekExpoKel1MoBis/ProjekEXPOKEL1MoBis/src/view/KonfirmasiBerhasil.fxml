@@ -18,8 +18,12 @@
 
     <Separator />
 
+<<<<<<< HEAD
+        <Text fill="RED" style="-fx-font-size: 14; -fx-fill: #ff0000;" text="Pembayaran akan diverifikasi dalam 1x24 jam." />
+=======
     <HBox alignment="CENTER" spacing="15.0">
         <Button onAction="#handleLihatRiwayat" style="-fx-background-color: #C35E2A; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;" text="Lihat Riwayat Pesanan" />
     </HBox>
+>>>>>>> 3c5b4092b5454e751b071c0644c0d81a6367cf12
 
 </VBox>
