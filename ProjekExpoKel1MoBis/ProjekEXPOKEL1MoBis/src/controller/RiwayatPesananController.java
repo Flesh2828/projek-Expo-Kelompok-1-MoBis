@@ -56,6 +56,10 @@ public class RiwayatPesananController {
 
             if (paneKontenTengah != null) {
                 paneKontenTengah.getChildren().setAll(root);
+                AnchorPane.setTopAnchor(root, 0.0);
+                AnchorPane.setBottomAnchor(root, 0.0);
+                AnchorPane.setLeftAnchor(root, 0.0);
+                AnchorPane.setRightAnchor(root, 0.0);
             } else {
                 System.err.println("paneKontenTengah is null!");
             }

@@ -108,6 +108,36 @@ public class KelolaPesananController {
     }
 
     @FXML
+    void handleVerifikasiPembayaran() {
+        Pesanan selected = tableKelolaPesanan.getSelectionModel().getSelectedItem();
+        if (selected == null) {
+            tampilkanAlert("Pilih pesanan yang ingin diverifikasi pembayarannya terlebih dahulu.", Alert.AlertType.WARNING);
+            return;
+        }
+        if (selected.getStatusPembayaran().equalsIgnoreCase("Lunas")) {
+            tampilkanAlert("Pembayaran pesanan " + selected.getIdPesanan() + " sudah terverifikasi (Lunas).", Alert.AlertType.INFORMATION);
+            return;
+        }
+
+        boolean sukses = Pesanan.updateStatusPembayaran(selected.getIdPesanan(), "Lunas");
+        if (sukses) {
+            loadDataDariXML();
+            applyFilter();
+            tampilkanAlert("Pembayaran pesanan " + selected.getIdPesanan() + " berhasil diverifikasi.", Alert.AlertType.INFORMATION);
+        } else {
+            tampilkanAlert("Gagal memverifikasi pembayaran pesanan " + selected.getIdPesanan() + ".", Alert.AlertType.ERROR);
+        }
+    }
+
+    private void tampilkanAlert(String pesan, Alert.AlertType tipe) {
+        Alert alert = new Alert(tipe);
+        alert.setTitle("Verifikasi Pembayaran");
+        alert.setHeaderText(null);
+        alert.setContentText(pesan);
+        alert.showAndWait();
+    }
+
+    @FXML
     void handleVerifikasiWA() {
         Pesanan selected = tableKelolaPesanan.getSelectionModel().getSelectedItem();
         if (selected == null) return;

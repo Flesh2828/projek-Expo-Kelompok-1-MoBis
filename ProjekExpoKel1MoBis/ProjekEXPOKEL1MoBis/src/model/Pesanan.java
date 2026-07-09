@@ -208,6 +208,36 @@ public class Pesanan {
         }
     }
 
+    // --- UPDATE STATUS PEMBAYARAN (VERIFIKASI PEMBAYARAN OLEH ADMIN) ---
+    public static boolean updateStatusPembayaran(String idPesanan, String statusBaru) {
+        try {
+            File xmlFile = new File(FILE_PATH);
+            if (!xmlFile.exists()) return false;
+
+            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(xmlFile);
+            doc.getDocumentElement().normalize();
+            NodeList nList = doc.getElementsByTagName("order");
+
+            boolean ditemukan = false;
+            for (int i = 0; i < nList.getLength(); i++) {
+                Element el = (Element) nList.item(i);
+                if (el.getAttribute("id").equals(idPesanan)) {
+                    el.getElementsByTagName("status_bayar").item(0).setTextContent(statusBaru);
+                    ditemukan = true;
+                    break;
+                }
+            }
+            if (!ditemukan) return false;
+
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            transformer.transform(new DOMSource(doc), new StreamResult(xmlFile));
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     private static void tambahChild(Document doc, Element parent, String tag, String value) {
         Element child = doc.createElement(tag);
         child.appendChild(doc.createTextNode(value));
