@@ -58,7 +58,7 @@ public class AdminRingkasanController {
     }
     private void muatDataPesananTerbaru() {
         int totalPorsiHariIni = 0;
-        String xmlPath = "src/data/pesanan.xml";
+        String xmlPath = "ProjekExpoKelompok1MoBis/ProjekEXPOKELOMPOK1MoBis/data/pesanan.xml";
 
         try {
             File xmlFile = new File(xmlPath);
@@ -92,7 +92,7 @@ public class AdminRingkasanController {
                     // Hitung akumulasi porsi untuk indikator bar kapasitas produksi
                     totalPorsiHariIni += porsi;
                 }
-            }
+            }   
             
             tablePesananTerbaru.setItems(dataPesanan);
             
@@ -111,6 +111,7 @@ public class AdminRingkasanController {
         } catch (Exception e) {
             System.out.println("Gagal membaca data ringkasan admin: " + e.getMessage());
             e.printStackTrace();
+        
         }
     }
 }
