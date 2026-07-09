@@ -33,6 +33,11 @@ public class PelangganDashboardController {
         return paneKontenTengah;
     }
 
+    // Tambahkan method ini di PelangganDashboardController
+        public void setPaneKontenTengah(AnchorPane pane) {
+            this.paneKontenTengah = pane;
+        }
+
     @FXML
     public void initialize() {
         txtNamaUser.setText(userAktifSession);
@@ -186,4 +191,7 @@ public class PelangganDashboardController {
             e.printStackTrace();
         }
     }
+
+
+        
 }
