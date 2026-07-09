@@ -10,167 +10,104 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<<<<<<< HEAD
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #FAF5EF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OwnerDashboardController">
-
-   <children>
-      <!-- ==================== SIDEBAR OWNER ==================== -->
-      <VBox prefHeight="720.0" prefWidth="260.0" spacing="0.0" style="-fx-background-color: #FFFAF0;">
-         <padding><Insets bottom="30.0" left="20.0" right="20.0" top="30.0" /></padding>
-=======
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #FAF5EF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OwnerDashboardController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #FAF5EF;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OwnerDashboardController">
    <children>
       <!-- ==================== SIDEBAR OWNER (LEFT) ==================== -->
-      <VBox prefHeight="720.0" prefWidth="260.0" style="-fx-background-color: #B54D22;" spacing="0.0">
+      <VBox prefHeight="720.0" prefWidth="260.0" spacing="0.0" style="-fx-background-color: fffaf0;">
          <padding>
-            <Insets top="30.0" right="20.0" bottom="30.0" left="20.0" />
+            <Insets bottom="30.0" left="20.0" right="20.0" top="30.0" />
          </padding>
->>>>>>> a383e7d636bee21e086482d21a116f31044a65ca
          <children>
-            <AnchorPane>
+            <!-- Header Logo & Nama Bisnis -->
+            <HBox alignment="CENTER_LEFT" spacing="12.0">
                <children>
-<<<<<<< HEAD
-                  <Text layoutX="220.0" layoutY="93.0" style="-fx-font-size: 25; -fx-fill: #000000; -fx-font-weight: light;" text="SARI RAHAYU">
-                     <font><Font name="Amiri Regular" size="12.0" /></font>
-                  </Text>
-                  <Text layoutX="113.0" layoutY="54.0" style="-fx-font-weight: bold; -fx-font-size: 50; -fx-fill: #C35E2A;" text="SINARING">
-                     <font><Font name="Bookman Old Style" size="12.0" /></font>
-                  </Text>
-                  <ImageView fitHeight="97.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
-                     <image><Image url="@logo.png2.png" /></image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-
-            <Label contentDisplay="TOP" minHeight="0.0" prefHeight="94.0" prefWidth="249.0" style="-fx-text-fill: #999999; -fx-font-size: 35; -fx-font-weight: bold; -fx-padding: 40 0 10 5;" text="MENU UTAMA" />
-
-            <VBox spacing="8.0" VBox.vgrow="ALWAYS">
-               <children>
-                  <Button fx:id="btnDashboard" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#tampilkanDashboard" prefHeight="52.0" prefWidth="377.0" style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-font-size: 25; -fx-background-radius: 8;" text="Dashboard">
-                     <font><Font name="Tahoma" size="25.0" /></font>
-                  </Button>
-                  <Button fx:id="btnLaporan" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#tampilkanLaporan" prefHeight="52.0" prefWidth="377.0" style="-fx-background-color: #C35E2A; -fx-text-fill: white; -fx-font-size: 25; -fx-font-weight: bold; -fx-background-radius: 8;" text="Laporan Keuangan">
-                     <font><Font name="Tahoma" size="25.0" /></font>
-                  </Button>
-                  <Button fx:id="btnPiutang" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#tampilkanPiutang" prefHeight="52.0" prefWidth="377.0" style="-fx-background-color: transparent; -fx-text-fill: #333333; -fx-font-size: 25; -fx-background-radius: 8;" text="Piutang">
-                     <font><Font name="Tahoma" size="25.0" /></font>
-                  </Button>
-=======
-                  <VBox alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: rgba(255,255,255,0.2); -fx-background-radius: 8;">
+                  <AnchorPane>
                      <children>
-                        <Label style="-fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold;" text="S" />
+                        <VBox spacing="2.0" />
+                        <Text layoutX="220.0" layoutY="93.0" style="-fx-font-size: 25; -fx-fill: #000000; -fx-font-weight: light;" text="SARI RAHAYU">
+                           <font>
+                              <Font name="Amiri Regular" size="12.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="113.0" layoutY="54.0" style="-fx-font-weight: bold; -fx-font-size: 50; -fx-fill: #C35E2A;" text="SINARING">
+                           <font>
+                              <Font name="Bookman Old Style" size="12.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="97.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@logo.png2.png" />
+                           </image>
+                        </ImageView>
                      </children>
-                  </VBox>
-                  <VBox spacing="1.0">
-                     <children>
-                        <Label style="-fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold;" text="SINARING" />
-                        <Label style="-fx-text-fill: #F0D0C0; -fx-font-size: 10; -fx-font-weight: bold;" text="SARI RAHAYU" />
-                     </children>
-                  </VBox>
+                  </AnchorPane>
+                  <VBox spacing="1.0" />
                </children>
             </HBox>
-            
-            <Label style="-fx-text-fill: #E6BCAB; -fx-font-size: 11; -fx-font-weight: bold; -fx-padding: 40 0 10 5;" text="MENU UTAMA" />
+            <Label contentDisplay="TOP" minHeight="0.0" prefHeight="94.0" prefWidth="249.0" style="-fx-text-fill: grey; -fx-font-size: 35; -fx-font-weight: bold; -fx-padding: 40 0 10 5;" text="MENU UTAMA" />
             
             <!-- Navigation Links -->
             <VBox spacing="8.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Button fx:id="btnDashboard" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-text-fill: #F0D0C0; -fx-font-size: 14;" text="📊  Dashboard" />
-                  <Button fx:id="btnLaporan" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="220.0" style="-fx-background-color: rgba(255,255,255,0.15); -fx-text-fill: white; -fx-font-weight: bold;" text="📈  Laporan Keuangan" />
-                  <Button fx:id="btnPiutang" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-text-fill: #F0D0C0; -fx-font-size: 14;" text="💼  Piutang" />
->>>>>>> a383e7d636bee21e086482d21a116f31044a65ca
+                  <Button fx:id="btnDashboard" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="52.0" prefWidth="399.0" style="-fx-background-color: transparent; -fx-text-fill: black; -fx-font-size: 25;" text="Dashboard" />
+                  <Button fx:id="btnLaporan" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="52.0" prefWidth="387.0" style="-fx-background-color: rgba(255,255,255,0.15); -fx-text-fill: black; -fx-font-size: 25;" text="Laporan Keuangan" />
+                  <Button fx:id="btnPiutang" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-text-fill: black; -fx-font-size: 25;" text="Piutang" />
                </children>
             </VBox>
-
+            
+            <!-- Footer User Info & Keluar -->
             <VBox spacing="15.0">
                <children>
-<<<<<<< HEAD
-                  <HBox alignment="CENTER_LEFT" spacing="10.0">
-                     <Text style="-fx-font-size: 30; -fx-fill: #C35E2A;" text="👤" />
-                     <VBox>
-                        <Text fx:id="txtNamaUser" style="-fx-font-size: 25; -fx-fill: #C35E2A;" text="Sari Rahayu" wrappingWidth="150.0" />
-                        <Text fill="#C35E2A" text="Pemilik" />
-                     </VBox>
-                  </HBox>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleLogout" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #C35E2A; -fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold; -fx-background-radius: 6;" text="🚪 Keluar" />
-=======
-                  <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-padding: 10 0 10 0; -fx-border-color: rgba(255,255,255,0.1); -fx-border-width: 1 0 0 0;">
+                  <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="374.0" spacing="10.0">
                      <children>
-                        <VBox alignment="CENTER" prefHeight="36.0" prefWidth="36.0" style="-fx-background-color: #E6BCAB; -fx-background-radius: 18;">
+                        <Text style="-fx-font-size: 30; -fx-fill: #C35E2A;" text="👤" />
+                        <VBox prefHeight="89.0" prefWidth="180.0">
                            <children>
-                              <Label style="-fx-text-fill: #B54D22; -fx-font-weight: bold;" text="S" />
-                           </children>
-                        </VBox>
-                        <VBox>
-                           <children>
-                              <Label style="-fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: bold;" text="Sari Rahayu" />
-                              <Label style="-fx-text-fill: #E6BCAB; -fx-font-size: 11;" text="Pemilik Usaha" />
+                              <Text fx:id="txtNamaUser" style="-fx-font-size: 25; -fx-fill: #C35E2A;" text="Sari Rahayu" wrappingWidth="150.09619140625" />
+                              <Text fill="#c35e2a" strokeType="OUTSIDE" strokeWidth="0.0" text="Pemilik" />
                            </children>
                         </VBox>
                      </children>
                   </HBox>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: #F0D0C0; -fx-padding: 0;" text="🚪 Keluar" />
->>>>>>> a383e7d636bee21e086482d21a116f31044a65ca
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="41.0" prefWidth="311.0" style="-fx-background-color: C35E2A; -fx-text-fill: white; -fx-padding: 0; -fx-font-size: 16;" text="                             🚪 Keluar" />
                </children>
             </VBox>
          </children>
       </VBox>
 
-      <!-- ==================== CONTENT ==================== -->
+      <!-- ==================== CONTENT AREA (RIGHT) ==================== -->
       <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background-radius: 0;" HBox.hgrow="ALWAYS">
          <content>
-<<<<<<< HEAD
-            <VBox spacing="25.0" style="-fx-background-color: #FFFFFF;">
-               <padding><Insets bottom="35.0" left="35.0" right="35.0" top="35.0" /></padding>
-=======
-            <VBox spacing="25.0" style="-fx-background-color: #FAF5EF;">
+            <VBox spacing="25.0" style="-fx-background-color: ffffff;">
                <padding>
-                  <Insets top="35.0" right="35.0" bottom="35.0" left="35.0" />
+                  <Insets bottom="35.0" left="35.0" right="35.0" top="35.0" />
                </padding>
->>>>>>> a383e7d636bee21e086482d21a116f31044a65ca
                <children>
-
-                  <!-- HEADER -->
+                  <!-- Header Title -->
                   <VBox spacing="5.0">
-                     <Label style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #2B1B15;" text="Laporan Keuangan" />
-                     <Label style="-fx-font-size: 14; -fx-text-fill: #8A7A75;" text="Pendapatan, pengeluaran, dan laba bersih bulanan" />
+                     <children>
+                        <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15;" text="Laporan Keuangan" />
+                        <Label style="-fx-font-size: 14; -fx-text-fill: #8A7A75;" text="Pendapatan, pengeluaran, dan laba bersih bulanan" />
+                     </children>
                   </VBox>
 
-<<<<<<< HEAD
-                  <!-- 2 CHART -->
-                  <HBox prefHeight="320.0" spacing="20.0">
-                     <!-- Bar Chart -->
-                     <VBox style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20;" HBox.hgrow="ALWAYS">
-                        <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #2B1B15;" text="Pendapatan vs Pengeluaran" />
-                        <Label style="-fx-font-size: 12; -fx-text-fill: #8A7A75; -fx-padding: 0 0 10 0;" text="Perbandingan bulanan (dalam Rupiah)" />
-                        <BarChart fx:id="barChartLaporan" alternativeRowFillVisible="false" legendSide="BOTTOM" prefHeight="240.0" verticalGridLinesVisible="false">
-                           <xAxis><CategoryAxis side="BOTTOM" /></xAxis>
-                           <yAxis><NumberAxis side="LEFT" /></yAxis>
-                        </BarChart>
-                     </VBox>
-
-                     <!-- Line Chart -->
-                     <VBox style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20;" HBox.hgrow="ALWAYS">
-                        <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #2B1B15;" text="Tren Laba Bersih" />
-                        <Label style="-fx-font-size: 12; -fx-text-fill: #8A7A75; -fx-padding: 0 0 10 0;" text="Perkembangan laba per bulan" />
-                        <LineChart fx:id="lineChartLaporan" createSymbols="true" legendSide="BOTTOM" prefHeight="240.0">
-                           <xAxis><CategoryAxis side="BOTTOM" /></xAxis>
-                           <yAxis><NumberAxis side="LEFT" /></yAxis>
-                        </LineChart>
-                     </VBox>
-=======
                   <!-- Charts Section (Bar Chart & Line Chart Berjejer) -->
-                  <HBox spacing="20.0" prefHeight="320.0">
+                  <HBox prefHeight="320.0" spacing="20.0">
                      <children>
                         <!-- Kiri: Pendapatan vs Pengeluaran -->
                         <VBox prefWidth="480.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20;" HBox.hgrow="ALWAYS">
                            <children>
                               <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #2B1B15;" text="Pendapatan vs Pengeluaran" />
                               <Label style="-fx-font-size: 12; -fx-text-fill: #8A7A75; -fx-padding: 0 0 10 0;" text="Perbandingan bulanan (dalam Rupiah)" />
-                              <BarChart fx:id="barChartLaporan" legendSide="BOTTOM" alternativeRowFillVisible="false" verticalGridLinesVisible="false" prefHeight="240.0">
+                              <BarChart fx:id="barChartLaporan" alternativeRowFillVisible="false" legendSide="BOTTOM" prefHeight="240.0" verticalGridLinesVisible="false">
                                 <xAxis><CategoryAxis side="BOTTOM" /></xAxis>
                                 <yAxis><NumberAxis side="LEFT" /></yAxis>
                               </BarChart>
@@ -182,30 +119,30 @@
                            <children>
                               <Label style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #2B1B15;" text="Tren Laba Bersih" />
                               <Label style="-fx-font-size: 12; -fx-text-fill: #8A7A75; -fx-padding: 0 0 10 0;" text="Perkembangan laba per bulan" />
-                              <LineChart fx:id="lineChartLaporan" legendSide="BOTTOM" createSymbols="true" prefHeight="240.0">
+                              <LineChart fx:id="lineChartLaporan" createSymbols="true" legendSide="BOTTOM" prefHeight="240.0">
                                 <xAxis><CategoryAxis side="BOTTOM" /></xAxis>
                                 <yAxis><NumberAxis side="LEFT" /></yAxis>
                               </LineChart>
                            </children>
                         </VBox>
                      </children>
->>>>>>> a383e7d636bee21e086482d21a116f31044a65ca
                   </HBox>
 
-                  <!-- TABLE -->
+                  <!-- Table Section (Ringkasan Bulanan) -->
                   <VBox style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20;">
-                     <Label style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 0 0 15 0;" text="Ringkasan Bulanan" />
-                     <TableView fx:id="tableRingkasan" prefHeight="200.0" style="-fx-background-radius: 8;">
-                        <columns>
-                           <TableColumn prefWidth="150.0" text="BULAN" />
-                           <TableColumn prefWidth="200.0" text="PENDAPATAN" />
-                           <TableColumn prefWidth="200.0" text="PENGELUARAN" />
-                           <TableColumn prefWidth="200.0" text="LABA BERSIH" />
-                           <TableColumn prefWidth="150.0" text="MARGIN" />
-                        </columns>
-                     </TableView>
+                     <children>
+                        <Label style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 0 0 15 0;" text="Ringkasan Bulanan" />
+                        <TableView fx:id="tableRingkasan" prefHeight="200.0" style="-fx-background-radius: 8; -fx-overflow-x: hidden;">
+                          <columns>
+                            <TableColumn prefWidth="150.0" text="BULAN" />
+                            <TableColumn prefWidth="200.0" text="PENDAPATAN" />
+                              <TableColumn prefWidth="200.0" text="PENGELUARAN" />
+                              <TableColumn prefWidth="200.0" text="LABA BERSIH" />
+                              <TableColumn prefWidth="150.0" text="MARGIN" />
+                          </columns>
+                        </TableView>
+                     </children>
                   </VBox>
-
                </children>
             </VBox>
          </content>
