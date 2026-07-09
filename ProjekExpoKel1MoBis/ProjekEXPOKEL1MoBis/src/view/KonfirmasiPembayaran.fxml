@@ -25,11 +25,7 @@
     <VBox spacing="15.0" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20">
 
         <!-- Judul -->
-<<<<<<< HEAD
-        <Text style="-fx-font-size: 24; -fx-font-weight: bold; -fx-fill: #000000;" text="Konfirmasi Pembayaran" />
-=======
         <Text style="-fx-font-size: 28; -fx-font-weight: bold; -fx-fill: black;" text="Konfirmasi Pembayaran" />
->>>>>>> 3c5b4092b5454e751b071c0644c0d81a6367cf12
         <Text style="-fx-font-size: 14; -fx-fill: #666666;" text="Beritahu admin bahwa Anda sudah melakukan pembayaran" />
 
         <Separator />
@@ -72,11 +68,7 @@
         <Separator />
 
         <!-- Informasi -->
-<<<<<<< HEAD
-        <Text fill="#ef0303" style="-fx-font-size: 12; -fx-fill: #ff0000; -fx-font-style: italic;" text="Admin akan segera menerima notifikasi konfirmasi pembayaran Anda dan akan memverifikasi dalam 1x24 jam." />
-=======
         <Text fill="#ef0303" style="-fx-font-size: 18; -fx-fill: #666666; -fx-font-style: italic;" text="Admin akan segera menerima notifikasi konfirmasi pembayaran Anda dan akan memverifikasi dalam 1x24 jam." />
->>>>>>> 3c5b4092b5454e751b071c0644c0d81a6367cf12
 
         <Separator />
 
