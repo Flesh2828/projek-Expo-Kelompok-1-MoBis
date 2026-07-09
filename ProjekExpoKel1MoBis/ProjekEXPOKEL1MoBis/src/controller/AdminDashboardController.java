@@ -14,11 +14,11 @@ public class AdminDashboardController {
 
     @FXML
     public void initialize() {
-        // Halaman default saat pertama kali admin masuk
+        // default admin masuk
         bukaHalamanAdmin("/view/AdminRingkasan.fxml"); 
     }
 
-    // Fungsi pembantu untuk menukar konten halaman tengah admin
+    // ubah konten tengah admin
     public void bukaHalamanAdmin(String fxmlPath) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));

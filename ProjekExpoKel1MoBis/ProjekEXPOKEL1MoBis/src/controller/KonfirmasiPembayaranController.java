@@ -1,16 +1,11 @@
-
 package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import javafx.event.ActionEvent;
-
 import java.io.IOException;
 
 public class KonfirmasiPembayaranController {
@@ -21,13 +16,11 @@ public class KonfirmasiPembayaranController {
     @FXML private TextField txtNamaPengirim;
     @FXML private TextArea txtCatatan;
 
-    // ===== INI YANG DITAMBAHKAN =====
     private AnchorPane paneKontenTengah;
 
     public void setPaneKontenTengah(AnchorPane pane) {
         this.paneKontenTengah = pane;
     }
-    // ================================
 
     @FXML
     public void initialize() {
@@ -52,11 +45,28 @@ public class KonfirmasiPembayaranController {
         }
 
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/view/KonfirmasiBerhasil.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Konfirmasi Berhasil - SINARING");
-            stage.show();
+            // === PERBAIKAN DI SINI ===
+            // Load halaman KonfirmasiBerhasil
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/KonfirmasiBerhasil.fxml"));
+            Parent berhasilView = loader.load();
+            
+            // Set paneKontenTengah ke KonfirmasiBerhasilController
+            KonfirmasiBerhasilController berhasilController = loader.getController();
+            berhasilController.setPaneKontenTengah(this.paneKontenTengah);
+            
+            // Ganti konten di paneKontenTengah (BUKAN stage.setScene!)
+            if (paneKontenTengah != null) {
+                paneKontenTengah.getChildren().clear();
+                paneKontenTengah.getChildren().add(berhasilView);
+                
+                // Set anchor agar mengikuti ukuran panel
+                AnchorPane.setTopAnchor(berhasilView, 0.0);
+                AnchorPane.setBottomAnchor(berhasilView, 0.0);
+                AnchorPane.setLeftAnchor(berhasilView, 0.0);
+                AnchorPane.setRightAnchor(berhasilView, 0.0);
+            }
+            // ========================
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -65,11 +75,27 @@ public class KonfirmasiPembayaranController {
     @FXML
     private void handleBatal(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/view/Pembayaran.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Pembayaran - SINARING");
-            stage.show();
+            // === PERBAIKAN DI SINI ===
+            // Load halaman Pembayaran
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Pembayaran.fxml"));
+            Parent pembayaranView = loader.load();
+            
+            // Set paneKontenTengah ke PembayaranController
+            PembayaranController pembayaranController = loader.getController();
+            pembayaranController.setPaneKontenTengah(this.paneKontenTengah);
+            
+            // Ganti konten di paneKontenTengah (BUKAN stage.setScene!)
+            if (paneKontenTengah != null) {
+                paneKontenTengah.getChildren().clear();
+                paneKontenTengah.getChildren().add(pembayaranView);
+                
+                AnchorPane.setTopAnchor(pembayaranView, 0.0);
+                AnchorPane.setBottomAnchor(pembayaranView, 0.0);
+                AnchorPane.setLeftAnchor(pembayaranView, 0.0);
+                AnchorPane.setRightAnchor(pembayaranView, 0.0);
+            }
+            // ========================
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
