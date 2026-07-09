@@ -19,9 +19,14 @@ public class KelolaPesananController {
     @FXML private TableColumn<Pesanan, String> colId, colPelanggan, colMenu, colTglKirim, colAlamat, colStatus, colPembayaran;
     @FXML private TableColumn<Pesanan, Integer> colQty;
 
+    @FXML private Button btnFilterSemua;
+    @FXML private Button btnFilterKonfirmasi;
+    @FXML private Button btnFilterDimasak;
+    @FXML private Button btnFilterDikirim;
+
     private ObservableList<Pesanan> listMasterPesanan = FXCollections.observableArrayList();
     private String currentFilter = "Semua";
-    private final String xmlPath = "ProjekEXPOKEL1MoBis/src/data/pesanan.xml"; // Sesuaikan folder root laptopmu
+    private final String xmlPath = "/data/pesanan.xml"; // Sesuaikan folder root laptopmu
 
     @FXML
     public void initialize() {
@@ -34,20 +39,34 @@ public class KelolaPesananController {
         colStatus.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getStatusPesanan()));
         colPembayaran.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getStatusPembayaran()));
 
+        if (btnFilterSemua != null) btnFilterSemua.setOnAction(e -> handleFilterSemua());
+        if (btnFilterKonfirmasi != null) btnFilterKonfirmasi.setOnAction(e -> handleFilterKonfirmasi());
+        if (btnFilterDimasak != null) btnFilterDimasak.setOnAction(e -> handleFilterDimasak());
+        if (btnFilterDikirim != null) btnFilterDikirim.setOnAction(e -> handleFilterDikirim());
+
         loadDataDariXML();
     }
 
-    private void loadDataDariXML() {
-        listMasterPesanan.clear();
-        try {
-            File file = new File(xmlPath);
-            if (!file.exists()) return;
+ private void loadDataDariXML() {
+    listMasterPesanan.clear();
+    try {
+        File file = new File(xmlPath);
+        System.out.println("LOG SINARING -> Mencoba membaca XML di jalur: " + file.getAbsolutePath());
+        
+        if (!file.exists()) {
+            System.out.println("LOG SINARING -> WARNING: File pesanan.xml TIDAK DITEMUKAN!");
+            return;
+        }
 
-            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
-            NodeList nList = doc.getElementsByTagName("order");
+        Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
+        NodeList nList = doc.getElementsByTagName("order");
+        System.out.println("LOG SINARING -> Jumlah order yang terdeteksi di XML: " + nList.getLength());
 
-            for (int i = 0; i < nList.getLength(); i++) {
-                Element el = (Element) nList.item(i);
+        for (int i = 0; i < nList.getLength(); i++) {
+            Element el = (Element) nList.item(i);
+            
+            // Bungkus dengan try-catch internal biar kalau ada 1 baris XML yang korup, baris lain tetap tampil
+            try {
                 Pesanan p = new Pesanan(
                     el.getAttribute("id"),
                     el.getElementsByTagName("username").item(0).getTextContent(),
@@ -61,11 +80,21 @@ public class KelolaPesananController {
                     Double.parseDouble(el.getElementsByTagName("total").item(0).getTextContent())
                 );
                 listMasterPesanan.add(p);
+            } catch (Exception inner) {
+                System.out.println("Gagal parsing salah satu item order pada indeks ke-" + i);
             }
-            applyFilter();
-        } catch (Exception e) { e.printStackTrace(); }
-    }
+        }
+        
+        // PENTING: Set items ke table visual
+        tableKelolaPesanan.setItems(listMasterPesanan);
+        tableKelolaPesanan.refresh();
+        System.out.println("LOG SINARING -> Berhasil memasukkan data ke TableView Kelola Pesanan!");
 
+    } catch (Exception e) { 
+        System.out.println("LOG SINARING -> CRASH UTAMA PADA SAAT MEMBACA XML PESANAN:");
+        e.printStackTrace(); 
+    }
+}
     private void applyFilter() {
         if (currentFilter.equals("Semua")) {
             tableKelolaPesanan.setItems(listMasterPesanan);
