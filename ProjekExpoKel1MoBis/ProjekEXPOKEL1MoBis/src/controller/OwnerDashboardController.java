@@ -1,89 +1,121 @@
 package controller;
 
-import javafx.event.ActionEvent;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class OwnerDashboardController {
 
-    @FXML private LineChart<String, Number> trenLabaChart;
+    @FXML private Button btnDashboard;
+    @FXML private Button btnLaporan;
+    @FXML private Button btnPiutang;
+    @FXML private LineChart<String, Number> chartDashboard;
 
     @FXML
     public void initialize() {
-        populateChart();
+        System.out.println("=== OwnerDashboardController Berhasil Diinisialisasi ===");
+        
+        if (btnDashboard == null) System.out.println("Peringatan: btnDashboard tidak terhubung ke FXML!");
+        if (btnLaporan == null) System.out.println("Peringatan: btnLaporan tidak terhubung ke FXML!");
+        if (btnPiutang == null) System.out.println("Peringatan: btnPiutang tidak terhubung ke FXML!");
+
+        btnDashboard.setOnAction(event -> {
+            System.out.println("Tombol Dashboard diklik!");
+            showDashboardContent();
+        });
+
+        btnLaporan.setOnAction(event -> {
+            System.out.println("Tombol Laporan Keuangan diklik!");
+            showLaporanContent();
+        });
+
+        btnPiutang.setOnAction(event -> {
+            System.out.println("Tombol Piutang diklik!");
+            showPiutangContent();
+        });
+
+        initDashboardChart();
+        setMenuActive(btnDashboard);
     }
 
-    private void populateChart() {
-        if (trenLabaChart == null) return;
-        
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
-        series.getData().add(new XYChart.Data<>("Feb", 6.5));
-        series.getData().add(new XYChart.Data<>("Mar", 7.5));
-        series.getData().add(new XYChart.Data<>("Apr", 6.5));
-        series.getData().add(new XYChart.Data<>("Mei", 10.5));
-        series.getData().add(new XYChart.Data<>("Jun", 9.2));
-        series.getData().add(new XYChart.Data<>("Jul", 11.0));
-        
-        trenLabaChart.getData().clear();
-        trenLabaChart.getData().add(series);
+    private void initDashboardChart() {
+        if (chartDashboard != null) {
+            chartDashboard.getData().clear();
+            XYChart.Series<String, Number> series = new XYChart.Series<>();
+            series.setName("Laba Bersih");
+            series.getData().add(new XYChart.Data<>("Feb", 6.5));
+            series.getData().add(new XYChart.Data<>("Mar", 7.5));
+            series.getData().add(new XYChart.Data<>("Apr", 6.5));
+            series.getData().add(new XYChart.Data<>("Mei", 9.5));
+            series.getData().add(new XYChart.Data<>("Jun", 8.5));
+            series.getData().add(new XYChart.Data<>("Jul", 11.0));
+            chartDashboard.getData().add(series);
+        }
+    }
 
-        // Styling Line Color and Symbols to match Terracotta Theme
-        series.getNode().setStyle("-fx-stroke: #B54D22; -fx-stroke-width: 3.5px;");
-        for (XYChart.Data<String, Number> data : series.getData()) {
-            if (data.getNode() != null) {
-                data.getNode().setStyle("-fx-background-color: #B54D22, white; -fx-background-radius: 5px; -fx-padding: 5px;");
+    @FXML
+    private void showDashboardContent() {
+        setMenuActive(btnDashboard);
+    }
+
+    @FXML
+    private void showLaporanContent() {
+        setMenuActive(btnLaporan);
+        switchScene("/view/OwnerLaporan.fxml");
+    }
+
+    @FXML
+    private void showPiutangContent() {
+        setMenuActive(btnPiutang);
+        switchScene("/view/OwnerPiutang.fxml");
+    }
+
+    private void switchScene(String fxmlPath) {
+        System.out.println("Mencoba berpindah halaman ke: " + fxmlPath);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent newRoot = loader.load();
+            
+            if (newRoot == null) {
+                System.out.println("ERROR: File FXML ditemukan tapi isinya kosong/null: " + fxmlPath);
+                return;
             }
-        }
-    }
 
-    @FXML
-    public void handleLaporanKeuangan(MouseEvent event) {
-        switchScene(event, "/view/AdminRingkasan.fxml", "SINARING - Laporan Keuangan");
-    }
+            if (btnDashboard.getScene() == null) {
+                System.out.println("ERROR: Scene dari btnDashboard bernilai null!");
+                return;
+            }
 
-    @FXML
-    public void handleLaporanKeuanganAction(ActionEvent event) {
-        switchSceneAction(event, "/view/AdminRingkasan.fxml", "SINARING - Laporan Keuangan");
-    }
+            Stage stage = (Stage) btnDashboard.getScene().getWindow();
+            if (stage == null) {
+                System.out.println("ERROR: Windows Stage tidak ditemukan!");
+                return;
+            }
 
-    @FXML
-    public void handlePiutang(MouseEvent event) {
-        switchScene(event, "/view/Langganan.fxml", "SINARING - Piutang Pelanggan");
-    }
-
-    @FXML
-    public void handleLogout(MouseEvent event) {
-        switchScene(event, "/view/Login.fxml", "SINARING - Login");
-    }
-
-    private void switchScene(MouseEvent event, String fxmlPath, String title) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setTitle(title);
-            stage.setScene(new Scene(root, 1280, 720));
-            stage.show();
+            stage.getScene().setRoot(newRoot);
+            System.out.println("BERHASIL: Scene Root sukses diganti ke " + fxmlPath);
+            
+        } catch (IOException e) {
+            System.out.println("CRITICAL ERROR saat memuat fxml: " + e.getMessage());
+            e.printStackTrace();
         } catch (Exception e) {
+            System.out.println("UNKNOWN ERROR: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    private void switchSceneAction(ActionEvent event, String fxmlPath, String title) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setTitle(title);
-            stage.setScene(new Scene(root, 1280, 720));
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    private void setMenuActive(Button activeButton) {
+        String defaultStyle = "-fx-background-color: transparent; -fx-text-fill: #F0D0C0; -fx-font-size: 14; -fx-font-weight: medium; -fx-alignment: LEFT; -fx-background-radius: 12; -fx-padding: 12;";
+        btnDashboard.setStyle(defaultStyle);
+        btnLaporan.setStyle(defaultStyle);
+        btnPiutang.setStyle(defaultStyle);
+
+        String activeStyle = "-fx-background-color: rgba(255, 255, 255, 0.15); -fx-text-fill: white; -fx-font-size: 14; -fx-font-weight: bold; -fx-alignment: LEFT; -fx-background-radius: 12; -fx-padding: 12;";
+        activeButton.setStyle(activeStyle);
     }
 }
