@@ -76,7 +76,7 @@
       <!-- ==================== CONTENT AREA (RIGHT) ==================== -->
       <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background-radius: 0; -fx-border-color: transparent;" HBox.hgrow="ALWAYS">
          <content>
-            <VBox spacing="25.0" style="-fx-background-color: #FAF5EF;">
+            <VBox spacing="25.0" style="-fx-background-color: ffffff;">
                <padding>
                   <Insets bottom="35.0" left="35.0" right="35.0" top="35.0" />
                </padding>
@@ -94,26 +94,16 @@
                   <HBox prefHeight="140.0" spacing="20.0">
                      <children>
                         <!-- Kartu 1: Total Piutang -->
-                        <VBox prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 15, 0, 0, 5);" HBox.hgrow="ALWAYS">
+                        <VBox prefWidth="300.0" style="-fx-background-color: FFFAF0; -fx-background-radius: 20; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 15, 0, 0, 5);" HBox.hgrow="ALWAYS">
                            <children>
-                              <VBox alignment="CENTER" maxWidth="36.0" prefHeight="36.0" prefWidth="36.0" style="-fx-background-color: #FAF5EF; -fx-background-radius: 10;">
-                                 <children>
-                                    <Label style="-fx-text-fill: #B54D22; -fx-font-size: 16;" text="💼" />
-                                 </children>
-                              </VBox>
                               <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 12 0 2 0;" text="Rp 12.920.000" />
                               <Label style="-fx-font-size: 13; -fx-text-fill: #8A7A75;" text="Total Piutang" />
                            </children>
                         </VBox>
 
                         <!-- Kartu 2: Melewati Jatuh Tempo -->
-                        <VBox prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 15, 0, 0, 5);" HBox.hgrow="ALWAYS">
+                        <VBox prefWidth="300.0" style="-fx-background-color: FFFAF0; -fx-background-radius: 20; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 15, 0, 0, 5);" HBox.hgrow="ALWAYS">
                            <children>
-                              <VBox alignment="CENTER" maxWidth="36.0" prefHeight="36.0" prefWidth="36.0" style="-fx-background-color: #FAF5EF; -fx-background-radius: 10;">
-                                 <children>
-                                    <Label style="-fx-text-fill: #B54D22; -fx-font-size: 16;" text="⚠️" />
-                                 </children>
-                              </VBox>
                               <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 12 0 2 0;" text="2" />
                               <Label style="-fx-font-size: 13; -fx-text-fill: #6E5E59; -fx-font-weight: bold;" text="Melewati Jatuh Tempo" />
                               <Label style="-fx-font-size: 11; -fx-text-fill: #8A7A75;" text="&gt; 7 hari" />
@@ -121,13 +111,8 @@
                         </VBox>
 
                         <!-- Kartu 3: Akan Jatuh Tempo -->
-                        <VBox prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 15, 0, 0, 5);" HBox.hgrow="ALWAYS">
+                        <VBox prefWidth="300.0" style="-fx-background-color: FFFAF0; -fx-background-radius: 20; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 15, 0, 0, 5);" HBox.hgrow="ALWAYS">
                            <children>
-                              <VBox alignment="CENTER" maxWidth="36.0" prefHeight="36.0" prefWidth="36.0" style="-fx-background-color: #FAF5EF; -fx-background-radius: 10;">
-                                 <children>
-                                    <Label style="-fx-text-fill: #B54D22; -fx-font-size: 16;" text="🕒" />
-                                 </children>
-                              </VBox>
                               <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 12 0 2 0;" text="1" />
                               <Label style="-fx-font-size: 13; -fx-text-fill: #6E5E59; -fx-font-weight: bold;" text="Akan Jatuh Tempo" />
                               <Label style="-fx-font-size: 11; -fx-text-fill: #8A7A75;" text="dalam 7 hari ke depan" />
