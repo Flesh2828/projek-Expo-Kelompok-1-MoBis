@@ -42,10 +42,13 @@
             </font></Text>
             <HBox prefHeight="112.0" prefWidth="1388.0" spacing="15.0">
                 <Text style="-fx-font-size: 28; -fx-font-weight: bold; -fx-fill: C35E2A;" text="Rp 250.000" />
-                <Button fx:id="btnPesanUlang1" onAction="#handlePesanUlang" prefHeight="50.0" prefWidth="160.0" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold;" text="Pesan Ulang">
+                <Button fx:id="btnPesanUlang1" onAction="#handlePesanUlang" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold;" text="Pesan Ulang">
                <HBox.margin>
                   <Insets left="1100.0" />
-               </HBox.margin></Button>
+               </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
             </HBox>
         </VBox>
 
@@ -72,7 +75,10 @@
                 <Button fx:id="btnPesanUlang2" onAction="#handlePesanUlang" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold;" text="Pesan Ulang">
                <HBox.margin>
                   <Insets left="1100.0" />
-               </HBox.margin></Button>
+               </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
             </HBox>
         </VBox>
 
@@ -96,10 +102,13 @@
             </font></Text>
             <HBox prefHeight="92.0" prefWidth="1388.0" spacing="15.0">
                 <Text style="-fx-font-size: 28; -fx-font-weight: bold; -fx-fill: C35E2A;" text="Rp 1.000.000" />
-                <Button fx:id="btnPesanUlang3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" onAction="#handlePesanUlang" prefHeight="39.0" prefWidth="125.0" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold;" text="Pesan Ulang">
+                <Button fx:id="btnPesanUlang3" onAction="#handlePesanUlang" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold;" text="Pesan Ulang">
                <HBox.margin>
                   <Insets left="1080.0" />
-               </HBox.margin></Button>
+               </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
             </HBox>
         </VBox>
 

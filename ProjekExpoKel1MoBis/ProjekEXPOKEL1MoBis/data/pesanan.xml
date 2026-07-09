@@ -7,7 +7,7 @@
         <alamat>Jl. Contoh No. 1</alamat>
         <catatan/>
         <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Belum Lunas</status_bayar>
+        <status_bayar>Lunas</status_bayar>
         <total>250000.0</total>
     </order>
     <order id="ORD-078">
@@ -40,7 +40,7 @@
         <alamat>Jl. Contoh No. 1</alamat>
         <catatan/>
         <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Belum Lunas</status_bayar>
+        <status_bayar>Lunas</status_bayar>
         <total>250000.0</total>
     </order>
     <order id="ORD-025">

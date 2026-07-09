@@ -15,18 +15,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1247.0" prefWidth="1477.0" style="-fx-background-color: #FfffFE;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PembayaranController">
+<AnchorPane prefHeight="1328.0" prefWidth="1477.0" style="-fx-background-color: #FfffFE;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PembayaranController">
 
     <padding>
         <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
 
-    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="50.0" layoutY="75.0" prefHeight="1094.0" prefWidth="1446.0" style="-fx-background-color: transparent; -fx-background: transparent;" vbarPolicy="AS_NEEDED" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="55.0">
+    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="44.0" layoutY="55.0" prefHeight="1183.0" prefWidth="1404.0" style="-fx-background-color: transparent; -fx-background: transparent;" vbarPolicy="AS_NEEDED" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="30.0">
         <content>
-            <VBox prefHeight="1549.0" prefWidth="1365.0" spacing="15.0">
+            <VBox prefHeight="1147.0" prefWidth="1349.0" spacing="15.0">
 
                 <!-- Judul -->
-                <Text style="-fx-font-size: 28; -fx-font-weight: bold; -fx-fill: black;" text="Pembayaran" />
+                <Text style="-fx-font-size: 28; -fx-font-weight: bold; -fx-fill: black;" text="Pembayaran" wrappingWidth="171.70703125" />
                 <Text style="-fx-font-size: 14; -fx-fill: #666666;" text="Informasi rekening dan upload bukti pembayaran" />
 
                 <Separator />
@@ -110,7 +110,7 @@
                     </font>
                 </Text>
 
-                <VBox prefHeight="335.0" prefWidth="1224.0" spacing="5.0" style="-fx-background-color: #FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-alignment: center;">
+                <VBox prefHeight="335.0" prefWidth="1324.0" spacing="5.0" style="-fx-background-color: #FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-alignment: center;">
                     <ImageView fitHeight="557.0" fitWidth="312.0" pickOnBounds="true" preserveRatio="true">
                         <image>
                             <Image url="@qris.png" />
@@ -127,7 +127,10 @@
 
                 <!-- Tombol Konfirmasi Bayar -->
                 <HBox alignment="CENTER_RIGHT">
-                    <Button onAction="#handleKonfirmasiBayar" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;" text="Konfirmasi Bayar" />
+                    <Button onAction="#handleKonfirmasiBayar" prefHeight="40.0" prefWidth="172.0" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20;" text="Konfirmasi Bayar">
+                  <font>
+                     <Font size="14.0" />
+                  </font></Button>
                 </HBox>
 
             </VBox>
