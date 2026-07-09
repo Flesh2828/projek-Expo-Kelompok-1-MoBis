@@ -24,10 +24,6 @@ public class AdminDashboardController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent halaman = loader.load();
             paneKontenAdmin.getChildren().setAll(halaman);
-            AnchorPane.setTopAnchor(halaman, 0.0);
-            AnchorPane.setBottomAnchor(halaman, 0.0);
-            AnchorPane.setLeftAnchor(halaman, 0.0);
-            AnchorPane.setRightAnchor(halaman, 0.0);
         } catch (Exception e) {
             System.out.println("Gagal memuat halaman admin: " + e.getMessage());
             e.printStackTrace();
@@ -51,3 +47,4 @@ public class AdminDashboardController {
         }
     }
 }
+

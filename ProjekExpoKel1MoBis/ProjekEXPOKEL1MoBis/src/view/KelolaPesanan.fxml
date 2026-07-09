@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="850.0" style="-fx-background-color: #FFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KelolaPesananController">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="850.0" style="-fx-background-color: #FFF;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KelolaPesananController">
    <children>
       <Label layoutX="30.0" layoutY="20.0" text="Kelola Pesanan" textFill="#4A2E1B"><font><Font name="System Bold" size="24.0" /></font></Label>
       <Label layoutX="30.0" layoutY="50.0" text="Pembaruan status dan monitoring pesanan masuk" textFill="#888" />
       
       <HBox layoutX="30.0" layoutY="90.0" spacing="10.0">
          <children>
-            <Button fx:id="btnFilterSemua" onAction="#handleFilterSemua" text="Semua" style="-fx-background-color: #A0522D; -fx-text-fill: white; -fx-background-radius: 15;" />
-            <Button fx:id="btnFilterKonfirmasi" onAction="#handleFilterKonfirmasi" text="Dikonfirmasi" style="-fx-background-color: #F5F5F5; -fx-text-fill: #333; -fx-background-radius: 15;" />
-            <Button fx:id="btnFilterDimasak" onAction="#handleFilterDimasak" text="Dimasak" style="-fx-background-color: #F5F5F5; -fx-text-fill: #333; -fx-background-radius: 15;" />
-            <Button fx:id="btnFilterDikirim" onAction="#handleFilterDikirim" text="Dikirim" style="-fx-background-color: #F5F5F5; -fx-text-fill: #333; -fx-background-radius: 15;" />
+            <Button fx:id="btnFilterSemua" onAction="#handleFilterSemua" style="-fx-background-color: #E74C3C; -fx-text-fill: white; -fx-background-radius: 15;" text="Semua" />
+            <Button fx:id="btnFilterKonfirmasi" onAction="#handleFilterKonfirmasi" style="-fx-background-color: #F5F5F5; -fx-text-fill: #333; -fx-background-radius: 15;" text="Dikonfirmasi" />
+            <Button fx:id="btnFilterDimasak" onAction="#handleFilterDimasak" style="-fx-background-color: #F5F5F5; -fx-text-fill: #333; -fx-background-radius: 15;" text="Dimasak" />
+            <Button fx:id="btnFilterDikirim" onAction="#handleFilterDikirim" style="-fx-background-color: #F5F5F5; -fx-text-fill: #333; -fx-background-radius: 15;" text="Dikirim" />
          </children>
       </HBox>
 
@@ -32,9 +37,9 @@
 
       <HBox layoutX="30.0" layoutY="535.0" spacing="15.0">
          <children>
-            <Button onAction="#handleProsesStatus" text="Update Status Berjenjang (Konfirmasi → Masak → Kirim)" style="-fx-background-color: #A0522D; -fx-text-fill: white; -fx-font-weight: bold;" />
-            <Button onAction="#handleVerifikasiPembayaran" text="✔ Verifikasi Pembayaran" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold;" />
-            <Button onAction="#handleVerifikasiWA" text="Verifikasi WA &amp; Kirim Bukti Web" style="-fx-background-color: #25D366; -fx-text-fill: white;" />
+            <Button onAction="#handleProsesStatus" style="-fx-background-color: #E74C3C; -fx-text-fill: white; -fx-font-weight: bold;" text="Update Status Berjenjang (Konfirmasi → Masak → Kirim)" />
+            <Button onAction="#handleVerifikasiPembayaran" style="-fx-background-color: #32CD32; -fx-text-fill: white; -fx-font-weight: bold;" text="✔ Verifikasi Pembayaran" />
+            <Button onAction="#handleVerifikasiWA" style="-fx-background-color: #9ACD32; -fx-text-fill: white;" text="Verifikasi WA &amp; Kirim Bukti Web" />
          </children>
       </HBox>
    </children>

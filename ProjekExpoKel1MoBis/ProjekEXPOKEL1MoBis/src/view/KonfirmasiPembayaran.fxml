@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1200.0" prefWidth="1500.0" style="-fx-background-color: #FFFfff;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KonfirmasiPembayaranController">
+<AnchorPane prefHeight="1200.0" prefWidth="1500.0" style="-fx-background-color: #FFFfff;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KonfirmasiPembayaranController">
 
     <padding>
         <Insets bottom="20" left="20" right="20" top="20" />
@@ -68,7 +68,7 @@
         <Separator />
 
         <!-- Informasi -->
-        <Text fill="#ef0303" style="-fx-font-size: 18; -fx-fill: #666666; -fx-font-style: italic;" text="Admin akan segera menerima notifikasi konfirmasi pembayaran Anda dan akan memverifikasi dalam 1x24 jam." />
+        <Text fill="#ef0303" style="-fx-font-size: 18; -fx-fill: #E74C3C; -fx-font-style: italic;" text="Admin akan segera menerima notifikasi konfirmasi pembayaran Anda dan akan memverifikasi dalam 1x24 jam." />
 
         <Separator />
 

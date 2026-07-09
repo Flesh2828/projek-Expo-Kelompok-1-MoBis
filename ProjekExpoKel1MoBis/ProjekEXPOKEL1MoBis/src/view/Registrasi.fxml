@@ -15,7 +15,7 @@
     <TextField fx:id="txtRegUsername" maxWidth="250.0" promptText="Buat Username Baru" style="-fx-background-color: #FFFAF0;" />
     <PasswordField fx:id="txtRegPassword" maxWidth="250.0" promptText="Buat Password" style="-fx-background-color: #FFFAF0;" />
     
-    <Button onAction="#handleRegistrasi" prefWidth="150.0" style="-fx-background-color: #ffc0cb;" text="Daftar Sekarang" />
+    <Button onAction="#handleRegistrasi" prefWidth="150.0" style="-fx-background-color: #C35E2A;" text="Daftar Sekarang" />
     <Label fx:id="lblPesanStatus" text="" textFill="GREEN" />
     
     <Hyperlink onAction="#keHalamanLogin" text="Sudah punya akun? Kembali ke Login" textFill="RED" />

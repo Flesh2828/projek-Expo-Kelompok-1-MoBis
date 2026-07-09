@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="850.0" style="-fx-background-color: #FFF;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KelolaMenuController">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="850.0" style="-fx-background-color: #FFF;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KelolaMenuController">
    <children>
       <Label layoutX="30.0" layoutY="20.0" text="Kelola Menu" textFill="#4A2E1B"><font><Font name="System Bold" size="24.0" /></font></Label>
       <Label layoutX="30.0" layoutY="50.0" text="Daftar menu dan jadwal menu mingguan" textFill="#888" />
       
-      <Button layoutX="690.0" layoutY="35.0" onAction="#handleTambahMenu" style="-fx-background-color: #A0522D; -fx-text-fill: white;" text="+ Tambah Menu Baru" />
+      <Button layoutX="690.0" layoutY="35.0" onAction="#handleTambahMenu" style="-fx-background-color: #E74C3C; -fx-text-fill: white;" text="+ Tambah Menu Baru" />
 
       <TableView fx:id="tableMenu" layoutX="30.0" layoutY="100.0" prefHeight="420.0" prefWidth="790.0">
         <columns>
