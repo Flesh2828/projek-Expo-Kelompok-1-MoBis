@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Text?>
 
 <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0" style="-fx-background-color: #FFFAF0;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OwnerDashboardController">
-    <Text style="-fx-font-weight: bold; -fx-font-size: 22; -fx-fill: #16a085;" text="PANEL OWNER - SINARING" />
+    <Text style="-fx-font-weight: bold; -fx-font-size: 22; -fx-fill: #000000;" text="PANEL OWNER - SINARING" />
     <Label style="-fx-font-size: 14;" text="Selamat Datang Owner! Berikut ringkasan performa finansial bisnis Anda." />
 
     <HBox alignment="CENTER" spacing="10.0">
@@ -16,5 +16,5 @@
     </HBox>
 
     
-    <Button onAction="#handleLogout" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Logout" />
+    <Button onAction="#handleLogout" style="-fx-background-color: #ff0000; -fx-text-fill: white;" text="Logout" />
 </VBox>

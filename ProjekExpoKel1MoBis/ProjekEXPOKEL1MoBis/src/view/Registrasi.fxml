@@ -18,5 +18,5 @@
     <Button onAction="#handleRegistrasi" prefWidth="150.0" style="-fx-background-color: #ffc0cb;" text="Daftar Sekarang" />
     <Label fx:id="lblPesanStatus" text="" textFill="GREEN" />
     
-    <Hyperlink onAction="#keHalamanLogin" text="Sudah punya akun? Kembali ke Login" textFill="#e70404" />
+    <Hyperlink onAction="#keHalamanLogin" text="Sudah punya akun? Kembali ke Login" textFill="RED" />
 </VBox>

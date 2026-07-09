@@ -22,7 +22,7 @@
 
         <Text style="-fx-font-size: 14; -fx-fill: #666666;" text="Terima kasih! Admin telah menerima konfirmasi pembayaran Anda." />
 
-        <Text style="-fx-font-size: 14; -fx-fill: #666666;" text="Pembayaran akan diverifikasi dalam 1x24 jam." />
+        <Text fill="RED" style="-fx-font-size: 14; -fx-fill: #ff0000;" text="Pembayaran akan diverifikasi dalam 1x24 jam." />
 
         <Separator />
 
