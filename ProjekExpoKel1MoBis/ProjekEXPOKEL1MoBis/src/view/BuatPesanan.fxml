@@ -73,6 +73,11 @@
             <font>
                <Font size="20.0" />
             </font></Button>
+
+            <Label fx:id="lblStatusOrder" style="-fx-font-weight: bold;" text="" wrapText="true">
+            <font>
+               <Font size="16.0" />
+            </font></Label>
         </VBox>
     </children>
 </AnchorPane>
