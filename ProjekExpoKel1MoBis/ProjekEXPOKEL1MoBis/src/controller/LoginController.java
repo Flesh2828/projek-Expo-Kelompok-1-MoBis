@@ -1,4 +1,4 @@
- package controller;
+package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,23 +28,31 @@ public class LoginController {
             return;
         }
 
-        // Membaca data dari XML melalui model baru yang lengkap
         User userAktif = User.laksanakanLogin(inputUser, inputPass);
 
         if (userAktif != null) {
             try {
-                // Sesuai prinsip RPL: Arahkan scene berdasarkan Role akun 
-                String fxmlPath = ""; // Default sementara gabungan
-                String judulWindow = "" + userAktif.getRole();
+                String fxmlPath = "";
+                String judulWindow = "";
 
-                // Catatan Kelompok: Jika nanti file FXML tiap aktor sudah dipisah, tinggal aktifkan ini:
-                /*
-                if (userAktif.getRole().equals("Admin")) fxmlPath = "/View/AdminMain.fxml";
-                else if (userAktif.getRole().equals("Owner")) fxmlPath = "/View/OwnerMain.fxml";
-                */
                 if (userAktif.getRole().equalsIgnoreCase("Pelanggan")){
                     fxmlPath = "/view/PelangganDashboard.fxml";
                     judulWindow = "SINARING - Dashboard Pelanggan";
+                    
+                    // ===== KIRIM USERNAME KE DASHBOARD =====
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+                    Parent root = loader.load();
+                    
+                    PelangganDashboardController controller = loader.getController();
+                    controller.setUsernameSession(inputUser); // <-- INI PENTING!
+                    
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setTitle(judulWindow);
+                    stage.setScene(new Scene(root, 600, 400));
+                    stage.setMaximized(true);
+                    stage.show();
+                    return;
+                    
                 } else if (userAktif.getRole().equalsIgnoreCase("Owner")){
                     fxmlPath = "/view/OwnerDashboard.fxml";
                     judulWindow = "SINARING - Dashboard Owner";
@@ -52,12 +60,14 @@ public class LoginController {
                     fxmlPath = "/view/AdminDashboard.fxml";
                     judulWindow = "SINARING - Dashboard Admin";
                 }
+                
                 Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setTitle(judulWindow);
                 stage.setScene(new Scene(root, 600, 400)); 
                 stage.setMaximized(true);
                 stage.show();
+                
             } catch (Exception e) {
                 lblPesanError.setText("Gagal memuat halaman dashboard!");
                 e.printStackTrace();
@@ -70,7 +80,7 @@ public class LoginController {
     @FXML
     public void keHalamanRegistrasi(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/View/Registrasi.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/view/Registrasi.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("SINARING - Registrasi");
             stage.setScene(new Scene(root, 400, 300));

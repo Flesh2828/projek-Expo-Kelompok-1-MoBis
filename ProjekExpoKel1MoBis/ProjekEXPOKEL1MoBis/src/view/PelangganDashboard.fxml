@@ -82,7 +82,12 @@
                   <HBox alignment="CENTER_LEFT" spacing="10.0">
                       <Text style="-fx-font-size: 30; -fx-fill: #C35E2A;" text="👤" />
                       <VBox>
-                          <Text fx:id="txtNamaUser" style="-fx-font-size: 25; -fx-fill: #C35E2A;" text="Pelanggan" />
+                          <Text fx:id="txtNamaUser" onMouseClicked="#handleEditProfil" style="-fx-font-size: 25; -fx-fill: #C35E2A; -fx-cursor: hand;" text="umami" wrappingWidth="244.30859375" />
+                     <Text fill="#c35e2a" strokeType="OUTSIDE" strokeWidth="0.0" text="Pelanggan">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </Text>
                       </VBox>
                   </HBox>
                   

@@ -19,56 +19,57 @@ import java.util.Optional;
 import javafx.scene.control.DialogPane;
 
 public class PelangganDashboardController {
+    
     @FXML private Button btnDaftarMenu;
     @FXML private Button btnBuatPesanan;
     @FXML private Button btnRiwayat;
     @FXML private Button btnLangganan;
     @FXML private Button btnPembayaran;
+    @FXML private AnchorPane paneKontenTengah;
+    @FXML private Text txtNamaUser;
 
-   
-    @FXML
-    private AnchorPane paneKontenTengah;  // ← HURUF K BESAR!
-    @FXML
-    private Text txtNamaUser;
+    private String userAktifSession = "Pelanggan";
 
-    private String userAktifSession = "Pelanggan Aktif";
+    // ===== SET USERNAME DARI LOGIN =====
+    public void setUsernameSession(String username) {
+        this.userAktifSession = username;
+        if (txtNamaUser != null) {
+            txtNamaUser.setText(username);
+        }
+        System.out.println("✅ Username di-set ke: " + username);
+    }
 
-    // Getter untuk diakses dari controller lain
     public AnchorPane getPaneKontenTengah() {
         return paneKontenTengah;
     }
 
-    // Tambahkan method ini di PelangganDashboardController
-        public void setPaneKontenTengah(AnchorPane pane) {
-            this.paneKontenTengah = pane;
-        }
+    public void setPaneKontenTengah(AnchorPane pane) {
+        this.paneKontenTengah = pane;
+    }
 
     @FXML
     public void initialize() {
         txtNamaUser.setText(userAktifSession);
-        bukaHalamanKonten("/view/DaftarMenu.fxml");
+        System.out.println("📌 Initialize - Username: " + userAktifSession);
         
+        bukaHalamanKonten("/view/DaftarMenu.fxml");
+        setTombolAktif(btnDaftarMenu);
     }
+
     @FXML
     private void setTombolAktif(Button tombolAktif) {
-    // Kumpulkan semua variabel tombol sidebar yang terdaftar via fx:id
-    Button[] semuaTombol = {btnDaftarMenu, btnBuatPesanan, btnRiwayat, btnLangganan, btnPembayaran};
-    
-    // Reset class aktif dari semua tombol
-    for (Button btn : semuaTombol) {
-        if (btn != null) {
-            btn.getStyleClass().remove("aktif");
+        Button[] semuaTombol = {btnDaftarMenu, btnBuatPesanan, btnRiwayat, btnLangganan, btnPembayaran};
+        
+        for (Button btn : semuaTombol) {
+            if (btn != null) {
+                btn.getStyleClass().remove("aktif");
+            }
+        }
+        
+        if (tombolAktif != null) {
+            tombolAktif.getStyleClass().add("aktif");
         }
     }
-    
-    // Tambahkan class aktif ke tombol yang baru saja diklik
-    if (tombolAktif != null) {
-        tombolAktif.getStyleClass().add("aktif");
-    }
-}
-
-// Lakukan hal yang sama untuk tombol Riwayat, Langganan, dan Pembayaran...
-    // ==================== METHOD UNTUK BUKA HALAMAN ====================
 
     private void bukaHalamanKonten(String fxmlPath) {
         try {
@@ -96,6 +97,14 @@ public class PelangganDashboardController {
                 KonfirmasiPembayaranController controller = loader.getController();
                 controller.setPaneKontenTengah(paneKontenTengah);
                 tampilkanDiPanel(halaman);
+            }   else if (fxmlPath.equals("/view/EditProfil.fxml")) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+                Parent halaman = loader.load();
+                EditProfilController controller = loader.getController();
+                controller.setPaneKontenTengah(paneKontenTengah);
+                controller.setUsernameSession(userAktifSession);
+                controller.setTxtNamaUser(txtNamaUser);
+                tampilkanDiPanel(halaman);
             } else {
                 Parent halaman = FXMLLoader.load(getClass().getResource(fxmlPath));
                 tampilkanDiPanel(halaman);
@@ -105,7 +114,6 @@ public class PelangganDashboardController {
         }
     }
 
-    // Menampilkan halaman di paneKontenTengah dan meregangkannya agar pas dengan jendela
     private void tampilkanDiPanel(Parent halaman) {
         paneKontenTengah.getChildren().setAll(halaman);
         AnchorPane.setTopAnchor(halaman, 0.0);
@@ -114,9 +122,8 @@ public class PelangganDashboardController {
         AnchorPane.setRightAnchor(halaman, 0.0);
     }
 
-    // ==================== NAVIGASI SIDEBAR ====================
-
-   @FXML
+    // ===== NAVIGASI SIDEBAR =====
+    @FXML
     void tampilkanDaftarMenu(ActionEvent event) {
         bukaHalamanKonten("/view/DaftarMenu.fxml");
         setTombolAktif(btnDaftarMenu);
@@ -130,70 +137,43 @@ public class PelangganDashboardController {
 
     @FXML
     void tampilkanRiwayatPesanan(ActionEvent event) {
-        bukaHalamanKonten("/view/RiwayatPesanan.fxml"); // sesuaikan dengan nama file fxml riwayat kalian
+        bukaHalamanKonten("/view/RiwayatPesanan.fxml");
         setTombolAktif(btnRiwayat);
     }
 
     @FXML
     void tampilkanLangganan(ActionEvent event) {
-        bukaHalamanKonten("/view/Langganan.fxml"); // sesuaikan dengan nama file fxml langganan kalian
+        bukaHalamanKonten("/view/Langganan.fxml");
         setTombolAktif(btnLangganan);
     }
 
     @FXML
     void tampilkanPembayaran(ActionEvent event) {
-        bukaHalamanKonten("/view/Pembayaran.fxml"); // sesuaikan dengan nama file fxml pembayaran kalian
+        bukaHalamanKonten("/view/Pembayaran.fxml");
         setTombolAktif(btnPembayaran);
     }
 
-    // ==================== UNTUK FORM PEMESANAN DARI MENU ====================
-
+    // ===== EDIT PROFIL =====
     @FXML
-    void handlepesanNasiBox(ActionEvent event) {
-        bukaFormPemesananDenganMenu("Nasi Box Spesial");
-    }
-
-    @FXML
-    void handlepesanNasiGudeg(ActionEvent event) {
-        bukaFormPemesananDenganMenu("Nasi Gudeg Komplit");
-    }
-
-    @FXML
-    void handlePesanMieGoreng(ActionEvent event) {
-        bukaFormPemesananDenganMenu("Mie Goreng Spesial");
-    }
-
-    @FXML
-    void handlePesanPrasmanan(ActionEvent event) {
-        bukaFormPemesananDenganMenu("Catering Prasmanan");
-    }
-
-    @FXML
-    void handlePesanNasiPadang(ActionEvent event) {
-        bukaFormPemesananDenganMenu("Nasi Padang");
-    }
-
-    @FXML
-    void handlePesanAyamBakar(ActionEvent event) {
-        bukaFormPemesananDenganMenu("Ayam Bakar Komplit");
-    }
-
-    private void bukaFormPemesananDenganMenu(String namaMenu) {
+    private void handleEditProfil(MouseEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/BuatPesanan.fxml"));
-            Parent halamanForm = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/EditProfil.fxml"));
+            Parent halaman = loader.load();
 
-            BuatPesananController formController = loader.getController();
-            formController.setMenuPilihan(namaMenu);
+            EditProfilController controller = loader.getController();
+            controller.setPaneKontenTengah(paneKontenTengah);
+            controller.setUsernameSession(userAktifSession);
+            controller.setTxtNamaUser(txtNamaUser);
 
-            tampilkanDiPanel(halamanForm);
+            tampilkanDiPanel(halaman);
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    // ==================== LOGOUT ====================
-
+    // ===== LOGOUT =====
+    @FXML
     public void handleLogout(ActionEvent event) {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle("Konfirmasi Keluar");
@@ -236,7 +216,4 @@ public class PelangganDashboardController {
             }
         }
     }
-
-
-        
 }
