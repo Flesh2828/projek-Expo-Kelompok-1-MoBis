@@ -14,6 +14,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
+
+
 <AnchorPane prefHeight="1203.0" prefWidth="1500.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DaftarMenuController">
 
     <padding>
