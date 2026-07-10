@@ -154,4 +154,86 @@ static {
 
         root.appendChild(newUser);
     }
-}
+
+    // --- FITUR CEK USERNAME (EDIT PROFIL) ---
+    public static boolean cekUsernameAda(String username) {
+        if (username == null || username.trim().isEmpty()) {
+            return false;
+        }
+        try {
+            File xmlFile = new File(FILE_PATH);
+            if (!xmlFile.exists()) {
+                return false;
+            }
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(xmlFile);
+            doc.getDocumentElement().normalize();
+
+            NodeList nList = doc.getElementsByTagName("user");
+            for (int i = 0; i < nList.getLength(); i++) {
+                Element element = (Element) nList.item(i);
+                String u = element.getElementsByTagName("username").item(0).getTextContent();
+                if (u.equalsIgnoreCase(username.trim())) {
+                    return true;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    // --- FITUR UPDATE PROFIL (EDIT PROFIL) ---
+    public static boolean updateProfil(String oldUsername, String newUsername, String newPassword) {
+        if (newUsername == null || newUsername.trim().isEmpty()) {
+            return false;
+        }
+
+        try {
+            File xmlFile = new File(FILE_PATH);
+            if (!xmlFile.exists()) {
+                return false;
+            }
+
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(xmlFile);
+            doc.getDocumentElement().normalize();
+
+            NodeList nList = doc.getElementsByTagName("user");
+            boolean userFound = false;
+
+            for (int i = 0; i < nList.getLength(); i++) {
+                Element element = (Element) nList.item(i);
+                String u = element.getElementsByTagName("username").item(0).getTextContent();
+
+                if (u.equals(oldUsername)) {
+                    // Update username
+                    element.getElementsByTagName("username").item(0).setTextContent(newUsername.trim());
+                    
+                    // Update password if new password is not empty
+                    if (newPassword != null && !newPassword.trim().isEmpty()) {
+                        element.getElementsByTagName("password").item(0).setTextContent(newPassword.trim());
+                    }
+                    
+                    userFound = true;
+                    break;
+                }
+            }
+
+            if (userFound) {
+                // Save changes back to XML
+                TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                Transformer transformer = transformerFactory.newTransformer();
+                DOMSource source = new DOMSource(doc);
+                StreamResult result = new StreamResult(xmlFile);
+                transformer.transform(source, result);
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+}
