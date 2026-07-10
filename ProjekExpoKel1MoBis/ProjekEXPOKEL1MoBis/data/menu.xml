@@ -1,20 +1,32 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><menus>
-    <menu id="M001">
-        <nama>Nasi Box Spesial</nama>
-        <deskripsi>Nasi box dengan ayam geprek, sambal, dan lalapan</deskripsi>
-        <harga>25000</harga>
-        <status>aktif</status>
-    </menu>
-    <menu id="M002">
-        <nama>Nasi Gudeg Komplit</nama>
-        <deskripsi>Nasi gudeg dengan ayam kampung, telur, dan sambal krecek</deskripsi>
-        <harga>28000</harga>
-        <status>aktif</status>
-    </menu>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menus>
+
+
     <menu id="M003">
         <nama>Catering Prasmanan</nama>
         <deskripsi>Paket prasmanan untuk acara 50+ porsi</deskripsi>
         <harga>45000</harga>
+        <status>aktif</status>
+    </menu>
+
+    <menu id="MNU-557">
+        <nama>Magelangan</nama>
+        <deskripsi>Nasi Goreng, Mie, dan telur</deskripsi>
+        <harga>20000.0</harga>
+        <status>aktif</status>
+    </menu>
+
+    <menu id="MNU-487">
+        <nama>Nasi Gudeg Spesial</nama>
+        <deskripsi>Nasi Gudeg Spesial dengan telur</deskripsi>
+        <harga>30000.0</harga>
+        <status>aktif</status>
+    </menu>
+    
+    <menu id="MNU-745">
+        <nama>Nasi Padang Spesial</nama>
+        <deskripsi>Nasi padang dengan isi Ayam, goreng, rendang, dan sayuran</deskripsi>
+        <harga>25000.0</harga>
         <status>aktif</status>
     </menu>
 </menus>

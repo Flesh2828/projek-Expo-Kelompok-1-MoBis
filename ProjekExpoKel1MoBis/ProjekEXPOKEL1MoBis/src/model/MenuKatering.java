@@ -19,7 +19,7 @@ public class MenuKatering {
     private double harga;
     private String status; // "Aktif" atau "Tidak Aktif"
 
-    private static final String FILE_PATH = "data/menu.xml";
+    private static final String FILE_PATH = Menu.getFilePath();
 
     public MenuKatering(String idMenu, String namaMenu, String deskripsi, double harga, String status) {
         this.idMenu = idMenu;

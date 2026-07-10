@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminDashboardController">
+<BorderPane prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminDashboardController">
     
     <left>
         <VBox prefWidth="220.0" spacing="15.0" style="-fx-background-color: #FFFAF0;">
@@ -42,7 +42,7 @@
             
             <Separator opacity="0.3" />
          <Label contentDisplay="TOP" minHeight="0.0" prefHeight="94.0" prefWidth="249.0" style="-fx-text-fill: #999999; -fx-font-size: 35; -fx-font-weight: bold; -fx-padding: 40 0 10 5;" text="MENU UTAMA" />
-         <VBox prefHeight="547.0" prefWidth="374.0">
+         <VBox prefHeight="226.0" prefWidth="375.0">
             <children>
                   
                   <Button onAction="#tampilkanRingkasan" prefHeight="41.0" prefWidth="374.0" style="-fx-background-color: transparent; -fx-text-fill: #00000; -fx-alignment: center-left; -fx-font-size: 25; -fx-font-style: tahoma;" text="Dashboard">
@@ -74,10 +74,11 @@
             </children>
          </HBox>
             
-            <Button onAction="#handleLogout" prefHeight="35.0" prefWidth="314.0" style="-fx-background-color: #C35E2A; -fx-text-fill: white;" text="🚪 Keluar">
+                                          <Button onAction="#handleLogout" prefHeight="35.0" prefWidth="314.0" style="-fx-background-color: #C35E2A; -fx-text-fill: white;" text="🚪 Keluar">
             <font>
                <Font size="15.0" />
-            </font></Button>
+            </font>
+         </Button>
         </VBox>
     </left>
     

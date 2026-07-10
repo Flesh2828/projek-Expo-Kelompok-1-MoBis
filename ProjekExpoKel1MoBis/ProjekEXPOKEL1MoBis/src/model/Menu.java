@@ -16,7 +16,20 @@ public class Menu {
     private double harga;
     private String status;
 
-    private static final String FILE_PATH = "data/menu.xml";
+    private static final String FILE_PATH;
+
+    static {
+        String currentDir = System.getProperty("user.dir");
+        if (currentDir.endsWith("projek-Expo-Kelompok-1-MoBis")) {
+            FILE_PATH = "ProjekExpoKel1MoBis/ProjekEXPOKEL1MoBis/data/menu.xml";
+        } else if (currentDir.endsWith("ProjekExpoKel1MoBis")) {
+            FILE_PATH = "ProjekEXPOKEL1MoBis/data/menu.xml";
+        } else {
+            FILE_PATH = "data/menu.xml";
+        }
+    }
+
+    public static String getFilePath() { return FILE_PATH; }
 
     public Menu(String id, String namaMenu, String deskripsi, double harga, String status) {
         this.id = id;

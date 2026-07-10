@@ -31,5 +31,9 @@
          <font>
             <Font size="15.0" />
          </font></Button>
+      <Button layoutX="240.0" layoutY="806.0" onAction="#handleEditMenu" style="-fx-background-color: #C35E2A; -fx-text-fill: white;" text="Edit Menu Terpilih">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
    </children>
 </AnchorPane>
