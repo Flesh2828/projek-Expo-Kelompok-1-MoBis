@@ -10,8 +10,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminRingkasanController">
-    <VBox prefHeight="1200.0" prefWidth="1500.0" spacing="20.0">
+<ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminRingkasanController">
+    <VBox prefHeight="1100.0" prefWidth="1000.0" spacing="20.0">
         <padding>
             <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
             </padding>
