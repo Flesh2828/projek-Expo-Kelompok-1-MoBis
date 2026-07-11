@@ -1,15 +1,22 @@
 package controller;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import model.Pesanan;
 
 import java.text.NumberFormat;
 import java.util.*;
 
 public class OwnerDashboardContentController {
+
+    // --- Root (dipakai untuk deteksi kapan halaman ini ditutup) ---
+    @FXML private VBox rootDashboard;
 
     // --- Label Statistik Kartu ---
     @FXML private Label lblPendapatan;
@@ -30,9 +37,30 @@ public class OwnerDashboardContentController {
     private static final Locale ID = new Locale("id", "ID");
     private static final NumberFormat RUPIAH = NumberFormat.getInstance(ID);
 
+    /** Interval auto-refresh data real-time dari pesanan.xml (Admin & Pelanggan). */
+    private static final Duration INTERVAL_REFRESH = Duration.seconds(3);
+    private Timeline autoRefreshTimeline;
+
     @FXML
     public void initialize() {
         hitungDanTampilkanData();
+        mulaiAutoRefresh();
+    }
+
+    /** Refresh data secara berkala selama halaman ini masih tampil di layar. */
+    private void mulaiAutoRefresh() {
+        autoRefreshTimeline = new Timeline(new KeyFrame(INTERVAL_REFRESH, e -> hitungDanTampilkanData()));
+        autoRefreshTimeline.setCycleCount(Timeline.INDEFINITE);
+        autoRefreshTimeline.play();
+
+        // Hentikan timer begitu halaman ini dilepas dari tampilan (ganti menu lain)
+        if (rootDashboard != null) {
+            rootDashboard.parentProperty().addListener((obs, oldParent, newParent) -> {
+                if (newParent == null) {
+                    autoRefreshTimeline.stop();
+                }
+            });
+        }
     }
 
     private void hitungDanTampilkanData() {

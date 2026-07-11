@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,6 +12,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import model.Pesanan;
 import model.RingkasanBulanan;
 
@@ -17,6 +21,9 @@ import java.text.NumberFormat;
 import java.util.*;
 
 public class OwnerLaporanController {
+
+    // --- Root (dipakai untuk deteksi kapan halaman ini ditutup) ---
+    @FXML private VBox rootLaporan;
 
     // --- Chart ---
     @FXML private BarChart<String, Number>  barChartLaporan;
@@ -41,6 +48,10 @@ public class OwnerLaporanController {
     private static final Locale ID     = new Locale("id", "ID");
     private static final NumberFormat RUPIAH = NumberFormat.getInstance(ID);
 
+    /** Interval auto-refresh data real-time dari pesanan.xml (Admin & Pelanggan). */
+    private static final Duration INTERVAL_REFRESH = Duration.seconds(3);
+    private Timeline autoRefreshTimeline;
+
     @FXML
     public void initialize() {
         // Bind kolom tabel
@@ -51,6 +62,22 @@ public class OwnerLaporanController {
         if (colMargin      != null) colMargin     .setCellValueFactory(new PropertyValueFactory<>("margin"));
 
         muatDataDariXML();
+        mulaiAutoRefresh();
+    }
+
+    /** Refresh data secara berkala selama halaman ini masih tampil di layar. */
+    private void mulaiAutoRefresh() {
+        autoRefreshTimeline = new Timeline(new KeyFrame(INTERVAL_REFRESH, e -> muatDataDariXML()));
+        autoRefreshTimeline.setCycleCount(Timeline.INDEFINITE);
+        autoRefreshTimeline.play();
+
+        if (rootLaporan != null) {
+            rootLaporan.parentProperty().addListener((obs, oldParent, newParent) -> {
+                if (newParent == null) {
+                    autoRefreshTimeline.stop();
+                }
+            });
+        }
     }
 
     private void muatDataDariXML() {

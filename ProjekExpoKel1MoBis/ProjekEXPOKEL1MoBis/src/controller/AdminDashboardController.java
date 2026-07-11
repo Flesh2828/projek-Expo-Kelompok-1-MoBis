@@ -19,11 +19,15 @@ import javafx.scene.control.DialogPane;
 
 public class AdminDashboardController {
     @FXML private AnchorPane paneKontenAdmin; // Wadah tengah halaman admin
+    @FXML private Button btnRingkasan;
+    @FXML private Button btnKelolaPesanan;
+    @FXML private Button btnKelolaMenu;
 
     @FXML
     public void initialize() {
         // default admin masuk
-        bukaHalamanAdmin("/view/AdminRingkasan.fxml"); 
+        bukaHalamanAdmin("/view/AdminRingkasan.fxml");
+        setTombolAktif(btnRingkasan);
     }
 
     // ubah konten tengah admin
@@ -38,9 +42,35 @@ public class AdminDashboardController {
         }
     }
 
-    @FXML void tampilkanRingkasan(ActionEvent event) { bukaHalamanAdmin("/view/AdminRingkasan.fxml"); }
-    @FXML void tampilkanKelolaPesanan(ActionEvent event) { bukaHalamanAdmin("/view/KelolaPesanan.fxml"); }
-    @FXML void tampilkanKelolaMenu(ActionEvent event) { bukaHalamanAdmin("/view/KelolaMenu.fxml"); }
+    // tandai tombol sidebar yang sedang aktif (sama seperti Owner & Pelanggan)
+    private void setTombolAktif(Button tombolAktif) {
+        Button[] semuaTombol = {btnRingkasan, btnKelolaPesanan, btnKelolaMenu};
+
+        for (Button btn : semuaTombol) {
+            if (btn != null) {
+                btn.getStyleClass().remove("aktif");
+            }
+        }
+
+        if (tombolAktif != null) {
+            tombolAktif.getStyleClass().add("aktif");
+        }
+    }
+
+    @FXML void tampilkanRingkasan(ActionEvent event) {
+        bukaHalamanAdmin("/view/AdminRingkasan.fxml");
+        setTombolAktif(btnRingkasan);
+    }
+
+    @FXML void tampilkanKelolaPesanan(ActionEvent event) {
+        bukaHalamanAdmin("/view/KelolaPesanan.fxml");
+        setTombolAktif(btnKelolaPesanan);
+    }
+
+    @FXML void tampilkanKelolaMenu(ActionEvent event) {
+        bukaHalamanAdmin("/view/KelolaMenu.fxml");
+        setTombolAktif(btnKelolaMenu);
+    }
     
     @FXML
     public void handleLogout(ActionEvent event) {

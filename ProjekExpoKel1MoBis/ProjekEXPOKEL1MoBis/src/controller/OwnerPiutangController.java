@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -7,6 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import model.Pesanan;
 import model.PiutangRow;
 
@@ -18,6 +22,9 @@ import java.util.List;
 import java.util.Locale;
 
 public class OwnerPiutangController {
+
+    // --- Root (dipakai untuk deteksi kapan halaman ini ditutup) ---
+    @FXML private VBox rootPiutang;
 
     // --- Label Ringkasan ---
     @FXML private Label lblTotalPiutang;
@@ -37,6 +44,10 @@ public class OwnerPiutangController {
     private static final Locale ID     = new Locale("id", "ID");
     private static final NumberFormat RUPIAH = NumberFormat.getInstance(ID);
 
+    /** Interval auto-refresh data real-time dari pesanan.xml (Admin & Pelanggan). */
+    private static final Duration INTERVAL_REFRESH = Duration.seconds(3);
+    private Timeline autoRefreshTimeline;
+
     @FXML
     public void initialize() {
         // Bind kolom ke property model
@@ -49,7 +60,23 @@ public class OwnerPiutangController {
         colStatus      .setCellValueFactory(new PropertyValueFactory<>("status"));
 
         muatDataPiutang();
+        mulaiAutoRefresh();
         System.out.println("Halaman Piutang Pelanggan diinisialisasi.");
+    }
+
+    /** Refresh data secara berkala selama halaman ini masih tampil di layar. */
+    private void mulaiAutoRefresh() {
+        autoRefreshTimeline = new Timeline(new KeyFrame(INTERVAL_REFRESH, e -> muatDataPiutang()));
+        autoRefreshTimeline.setCycleCount(Timeline.INDEFINITE);
+        autoRefreshTimeline.play();
+
+        if (rootPiutang != null) {
+            rootPiutang.parentProperty().addListener((obs, oldParent, newParent) -> {
+                if (newParent == null) {
+                    autoRefreshTimeline.stop();
+                }
+            });
+        }
     }
 
     private void muatDataPiutang() {

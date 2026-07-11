@@ -53,26 +53,10 @@
                         </font>
                     </Text>
                     
-                                                  <Button fx:id="btnDaftarMenu" onAction="#tampilkanDaftarMenu" prefHeight="19.0" prefWidth="374.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Daftar Menu">
-                        <font>
-                            <Font name="Tahoma" size="25.0" />
-                        </font>
-                    </Button>
-                    <Button fx:id="btnBuatPesanan" onAction="#tampilkanBuatPesanan" prefHeight="48.0" prefWidth="384.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Buat Pesanan">
-                        <font>
-                            <Font name="Tahoma" size="25.0" />
-                        </font>
-                    </Button>
-                    <Button fx:id="btnRiwayat" onAction="#tampilkanRiwayatPesanan" prefHeight="48.0" prefWidth="389.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Riwayat Pesanan">
-                        <font>
-                            <Font name="Tahoma" size="25.0" />
-                        </font>
-                    </Button>
-                    <Button fx:id="btnPembayaran" onAction="#tampilkanPembayaran" prefHeight="48.0" prefWidth="376.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Pembayaran">
-                        <font>
-                            <Font name="Tahoma" size="25.0" />
-                        </font>
-                    </Button>
+                                                  <Button fx:id="btnDaftarMenu" alignment="BASELINE_LEFT" onAction="#tampilkanDaftarMenu" prefHeight="52.0" prefWidth="377.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Daftar Menu" />
+                    <Button fx:id="btnBuatPesanan" alignment="BASELINE_LEFT" onAction="#tampilkanBuatPesanan" prefHeight="52.0" prefWidth="377.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Buat Pesanan" />
+                    <Button fx:id="btnRiwayat" alignment="BASELINE_LEFT" onAction="#tampilkanRiwayatPesanan" prefHeight="52.0" prefWidth="377.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Riwayat Pesanan" />
+                    <Button fx:id="btnPembayaran" alignment="BASELINE_LEFT" onAction="#tampilkanPembayaran" prefHeight="52.0" prefWidth="377.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Pembayaran" />
                 </children>
             </VBox>
          <VBox prefHeight="200.0" prefWidth="100.0">
@@ -92,7 +76,7 @@
                   </HBox>
                   
                                                       <!-- ===== TOMBOL LOGOUT (PASTI MUNCUL) ===== -->
-                  <Button onAction="#handleLogout" prefWidth="300.0" style="-fx-background-color: #C35E2A; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-font-size: 16; -fx-padding: 10 0;" text="🚪 Keluar" />
+                  <Button alignment="BASELINE_LEFT" onAction="#handleLogout" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #C35E2A; -fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold; -fx-background-radius: 6;" text="🚪 Keluar" />
             </children>
          </VBox>
             

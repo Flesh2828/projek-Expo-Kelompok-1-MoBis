@@ -20,4 +20,38 @@
     -fx-text-fill: white;          /* Teks tetep putih bersih */
     -fx-background-radius: 20;
     -fx-alignment: center-left;
+}/* ============================================================
+   TOMBOL NAVIGASI SIDEBAR — Seragam untuk Admin, Pelanggan, Owner
+   ============================================================ */
+
+/* State normal */
+.tombol-navigasi {
+    -fx-background-color: transparent;
+    -fx-text-fill: #333333;
+    -fx-background-radius: 8;
+    -fx-alignment: center-left;
+    -fx-cursor: hand;
+    -fx-padding: 8 14;
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 25px;
+    -fx-font-weight: normal;
+}
+
+/* Hover — warna oranye SINARING */
+.tombol-navigasi:hover {
+    -fx-background-color: #D97042;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-alignment: center-left;
+}
+
+/* Aktif — halaman yang sedang dibuka (oranye penuh, lebih gelap) */
+.tombol-navigasi.aktif {
+    -fx-background-color: #C35E2A;
+    -fx-text-fill: white;
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-alignment: center-left;
 }

@@ -45,21 +45,9 @@
          <VBox prefHeight="226.0" prefWidth="375.0">
             <children>
                   
-                  <Button onAction="#tampilkanRingkasan" prefHeight="41.0" prefWidth="374.0" style="-fx-background-color: transparent; -fx-text-fill: #00000; -fx-alignment: center-left; -fx-font-size: 25; -fx-font-style: tahoma;" text="Dashboard">
-                  <font>
-                     <Font name="Tahoma" size="25.0" />
-                  </font>
-               </Button>
-                  <Button onAction="#tampilkanKelolaPesanan" prefHeight="52.0" prefWidth="394.0" style="-fx-background-color: transparent; -fx-text-fill: #00000; -fx-alignment: center-left; -fx-font-size: 25; -fx-font-style: tahoma;" text="Kelola Pesanan">
-                  <font>
-                     <Font name="Tahoma" size="25.0" />
-                  </font>
-               </Button>
-                  <Button onAction="#tampilkanKelolaMenu" prefHeight="52.0" prefWidth="401.0" style="-fx-background-color: transparent; -fx-text-fill: #00000; -fx-alignment: center-left; -fx-font-size: 25; -fx-font-style: tahoma;" text="Kelola Menu">
-                  <font>
-                     <Font name="Tahoma" size="25.0" />
-                  </font>
-               </Button>
+                  <Button fx:id="btnRingkasan" alignment="BASELINE_LEFT" onAction="#tampilkanRingkasan" prefHeight="52.0" prefWidth="377.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Dashboard" />
+                  <Button fx:id="btnKelolaPesanan" alignment="BASELINE_LEFT" onAction="#tampilkanKelolaPesanan" prefHeight="52.0" prefWidth="377.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Kelola Pesanan" />
+                  <Button fx:id="btnKelolaMenu" alignment="BASELINE_LEFT" onAction="#tampilkanKelolaMenu" prefHeight="52.0" prefWidth="377.0" styleClass="tombol-navigasi" stylesheets="@style.css" text="Kelola Menu" />
             </children>
          </VBox>
          <HBox alignment="CENTER_LEFT" spacing="10.0">
@@ -74,11 +62,7 @@
             </children>
          </HBox>
             
-                                          <Button onAction="#handleLogout" prefHeight="35.0" prefWidth="314.0" style="-fx-background-color: #C35E2A; -fx-text-fill: white;" text="🚪 Keluar">
-            <font>
-               <Font size="15.0" />
-            </font>
-         </Button>
+                                          <Button alignment="BASELINE_LEFT" onAction="#handleLogout" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #C35E2A; -fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold; -fx-background-radius: 6;" text="🚪 Keluar" />
         </VBox>
     </left>
     

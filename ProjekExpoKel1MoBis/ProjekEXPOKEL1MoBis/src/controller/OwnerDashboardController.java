@@ -73,15 +73,16 @@ public class OwnerDashboardController {
     }
 
     private void setMenuActive(Button activeButton) {
-        String defaultStyle = "-fx-background-color: transparent; -fx-text-fill: #333333; -fx-font-size: 25; -fx-background-radius: 8;";
-        String activeStyle = "-fx-background-color: #C35E2A; -fx-text-fill: white; -fx-font-size: 25; -fx-font-weight: bold; -fx-background-radius: 8;";
+        Button[] semuaTombol = {btnDashboard, btnLaporan, btnPiutang};
 
-        btnDashboard.setStyle(defaultStyle);
-        btnLaporan.setStyle(defaultStyle);
-        btnPiutang.setStyle(defaultStyle);
+        for (Button btn : semuaTombol) {
+            if (btn != null) {
+                btn.getStyleClass().remove("aktif");
+            }
+        }
 
         if (activeButton != null) {
-            activeButton.setStyle(activeStyle);
+            activeButton.getStyleClass().add("aktif");
         }
     }
 
