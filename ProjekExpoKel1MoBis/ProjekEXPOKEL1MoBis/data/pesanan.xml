@@ -197,4 +197,4 @@
         <status_bayar>Lunas</status_bayar>
         <total>250000.0</total>
     </order>
-<order id="ORD-033"><username>Pelanggan Aktif</username><menu>Catering Prasmanan</menu><porsi>1</porsi><tanggal>2026-07-11</tanggal><alamat>jalan godean </alamat><catatan>semoga bisa</catatan><status_pesanan>Dikonfirmasi</status_pesanan><status_bayar>Belum Lunas</status_bayar><total>25000.0</total></order></orders>
+<order id="ORD-033"><username>Pelanggan Aktif</username><menu>Catering Prasmanan</menu><porsi>1</porsi><tanggal>2026-07-11</tanggal><alamat>jalan godean </alamat><catatan>semoga bisa</catatan><status_pesanan>Dikonfirmasi</status_pesanan><status_bayar>Belum Lunas</status_bayar><total>25000.0</total></order><order id="ORD-070"><username>Pelanggan Aktif</username><menu>Catering Prasmanan</menu><porsi>1</porsi><tanggal>2026-07-11</tanggal><alamat>jalan kaliurang</alamat><catatan>kos nashwan</catatan><status_pesanan>Dikonfirmasi</status_pesanan><status_bayar>Belum Lunas</status_bayar><total>25000.0</total></order></orders>

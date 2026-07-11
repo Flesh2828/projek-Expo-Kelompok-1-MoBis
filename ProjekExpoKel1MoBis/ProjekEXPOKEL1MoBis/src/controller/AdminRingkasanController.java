@@ -10,6 +10,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import model.Pesanan;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class AdminRingkasanController {
@@ -60,18 +62,26 @@ public class AdminRingkasanController {
             // file.exists() selalu false dan tabel ringkasan selalu kosong.
             List<Pesanan> semuaPesanan = Pesanan.getAllPesanan();
 
-            // Batasi maksimal 5-7 pesanan terbaru untuk ringkasan dashboard
-            int jumlahData = Math.min(semuaPesanan.size(), 7);
-            for (int i = 0; i < semuaPesanan.size(); i++) {
-                Pesanan p = semuaPesanan.get(i);
+            // BUG LAMA: pesanan.xml menyimpan pesanan lama di ATAS dan pesanan BARU selalu
+            // ditambahkan di paling BAWAH file (lihat Pesanan.simpanPesananBaru() -> root.appendChild).
+            // Kode sebelumnya mengambil 7 data PERTAMA dari list (i < jumlahData), yang artinya
+            // selalu 7 pesanan PALING LAMA. Akibatnya begitu pesanan lebih dari 7, pesanan yang
+            // baru saja dibuat pelanggan tidak akan pernah kelihatan di tabel "Pesanan Terbaru".
+            // FIX: balik dulu urutannya supaya pesanan yang paling akhir ditambahkan (terbaru)
+            // ada di paling atas, baru ambil maksimal 7 teratas untuk ditampilkan.
+            List<Pesanan> pesananTerbaruDulu = new ArrayList<>(semuaPesanan);
+            Collections.reverse(pesananTerbaruDulu);
 
-                // Masukkan ke list tabel ringkasan
-                if (i < jumlahData) {
-                    dataPesanan.add(p);
-                    System.out.println("LOG SINARING -> Berhasil membaca order: " + p.getIdPesanan() + " oleh " + p.getUsernamePelanggan());
-                }
+            int jumlahData = Math.min(pesananTerbaruDulu.size(), 7);
+            for (int i = 0; i < jumlahData; i++) {
+                Pesanan p = pesananTerbaruDulu.get(i);
+                dataPesanan.add(p);
+                System.out.println("LOG SINARING -> Berhasil membaca order: " + p.getIdPesanan() + " oleh " + p.getUsernamePelanggan());
+            }
 
-                // Hitung akumulasi porsi untuk indikator bar kapasitas produksi
+            // Hitung akumulasi porsi dari SEMUA pesanan (bukan cuma yang ditampilkan di tabel)
+            // untuk indikator bar kapasitas produksi
+            for (Pesanan p : semuaPesanan) {
                 totalPorsiHariIni += p.getJumlahPorsi();
             }
 
