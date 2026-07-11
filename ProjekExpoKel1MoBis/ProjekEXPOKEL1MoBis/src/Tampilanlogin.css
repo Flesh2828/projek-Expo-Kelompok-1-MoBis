@@ -1,3 +1,101 @@
-.VBox {
-    -fx-background-color: #00d5ff;
+.login-root {
+    -fx-background-color: linear-gradient(to bottom right, #F7EAD9, #F1DAC0);
+}
+
+.app-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-fill: #2B2320;
+}
+
+.app-subtitle {
+    -fx-font-size: 12.5px;
+    -fx-fill: #6B5C4E;
+}
+
+.app-subtitle-small {
+    -fx-font-size: 11px;
+    -fx-fill: #9C8C7C;
+}
+
+.login-card {
+    -fx-background-color: white;
+    -fx-background-radius: 14;
+    -fx-effect: dropshadow(gaussian, rgba(60,40,20,0.20), 26, 0.15, 0, 10);
+}
+
+.card-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-fill: #2B2320;
+}
+
+.card-subtitle {
+    -fx-font-size: 11px;
+    -fx-fill: #8A7A6A;
+}
+
+.status-label {
+    -fx-font-size: 11.5px;
+}
+
+.field-label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #3A322B;
+}
+
+.login-field {
+    -fx-background-color: #FBF7F1;
+    -fx-border-color: #E4D9CB;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 9 12 9 12;
+    -fx-font-size: 12.5px;
+    -fx-prompt-text-fill: #B0A292;
+}
+
+.login-field:focused {
+    -fx-border-color: #C35E2A;
+}
+
+.error-label {
+    -fx-text-fill: #D9483C;
+    -fx-font-size: 11.5px;
+}
+
+.login-button {
+    -fx-background-color: #C35E2A;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-background-radius: 8;
+    -fx-padding: 10 0 10 0;
+    -fx-cursor: hand;
+}
+
+.login-button:hover {
+    -fx-background-color: #AD4F20;
+}
+
+.footer-text {
+    -fx-font-size: 11.5px;
+    -fx-text-fill: #8A7A6A;
+}
+
+.daftar-link {
+    -fx-text-fill: #C35E2A;
+    -fx-font-weight: bold;
+    -fx-font-size: 11.5px;
+    -fx-border-color: transparent;
+    -fx-underline: false;
+}
+
+.daftar-link:hover {
+    -fx-text-fill: #AD4F20;
+}
+
+.page-footer {
+    -fx-font-size: 10px;
+    -fx-fill: #A99A8A;
 }
