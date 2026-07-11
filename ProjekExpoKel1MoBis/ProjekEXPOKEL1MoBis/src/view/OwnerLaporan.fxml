@@ -11,47 +11,72 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="1200.0" prefWidth="1500.0" spacing="25.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OwnerLaporanController">
+<VBox prefHeight="1200.0" prefWidth="1500.0" spacing="25.0"
+      style="-fx-background-color: #FFFFFF;"
+      xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.OwnerLaporanController">
+
    <padding>
       <Insets bottom="35.0" left="35.0" right="35.0" top="35.0" />
    </padding>
+
    <children>
+      <!-- ===== JUDUL ===== -->
       <VBox spacing="5.0">
          <Label style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #2B1B15;" text="Laporan Keuangan" />
-         <Label style="-fx-font-size: 14; -fx-text-fill: #8A7A75;" text="Pendapatan, pengeluaran, dan laba bersih bulanan" />
+         <Label style="-fx-font-size: 14; -fx-text-fill: #8A7A75;" text="Pendapatan, pengeluaran, dan laba bersih per bulan · Data Real-Time dari pesanan.xml" />
       </VBox>
 
-      <HBox prefHeight="320.0" spacing="20.0">
-         <VBox style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20;" HBox.hgrow="ALWAYS">
-            <Label style="-fx-font-size: 25; -fx-font-weight: bold; -fx-text-fill: #2B1B15;" text="Pendapatan vs Pengeluaran" />
-            <Label style="-fx-font-size: 18; -fx-text-fill: #8A7A75; -fx-padding: 0 0 10 0;" text="Perbandingan bulanan (dalam Rupiah)" />
-            <BarChart fx:id="barChartLaporan" alternativeRowFillVisible="false" legendSide="BOTTOM" prefHeight="240.0" verticalGridLinesVisible="false">
+      <!-- ===== CHART BARIS ATAS ===== -->
+      <HBox prefHeight="340.0" spacing="20.0">
+
+         <!-- Bar Chart: Pendapatan vs Pengeluaran -->
+         <VBox style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.04), 12, 0, 0, 4);" HBox.hgrow="ALWAYS">
+            <Label style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #2B1B15;" text="Pendapatan vs Pengeluaran" />
+            <Label style="-fx-font-size: 13; -fx-text-fill: #8A7A75; -fx-padding: 0 0 8 0;" text="Perbandingan bulanan (dalam ribuan Rupiah)" />
+            <BarChart fx:id="barChartLaporan"
+                      alternativeRowFillVisible="false"
+                      legendSide="BOTTOM"
+                      prefHeight="280.0"
+                      verticalGridLinesVisible="false"
+                      animated="false"
+                      VBox.vgrow="ALWAYS">
                <xAxis><CategoryAxis side="BOTTOM" /></xAxis>
-               <yAxis><NumberAxis side="LEFT" /></yAxis>
+               <yAxis><NumberAxis side="LEFT" label="Rp (ribu)" /></yAxis>
             </BarChart>
          </VBox>
 
-         <VBox style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20;" HBox.hgrow="ALWAYS">
-            <Label style="-fx-font-size: 25; -fx-font-weight: bold; -fx-text-fill: #2B1B15;" text="Tren Laba Bersih" />
-            <Label style="-fx-font-size: 18; -fx-text-fill: #8A7A75; -fx-padding: 0 0 10 0;" text="Perkembangan laba per bulan" />
-            <LineChart fx:id="lineChartLaporan" createSymbols="true" legendSide="BOTTOM" prefHeight="240.0">
+         <!-- Line Chart: Tren Laba Bersih -->
+         <VBox style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.04), 12, 0, 0, 4);" HBox.hgrow="ALWAYS">
+            <Label style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #2B1B15;" text="Tren Laba Bersih" />
+            <Label style="-fx-font-size: 13; -fx-text-fill: #8A7A75; -fx-padding: 0 0 8 0;" text="Perkembangan laba per bulan (dalam ribuan Rupiah)" />
+            <LineChart fx:id="lineChartLaporan"
+                       createSymbols="true"
+                       legendSide="BOTTOM"
+                       prefHeight="280.0"
+                       animated="false"
+                       VBox.vgrow="ALWAYS">
                <xAxis><CategoryAxis side="BOTTOM" /></xAxis>
-               <yAxis><NumberAxis side="LEFT" /></yAxis>
+               <yAxis><NumberAxis side="LEFT" label="Rp (ribu)" /></yAxis>
             </LineChart>
          </VBox>
+
       </HBox>
 
-      <VBox style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20;">
-         <Label style="-fx-font-size: 25; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 0 0 15 0;" text="Ringkasan Bulanan" />
-         <TableView fx:id="tableRingkasan" prefHeight="200.0" style="-fx-background-radius: 8;">
+      <!-- ===== TABEL RINGKASAN BULANAN ===== -->
+      <VBox style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.04), 12, 0, 0, 4);">
+         <Label style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 0 0 12 0;" text="Ringkasan Bulanan" />
+         <TableView fx:id="tableRingkasan" prefHeight="250.0" style="-fx-background-radius: 8;" VBox.vgrow="ALWAYS">
             <columns>
-               <TableColumn prefWidth="150.0" text="BULAN" />
-               <TableColumn prefWidth="200.0" text="PENDAPATAN" />
-               <TableColumn prefWidth="200.0" text="PENGELUARAN" />
-               <TableColumn prefWidth="200.0" text="LABA BERSIH" />
-               <TableColumn prefWidth="150.0" text="MARGIN" />
+               <TableColumn fx:id="colBulan"       prefWidth="150.0" text="BULAN" />
+               <TableColumn fx:id="colPendapatan"  prefWidth="220.0" text="PENDAPATAN" />
+               <TableColumn fx:id="colPengeluaran" prefWidth="220.0" text="PENGELUARAN (Est.)" />
+               <TableColumn fx:id="colLabaBersih"  prefWidth="220.0" text="LABA BERSIH" />
+               <TableColumn fx:id="colMargin"      prefWidth="120.0" text="MARGIN" />
             </columns>
          </TableView>
       </VBox>
+
    </children>
 </VBox>

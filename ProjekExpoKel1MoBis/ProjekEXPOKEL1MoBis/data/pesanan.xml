@@ -10,6 +10,28 @@
         <status_bayar>Lunas</status_bayar>
         <total>250000.0</total>
     </order>
+    <order id="ORD-055">
+        <username>Pelanggan Aktif</username>
+        <menu>Nasi Box Spesial</menu>
+        <porsi>10</porsi>
+        <tanggal>25 Jun 2026</tanggal>
+        <alamat>Jl. Contoh No. 1</alamat>
+        <catatan/>
+        <status_pesanan>Dikonfirmasi</status_pesanan>
+        <status_bayar>Lunas</status_bayar>
+        <total>250000.0</total>
+    </order>
+    <order id="ORD-084">
+        <username>Pelanggan Aktif</username>
+        <menu>Nasi Box Spesial</menu>
+        <porsi>10</porsi>
+        <tanggal>25 Jun 2026</tanggal>
+        <alamat>Jl. Contoh No. 1</alamat>
+        <catatan/>
+        <status_pesanan>Dikonfirmasi</status_pesanan>
+        <status_bayar>Lunas</status_bayar>
+        <total>250000.0</total>
+    </order>
     <order id="ORD-078">
         <username>Pelanggan Aktif</username>
         <menu>Nasi Box Spesial</menu>
@@ -32,17 +54,6 @@
         <status_bayar>Belum Lunas</status_bayar>
         <total>250000.0</total>
     </order>
-    <order id="ORD-055">
-        <username>Pelanggan Aktif</username>
-        <menu>Nasi Box Spesial</menu>
-        <porsi>10</porsi>
-        <tanggal>25 Jun 2026</tanggal>
-        <alamat>Jl. Contoh No. 1</alamat>
-        <catatan/>
-        <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Lunas</status_bayar>
-        <total>250000.0</total>
-    </order>
     <order id="ORD-025">
         <username>Pelanggan Aktif</username>
         <menu>Nasi Box Spesial</menu>
@@ -53,28 +64,6 @@
         <status_pesanan>Dikonfirmasi</status_pesanan>
         <status_bayar>Belum Lunas</status_bayar>
         <total>250000.0</total>
-    </order>
-    <order id="ORD-05">
-        <username>Pelanggan Aktif</username>
-        <menu>Mie Goreng Spesial</menu>
-        <porsi>1</porsi>
-        <tanggal>DWQD</tanggal>
-        <alamat>jwFJNAWBJKF</alamat>
-        <catatan>SACASCA</catatan>
-        <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Belum Lunas</status_bayar>
-        <total>25000.0</total>
-    </order>
-    <order id="ORD-051">
-        <username>Pelanggan Aktif</username>
-        <menu>Mie Goreng Spesial</menu>
-        <porsi>1</porsi>
-        <tanggal>DWQD</tanggal>
-        <alamat>jwFJNAWBJKF</alamat>
-        <catatan>SACASCA</catatan>
-        <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Belum Lunas</status_bayar>
-        <total>25000.0</total>
     </order>
     <order id="ORD-09">
         <username>Pelanggan Aktif</username>
@@ -87,114 +76,59 @@
         <status_bayar>Belum Lunas</status_bayar>
         <total>250000.0</total>
     </order>
-    <order id="ORD-081">
+    <order id="ORD-03">
         <username>Pelanggan Aktif</username>
-        <menu>Mie Goreng Spesial</menu>
-        <porsi>1</porsi>
-        <tanggal>fa</tanggal>
-        <alamat>wafea</alamat>
-        <catatan>fae</catatan>
+        <menu>Nasi Box Spesial</menu>
+        <porsi>100</porsi>
+        <tanggal>2 Agustus 2026</tanggal>
+        <alamat>Jalan Afandi</alamat>
+        <catatan>Dibikin enak dan spesial</catatan>
         <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Belum Lunas</status_bayar>
-        <total>25000.0</total>
+        <status_bayar>Lunas</status_bayar>
+        <total>2500000.0</total>
     </order>
-    <order id="ORD-030">
+    <order id="ORD-049">
         <username>Pelanggan Aktif</username>
-        <menu>Mie Goreng Spesial</menu>
+        <menu>Nasi Box Spesial</menu>
         <porsi>1</porsi>
-        <tanggal>fa</tanggal>
-        <alamat>wafea</alamat>
-        <catatan>fae</catatan>
+        <tanggal>16 Agustus 2026</tanggal>
+        <alamat>Jalan Godean KM 3</alamat>
+        <catatan>Dibikin enak mas</catatan>
         <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Belum Lunas</status_bayar>
+        <status_bayar>Lunas</status_bayar>
         <total>25000.0</total>
     </order>
     <order id="ORD-069">
         <username>Pelanggan Aktif</username>
         <menu>Nasi Box Spesial</menu>
         <porsi>1</porsi>
-        <tanggal>8 juli 2027</tanggal>
-        <alamat>jalan informatika</alamat>
-        <catatan>asdasd</catatan>
-        <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Belum Lunas</status_bayar>
-        <total>25000.0</total>
-    </order>
-    <order id="ORD-023">
-        <username>Pelanggan Aktif</username>
-        <menu>Nasi Box Spesial</menu>
-        <porsi>1</porsi>
-        <tanggal>7 september 2026</tanggal>
-        <alamat>wes mumet pala aing</alamat>
-        <catatan>tulong</catatan>
-        <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Belum Lunas</status_bayar>
-        <total>25000.0</total>
-    </order>
-    <order id="ORD-051">
-        <username>Pelanggan Aktif</username>
-        <menu>Nasi Box Spesial</menu>
-        <porsi>1</porsi>
-        <tanggal>7 september 2026</tanggal>
-        <alamat>wes mumet pala aing</alamat>
-        <catatan>tulong</catatan>
-        <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Belum Lunas</status_bayar>
-        <total>25000.0</total>
-    </order>
-    <order id="ORD-094">
-        <username>Pelanggan Aktif</username>
-        <menu>Nasi Box Spesial</menu>
-        <porsi>2</porsi>
-        <tanggal>10</tanggal>
-        <alamat>jalaan jalan dengan sepatu roda</alamat>
+        <tanggal>8 Juli 2026</tanggal>
+        <alamat>Jalan Informatika</alamat>
         <catatan/>
         <status_pesanan>Dikonfirmasi</status_pesanan>
         <status_bayar>Belum Lunas</status_bayar>
-        <total>50000.0</total>
-    </order>
-    <order id="ORD-03">
-        <username>Pelanggan Aktif</username>
-        <menu>Nasi Box Spesial</menu>
-        <porsi>100</porsi>
-        <tanggal>2 agustus 2026</tanggal>
-        <alamat>jalan afandi</alamat>
-        <catatan>gamau tau harus enak</catatan>
-        <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Belum Lunas</status_bayar>
-        <total>2500000.0</total>
-    </order>
-    <order id="ORD-041">
-        <username>Pelanggan Aktif</username>
-        <menu>Nasi Box Spesial</menu>
-        <porsi>1</porsi>
-        <tanggal>awan kek taik</tanggal>
-        <alamat>awan rambut keriting</alamat>
-        <catatan>gondrong</catatan>
-        <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Belum Lunas</status_bayar>
         <total>25000.0</total>
     </order>
-    <order id="ORD-049">
+    <order id="ORD-033">
         <username>Pelanggan Aktif</username>
-        <menu>Nasi Box Spesial</menu>
+        <menu>Catering Prasmanan</menu>
         <porsi>1</porsi>
-        <tanggal>16 agustus 2026</tanggal>
-        <alamat>jalan godean km 3</alamat>
-        <catatan>dibikin enak mas </catatan>
+        <tanggal>2026-07-11</tanggal>
+        <alamat>Jalan Godean</alamat>
+        <catatan>Semoga bisa</catatan>
         <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Lunas</status_bayar>
-        <total>25000.0</total>
+        <status_bayar>Belum Lunas</status_bayar>
+        <total>45000.0</total>
     </order>
-    <order id="ORD-084">
+    <order id="ORD-070">
         <username>Pelanggan Aktif</username>
-        <menu>Nasi Box Spesial</menu>
-        <porsi>10</porsi>
-        <tanggal>25 Jun 2026</tanggal>
-        <alamat>Jl. Contoh No. 1</alamat>
-        <catatan/>
+        <menu>Catering Prasmanan</menu>
+        <porsi>1</porsi>
+        <tanggal>2026-07-11</tanggal>
+        <alamat>Jalan Kaliurang</alamat>
+        <catatan>Kos Nashwan</catatan>
         <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Lunas</status_bayar>
-        <total>250000.0</total>
+        <status_bayar>Belum Lunas</status_bayar>
+        <total>45000.0</total>
     </order>
-<order id="ORD-033"><username>Pelanggan Aktif</username><menu>Catering Prasmanan</menu><porsi>1</porsi><tanggal>2026-07-11</tanggal><alamat>jalan godean </alamat><catatan>semoga bisa</catatan><status_pesanan>Dikonfirmasi</status_pesanan><status_bayar>Belum Lunas</status_bayar><total>25000.0</total></order><order id="ORD-070"><username>Pelanggan Aktif</username><menu>Catering Prasmanan</menu><porsi>1</porsi><tanggal>2026-07-11</tanggal><alamat>jalan kaliurang</alamat><catatan>kos nashwan</catatan><status_pesanan>Dikonfirmasi</status_pesanan><status_bayar>Belum Lunas</status_bayar><total>25000.0</total></order></orders>
+</orders>

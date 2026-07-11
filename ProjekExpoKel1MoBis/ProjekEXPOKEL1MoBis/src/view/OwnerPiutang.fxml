@@ -7,66 +7,83 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="1200.0" prefWidth="1500.0" spacing="25.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OwnerPiutangController">
+<VBox prefHeight="1200.0" prefWidth="1500.0" spacing="25.0"
+      style="-fx-background-color: #FFFFFF;"
+      xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.OwnerPiutangController">
+
    <padding>
       <Insets bottom="35.0" left="35.0" right="35.0" top="35.0" />
    </padding>
+
    <children>
+      <!-- ===== JUDUL ===== -->
       <VBox spacing="5.0">
          <Label style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #2B1B15;" text="Piutang Pelanggan" />
-         <Label style="-fx-font-size: 14; -fx-text-fill: #8A7A75;" text="Daftar tagihan belum lunas dari seluruh pelanggan" />
+         <Label style="-fx-font-size: 14; -fx-text-fill: #8A7A75;" text="Daftar tagihan belum lunas dari seluruh pelanggan · Data Real-Time" />
       </VBox>
 
+      <!-- ===== 3 KARTU RINGKASAN ===== -->
       <HBox prefHeight="140.0" spacing="20.0">
-         <VBox style="-fx-background-color: #FFFAF0; -fx-background-radius: 20; -fx-padding: 20;" HBox.hgrow="ALWAYS">
-            <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 12 0 2 0;" text="Rp 800.000" />
-            <Label style="-fx-font-size: 13; -fx-text-fill: #8A7A75;" text="Total Piutang" />
+
+         <!-- Total Piutang -->
+         <VBox style="-fx-background-color: #FFFAF0; -fx-background-radius: 20; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 15, 0, 0, 5);" HBox.hgrow="ALWAYS">
+            <Label style="-fx-font-size: 13; -fx-text-fill: #8A7A75; -fx-font-weight: bold; -fx-padding: 0 0 4 0;" text="⚠️ TOTAL PIUTANG" />
+            <Label fx:id="lblTotalPiutang" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #B54D22; -fx-padding: 4 0 2 0;" text="Memuat..." />
+            <Label style="-fx-font-size: 13; -fx-text-fill: #8A7A75;" text="Akumulasi belum lunas" />
          </VBox>
 
-         <VBox style="-fx-background-color: #FFFAF0; -fx-background-radius: 20; -fx-padding: 20;" HBox.hgrow="ALWAYS">
-            <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 12 0 2 0;" text="0" />
-            <Label style="-fx-font-size: 13; -fx-text-fill: #6E5E59; -fx-font-weight: bold;" text="Melewati Jatuh Tempo" />
-            <Label style="-fx-font-size: 11; -fx-text-fill: #8A7A75;" text="&gt; 7 hari" />
+         <!-- Melewati Jatuh Tempo -->
+         <VBox style="-fx-background-color: #FFFAF0; -fx-background-radius: 20; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 15, 0, 0, 5);" HBox.hgrow="ALWAYS">
+            <Label style="-fx-font-size: 13; -fx-text-fill: #8A7A75; -fx-font-weight: bold; -fx-padding: 0 0 4 0;" text="🔴 MELEWATI JATUH TEMPO" />
+            <Label fx:id="lblMelewatiJT" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #C0392B; -fx-padding: 4 0 2 0;" text="—" />
+            <Label style="-fx-font-size: 13; -fx-text-fill: #8A7A75;" text="Lewat &gt; 7 hari" />
          </VBox>
 
-         <VBox style="-fx-background-color: #FFFAF0; -fx-background-radius: 20; -fx-padding: 20;" HBox.hgrow="ALWAYS">
-            <Label style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 12 0 2 0;" text="1" />
-            <Label style="-fx-font-size: 13; -fx-text-fill: #6E5E59; -fx-font-weight: bold;" text="Akan Jatuh Tempo" />
-            <Label style="-fx-font-size: 11; -fx-text-fill: #8A7A75;" text="dalam 7 hari ke depan" />
+         <!-- Akan Jatuh Tempo -->
+         <VBox style="-fx-background-color: #FFFAF0; -fx-background-radius: 20; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 15, 0, 0, 5);" HBox.hgrow="ALWAYS">
+            <Label style="-fx-font-size: 13; -fx-text-fill: #8A7A75; -fx-font-weight: bold; -fx-padding: 0 0 4 0;" text="🟡 AKAN JATUH TEMPO" />
+            <Label fx:id="lblAkanJT" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #E67E22; -fx-padding: 4 0 2 0;" text="—" />
+            <Label style="-fx-font-size: 13; -fx-text-fill: #8A7A75;" text="Dalam 7 hari ke depan" />
          </VBox>
+
       </HBox>
 
-      <VBox style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 25;">
-         <HBox alignment="CENTER_LEFT" style="-fx-padding: 0 0 15 0;">
-            <Label style="-fx-font-size: 25; -fx-font-weight: bold; -fx-text-fill: #2B1B15;" text="Daftar Piutang" HBox.hgrow="ALWAYS" />
+      <!-- ===== TABEL PIUTANG ===== -->
+      <VBox style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 25;" VBox.vgrow="ALWAYS">
+         <HBox alignment="CENTER_LEFT" style="-fx-padding: 0 0 10 0;">
+            <Label style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #2B1B15;" text="Daftar Piutang" HBox.hgrow="ALWAYS" />
          </HBox>
 
-         <HBox spacing="15.0" style="-fx-padding: 0 0 15 5;">
+         <!-- Legenda status warna -->
+         <HBox spacing="20.0" style="-fx-padding: 0 0 12 5;">
             <HBox alignment="CENTER" spacing="5.0">
-               <Label style="-fx-text-fill: #E9B4B4; -fx-font-size: 14;" text="●" />
+               <Label style="-fx-text-fill: #E74C3C; -fx-font-size: 14;" text="●" />
                <Label style="-fx-font-size: 12; -fx-text-fill: #8A7A75;" text="Lewat &gt;7 hari" />
             </HBox>
             <HBox alignment="CENTER" spacing="5.0">
-               <Label style="-fx-text-fill: #F5E3A1; -fx-font-size: 14;" text="●" />
-               <Label style="-fx-font-size: 12; -fx-text-fill: #8A7A75;" text="Jatuh tempo 1-7 hari" />
+               <Label style="-fx-text-fill: #F39C12; -fx-font-size: 14;" text="●" />
+               <Label style="-fx-font-size: 12; -fx-text-fill: #8A7A75;" text="Akan/Jatuh tempo (≤7 hr)" />
             </HBox>
             <HBox alignment="CENTER" spacing="5.0">
-               <Label style="-fx-text-fill: #A0E7CD; -fx-font-size: 14;" text="●" />
+               <Label style="-fx-text-fill: #27AE60; -fx-font-size: 14;" text="●" />
                <Label style="-fx-font-size: 12; -fx-text-fill: #8A7A75;" text="Belum jatuh tempo" />
             </HBox>
          </HBox>
 
-         <TableView fx:id="tablePiutang" prefHeight="280.0">
+         <TableView fx:id="tablePiutang" prefHeight="400.0" VBox.vgrow="ALWAYS">
             <columns>
-               <TableColumn fx:id="colPelanggan" prefWidth="180.0" text="PELANGGAN" />
-               <TableColumn fx:id="colIdPesanan" prefWidth="110.0" text="ID PESANAN" />
-               <TableColumn fx:id="colTotalTagihan" prefWidth="140.0" text="TOTAL TAGIHAN" />
-               <TableColumn fx:id="colDpDibayar" prefWidth="130.0" text="DP DIBAYAR" />
-               <TableColumn fx:id="colSisaTagihan" prefWidth="140.0" text="SISA TAGIHAN" />
-               <TableColumn fx:id="colJatuhTempo" prefWidth="130.0" text="JATUH TEMPO" />
-               <TableColumn fx:id="colStatus" prefWidth="130.0" text="STATUS" />
+               <TableColumn fx:id="colPelanggan"    prefWidth="180.0" text="PELANGGAN" />
+               <TableColumn fx:id="colIdPesanan"    prefWidth="120.0" text="ID PESANAN" />
+               <TableColumn fx:id="colTotalTagihan" prefWidth="150.0" text="TOTAL TAGIHAN" />
+               <TableColumn fx:id="colDpDibayar"    prefWidth="130.0" text="DP DIBAYAR" />
+               <TableColumn fx:id="colSisaTagihan"  prefWidth="150.0" text="SISA TAGIHAN" />
+               <TableColumn fx:id="colJatuhTempo"   prefWidth="140.0" text="JATUH TEMPO" />
+               <TableColumn fx:id="colStatus"       prefWidth="160.0" text="STATUS" />
             </columns>
          </TableView>
       </VBox>
+
    </children>
 </VBox>
