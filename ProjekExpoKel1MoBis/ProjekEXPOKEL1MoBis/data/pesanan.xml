@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<orders>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><orders>
     <order id="ORD-06">
         <username>Pelanggan Aktif</username>
         <menu>Nasi Box Spesial</menu>
         <porsi>10</porsi>
         <tanggal>25 Jun 2026</tanggal>
         <alamat>Jl. Contoh No. 1</alamat>
-        <catatan />
+        <catatan/>
         <status_pesanan>Dikonfirmasi</status_pesanan>
         <status_bayar>Lunas</status_bayar>
         <total>250000.0</total>
@@ -17,7 +16,7 @@
         <porsi>10</porsi>
         <tanggal>25 Jun 2026</tanggal>
         <alamat>Jl. Contoh No. 1</alamat>
-        <catatan />
+        <catatan/>
         <status_pesanan>Dikonfirmasi</status_pesanan>
         <status_bayar>Belum Lunas</status_bayar>
         <total>250000.0</total>
@@ -28,7 +27,7 @@
         <porsi>10</porsi>
         <tanggal>25 Jun 2026</tanggal>
         <alamat>Jl. Contoh No. 1</alamat>
-        <catatan />
+        <catatan/>
         <status_pesanan>Dikonfirmasi</status_pesanan>
         <status_bayar>Belum Lunas</status_bayar>
         <total>250000.0</total>
@@ -39,7 +38,7 @@
         <porsi>10</porsi>
         <tanggal>25 Jun 2026</tanggal>
         <alamat>Jl. Contoh No. 1</alamat>
-        <catatan />
+        <catatan/>
         <status_pesanan>Dikonfirmasi</status_pesanan>
         <status_bayar>Lunas</status_bayar>
         <total>250000.0</total>
@@ -83,7 +82,7 @@
         <porsi>10</porsi>
         <tanggal>25 Jun 2026</tanggal>
         <alamat>Jl. Contoh No. 1</alamat>
-        <catatan />
+        <catatan/>
         <status_pesanan>Dikonfirmasi</status_pesanan>
         <status_bayar>Belum Lunas</status_bayar>
         <total>250000.0</total>
@@ -149,7 +148,7 @@
         <porsi>2</porsi>
         <tanggal>10</tanggal>
         <alamat>jalaan jalan dengan sepatu roda</alamat>
-        <catatan />
+        <catatan/>
         <status_pesanan>Dikonfirmasi</status_pesanan>
         <status_bayar>Belum Lunas</status_bayar>
         <total>50000.0</total>
@@ -193,9 +192,9 @@
         <porsi>10</porsi>
         <tanggal>25 Jun 2026</tanggal>
         <alamat>Jl. Contoh No. 1</alamat>
-        <catatan />
+        <catatan/>
         <status_pesanan>Dikonfirmasi</status_pesanan>
         <status_bayar>Lunas</status_bayar>
         <total>250000.0</total>
     </order>
-</orders>
+<order id="ORD-033"><username>Pelanggan Aktif</username><menu>Catering Prasmanan</menu><porsi>1</porsi><tanggal>2026-07-11</tanggal><alamat>jalan godean </alamat><catatan>semoga bisa</catatan><status_pesanan>Dikonfirmasi</status_pesanan><status_bayar>Belum Lunas</status_bayar><total>25000.0</total></order></orders>

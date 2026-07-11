@@ -3,15 +3,17 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.Pesanan;
+import java.time.LocalDate;
 
 public class BuatPesananController {
-
     @FXML
     private TextField txtPilihanMenu;
     @FXML
     private TextField txtJumlahPorsi;
+    
+    // PERBAIKAN: Sesuaikan tipe objek dengan FXML agar tidak bernilai null!
     @FXML
-    private TextField txtTanggalKirim;
+    private DatePicker dpTanggalKirim; 
     @FXML
     private TextArea txtAlamatKirim;
     @FXML
@@ -27,7 +29,13 @@ public class BuatPesananController {
     public void handleKirimPesanan() {
         String menu = txtPilihanMenu.getText();
         String porsiStr = txtJumlahPorsi.getText();
-        String tanggal = txtTanggalKirim.getText();
+        
+        // PERBAIKAN: Ambil nilai string dari objek DatePicker secara aman
+        String tanggal = "";
+        if (dpTanggalKirim != null && dpTanggalKirim.getValue() != null) {
+            tanggal = dpTanggalKirim.getValue().toString();
+        }
+        
         String alamat = txtAlamatKirim.getText();
         String catatan = txtCatatan.getText();
 
@@ -42,13 +50,17 @@ public class BuatPesananController {
             String idPesanan = "ORD-0" + (int) (Math.random() * 100);
             double totalHarga = porsi * 25000;
 
+            // Membuat objek model pesanan baru sesuai konstruktor kelompok kalian
             Pesanan baru = new Pesanan(idPesanan, "Pelanggan Aktif", menu, porsi, tanggal, alamat, catatan, "Dikonfirmasi", "Belum Lunas", totalHarga);
+            
+            // Eksekusi penyimpanan data terpusat ke database XML
             boolean sukses = Pesanan.simpanPesananBaru(baru);
-
+            
             if (sukses) {
-                lblStatusOrder.setStyle("-fx-text-fill: green;");
-                lblStatusOrder.setText("✅ Pesanan Berhasil Dibuat! ID: " + idPesanan);
-
+                lblStatusOrder.setStyle("-fx-text-fill: green; -fx-font-weight: bold;");
+                lblStatusOrder.setText("Pesanan Berhasil Dibuat! ID: " + idPesanan);
+                
+                // Reset form isian field secara otomatis demi kenyamanan pelanggan
                 new java.util.Timer().schedule(
                     new java.util.TimerTask() {
                         @Override
@@ -56,7 +68,7 @@ public class BuatPesananController {
                             javafx.application.Platform.runLater(() -> {
                                 txtPilihanMenu.clear();
                                 txtJumlahPorsi.setText("1");
-                                txtTanggalKirim.clear();
+                                if (dpTanggalKirim != null) dpTanggalKirim.setValue(null);
                                 txtAlamatKirim.clear();
                                 txtCatatan.clear();
                                 lblStatusOrder.setText("");
@@ -65,12 +77,12 @@ public class BuatPesananController {
                     },
                     3000
                 );
-
             } else {
                 lblStatusOrder.setStyle("-fx-text-fill: red;");
                 lblStatusOrder.setText("Gagal menyimpan ke database XML!");
             }
         } catch (NumberFormatException e) {
+            lblStatusOrder.setStyle("-fx-text-fill: red;");
             lblStatusOrder.setText("Jumlah porsi harus berupa angka!");
         }
     }
@@ -79,7 +91,6 @@ public class BuatPesananController {
     public void setMenuTerpilih(String menu, int harga) {
         txtPilihanMenu.setText(menu);
         System.out.println("Berhasil menerima lembaran data dari Daftar Menu!");
-        System.out.println("Menu: " + menu + " | Harga Dasar: Rp " + harga);
     }
 
     // ===== DIPANGGIL DARI RIWAYAT PESANAN (PESANAN LAMA) =====
@@ -87,12 +98,17 @@ public class BuatPesananController {
         if (pesananLama != null) {
             txtPilihanMenu.setText(pesananLama.getNamaMenu());
             txtJumlahPorsi.setText(String.valueOf(pesananLama.getJumlahPorsi()));
-            txtTanggalKirim.setText(pesananLama.getTanggalPengiriman());
+            if (dpTanggalKirim != null) {
+                try {
+                    dpTanggalKirim.setValue(LocalDate.parse(pesananLama.getTanggalPengiriman()));
+                } catch(Exception e) {
+                    System.out.println("Gagal mem-parsing tanggal lama.");
+                }
+            }
             txtAlamatKirim.setText(pesananLama.getAlamatPengiriman());
             txtCatatan.setText(pesananLama.getCatatanKhusus());
-
             lblStatusOrder.setStyle("-fx-text-fill: #2E7D32;");
-            lblStatusOrder.setText("✏️ Data pesanan lama telah diisi. Silakan edit jika perlu.");
+            lblStatusOrder.setText("  Data pesanan lama telah diisi. Silakan edit jika perlu.");
         }
     }
 
@@ -100,6 +116,6 @@ public class BuatPesananController {
     public void setMenuTerpilih(String namaMenu, double harga) {
         txtPilihanMenu.setText(namaMenu);
         lblStatusOrder.setStyle("-fx-text-fill: #2E7D32;");
-        lblStatusOrder.setText("📝 Menu dipilih: " + namaMenu + " (Rp " + String.format("%,.0f", harga) + "/porsi)");
+        lblStatusOrder.setText("  Menu dipilih: " + namaMenu + " (Rp " + String.format("%,.0f", harga) + "/porsi)");
     }
 }
