@@ -16,6 +16,7 @@ import javafx.geometry.Insets;
 import java.util.Optional;
 import javafx.scene.control.DialogPane;
 import java.io.IOException;
+import util.SceneNavigator;
 
 public class OwnerDashboardController {
 
@@ -121,9 +122,7 @@ public class OwnerDashboardController {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
                 Stage stage = (Stage) btnDashboard.getScene().getWindow();
-                stage.setTitle("SINARING - Login");
-                stage.setScene(new Scene(root, 400, 300));
-                stage.show();
+                SceneNavigator.switchTo(stage, root, "SINARING - Login");
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -11,6 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.User;
+import util.SceneNavigator;
 
 public class LoginController {
 
@@ -47,10 +48,7 @@ public class LoginController {
                     controller.setUsernameSession(inputUser); // <-- INI PENTING!
                     
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    stage.setTitle(judulWindow);
-                    stage.setScene(new Scene(root, 600, 400));
-                    stage.setMaximized(true);
-                    stage.show();
+                    SceneNavigator.switchTo(stage, root, judulWindow);
                     return;
                     
                 } else if (userAktif.getRole().equalsIgnoreCase("Owner")){
@@ -63,10 +61,7 @@ public class LoginController {
                 
                 Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setTitle(judulWindow);
-                stage.setScene(new Scene(root, 600, 400)); 
-                stage.setMaximized(true);
-                stage.show();
+                SceneNavigator.switchTo(stage, root, judulWindow);
                 
             } catch (Exception e) {
                 lblPesanError.setText("Gagal memuat halaman dashboard!");
@@ -82,10 +77,7 @@ public class LoginController {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/view/Registrasi.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setTitle("SINARING - Registrasi");
-            stage.setScene(new Scene(root, 400, 300));
-            stage.setMaximized(true);
-            stage.show();
+            SceneNavigator.switchTo(stage, root, "SINARING - Registrasi");
         } catch (Exception e) {
             e.printStackTrace();
         }

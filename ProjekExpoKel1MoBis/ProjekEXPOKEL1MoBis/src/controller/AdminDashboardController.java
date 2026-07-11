@@ -16,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.geometry.Insets;
 import java.util.Optional;
 import javafx.scene.control.DialogPane;
+import util.SceneNavigator;
 
 public class AdminDashboardController {
     @FXML private AnchorPane paneKontenAdmin; // Wadah tengah halaman admin
@@ -107,9 +108,7 @@ public class AdminDashboardController {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setTitle("SINARING - Login");
-                stage.setScene(new Scene(root, 400, 300));
-                stage.show();
+                SceneNavigator.switchTo(stage, root, "SINARING - Login");
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -18,6 +18,7 @@ import javafx.geometry.Insets;
 import java.util.Optional;
 import javafx.scene.control.DialogPane;
 import javafx.scene.input.MouseEvent;
+import util.SceneNavigator;
 
 public class PelangganDashboardController {
     
@@ -219,9 +220,7 @@ public class PelangganDashboardController {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setTitle("SINARING - Login");
-                stage.setScene(new Scene(root, 400, 300));
-                stage.show();
+                SceneNavigator.switchTo(stage, root, "SINARING - Login");
             } catch (Exception e) {
                 e.printStackTrace();
             }

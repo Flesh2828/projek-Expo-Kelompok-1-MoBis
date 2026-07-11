@@ -11,6 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.User;
+import util.SceneNavigator;
 
 public class RegistrasiController {
 
@@ -39,10 +40,7 @@ public class RegistrasiController {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setTitle("SINARING - Login");
-            stage.setScene(new Scene(root, 600, 400));
-            stage.setMaximized(true);
-            stage.show();
+            SceneNavigator.switchTo(stage, root, "SINARING - Login");
         } catch (Exception e) {
             e.printStackTrace();
         }

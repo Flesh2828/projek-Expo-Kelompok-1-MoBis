@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.User;
+import util.SceneNavigator;
 
 public class EditProfilController {
 
@@ -103,9 +104,7 @@ public class EditProfilController {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setTitle("SINARING - Login");
-                stage.setScene(new Scene(root, 400, 300));
-                stage.show();
+                SceneNavigator.switchTo(stage, root, "SINARING - Login");
             } catch (Exception e) {
                 e.printStackTrace();
                 lblStatus.setStyle("-fx-text-fill: red;");
