@@ -38,6 +38,8 @@ public class PelangganDashboardController {
             txtNamaUser.setText(username);
         }
         System.out.println("✅ Username di-set ke: " + username);
+        bukaHalamanKonten("/view/DaftarMenu.fxml");
+        setTombolAktif(btnDaftarMenu);
     }
 
     public AnchorPane getPaneKontenTengah() {
@@ -50,11 +52,7 @@ public class PelangganDashboardController {
 
     @FXML
     public void initialize() {
-        txtNamaUser.setText(userAktifSession);
-        System.out.println("📌 Initialize - Username: " + userAktifSession);
-        
-        bukaHalamanKonten("/view/DaftarMenu.fxml");
-        setTombolAktif(btnDaftarMenu);
+        // Dikosongkan, menunggu setUsernameSession dipanggil
     }
 
     @FXML
@@ -79,24 +77,29 @@ public class PelangganDashboardController {
                 Parent halaman = loader.load();
                 DaftarMenuController controller = loader.getController();
                 controller.setPaneKontenTengah(paneKontenTengah);
+                controller.setUsernameSession(userAktifSession);
                 tampilkanDiPanel(halaman);
-            } else if (fxmlPath.equals("/view/RiwayatPesanan.fxml")) {
+           } else if (fxmlPath.equals("/view/RiwayatPesanan.fxml")) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
                 Parent halaman = loader.load();
                 RiwayatPesananController controller = loader.getController();
                 controller.setPaneKontenTengah(paneKontenTengah);
+                // TAMBAHKAN INI BIAR RIWAYAT BISA DIBACA SESUAI USER:
+                controller.setUsernameSession(userAktifSession); 
                 tampilkanDiPanel(halaman);
             } else if (fxmlPath.equals("/view/Pembayaran.fxml")) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
                 Parent halaman = loader.load();
                 PembayaranController controller = loader.getController();
                 controller.setPaneKontenTengah(paneKontenTengah);
+                controller.setUsernameSession(userAktifSession);
                 tampilkanDiPanel(halaman);
             } else if (fxmlPath.equals("/view/KonfirmasiPembayaran.fxml")) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
                 Parent halaman = loader.load();
                 KonfirmasiPembayaranController controller = loader.getController();
                 controller.setPaneKontenTengah(paneKontenTengah);
+                controller.setUsernameSession(userAktifSession);
                 tampilkanDiPanel(halaman);
             }   else if (fxmlPath.equals("/view/EditProfil.fxml")) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
@@ -105,6 +108,13 @@ public class PelangganDashboardController {
                 controller.setPaneKontenTengah(paneKontenTengah);
                 controller.setUsernameSession(userAktifSession);
                 controller.setTxtNamaUser(txtNamaUser);
+                tampilkanDiPanel(halaman);
+            } else if (fxmlPath.equals("/view/BuatPesanan.fxml")) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+                Parent halaman = loader.load();
+                // TAMBAHKAN INI BIAR NAMA PELANGGAN ASLI TERSIMPAN:
+                BuatPesananController controller = loader.getController();
+                controller.setUsernameSession(userAktifSession); 
                 tampilkanDiPanel(halaman);
             } else {
                 Parent halaman = FXMLLoader.load(getClass().getResource(fxmlPath));

@@ -23,6 +23,11 @@ public class DaftarMenuController {
     @FXML
     private GridPane menuGrid;
 
+    private String usernameSession;
+    public void setUsernameSession(String username) {
+        this.usernameSession = username;
+    }
+
     public void setPaneKontenTengah(AnchorPane pane) {
         this.paneKontenTengah = pane;
     }
@@ -131,6 +136,7 @@ public class DaftarMenuController {
             Parent root = loader.load();
 
             BuatPesananController controller = loader.getController();
+            controller.setUsernameSession(this.usernameSession);
             controller.setMenuTerpilih(namaMenu, harga);
 
             if (paneKontenTengah != null) {

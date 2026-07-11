@@ -32,11 +32,18 @@ public class PembayaranController {
 
     // ===== DEKLARASIKAN VARIABEL INI =====
     private AnchorPane paneKontenTengah;
+    private String usernameSession;
     // ====================================
 
     // ===== SETTER UNTUK paneKontenTengah =====
     public void setPaneKontenTengah(AnchorPane pane) {
         this.paneKontenTengah = pane;
+    }
+    // ========================================
+
+    // ===== SETTER UNTUK usernameSession =====
+    public void setUsernameSession(String username) {
+        this.usernameSession = username;
     }
     // ========================================
 
@@ -80,9 +87,10 @@ public class PembayaranController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/KonfirmasiPembayaran.fxml"));
             Parent konfirmasiView = loader.load();
             
-            // Set paneKontenTengah ke KonfirmasiPembayaranController
+            // Set paneKontenTengah & username ke KonfirmasiPembayaranController
             KonfirmasiPembayaranController konfirmasiController = loader.getController();
             konfirmasiController.setPaneKontenTengah(this.paneKontenTengah);
+            konfirmasiController.setUsernameSession(this.usernameSession);
             
             // Ganti konten di paneKontenTengah
             if (paneKontenTengah != null) {

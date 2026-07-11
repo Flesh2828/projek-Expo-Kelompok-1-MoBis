@@ -21,6 +21,9 @@ public class BuatPesananController {
     @FXML
     private Label lblStatusOrder;
 
+    private String usernameSession = "Pelanggan Aktif";
+    public void setUsernameSession(String username) { this.usernameSession = username; }
+
     public void setMenuPilihan(String namaMenu) {
         txtPilihanMenu.setText(namaMenu);
     }
@@ -51,7 +54,7 @@ public class BuatPesananController {
             double totalHarga = porsi * 25000;
 
             // Membuat objek model pesanan baru sesuai konstruktor kelompok kalian
-            Pesanan baru = new Pesanan(idPesanan, "Pelanggan Aktif", menu, porsi, tanggal, alamat, catatan, "Dikonfirmasi", "Belum Lunas", totalHarga);
+            Pesanan baru = new Pesanan(idPesanan, usernameSession, menu, porsi, tanggal, alamat, catatan, "Dikonfirmasi", "Belum Bayar", totalHarga);
             
             // Eksekusi penyimpanan data terpusat ke database XML
             boolean sukses = Pesanan.simpanPesananBaru(baru);

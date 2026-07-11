@@ -131,4 +131,4 @@
         <status_bayar>Belum Lunas</status_bayar>
         <total>45000.0</total>
     </order>
-</orders>
+<order id="ORD-015"><username>Hafidz</username><menu>Catering Prasmanan</menu><porsi>1</porsi><tanggal>2026-07-11</tanggal><alamat>jalan jalan</alamat><catatan>plis bisa</catatan><status_pesanan>Dikonfirmasi</status_pesanan><status_bayar>Lunas</status_bayar><total>25000.0</total></order></orders>

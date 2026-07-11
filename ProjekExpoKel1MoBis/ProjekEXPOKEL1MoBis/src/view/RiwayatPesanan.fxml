@@ -1,116 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1200.0" prefWidth="1500.0" style="-fx-background-color: #FDFEFE;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RiwayatPesananController">
-
+<AnchorPane prefHeight="1200.0" prefWidth="1500.0" style="-fx-background-color: #FDFEFE;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RiwayatPesananController">
     <padding>
         <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
-
-    <VBox spacing="15.0" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20">
-
-        <Text style="-fx-font-size: 28; -fx-font-weight: bold; -fx-fill: #00000;" text="Riwayat Pesanan" />
-        <Text style="-fx-font-size: 14; -fx-fill: #666666;" text="Lihat semua pesanan Anda" />
-
+    <VBox spacing="15.0" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="20" AnchorPane.bottomAnchor="20">
+        <Text style="-fx-font-size: 28; -fx-font-weight: bold; -fx-fill: #000000;" text="Riwayat Pesanan" />
+        <Text style="-fx-font-size: 14; -fx-fill: #666666;" text="Lihat semua pesanan Anda secara real-time" />
         <Separator />
-
-        <!-- Card 1 -->
-        <VBox prefHeight="200.0" prefWidth="1400.0" spacing="5.0" style="-fx-background-color: #FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);">
-            <HBox spacing="10.0">
-                <Text text="ORD-011">
-               <font>
-                  <Font name="System Bold" size="28.0" />
-               </font></Text>
-                <Text style="-fx-font-size: 12; -fx-fill: white; -fx-background-color: #2E7D32; -fx-padding: 2 8 2 8; -fx-background-radius: 4;" text="✅ Dikirim" />
-                <Text style="-fx-font-size: 12; -fx-fill: white; -fx-background-color: #1B5E20; -fx-padding: 2 8 2 8; -fx-background-radius: 4;" text="✅ Lunas" />
-            </HBox>
-            <Text text="Nasi Box Spesial">
-            <font>
-               <Font name="System Bold" size="28.0" />
-            </font></Text>
-            <Text style="-fx-font-size: 20; -fx-fill: #666666;" text="10 porsi • 25 Jun 2026">
-            <font>
-               <Font size="28.0" />
-            </font></Text>
-            <HBox prefHeight="112.0" prefWidth="1388.0" spacing="15.0">
-                <Text style="-fx-font-size: 28; -fx-font-weight: bold; -fx-fill: C35E2A;" text="Rp 250.000" />
-                <Button fx:id="btnPesanUlang1" onAction="#handlePesanUlang" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold;" text="Pesan Ulang">
-               <HBox.margin>
-                  <Insets left="1100.0" />
-               </HBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font></Button>
-            </HBox>
-        </VBox>
-
-        <!-- Card 2 -->
-        <VBox prefHeight="200.0" prefWidth="1400.0" spacing="5.0" style="-fx-background-color: #FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);">
-            <HBox spacing="10.0" style="-fx-background-color: #FFFAF0;">
-                <Text text="ORD-009">
-               <font>
-                  <Font name="System Bold" size="28.0" />
-               </font></Text>
-                <Text style="-fx-font-size: 12; -fx-fill: white; -fx-background-color: #2E7D32; -fx-padding: 2 8 2 8; -fx-background-radius: 4;" text="✅ Dikirim" />
-                <Text style="-fx-font-size: 12; -fx-fill: white; -fx-background-color: #1B5E20; -fx-padding: 2 8 2 8; -fx-background-radius: 4;" text="✅ Lunas" />
-            </HBox>
-            <Text text="Nasi Gudeg Komplit">
-            <font>
-               <Font name="System Bold" size="28.0" />
-            </font></Text>
-            <Text style="-fx-font-size: 20; -fx-fill: #666666;" text="5 porsi • 18 Jun 2026">
-            <font>
-               <Font size="28.0" />
-            </font></Text>
-            <HBox prefHeight="96.0" prefWidth="1388.0" spacing="15.0">
-                <Text style="-fx-font-size: 28; -fx-font-weight: bold; -fx-fill: C35E2A;" text="Rp 140.000" />
-                <Button fx:id="btnPesanUlang2" onAction="#handlePesanUlang" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold;" text="Pesan Ulang">
-               <HBox.margin>
-                  <Insets left="1100.0" />
-               </HBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font></Button>
-            </HBox>
-        </VBox>
-
-        <!-- Card 3 -->
-        <VBox prefHeight="200.0" prefWidth="1400.0" spacing="5.0" style="-fx-background-color: #FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2);">
-            <HBox spacing="10.0">
-                <Text text="ORD-012">
-               <font>
-                  <Font name="System Bold" size="28.0" />
-               </font></Text>
-                <Text style="-fx-font-size: 12; -fx-fill: white; -fx-background-color: #F39C12; -fx-padding: 2 8 2 8; -fx-background-radius: 4;" text="🕐 Dikonfirmasi" />
-                <Text style="-fx-font-size: 12; -fx-fill: white; -fx-background-color: #E67E22; -fx-padding: 2 8 2 8; -fx-background-radius: 4;" text="💰 DP" />
-            </HBox>
-            <Text text="Catering Prasmanan">
-            <font>
-               <Font name="System Bold" size="28.0" />
-            </font></Text>
-            <Text style="-fx-font-size: 20; -fx-fill: #666666;" text="50 porsi • 10 Juni 2026">
-            <font>
-               <Font size="28.0" />
-            </font></Text>
-            <HBox prefHeight="92.0" prefWidth="1388.0" spacing="15.0">
-                <Text style="-fx-font-size: 28; -fx-font-weight: bold; -fx-fill: C35E2A;" text="Rp 1.000.000" />
-                <Button fx:id="btnPesanUlang3" onAction="#handlePesanUlang" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-weight: bold;" text="Pesan Ulang">
-               <HBox.margin>
-                  <Insets left="1080.0" />
-               </HBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font></Button>
-            </HBox>
-        </VBox>
-
+        
+        <!-- INI WADAH KOSONGNYA, NANTI JAVA YANG BIKIN KARTUNYA OTOMATIS -->
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;" VBox.vgrow="ALWAYS">
+            <content>
+                <VBox fx:id="riwayatContainer" spacing="15.0" style="-fx-background-color: transparent; -fx-padding: 5;">
+                </VBox>
+            </content>
+        </ScrollPane>
     </VBox>
 </AnchorPane>

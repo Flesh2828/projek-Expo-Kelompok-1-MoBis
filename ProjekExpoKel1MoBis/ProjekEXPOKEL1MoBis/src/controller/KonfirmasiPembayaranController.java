@@ -17,9 +17,14 @@ public class KonfirmasiPembayaranController {
     @FXML private TextArea txtCatatan;
 
     private AnchorPane paneKontenTengah;
+    private String usernameSession;
 
     public void setPaneKontenTengah(AnchorPane pane) {
         this.paneKontenTengah = pane;
+    }
+
+    public void setUsernameSession(String username) {
+        this.usernameSession = username;
     }
 
     @FXML
@@ -50,9 +55,10 @@ public class KonfirmasiPembayaranController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/KonfirmasiBerhasil.fxml"));
             Parent berhasilView = loader.load();
             
-            // Set paneKontenTengah ke KonfirmasiBerhasilController
+            // Set paneKontenTengah & username ke KonfirmasiBerhasilController
             KonfirmasiBerhasilController berhasilController = loader.getController();
             berhasilController.setPaneKontenTengah(this.paneKontenTengah);
+            berhasilController.setUsernameSession(this.usernameSession);
             
             // Ganti konten di paneKontenTengah (BUKAN stage.setScene!)
             if (paneKontenTengah != null) {
@@ -80,9 +86,10 @@ public class KonfirmasiPembayaranController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Pembayaran.fxml"));
             Parent pembayaranView = loader.load();
             
-            // Set paneKontenTengah ke PembayaranController
+            // Set paneKontenTengah & username ke PembayaranController
             PembayaranController pembayaranController = loader.getController();
             pembayaranController.setPaneKontenTengah(this.paneKontenTengah);
+            pembayaranController.setUsernameSession(this.usernameSession);
             
             // Ganti konten di paneKontenTengah (BUKAN stage.setScene!)
             if (paneKontenTengah != null) {

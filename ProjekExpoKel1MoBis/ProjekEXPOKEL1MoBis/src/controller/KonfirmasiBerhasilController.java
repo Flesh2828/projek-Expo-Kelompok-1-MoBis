@@ -10,9 +10,14 @@ import java.io.IOException;
 public class KonfirmasiBerhasilController {
 
     private AnchorPane paneKontenTengah;
+    private String usernameSession;
 
     public void setPaneKontenTengah(AnchorPane pane) {
         this.paneKontenTengah = pane;
+    }
+
+    public void setUsernameSession(String username) {
+        this.usernameSession = username;
     }
 
     @FXML
@@ -26,6 +31,9 @@ public class KonfirmasiBerhasilController {
             // Dapatkan controller dashboard
             PelangganDashboardController dashboardController = loader.getController();
             dashboardController.setPaneKontenTengah(this.paneKontenTengah);
+            // Set username terakhir supaya dashboard tidak balik ke default "Pelanggan"
+            // (harus dipanggil SEBELUM ditampilkan, biar tidak menimpa tampilan dashboard)
+            dashboardController.setUsernameSession(this.usernameSession);
             
             // Ganti konten di paneKontenTengah
             if (paneKontenTengah != null) {
@@ -51,7 +59,12 @@ public class KonfirmasiBerhasilController {
             // Load halaman RiwayatPesanan
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/RiwayatPesanan.fxml"));
             Parent riwayatView = loader.load();
-            
+
+            // Dapatkan controller riwayat & set username, pane kontennya
+            RiwayatPesananController riwayatController = loader.getController();
+            riwayatController.setPaneKontenTengah(this.paneKontenTengah);
+            riwayatController.setUsernameSession(this.usernameSession); // WAJIB, biar data riwayat ikut termuat
+
             // Ganti konten di paneKontenTengah
             if (paneKontenTengah != null) {
                 paneKontenTengah.getChildren().clear();
