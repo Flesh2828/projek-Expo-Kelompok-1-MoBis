@@ -5,9 +5,11 @@ import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -25,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.function.Function;
 
 public class AdminRingkasanController {
 
@@ -32,15 +35,21 @@ public class AdminRingkasanController {
     @FXML private ScrollPane rootRingkasan;
 
     // --- Kartu Statistik ---
+    @FXML private Text txtSubJudul;
     @FXML private Text txtTotalPesanan;
     @FXML private Text txtPesananHariIni;
+    @FXML private Text txtPesananHariIniTanggal;
     @FXML private Text txtPendapatanBulanIni;
+    @FXML private Text txtTrendPendapatan;
     @FXML private Text txtMenuAktif;
+    @FXML private Text txtMenuAktifSub;
 
     // Label lama (dibiarkan tetap ada kalau suatu saat dipakai lagi di FXML)
     @FXML private Label lblTotalPesanan;
     @FXML private Label lblPesananHariIni;
     @FXML private Label lblPendapatan;
+
+    @FXML private Text txtJumlahPesananTerbaru;
 
     @FXML private TableView<Pesanan> tablePesananTerbaru;
     @FXML private TableColumn<Pesanan, String> colId;
@@ -49,7 +58,8 @@ public class AdminRingkasanController {
     @FXML private TableColumn<Pesanan, String> colQty;
     @FXML private TableColumn<Pesanan, String> colTglKirim;
     @FXML private TableColumn<Pesanan, String> colStatus;
-    
+    @FXML private TableColumn<Pesanan, String> colPembayaran;
+
     @FXML private VBox boxAlertKapasitas;
     @FXML private ProgressBar progressKapasitas;
     @FXML private Text txtKapasitasPersen;
@@ -57,6 +67,12 @@ public class AdminRingkasanController {
 
     private static final Locale ID_LOCALE = new Locale("id", "ID");
     private static final NumberFormat RUPIAH = NumberFormat.getInstance(ID_LOCALE);
+    private static final String[] BULAN_SINGKAT = {
+        "Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"
+    };
+    private static final String[] HARI_INDO = {
+        "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"
+    };
 
     /** Batas kapasitas produksi (porsi), dipakai untuk progress bar & alert. */
     private static final int KAPASITAS_MAKS_PORSI = 500;
@@ -76,10 +92,26 @@ public class AdminRingkasanController {
         colQty.setCellValueFactory(new PropertyValueFactory<>("jumlahPorsi"));
         colTglKirim.setCellValueFactory(new PropertyValueFactory<>("tanggalPengiriman"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("statusPesanan"));
+        colPembayaran.setCellValueFactory(new PropertyValueFactory<>("statusPembayaran"));
 
-        // 2. Ambil data gabungan langsung dari data/pesanan.xml & data/menu.xml
+        colStatus.setCellFactory(col -> badgeCell(this::gayaStatus));
+        colPembayaran.setCellFactory(col -> badgeCell(this::gayaPembayaran));
+
+        // 2. Tanggal & sapaan header
+        aturHeaderTanggal();
+
+        // 3. Ambil data gabungan langsung dari data/pesanan.xml & data/menu.xml
         muatSemuaData();
         mulaiAutoRefresh();
+    }
+
+    private void aturHeaderTanggal() {
+        if (txtSubJudul != null) {
+            LocalDate hariIni = LocalDate.now();
+            String namaHari = HARI_INDO[hariIni.getDayOfWeek().getValue() - 1];
+            String tanggal = hariIni.getDayOfMonth() + " " + BULAN_SINGKAT[hariIni.getMonthValue() - 1] + " " + hariIni.getYear();
+            txtSubJudul.setText(namaHari + ", " + tanggal + " \u00B7 Selamat datang, Dewi");
+        }
     }
 
     /** Refresh data secara berkala selama halaman ini masih tampil di layar. */
@@ -108,17 +140,9 @@ public class AdminRingkasanController {
         try {
             // PENTING: pakai Pesanan.getAllPesanan() supaya path yang dibaca SAMA PERSIS
             // dengan path yang dipakai saat pelanggan menyimpan pesanan baru (model/Pesanan.java).
-            // Sebelumnya controller ini punya path hardcoded sendiri yang salah ketik/salah folder
-            // ("ProjekExpoKelompok1MoBis/ProjekEXPOKELOMPOK1MoBis/data/pesanan.xml") sehingga
-            // file.exists() selalu false dan tabel ringkasan selalu kosong.
             List<Pesanan> semuaPesanan = Pesanan.getAllPesanan();
 
-            // BUG LAMA: pesanan.xml menyimpan pesanan lama di ATAS dan pesanan BARU selalu
-            // ditambahkan di paling BAWAH file (lihat Pesanan.simpanPesananBaru() -> root.appendChild).
-            // Kode sebelumnya mengambil 7 data PERTAMA dari list (i < jumlahData), yang artinya
-            // selalu 7 pesanan PALING LAMA. Akibatnya begitu pesanan lebih dari 7, pesanan yang
-            // baru saja dibuat pelanggan tidak akan pernah kelihatan di tabel "Pesanan Terbaru".
-            // FIX: balik dulu urutannya supaya pesanan yang paling akhir ditambahkan (terbaru)
+            // Balik urutan supaya pesanan yang paling akhir ditambahkan (terbaru)
             // ada di paling atas, baru ambil maksimal 7 teratas untuk ditampilkan.
             List<Pesanan> pesananTerbaruDulu = new ArrayList<>(semuaPesanan);
             Collections.reverse(pesananTerbaruDulu);
@@ -128,6 +152,10 @@ public class AdminRingkasanController {
             if (tablePesananTerbaru != null) {
                 tablePesananTerbaru.setItems(dataPesanan);
                 tablePesananTerbaru.refresh();
+            }
+
+            if (txtJumlahPesananTerbaru != null) {
+                txtJumlahPesananTerbaru.setText(dataPesanan.size() + " pesanan");
             }
 
             // Hitung akumulasi porsi dari SEMUA pesanan (bukan cuma yang ditampilkan di tabel)
@@ -144,7 +172,7 @@ public class AdminRingkasanController {
                 progressKapasitas.setProgress(Math.min(persentaseKapasitas, 1.0));
             }
             if (txtKapasitasPersen != null) {
-                txtKapasitasPersen.setText("⚠️ Kapasitas Produksi: " + persenBulat + "% — Mendekati Batas (80%)");
+                txtKapasitasPersen.setText("\u26A0\uFE0F Kapasitas Produksi: " + persenBulat + "% \u2014 Mendekati Batas (80%)");
             }
             if (txtKapasitasPorsi != null) {
                 txtKapasitasPorsi.setText(totalPorsiKeseluruhan + " / " + KAPASITAS_MAKS_PORSI + " porsi");
@@ -167,9 +195,11 @@ public class AdminRingkasanController {
         try {
             List<Pesanan> semuaPesanan = Pesanan.getAllPesanan();
             LocalDate hariIni = LocalDate.now();
+            LocalDate bulanLalu = hariIni.minusMonths(1);
 
             int pesananHariIni = 0;
             double pendapatanBulanIni = 0.0;
+            double pendapatanBulanLalu = 0.0;
 
             for (Pesanan p : semuaPesanan) {
                 LocalDate tglKirim = parseTanggal(p.getTanggalPengiriman());
@@ -179,15 +209,22 @@ public class AdminRingkasanController {
                     pesananHariIni++;
                 }
 
-                if ("Lunas".equalsIgnoreCase(p.getStatusPembayaran())
-                        && tglKirim.getMonthValue() == hariIni.getMonthValue()
+                boolean lunas = "Lunas".equalsIgnoreCase(p.getStatusPembayaran());
+
+                if (lunas && tglKirim.getMonthValue() == hariIni.getMonthValue()
                         && tglKirim.getYear() == hariIni.getYear()) {
                     pendapatanBulanIni += p.getTotalHarga();
+                }
+
+                if (lunas && tglKirim.getMonthValue() == bulanLalu.getMonthValue()
+                        && tglKirim.getYear() == bulanLalu.getYear()) {
+                    pendapatanBulanLalu += p.getTotalHarga();
                 }
             }
 
             int menuAktif = 0;
-            for (Menu m : Menu.getAllMenu()) {
+            List<Menu> semuaMenu = Menu.getAllMenu();
+            for (Menu m : semuaMenu) {
                 if ("aktif".equalsIgnoreCase(m.getStatus())) {
                     menuAktif++;
                 }
@@ -195,12 +232,84 @@ public class AdminRingkasanController {
 
             if (txtTotalPesanan != null) txtTotalPesanan.setText(String.valueOf(semuaPesanan.size()));
             if (txtPesananHariIni != null) txtPesananHariIni.setText(String.valueOf(pesananHariIni));
+            if (txtPesananHariIniTanggal != null) {
+                txtPesananHariIniTanggal.setText(
+                    hariIni.getDayOfMonth() + " " + BULAN_SINGKAT[hariIni.getMonthValue() - 1] + " " + hariIni.getYear());
+            }
             if (txtPendapatanBulanIni != null) txtPendapatanBulanIni.setText("Rp " + formatRingkas(pendapatanBulanIni));
             if (txtMenuAktif != null) txtMenuAktif.setText(String.valueOf(menuAktif));
+            if (txtMenuAktifSub != null) txtMenuAktifSub.setText("dari " + semuaMenu.size() + " menu");
+
+            if (txtTrendPendapatan != null) {
+                if (pendapatanBulanLalu > 0) {
+                    double persenPerubahan = ((pendapatanBulanIni - pendapatanBulanLalu) / pendapatanBulanLalu) * 100.0;
+                    String panah = persenPerubahan >= 0 ? "\u2191" : "\u2193";
+                    txtTrendPendapatan.setText(panah + " " + trimNolBelakang(Math.abs(persenPerubahan)) + "% vs bulan lalu");
+                } else if (pendapatanBulanIni > 0) {
+                    txtTrendPendapatan.setText("\u2191 Baru mulai bulan ini");
+                } else {
+                    txtTrendPendapatan.setText("Belum ada pendapatan");
+                }
+            }
         } catch (Exception e) {
             System.out.println("Gagal menghitung kartu statistik admin: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    // ======================================================
+    //  Badge STATUS & PEMBAYARAN (kolom tabel Pesanan Terbaru)
+    // ======================================================
+
+    private TableCell<Pesanan, String> badgeCell(Function<String, String> gayaFn) {
+        return new TableCell<Pesanan, String>() {
+            private final Label badge = new Label();
+            {
+                badge.getStyleClass().add("badge-pill");
+                setAlignment(Pos.CENTER_LEFT);
+            }
+            @Override
+            protected void updateItem(String nilai, boolean empty) {
+                super.updateItem(nilai, empty);
+                if (empty || nilai == null || nilai.isEmpty()) {
+                    setGraphic(null);
+                } else {
+                    badge.setText(gayaLabel(nilai));
+                    badge.setStyle(gayaFn.apply(nilai));
+                    setGraphic(badge);
+                }
+            }
+        };
+    }
+
+    /** Tambahkan ikon kecil di depan teks status/pembayaran, senada dengan desain. */
+    private String gayaLabel(String status) {
+        String s = status.trim().toLowerCase();
+        if (s.contains("dikirim")) return "\u2713 " + status;
+        if (s.contains("dimasak")) return "\u23F3 " + status;
+        if (s.contains("dikonfirmasi")) return "\u25D0 " + status;
+        return status;
+    }
+
+    /** Warna badge untuk kolom STATUS pesanan. */
+    private String gayaStatus(String status) {
+        String s = status.trim().toLowerCase();
+        if (s.contains("dikirim")) return "-fx-background-color:#DCF5DF; -fx-text-fill:#1E8E4D;";
+        if (s.contains("dimasak")) return "-fx-background-color:#FDF0CE; -fx-text-fill:#B8860B;";
+        if (s.contains("dikonfirmasi")) return "-fx-background-color:#DCEBFB; -fx-text-fill:#2E71B8;";
+        if (s.contains("selesai")) return "-fx-background-color:#DCF5DF; -fx-text-fill:#1E8E4D;";
+        return "-fx-background-color:#ECECEC; -fx-text-fill:#6B6B6B;";
+    }
+
+    /** Warna badge untuk kolom PEMBAYARAN, mengikuti palet pada desain (hijau/kuning/merah). */
+    private String gayaPembayaran(String status) {
+        String s = status.trim().toLowerCase();
+        // PENTING: cek "belum" LEBIH DULU sebelum "lunas", karena data asli
+        // memakai teks "Belum Lunas"/"Belum Bayar" yang juga mengandung kata "lunas".
+        if (s.contains("belum")) return "-fx-background-color:#FBDCDF; -fx-text-fill:#C0392B;";
+        if (s.contains("dp")) return "-fx-background-color:#FDF0CE; -fx-text-fill:#B8860B;";
+        if (s.contains("lunas")) return "-fx-background-color:#DCF5DF; -fx-text-fill:#1E8E4D;";
+        return "-fx-background-color:#ECECEC; -fx-text-fill:#6B6B6B;";
     }
 
     // ======================================================

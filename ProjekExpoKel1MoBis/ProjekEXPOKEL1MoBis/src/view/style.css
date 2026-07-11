@@ -55,3 +55,350 @@
     -fx-background-radius: 8;
     -fx-alignment: center-left;
 }
+/* ============================================================
+   KELOLA PESANAN — Redesain Card & Table View
+   ============================================================ */
+
+/* Kartu putih pembungkus tabel */
+.card-pesanan {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 16;
+    -fx-border-radius: 16;
+    -fx-border-color: #EFE7DD;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(74,46,27,0.08), 18, 0, 0, 6);
+}
+
+/* Reset dasar TableView */
+.table-pesanan {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}
+
+.table-pesanan .column-header-background {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 0;
+}
+
+.table-pesanan .column-header,
+.table-pesanan .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #EFE7DD transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-size: 38px;
+}
+
+.table-pesanan .column-header .label {
+    -fx-text-fill: #A79B8E;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER-LEFT;
+}
+
+.table-pesanan .table-row-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: transparent transparent #F3EEE7 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-pesanan .table-row-cell:hover {
+    -fx-background-color: #FDF8F2;
+}
+
+.table-pesanan .table-row-cell:selected {
+    -fx-background-color: #FCEEE0;
+}
+
+.table-pesanan .table-row-cell:selected .table-cell {
+    -fx-text-fill: #3A2415;
+}
+
+.table-pesanan .table-cell {
+    -fx-alignment: CENTER-LEFT;
+    -fx-padding: 12 10 12 10;
+    -fx-font-size: 12.5px;
+    -fx-text-fill: #4A3A2E;
+    -fx-border-color: transparent;
+}
+
+/* Kolom ID & Pelanggan sedikit ditonjolkan */
+.table-pesanan .table-column-id .table-cell,
+.table-pesanan .table-column-pelanggan .table-cell {
+    -fx-font-weight: bold;
+    -fx-text-fill: #3A2415;
+}
+
+.table-pesanan .arrow-image,
+.table-pesanan .column-resize-line {
+    -fx-background-color: transparent;
+}
+
+.table-pesanan .scroll-bar:vertical {
+    -fx-pref-width: 8px;
+}
+
+/* Badge status & pembayaran (dipasang lewat cell factory di controller) */
+.badge-pill {
+    -fx-background-radius: 12;
+    -fx-padding: 4 12 4 12;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+/* Tombol Verifikasi Pembayaran */
+.btn-verifikasi {
+    -fx-background-color: #2FAE60;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+}
+
+.btn-verifikasi:hover {
+    -fx-background-color: #269154;
+}
+
+/* ============================================================
+   KELOLA MENU — Redesain Card, Table View & Modal
+   ============================================================ */
+
+/* Tombol "+ Tambah Menu" pojok kanan atas */
+.btn-tambah-menu {
+    -fx-background-color: #C35E2A;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+}
+.btn-tambah-menu:hover {
+    -fx-background-color: #A94D20;
+}
+
+/* Ikon aksi (edit/hapus) di kolom AKSI */
+.btn-aksi-icon {
+    -fx-background-color: transparent;
+    -fx-text-fill: #8A7A6E;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-padding: 4 8 4 8;
+    -fx-background-radius: 6;
+}
+.btn-aksi-icon:hover {
+    -fx-background-color: #F3EEE7;
+    -fx-text-fill: #4A3A2E;
+}
+.btn-aksi-hapus:hover {
+    -fx-text-fill: #C0392B;
+}
+
+/* ============================================================
+   MODAL TAMBAH / EDIT MENU
+   ============================================================ */
+
+.dialog-pane-menu {
+    -fx-background-color: white;
+    -fx-padding: 0;
+}
+.dialog-pane-menu > .button-bar {
+    -fx-padding: 0;
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+}
+.dialog-pane-menu .content.label {
+    -fx-padding: 0;
+}
+
+.modal-card {
+    -fx-background-color: white;
+    -fx-padding: 26 28 22 28;
+    -fx-spacing: 14;
+}
+
+.modal-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2E2417;
+}
+
+.modal-close-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #9A8F84;
+    -fx-font-size: 18px;
+    -fx-cursor: hand;
+    -fx-background-radius: 100;
+    -fx-min-width: 28px;
+    -fx-min-height: 28px;
+    -fx-padding: 0;
+}
+.modal-close-btn:hover {
+    -fx-background-color: #F3EEE7;
+    -fx-text-fill: #4A3A2E;
+}
+
+.modal-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4A3A2E;
+}
+
+.modal-field {
+    -fx-background-color: #FBF3E7;
+    -fx-background-radius: 10;
+    -fx-border-color: #EFE1CC;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-padding: 9 12 9 12;
+    -fx-font-size: 13px;
+}
+.modal-field:focused {
+    -fx-border-color: #C35E2A;
+}
+.modal-field .content {
+    -fx-background-color: #FBF3E7;
+    -fx-background-radius: 10;
+}
+
+.btn-batal-modal {
+    -fx-background-color: white;
+    -fx-text-fill: #4A3A2E;
+    -fx-border-color: #E2D9CC;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 9 24 9 24;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+.btn-batal-modal:hover {
+    -fx-background-color: #F7F3EE;
+}
+
+.btn-simpan-modal {
+    -fx-background-color: #C35E2A;
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+    -fx-padding: 9 24 9 24;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+.btn-simpan-modal:hover {
+    -fx-background-color: #A94D20;
+}
+
+/* Tombol aksi berbahaya di modal konfirmasi (mis. Hapus Menu) */
+.btn-hapus-modal {
+    -fx-background-color: #C0392B;
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+    -fx-padding: 9 24 9 24;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+.btn-hapus-modal:hover {
+    -fx-background-color: #A83226;
+}
+
+/* Pesan isi pada modal konfirmasi / alert custom */
+.modal-message {
+    -fx-font-size: 13px;
+    -fx-text-fill: #6B5D50;
+}
+
+/* Ikon bulat pada modal alert custom (pengganti Alert bawaan JavaFX) */
+.modal-alert-icon {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 100;
+    -fx-min-width: 42;
+    -fx-min-height: 42;
+    -fx-max-width: 42;
+    -fx-max-height: 42;
+    -fx-alignment: center;
+}
+.alert-icon-error {
+    -fx-background-color: #FBDCDF;
+    -fx-text-fill: #C0392B;
+}
+.alert-icon-warning {
+    -fx-background-color: #FDF0CE;
+    -fx-text-fill: #B8860B;
+}
+.alert-icon-info {
+    -fx-background-color: #DCF5DF;
+    -fx-text-fill: #1E8E4D;
+}
+
+/* ============================================================
+   DASHBOARD ADMIN — Kartu Statistik (Ringkasan)
+   ============================================================ */
+
+.card-stat {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 14;
+    -fx-border-radius: 14;
+    -fx-border-color: #EFE7DD;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(74,46,27,0.06), 14, 0, 0, 4);
+}
+
+.card-stat-highlight {
+    -fx-background-color: #C35E2A;
+    -fx-border-color: #C35E2A;
+}
+
+.stat-icon-circle {
+    -fx-background-color: #FBF0E4;
+    -fx-background-radius: 100;
+    -fx-min-width: 38;
+    -fx-min-height: 38;
+    -fx-max-width: 38;
+    -fx-max-height: 38;
+    -fx-alignment: center;
+    -fx-font-size: 16px;
+}
+
+.stat-icon-circle-light {
+    -fx-background-color: rgba(255,255,255,0.22);
+    -fx-background-radius: 100;
+    -fx-min-width: 38;
+    -fx-min-height: 38;
+    -fx-max-width: 38;
+    -fx-max-height: 38;
+    -fx-alignment: center;
+    -fx-font-size: 16px;
+}
+
+.stat-value {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-fill: #2E2417;
+}
+
+.stat-value-white {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+}
+
+.stat-label {
+    -fx-font-size: 13px;
+    -fx-fill: #4A3A2E;
+}
+
+.stat-label-white {
+    -fx-font-size: 13px;
+    -fx-fill: white;
+}
+
+.stat-sub {
+    -fx-font-size: 11px;
+    -fx-fill: #A79B8E;
+}
+
+.stat-sub-white {
+    -fx-font-size: 11px;
+    -fx-fill: rgba(255,255,255,0.85);
+}

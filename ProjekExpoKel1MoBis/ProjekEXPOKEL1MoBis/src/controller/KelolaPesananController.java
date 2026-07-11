@@ -3,6 +3,7 @@ package controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.beans.property.*;
@@ -14,6 +15,7 @@ public class KelolaPesananController {
     @FXML private TableView<Pesanan> tableKelolaPesanan;
     @FXML private TableColumn<Pesanan, String> colId, colPelanggan, colMenu, colTglKirim, colAlamat, colStatus, colPembayaran;
     @FXML private TableColumn<Pesanan, Integer> colQty;
+    @FXML private Label lblJumlahPesanan;
 
     @FXML private Button btnFilterSemua;
     @FXML private Button btnFilterKonfirmasi;
@@ -33,6 +35,9 @@ public class KelolaPesananController {
         colAlamat.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getAlamatPengiriman()));
         colStatus.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getStatusPesanan()));
         colPembayaran.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getStatusPembayaran()));
+
+        colStatus.setCellFactory(col -> badgeCell(this::gayaStatus));
+        colPembayaran.setCellFactory(col -> badgeCell(this::gayaPembayaran));
 
         if (btnFilterSemua != null) btnFilterSemua.setOnAction(e -> handleFilterSemua());
         if (btnFilterKonfirmasi != null) btnFilterKonfirmasi.setOnAction(e -> handleFilterKonfirmasi());
@@ -59,6 +64,7 @@ public class KelolaPesananController {
         // PENTING: Set items ke table visual
         tableKelolaPesanan.setItems(listMasterPesanan);
         tableKelolaPesanan.refresh();
+        perbaruiJumlahPesanan(listMasterPesanan.size());
         System.out.println("LOG SINARING -> Berhasil memasukkan data ke TableView Kelola Pesanan!");
 
     } catch (Exception e) { 
@@ -75,8 +81,62 @@ public class KelolaPesananController {
                 if (p.getStatusPesanan().equalsIgnoreCase(currentFilter)) filtered.add(p);
             }
             tableKelolaPesanan.setItems(filtered);
+            perbaruiJumlahPesanan(filtered.size());
         }
         tableKelolaPesanan.refresh();
+    }
+
+    private void perbaruiJumlahPesanan(int jumlah) {
+        if (lblJumlahPesanan != null) {
+            lblJumlahPesanan.setText(jumlah + " pesanan");
+        }
+    }
+
+    /**
+     * Membuat TableCell generik berbentuk badge/pill berwarna.
+     * gayaFn menerima teks status/pembayaran dan mengembalikan style CSS inline untuk badge.
+     */
+    private TableCell<Pesanan, String> badgeCell(java.util.function.Function<String, String> gayaFn) {
+        return new TableCell<Pesanan, String>() {
+            private final Label badge = new Label();
+            {
+                badge.getStyleClass().add("badge-pill");
+                setAlignment(Pos.CENTER_LEFT);
+            }
+            @Override
+            protected void updateItem(String nilai, boolean empty) {
+                super.updateItem(nilai, empty);
+                if (empty || nilai == null || nilai.isEmpty()) {
+                    setGraphic(null);
+                } else {
+                    badge.setText(nilai);
+                    badge.setStyle(gayaFn.apply(nilai));
+                    setGraphic(badge);
+                }
+            }
+        };
+    }
+
+    /** Warna badge untuk kolom PEMBAYARAN, mengikuti palet pada desain (hijau/kuning/merah). */
+    private String gayaPembayaran(String status) {
+        String s = status.trim().toLowerCase();
+        // PENTING: cek "belum" LEBIH DULU sebelum "lunas", karena data asli
+        // memakai teks "Belum Lunas" yang juga mengandung kata "lunas" —
+        // urutan sebelumnya membuat status ini salah kena warna hijau.
+        if (s.contains("belum")) return "-fx-background-color:#FBDCDF; -fx-text-fill:#C0392B;";
+        if (s.contains("dp")) return "-fx-background-color:#FDF0CE; -fx-text-fill:#B8860B;";
+        if (s.contains("lunas")) return "-fx-background-color:#DCF5DF; -fx-text-fill:#1E8E4D;";
+        return "-fx-background-color:#ECECEC; -fx-text-fill:#6B6B6B;";
+    }
+
+    /** Warna badge untuk kolom STATUS pesanan (netral abu, senada dengan desain kartu). */
+    private String gayaStatus(String status) {
+        String s = status.trim().toLowerCase();
+        if (s.contains("dikirim")) return "-fx-background-color:#E4E1FB; -fx-text-fill:#5B4FCF;";
+        if (s.contains("dimasak")) return "-fx-background-color:#FDEBD3; -fx-text-fill:#C87A0D;";
+        if (s.contains("dikonfirmasi")) return "-fx-background-color:#DCEBFB; -fx-text-fill:#2E71B8;";
+        if (s.contains("selesai")) return "-fx-background-color:#DCF5DF; -fx-text-fill:#1E8E4D;";
+        return "-fx-background-color:#ECECEC; -fx-text-fill:#6B6B6B;";
     }
 
     @FXML void handleFilterSemua() { currentFilter = "Semua"; applyFilter(); }

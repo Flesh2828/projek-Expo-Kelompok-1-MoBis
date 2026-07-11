@@ -64,7 +64,7 @@ public class DaftarMenuController {
 
     private VBox createMenuCard(Menu m) {
         VBox card = new VBox();
-        card.setSpacing(5.0);
+        card.setSpacing(3.0);
         card.setMaxWidth(Double.MAX_VALUE);
         card.setMaxHeight(Double.MAX_VALUE);
         card.setPrefHeight(485.0);
@@ -78,7 +78,7 @@ public class DaftarMenuController {
         imgView.setPickOnBounds(true);
         imgView.setPreserveRatio(true);
         imgView.setImage(getMenuImage(m.getNamaMenu()));
-        VBox.setMargin(imgView, new Insets(0, 0, 0, 70.0));
+        VBox.setMargin(imgView, new Insets(0, 0, 0, 0.0));
 
         // Nama Menu
         Label lblNama = new Label(m.getNamaMenu());
