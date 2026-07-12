@@ -427,16 +427,4 @@ public class KelolaPesananController {
         return null;
     }
 
-    @FXML
-    void handleVerifikasiWA() {
-        Pesanan selected = tableKelolaPesanan.getSelectionModel().getSelectedItem();
-        if (selected == null) return;
-        
-        // Membuka Browser Otomatis Menuju API WhatsApp Web kirim invoice resmi
-        String pesan = "Halo " + selected.getUsernamePelanggan() + ", Pesanan " + selected.getIdPesanan() + " senilai Rp " + selected.getTotalHarga() + " telah diverifikasi sah oleh admin SINARING. Terima kasih!";
-        String url = "https://api.whatsapp.com/send?text=" + pesan.replace(" ", "%20");
-        try {
-            java.awt.Desktop.getDesktop().browse(new java.net.URI(url));
-        } catch (Exception e) { e.printStackTrace(); }
-    }
 }

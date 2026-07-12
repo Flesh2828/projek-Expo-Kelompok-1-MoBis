@@ -1,12 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><orders>
-    
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<orders>
+
     <order id="ORD-055">
         <username>Pelanggan Aktif</username>
         <menu>Nasi Box Spesial</menu>
         <porsi>10</porsi>
         <tanggal>25 Jun 2026</tanggal>
         <alamat>Jl. Contoh No. 1</alamat>
-        <catatan/>
+        <catatan />
         <status_pesanan>Selesai</status_pesanan>
         <status_bayar>Lunas</status_bayar>
         <total>250000.0</total>
@@ -17,7 +18,7 @@
         <porsi>10</porsi>
         <tanggal>25 Jun 2026</tanggal>
         <alamat>Jl. Contoh No. 1</alamat>
-        <catatan/>
+        <catatan />
         <status_pesanan>Dimasak</status_pesanan>
         <status_bayar>Lunas</status_bayar>
         <total>250000.0</total>
@@ -28,7 +29,7 @@
         <porsi>10</porsi>
         <tanggal>25 Jun 2026</tanggal>
         <alamat>Jl. Contoh No. 1</alamat>
-        <catatan/>
+        <catatan />
         <status_pesanan>Dimasak</status_pesanan>
         <status_bayar>Lunas</status_bayar>
         <total>250000.0</total>
@@ -39,9 +40,9 @@
         <porsi>10</porsi>
         <tanggal>25 Jun 2026</tanggal>
         <alamat>Jl. Contoh No. 1</alamat>
-        <catatan/>
+        <catatan />
         <status_pesanan>Dimasak</status_pesanan>
-        <status_bayar>Belum Lunas</status_bayar>
+        <status_bayar>Lunas</status_bayar>
         <total>250000.0</total>
     </order>
     <order id="ORD-025">
@@ -52,7 +53,7 @@
         <alamat>Jl. Contoh No. 1</alamat>
         <catatan>bismillah</catatan>
         <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Belum Lunas</status_bayar>
+        <status_bayar>Lunas</status_bayar>
         <total>250000.0</total>
     </order>
     <order id="ORD-09">
@@ -61,9 +62,9 @@
         <porsi>10</porsi>
         <tanggal>25 Jun 2026</tanggal>
         <alamat>Jl. Contoh No. 1</alamat>
-        <catatan/>
+        <catatan />
         <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Belum Lunas</status_bayar>
+        <status_bayar>Lunas</status_bayar>
         <total>250000.0</total>
     </order>
     <order id="ORD-03">
@@ -94,9 +95,9 @@
         <porsi>1</porsi>
         <tanggal>8 Juli 2026</tanggal>
         <alamat>Jalan Informatika</alamat>
-        <catatan/>
+        <catatan />
         <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Belum Lunas</status_bayar>
+        <status_bayar>Lunas</status_bayar>
         <total>25000.0</total>
     </order>
     <order id="ORD-033">
@@ -107,7 +108,7 @@
         <alamat>Jalan Godean</alamat>
         <catatan>Semoga bisa</catatan>
         <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Belum Lunas</status_bayar>
+        <status_bayar>Lunas</status_bayar>
         <total>45000.0</total>
     </order>
     <order id="ORD-070">
@@ -118,7 +119,7 @@
         <alamat>Jalan Kaliurang</alamat>
         <catatan>Kos Nashwan</catatan>
         <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Belum Lunas</status_bayar>
+        <status_bayar>Lunas</status_bayar>
         <total>45000.0</total>
     </order>
     <order id="ORD-015">
@@ -140,7 +141,29 @@
         <alamat>jalan godean km 3</alamat>
         <catatan>bismillah</catatan>
         <status_pesanan>Dikonfirmasi</status_pesanan>
+        <status_bayar>Belum Lunas</status_bayar>
+        <total>25000.0</total>
+    </order>
+    <order id="ORD-045">
+        <username>Hafidz</username>
+        <menu>Nasi Gudeg Spesial</menu>
+        <porsi>1</porsi>
+        <tanggal>2026-07-12</tanggal>
+        <alamat>jalan godean km 3 </alamat>
+        <catatan>plis bisa</catatan>
+        <status_pesanan>Dikonfirmasi</status_pesanan>
         <status_bayar>Lunas</status_bayar>
         <total>25000.0</total>
     </order>
-<order id="ORD-045"><username>Hafidz</username><menu>Nasi Gudeg Spesial</menu><porsi>1</porsi><tanggal>2026-07-12</tanggal><alamat>jalan godean km 3		</alamat><catatan>plis bisa</catatan><status_pesanan>Dikonfirmasi</status_pesanan><status_bayar>Lunas</status_bayar><total>25000.0</total></order><order id="ORD-076"><username>Hafidz</username><menu>Magelangan</menu><porsi>1</porsi><tanggal>2026-07-12</tanggal><alamat>jalan kabupaten</alamat><catatan>plis bisa</catatan><status_pesanan>Dikonfirmasi</status_pesanan><status_bayar>Lunas</status_bayar><total>20000.0</total></order></orders>
+    <order id="ORD-076">
+        <username>Hafidz</username>
+        <menu>Magelangan</menu>
+        <porsi>1</porsi>
+        <tanggal>2026-07-12</tanggal>
+        <alamat>jalan kabupaten</alamat>
+        <catatan>plis bisa</catatan>
+        <status_pesanan>Dikonfirmasi</status_pesanan>
+        <status_bayar>Belum Lunas</status_bayar>
+        <total>20000.0</total>
+    </order>
+</orders>

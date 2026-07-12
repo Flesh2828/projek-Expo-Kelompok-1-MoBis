@@ -32,6 +32,7 @@ public class OwnerLaporanController {
     // --- Tabel Ringkasan ---
     @FXML private TableView<RingkasanBulanan>        tableRingkasan;
     @FXML private TableColumn<RingkasanBulanan, String> colBulan;
+    @FXML private TableColumn<RingkasanBulanan, String> colJumlahPesanan;
     @FXML private TableColumn<RingkasanBulanan, String> colPendapatan;
     @FXML private TableColumn<RingkasanBulanan, String> colPengeluaran;
     @FXML private TableColumn<RingkasanBulanan, String> colLabaBersih;
@@ -56,6 +57,7 @@ public class OwnerLaporanController {
     public void initialize() {
         // Bind kolom tabel
         if (colBulan       != null) colBulan      .setCellValueFactory(new PropertyValueFactory<>("bulan"));
+        if (colJumlahPesanan != null) colJumlahPesanan.setCellValueFactory(new PropertyValueFactory<>("jumlahPesanan"));
         if (colPendapatan  != null) colPendapatan .setCellValueFactory(new PropertyValueFactory<>("pendapatan"));
         if (colPengeluaran != null) colPengeluaran.setCellValueFactory(new PropertyValueFactory<>("pengeluaran"));
         if (colLabaBersih  != null) colLabaBersih .setCellValueFactory(new PropertyValueFactory<>("labaBersih"));
@@ -81,19 +83,35 @@ public class OwnerLaporanController {
     }
 
     private void muatDataDariXML() {
+        // PENTING: sama seperti Admin (AdminRingkasanController) & Pelanggan
+        // (RiwayatPesananController), sumber datanya SATU: Pesanan.getAllPesanan()
+        // yang membaca data/pesanan.xml. Jadi angka di sini seharusnya selalu
+        // konsisten dengan yang dilihat Admin & Pelanggan, asal SEMUA pesanan
+        // yang masuk (bukan cuma yang sudah Lunas) diikutkan pengelompokannya.
         List<Pesanan> semuaPesanan = Pesanan.getAllPesanan();
 
-        // Kelompokkan pendapatan per bulan (hanya pesanan Lunas)
+        // Pendapatan per bulan → HANYA dihitung dari pesanan yang sudah Lunas
         Map<String, Double> pendapatanPerBulan = new LinkedHashMap<>();
+        // Jumlah pesanan MASUK per bulan → dihitung dari SEMUA pesanan, apapun statusnya,
+        // supaya jumlahnya selalu cocok dengan "Total Pesanan" di Admin & riwayat Pelanggan.
+        Map<String, Integer> jumlahPesananPerBulan = new LinkedHashMap<>();
 
         for (Pesanan p : semuaPesanan) {
-            if (!"Lunas".equalsIgnoreCase(p.getStatusPembayaran())) continue;
             String bulan = normalisasiBulan(p.getTanggalPengiriman());
-            pendapatanPerBulan.merge(bulan, p.getTotalHarga(), Double::sum);
+
+            // Dulu: bulan hanya masuk peta kalau ada pesanan Lunas → bulan yang cuma
+            // punya pesanan "Belum Lunas" jadi hilang dari chart & tabel. Sekarang:
+            // SETIAP bulan yang ada pesanannya (masuk) selalu dihitung di sini.
+            jumlahPesananPerBulan.merge(bulan, 1, Integer::sum);
+
+            if ("Lunas".equalsIgnoreCase(p.getStatusPembayaran())) {
+                pendapatanPerBulan.merge(bulan, p.getTotalHarga(), Double::sum);
+            }
         }
 
-        // Urutkan kronologis
-        List<String> bulanUrut = new ArrayList<>(pendapatanPerBulan.keySet());
+        // Urutkan kronologis — bulanUrut sekarang berasal dari SEMUA pesanan masuk,
+        // bukan cuma bulan yang kebetulan punya pesanan lunas.
+        List<String> bulanUrut = new ArrayList<>(jumlahPesananPerBulan.keySet());
         bulanUrut.sort(Comparator.comparingInt(this::urutanBulan));
 
         // ===== Bar Chart: Pendapatan vs Pengeluaran =====
@@ -103,7 +121,7 @@ public class OwnerLaporanController {
         initLineChart(bulanUrut, pendapatanPerBulan);
 
         // ===== Tabel Ringkasan =====
-        isiTabelRingkasan(bulanUrut, pendapatanPerBulan);
+        isiTabelRingkasan(bulanUrut, jumlahPesananPerBulan, pendapatanPerBulan);
     }
 
     private void initBarChart(List<String> bulanUrut, Map<String, Double> pendapatanPerBulan) {
@@ -116,7 +134,9 @@ public class OwnerLaporanController {
         seriPengeluaran.setName("Pengeluaran (Est. 40%)");
 
         for (String bulan : bulanUrut) {
-            double pendapatan  = pendapatanPerBulan.get(bulan);
+            // Default 0 kalau bulan itu belum punya pesanan Lunas sama sekali
+            // (dulu ini NullPointerException / bulan tidak tampil sama sekali).
+            double pendapatan  = pendapatanPerBulan.getOrDefault(bulan, 0.0);
             double pengeluaran = pendapatan * RASIO_PENGELUARAN;
 
             // Nilai dalam ribuan agar chart lebih terbaca
@@ -142,7 +162,7 @@ public class OwnerLaporanController {
         seriPendapatan.setName("Pendapatan");
 
         for (String bulan : bulanUrut) {
-            double pendapatan  = pendapatanPerBulan.get(bulan);
+            double pendapatan  = pendapatanPerBulan.getOrDefault(bulan, 0.0);
             double pengeluaran = pendapatan * RASIO_PENGELUARAN;
             double laba        = pendapatan - pengeluaran;
 
@@ -158,27 +178,33 @@ public class OwnerLaporanController {
         lineChartLaporan.getData().addAll(seriPendapatan, seriLaba);
     }
 
-    private void isiTabelRingkasan(List<String> bulanUrut, Map<String, Double> pendapatanPerBulan) {
+    private void isiTabelRingkasan(List<String> bulanUrut,
+                                    Map<String, Integer> jumlahPesananPerBulan,
+                                    Map<String, Double> pendapatanPerBulan) {
         if (tableRingkasan == null) return;
 
         ObservableList<RingkasanBulanan> dataRingkasan = FXCollections.observableArrayList();
 
-        double totalPendapatan  = 0;
-        double totalPengeluaran = 0;
-        double totalLaba        = 0;
+        int    totalJumlahPesanan = 0;
+        double totalPendapatan    = 0;
+        double totalPengeluaran   = 0;
+        double totalLaba          = 0;
 
         for (String bulan : bulanUrut) {
-            double pendapatan  = pendapatanPerBulan.get(bulan);
-            double pengeluaran = pendapatan * RASIO_PENGELUARAN;
-            double laba        = pendapatan - pengeluaran;
-            int    margin      = (int) Math.round((laba / pendapatan) * 100);
+            int    jumlahPesanan = jumlahPesananPerBulan.getOrDefault(bulan, 0);
+            double pendapatan    = pendapatanPerBulan.getOrDefault(bulan, 0.0);
+            double pengeluaran   = pendapatan * RASIO_PENGELUARAN;
+            double laba          = pendapatan - pengeluaran;
+            int    margin        = pendapatan > 0 ? (int) Math.round((laba / pendapatan) * 100) : 0;
 
-            totalPendapatan  += pendapatan;
-            totalPengeluaran += pengeluaran;
-            totalLaba        += laba;
+            totalJumlahPesanan += jumlahPesanan;
+            totalPendapatan    += pendapatan;
+            totalPengeluaran   += pengeluaran;
+            totalLaba          += laba;
 
             dataRingkasan.add(new RingkasanBulanan(
                     bulan,
+                    jumlahPesanan + " pesanan",
                     "Rp " + formatRp(pendapatan),
                     "Rp " + formatRp(pengeluaran),
                     "Rp " + formatRp(laba),
@@ -192,6 +218,7 @@ public class OwnerLaporanController {
                     ? (int) Math.round((totalLaba / totalPendapatan) * 100) : 0;
             dataRingkasan.add(new RingkasanBulanan(
                     "TOTAL",
+                    totalJumlahPesanan + " pesanan",
                     "Rp " + formatRp(totalPendapatan),
                     "Rp " + formatRp(totalPengeluaran),
                     "Rp " + formatRp(totalLaba),

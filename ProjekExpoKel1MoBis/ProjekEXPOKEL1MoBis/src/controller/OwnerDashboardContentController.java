@@ -64,17 +64,24 @@ public class OwnerDashboardContentController {
     }
 
     private void hitungDanTampilkanData() {
+        // Sumber sama persis dengan Admin (AdminRingkasanController) & Pelanggan
+        // (RiwayatPesananController): Pesanan.getAllPesanan() dari data/pesanan.xml.
         List<Pesanan> semuaPesanan = Pesanan.getAllPesanan();
 
-        // ===== Kelompokkan per Bulan (hanya yang Lunas) =====
-        // Key: "Bulan Tahun" (mis. "Jun 2026"), Value: total pendapatan
-        Map<String, Double> pendapatanPerBulan = new LinkedHashMap<>();
+        // Key: "Bulan Tahun" (mis. "Jun 2026")
+        Map<String, Double> pendapatanPerBulan = new LinkedHashMap<>();   // hanya yang Lunas
+        Set<String> bulanDenganPesananMasuk    = new LinkedHashSet<>();  // SEMUA pesanan, apapun statusnya
         double totalPendapatan = 0.0;
         double totalPiutang    = 0.0;
         int    jumlahPiutang   = 0;
 
         for (Pesanan p : semuaPesanan) {
             String bulan = normalisasiBulan(p.getTanggalPengiriman());
+            // PENTING: dulu bulan yang cuma punya pesanan "Belum Lunas" tidak pernah
+            // masuk ke pendapatanPerBulan, jadi hilang dari grafik tren walau
+            // pesanannya ada dan sudah kelihatan di Admin/Pelanggan. Sekarang dicatat
+            // di sini supaya bulan itu tetap tampil di grafik (dengan pendapatan 0).
+            bulanDenganPesananMasuk.add(bulan);
 
             if ("Lunas".equalsIgnoreCase(p.getStatusPembayaran())) {
                 totalPendapatan += p.getTotalHarga();
@@ -95,7 +102,7 @@ public class OwnerDashboardContentController {
         if (lblPiutang     != null) lblPiutang    .setText("Rp " + formatRp(totalPiutang));
 
         // Sub-label dinamis
-        int bulanDidata = pendapatanPerBulan.size();
+        int bulanDidata = bulanDenganPesananMasuk.size();
         String periodeTeks = bulanDidata + " bulan terakhir";
 
         if (lblSubPendapatan  != null) lblSubPendapatan .setText(periodeTeks);
@@ -110,16 +117,17 @@ public class OwnerDashboardContentController {
         }
 
         // ===== Isi LineChart Tren Laba =====
-        isiLineChart(pendapatanPerBulan);
+        isiLineChart(bulanDenganPesananMasuk, pendapatanPerBulan);
     }
 
-    private void isiLineChart(Map<String, Double> pendapatanPerBulan) {
+    private void isiLineChart(Set<String> bulanDenganPesananMasuk, Map<String, Double> pendapatanPerBulan) {
         if (lineChartDashboard == null) return;
 
         lineChartDashboard.getData().clear();
 
-        // Urutkan bulan secara kronologis
-        List<String> bulanUrut = new ArrayList<>(pendapatanPerBulan.keySet());
+        // Urutkan bulan secara kronologis — dari SEMUA bulan yang ada pesanan masuk,
+        // bukan cuma bulan yang kebetulan sudah ada pesanan Lunas-nya.
+        List<String> bulanUrut = new ArrayList<>(bulanDenganPesananMasuk);
         bulanUrut.sort(Comparator.comparingInt(this::urutanBulan));
 
         XYChart.Series<String, Number> seriLaba       = new XYChart.Series<>();
@@ -128,7 +136,7 @@ public class OwnerDashboardContentController {
         seriPendapatan.setName("Pendapatan");
 
         for (String bulan : bulanUrut) {
-            double pendapatan  = pendapatanPerBulan.get(bulan);
+            double pendapatan  = pendapatanPerBulan.getOrDefault(bulan, 0.0);
             double pengeluaran = pendapatan * RASIO_PENGELUARAN;
             double laba        = pendapatan - pengeluaran;
 
