@@ -517,3 +517,71 @@
     -fx-font-size: 11px;
     -fx-fill: rgba(255,255,255,0.85);
 }
+
+/* ============================================================
+   FORMULIR PESANAN (Buat Pesanan) — Redesain UI Card & Field
+   ============================================================ */
+
+.judul-form-pesanan {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-fill: #2E2417;
+}
+
+.subjudul-form-pesanan {
+    -fx-font-size: 13px;
+    -fx-fill: #8A7A6E;
+}
+
+.label-form-pesanan {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #3A2415;
+}
+
+/* Kotak input krem membulat (dipakai di TextField, TextArea, dan DatePicker) */
+.field-form-pesanan {
+    -fx-background-color: #F5EFE6;
+    -fx-background-radius: 10;
+    -fx-border-color: #EFE1CC;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-padding: 10 14 10 14;
+    -fx-font-size: 13px;
+    -fx-text-fill: #3A2415;
+    -fx-prompt-text-fill: #A79B8E;
+}
+.field-form-pesanan:focused {
+    -fx-border-color: #C35E2A;
+}
+/* Bagian dalam TextArea */
+.field-form-pesanan .content {
+    -fx-background-color: #F5EFE6;
+    -fx-background-radius: 10;
+}
+/* Bagian dalam DatePicker (kotak teks & tombol panah kalender) */
+.field-form-pesanan > .text-field {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10;
+    -fx-padding: 10 14 10 14;
+    -fx-font-size: 13px;
+    -fx-text-fill: #3A2415;
+}
+.field-form-pesanan .arrow-button {
+    -fx-background-color: transparent;
+}
+.field-form-pesanan .arrow-button .arrow {
+    -fx-background-color: #8A7A6E;
+}
+
+.btn-kirim-pesanan {
+    -fx-background-color: #C35E2A;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+}
+.btn-kirim-pesanan:hover {
+    -fx-background-color: #A94D20;
+}

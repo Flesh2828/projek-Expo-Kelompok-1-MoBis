@@ -17,7 +17,7 @@
         <tanggal>25 Jun 2026</tanggal>
         <alamat>Jl. Contoh No. 1</alamat>
         <catatan/>
-        <status_pesanan>Dimasak</status_pesanan>
+        <status_pesanan>Selesai</status_pesanan>
         <status_bayar>Lunas</status_bayar>
         <total>250000.0</total>
     </order>
@@ -39,8 +39,8 @@
         <tanggal>25 Jun 2026</tanggal>
         <alamat>Jl. Contoh No. 1</alamat>
         <catatan/>
-        <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Belum Lunas</status_bayar>
+        <status_pesanan>Dimasak</status_pesanan>
+        <status_bayar>Lunas</status_bayar>
         <total>250000.0</total>
     </order>
     <order id="ORD-028">
@@ -50,7 +50,7 @@
         <tanggal>25 Jun 2026</tanggal>
         <alamat>Jl. Contoh No. 1</alamat>
         <catatan/>
-        <status_pesanan>Dikonfirmasi</status_pesanan>
+        <status_pesanan>Dimasak</status_pesanan>
         <status_bayar>Belum Lunas</status_bayar>
         <total>250000.0</total>
     </order>
@@ -153,4 +153,4 @@
         <status_bayar>Lunas</status_bayar>
         <total>25000.0</total>
     </order>
-<order id="ORD-045"><username>Hafidz</username><menu>Nasi Gudeg Spesial</menu><porsi>1</porsi><tanggal>2026-07-12</tanggal><alamat>jalan godean km 3		</alamat><catatan>plis bisa</catatan><status_pesanan>Dikonfirmasi</status_pesanan><status_bayar>Lunas</status_bayar><total>25000.0</total></order></orders>
+<order id="ORD-045"><username>Hafidz</username><menu>Nasi Gudeg Spesial</menu><porsi>1</porsi><tanggal>2026-07-12</tanggal><alamat>jalan godean km 3		</alamat><catatan>plis bisa</catatan><status_pesanan>Dikonfirmasi</status_pesanan><status_bayar>Lunas</status_bayar><total>25000.0</total></order><order id="ORD-076"><username>Hafidz</username><menu>Magelangan</menu><porsi>1</porsi><tanggal>2026-07-12</tanggal><alamat>jalan kabupaten</alamat><catatan>plis bisa</catatan><status_pesanan>Dikonfirmasi</status_pesanan><status_bayar>Lunas</status_bayar><total>20000.0</total></order></orders>

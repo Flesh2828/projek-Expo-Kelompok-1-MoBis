@@ -31,16 +31,15 @@
 
                 <Separator />
 
-                <!-- Tagihan Belum Lunas -->
-                <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" spacing="5.0" style="-fx-background-color: FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15;">
-                    <Text style="-fx-font-size: 28; -fx-font-weight: bold; -fx-fill: red;" text="Tagihan Belum Lunas">
+                <!-- Tagihan Belum Lunas (DINAMIS, diisi dari riwayat pesanan) -->
+                <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" spacing="8.0" style="-fx-background-color: FFFAF0; -fx-border-color: #E0E0E0; -fx-border-radius: 8; -fx-padding: 15;">
+                    <Text fx:id="txtJudulTagihan" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-fill: red;" text="Tagihan Belum Lunas">
                         <font>
                             <Font name="System Bold" size="28.0" />
                         </font>
                     </Text>
-                    <Text fx:id="txtNoPesanan" style="-fx-font-size: 20; -fx-fill: #666666;" text="ORD-012 - Catering Prasmanan (50 porsi)" />
-                    <Text fx:id="txtDpDibayar" style="-fx-font-size: 20; -fx-fill: #666666;" text="DP sudah dibayar: Rp 200.000" />
-                    <Text fx:id="txtSisaTagihan" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-fill: red;" text="Total: Rp 1.000.000">
+                    <VBox fx:id="vboxDaftarTagihan" spacing="4.0" />
+                    <Text fx:id="txtSisaTagihan" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-fill: red;" text="Total: Rp 0">
                         <font>
                             <Font name="System Bold" size="28.0" />
                         </font>

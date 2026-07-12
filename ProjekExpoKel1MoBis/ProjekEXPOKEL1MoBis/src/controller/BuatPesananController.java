@@ -2,8 +2,10 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import model.Menu;
 import model.Pesanan;
 import java.time.LocalDate;
+import java.util.List;
 
 public class BuatPesananController {
     @FXML
@@ -21,11 +23,16 @@ public class BuatPesananController {
     @FXML
     private Label lblStatusOrder;
 
+    // PERBAIKAN BUG HARGA: dulu total selalu porsi * 25000 (hardcode),
+    // sekarang harga per porsi disimpan sesuai menu yang benar-benar dipilih.
+    private double hargaPerPorsi = 0;
+
     private String usernameSession = "Pelanggan Aktif";
     public void setUsernameSession(String username) { this.usernameSession = username; }
 
     public void setMenuPilihan(String namaMenu) {
         txtPilihanMenu.setText(namaMenu);
+        hargaPerPorsi = cariHargaMenu(namaMenu, hargaPerPorsi);
     }
 
     @FXML
@@ -51,7 +58,8 @@ public class BuatPesananController {
         try {
             int porsi = Integer.parseInt(porsiStr);
             String idPesanan = "ORD-0" + (int) (Math.random() * 100);
-            double totalHarga = porsi * 25000;
+            // PERBAIKAN: pakai harga menu yang sebenarnya, bukan angka tetap 25000
+            double totalHarga = porsi * hargaPerPorsi;
 
             // Membuat objek model pesanan baru sesuai konstruktor kelompok kalian
             Pesanan baru = new Pesanan(idPesanan, usernameSession, menu, porsi, tanggal, alamat, catatan, "Dikonfirmasi", "Belum Bayar", totalHarga);
@@ -93,6 +101,7 @@ public class BuatPesananController {
     // ===== DIPANGGIL DARI DAFTAR MENU (HARGA INT) =====
     public void setMenuTerpilih(String menu, int harga) {
         txtPilihanMenu.setText(menu);
+        hargaPerPorsi = harga;
         System.out.println("Berhasil menerima lembaran data dari Daftar Menu!");
     }
 
@@ -110,6 +119,15 @@ public class BuatPesananController {
             }
             txtAlamatKirim.setText(pesananLama.getAlamatPengiriman());
             txtCatatan.setText(pesananLama.getCatatanKhusus());
+
+            // PERBAIKAN: ambil harga per porsi TERKINI dari daftar menu (bisa saja
+            // harga menu sudah berubah sejak pesanan lama dibuat). Kalau menunya
+            // sudah tidak ada di daftar menu, baru fallback ke harga pesanan lama.
+            double fallbackHargaLama = pesananLama.getJumlahPorsi() > 0
+                    ? pesananLama.getTotalHarga() / pesananLama.getJumlahPorsi()
+                    : 0;
+            hargaPerPorsi = cariHargaMenu(pesananLama.getNamaMenu(), fallbackHargaLama);
+
             lblStatusOrder.setStyle("-fx-text-fill: #2E7D32;");
             lblStatusOrder.setText("  Data pesanan lama telah diisi. Silakan edit jika perlu.");
         }
@@ -118,7 +136,20 @@ public class BuatPesananController {
     // ===== DIPANGGIL DARI DAFTAR MENU (HARGA DOUBLE) =====
     public void setMenuTerpilih(String namaMenu, double harga) {
         txtPilihanMenu.setText(namaMenu);
+        hargaPerPorsi = harga;
         lblStatusOrder.setStyle("-fx-text-fill: #2E7D32;");
         lblStatusOrder.setText("  Menu dipilih: " + namaMenu + " (Rp " + String.format("%,.0f", harga) + "/porsi)");
+    }
+
+    // ===== HELPER: cari harga menu terkini berdasarkan nama, dengan nilai fallback =====
+    private double cariHargaMenu(String namaMenu, double fallback) {
+        if (namaMenu == null || namaMenu.isEmpty()) return fallback;
+        List<Menu> semuaMenu = Menu.getAllMenu();
+        for (Menu m : semuaMenu) {
+            if (m.getNamaMenu().equalsIgnoreCase(namaMenu.trim())) {
+                return m.getHarga();
+            }
+        }
+        return fallback;
     }
 }

@@ -12,65 +12,41 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1000.0" prefWidth="1100.0" style="-fx-background-color: FFFFFF;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BuatPesananController">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1000.0" prefWidth="1100.0" style="-fx-background-color: #F7F3EE;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BuatPesananController">
     <children>
-        <Text layoutX="42.0" layoutY="75.0" style="-fx-font-weight: bold; -fx-font-size: 28; -fx-fill: #00000;" text="Formulir Pesanan" />
-        <Text layoutX="42.0" layoutY="100.0" style="-fx-font-size: 14; -fx-fill: #7F8C8D;" text="Isi detail pesanan Anda di bawah ini" />
-        
-        <VBox layoutX="42.0" layoutY="125.0" prefHeight="700.0" prefWidth="1000.0" spacing="15.0" style="-fx-background-color: FFFAF0; -fx-background-radius: 10; -fx-border-color: FFFAF0; -fx-border-radius: 10;">
-            <padding><Insets bottom="20.0" left="20.0" right="20.0" top="20.0" /></padding>
-            
-            <Label style="-fx-font-weight: bold;" text="Pilih Menu">
-            <font>
-               <Font size="28.0" />
-            </font></Label>
-            <TextField fx:id="txtPilihanMenu" editable="false" prefHeight="49.0" prefWidth="1417.0" promptText="Nama menu pilihan" style="-fx-background-color: #EEEEEE;">
-            <font>
-               <Font size="20.0" />
-            </font></TextField>
-            
+        <Text layoutX="42.0" layoutY="55.0" styleClass="judul-form-pesanan" text="Formulir Pesanan" />
+        <Text layoutX="42.0" layoutY="78.0" styleClass="subjudul-form-pesanan" text="Isi detail pesanan Anda di bawah ini" />
+
+        <VBox spacing="18.0" styleClass="card-pesanan" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="100.0">
+            <padding><Insets bottom="30.0" left="30.0" right="30.0" top="30.0" /></padding>
+
+            <VBox spacing="6.0">
+                <Label styleClass="label-form-pesanan" text="Pilih Menu" />
+                <TextField fx:id="txtPilihanMenu" editable="false" prefHeight="42.0" promptText="Nama menu pilihan" styleClass="field-form-pesanan" />
+            </VBox>
+
             <HBox spacing="20.0">
-                <VBox prefHeight="93.0" prefWidth="353.0" spacing="5.0" HBox.hgrow="ALWAYS">
-                    <Label style="-fx-font-weight: bold;" text="Jumlah Porsi">
-                  <font>
-                     <Font size="28.0" />
-                  </font></Label>
-                    <TextField fx:id="txtJumlahPorsi" prefHeight="50.0" prefWidth="742.0" text="1">
-                  <font>
-                     <Font size="20.0" />
-                  </font></TextField>
+                <VBox spacing="6.0" HBox.hgrow="ALWAYS">
+                    <Label styleClass="label-form-pesanan" text="Jumlah Porsi" />
+                    <TextField fx:id="txtJumlahPorsi" maxWidth="Infinity" prefHeight="42.0" styleClass="field-form-pesanan" text="1" />
                 </VBox>
-                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
-                    <Label style="-fx-font-weight: bold;" text="Tanggal Pengiriman">
-                  <font>
-                     <Font size="28.0" />
-                  </font></Label>
-                    <DatePicker fx:id="dpTanggalKirim" prefHeight="48.0" prefWidth="266.0" />
+                <VBox spacing="6.0" HBox.hgrow="ALWAYS">
+                    <Label styleClass="label-form-pesanan" text="Tanggal Pengiriman" />
+                    <DatePicker fx:id="dpTanggalKirim" maxWidth="Infinity" prefHeight="42.0" styleClass="field-form-pesanan" />
                 </VBox>
             </HBox>
-            
-            <Label style="-fx-font-weight: bold;" text="Alamat Pengiriman">
-            <font>
-               <Font size="28.0" />
-            </font></Label>
-            <TextArea fx:id="txtAlamatKirim" prefHeight="153.0" prefWidth="1416.0" promptText="Jl. Contoh No. 1, Kelurahan, Kecamatan, Kota">
-            <font>
-               <Font size="20.0" />
-            </font></TextArea>
-            
-            <Label style="-fx-font-weight: bold;" text="Catatan Khusus (Opsional)">
-            <font>
-               <Font size="28.0" />
-            </font></Label>
-            <TextField fx:id="txtCatatan" prefHeight="45.0" prefWidth="1416.0" promptText="Contoh: tidak pedas, alergi kacang, dll.">
-            <font>
-               <Font size="20.0" />
-            </font></TextField>
-            
-            <Button minHeight="0.0" minWidth="0.0" onAction="#handleKirimPesanan" prefHeight="40.0" prefWidth="1416.0" style="-fx-background-color: #D35400; -fx-text-fill: white; -fx-font-weight: bold;" text="Kirim Pesanan">
-            <font>
-               <Font size="20.0" />
-            </font></Button>
+
+            <VBox spacing="6.0">
+                <Label styleClass="label-form-pesanan" text="Alamat Pengiriman" />
+                <TextArea fx:id="txtAlamatKirim" prefHeight="110.0" promptText="Jl. Contoh No. 1, Kelurahan, Kecamatan, Kota" styleClass="field-form-pesanan" wrapText="true" />
+            </VBox>
+
+            <VBox spacing="6.0">
+                <Label text="Catatan Khusus (opsional)" styleClass="label-form-pesanan" />
+                <TextField fx:id="txtCatatan" prefHeight="42.0" promptText="Contoh: tidak pedas, alergi kacang, dll." styleClass="field-form-pesanan" />
+            </VBox>
+
+            <Button minHeight="0.0" minWidth="0.0" maxWidth="Infinity" onAction="#handleKirimPesanan" prefHeight="46.0" styleClass="btn-kirim-pesanan" text="Kirim Pesanan" />
 
             <Label fx:id="lblStatusOrder" style="-fx-font-weight: bold;" text="" wrapText="true">
             <font>
