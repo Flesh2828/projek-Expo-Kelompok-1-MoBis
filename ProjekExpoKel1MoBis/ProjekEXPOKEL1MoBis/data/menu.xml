@@ -21,11 +21,12 @@
         <harga>30000.0</harga>
         <status>aktif</status>
     </menu>
-    
+
     <menu id="MNU-745">
         <nama>Nasi Padang Spesial</nama>
         <deskripsi>Nasi padang dengan isi Ayam, goreng, rendang, dan sayuran</deskripsi>
         <harga>25000.0</harga>
         <status>aktif</status>
     </menu>
+    
 </menus>

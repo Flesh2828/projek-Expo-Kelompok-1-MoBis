@@ -236,4 +236,50 @@ static {
         }
         return false;
     }
-}
+
+    // --- FITUR HAPUS AKUN (EDIT PROFIL) ---
+    public static boolean hapusAkun(String username) {
+        if (username == null || username.trim().isEmpty()) {
+            return false;
+        }
+
+        try {
+            File xmlFile = new File(FILE_PATH);
+            if (!xmlFile.exists()) {
+                return false;
+            }
+
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(xmlFile);
+            doc.getDocumentElement().normalize();
+
+            NodeList nList = doc.getElementsByTagName("user");
+            boolean userFound = false;
+
+            for (int i = 0; i < nList.getLength(); i++) {
+                Element element = (Element) nList.item(i);
+                String u = element.getElementsByTagName("username").item(0).getTextContent();
+
+                if (u.equals(username)) {
+                    // Hapus node <user> ini sepenuhnya dari XML
+                    element.getParentNode().removeChild(element);
+                    userFound = true;
+                    break;
+                }
+            }
+
+            if (userFound) {
+                TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                Transformer transformer = transformerFactory.newTransformer();
+                DOMSource source = new DOMSource(doc);
+                StreamResult result = new StreamResult(xmlFile);
+                transformer.transform(source, result);
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+}

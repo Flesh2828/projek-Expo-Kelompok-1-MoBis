@@ -44,6 +44,11 @@
          <Label fx:id="lblStatus" style="-fx-font-size: 14; -fx-padding: 10 0 0 0;" />
 
          <Button onAction="#handleSimpanProfil" prefHeight="45.0" style="-fx-background-color: #C35E2A; -fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold; -fx-background-radius: 8;" text="💾 Simpan Profil" />
+
+         <!-- HAPUS AKUN -->
+         <HBox alignment="CENTER_RIGHT">
+            <Button onAction="#handleHapusAkun" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: #C0392B; -fx-font-size: 13; -fx-border-color: #C0392B; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 8 18; -fx-cursor: hand;" text="🗑 Hapus Akun" />
+         </HBox>
       </VBox>
    </children>
 </VBox>
