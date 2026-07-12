@@ -26,12 +26,6 @@
                     <Text fx:id="txtSubJudul" style="-fx-font-size: 13; -fx-fill: #9C8E82;" text="Selamat datang kembali, Admin Dewi" />
                 </VBox>
                 <Region HBox.hgrow="ALWAYS" />
-                <StackPane>
-                    <children>
-                        <Label style="-fx-background-color: #FFFFFF; -fx-background-radius: 100; -fx-min-width: 42; -fx-min-height: 42; -fx-max-width: 42; -fx-max-height: 42; -fx-alignment: center; -fx-font-size: 18; -fx-border-color: #EFE7DD; -fx-border-radius: 100;" text="🔔" />
-                        <Label style="-fx-background-color: #C35E2A; -fx-text-fill: white; -fx-font-size: 10; -fx-font-weight: bold; -fx-background-radius: 100; -fx-min-width: 17; -fx-min-height: 17; -fx-max-width: 17; -fx-max-height: 17; -fx-alignment: center; -fx-translate-x: 14; -fx-translate-y: -14;" text="3" />
-                    </children>
-                </StackPane>
             </children>
         </HBox>
 

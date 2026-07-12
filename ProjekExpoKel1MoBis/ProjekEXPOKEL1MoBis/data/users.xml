@@ -44,4 +44,4 @@
         <password>alim</password>
         <role>Pelanggan</role>
     </user>
-</users>
+<user><username>me</username><password>me</password><role>Pelanggan</role></user></users>
