@@ -109,6 +109,7 @@ public class PelangganDashboardController {
                 controller.setPaneKontenTengah(paneKontenTengah);
                 controller.setUsernameSession(userAktifSession);
                 controller.setTxtNamaUser(txtNamaUser);
+                controller.setDashboardController(this);
                 tampilkanDiPanel(halaman);
             } else if (fxmlPath.equals("/view/BuatPesanan.fxml")) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
@@ -176,12 +177,21 @@ public class PelangganDashboardController {
             controller.setPaneKontenTengah(paneKontenTengah);
             controller.setUsernameSession(userAktifSession);
             controller.setTxtNamaUser(txtNamaUser);
+            controller.setDashboardController(this);
 
             tampilkanDiPanel(halaman);
             
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    // Dipanggil oleh EditProfilController saat tombol "Kembali" ditekan,
+    // supaya kita hanya mengganti KONTEN di panel yang sudah ada
+    // (bukan me-load ulang seluruh shell dashboard yang menyebabkan UI dobel).
+    public void kembaliKeDaftarMenu() {
+        bukaHalamanKonten("/view/DaftarMenu.fxml");
+        setTombolAktif(btnDaftarMenu);
     }
 
     // ===== LOGOUT =====

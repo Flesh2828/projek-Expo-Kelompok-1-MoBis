@@ -27,9 +27,14 @@ public class EditProfilController {
     private AnchorPane paneKontenTengah;
     private String usernameSession;
     private Text txtNamaUser;
+    private PelangganDashboardController dashboardController;
 
     public void setPaneKontenTengah(AnchorPane pane) {
         this.paneKontenTengah = pane;
+    }
+
+    public void setDashboardController(PelangganDashboardController dashboardController) {
+        this.dashboardController = dashboardController;
     }
 
     public void setUsernameSession(String username) {
@@ -120,20 +125,25 @@ public class EditProfilController {
 
     @FXML
     private void handleKembali(ActionEvent event) {
+        if (dashboardController != null) {
+            // Cukup ganti konten di panel yang sudah ada (sidebar & header
+            // dashboard tidak ikut di-load ulang), jadi tidak dobel.
+            dashboardController.kembaliKeDaftarMenu();
+            return;
+        }
+
+        // Fallback jika dashboardController tidak ter-set (mis. diakses dari
+        // luar konteks dashboard): baru load ulang shell dashboard seutuhnya.
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PelangganDashboard.fxml"));
             Parent root = loader.load();
-            
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             PelangganDashboardController controller = loader.getController();
-            controller.setPaneKontenTengah(paneKontenTengah);
             controller.setUsernameSession(usernameSession);
-            
-            paneKontenTengah.getChildren().setAll(root);
-            AnchorPane.setTopAnchor(root, 0.0);
-            AnchorPane.setBottomAnchor(root, 0.0);
-            AnchorPane.setLeftAnchor(root, 0.0);
-            AnchorPane.setRightAnchor(root, 0.0);
-            
+
+            SceneNavigator.switchTo(stage, root, "SINARING - Dashboard Pelanggan");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
