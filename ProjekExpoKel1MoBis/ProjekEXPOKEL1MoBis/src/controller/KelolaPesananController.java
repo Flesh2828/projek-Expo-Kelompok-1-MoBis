@@ -4,12 +4,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.geometry.Orientation;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.beans.property.*;
+import javafx.scene.layout.VBox;
 import model.Pesanan;
 import java.io.File;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class KelolaPesananController {
     @FXML private TableView<Pesanan> tableKelolaPesanan;
@@ -21,6 +25,22 @@ public class KelolaPesananController {
     @FXML private Button btnFilterKonfirmasi;
     @FXML private Button btnFilterDimasak;
     @FXML private Button btnFilterDikirim;
+
+    // ===== Fitur Antrean Pesanan (Queue / FIFO) =====
+    @FXML private ListView<Pesanan> listAntrean;
+    @FXML private Label lblJumlahAntrean;
+    @FXML private Button btnSelesaikanAntrean;
+
+    // Status yang dianggap "menunggu diproses" dan masuk ke antrean
+    private static final String STATUS_ANTREAN = "Dikonfirmasi";
+    // Status hasil setelah pesanan di-dequeue dari antrean (diproses)
+    private static final String STATUS_SETELAH_ANTREAN = "Dimasak";
+    // Status akhir pesanan setelah selesai dimasak/diproses
+    private static final String STATUS_SELESAI = "Selesai";
+
+    // Struktur data antrean: FIFO — pesanan yang paling awal masuk (Head)
+    // ada di depan Queue dan akan diambil lebih dulu lewat poll().
+    private final Queue<Pesanan> antreanPesanan = new LinkedList<>();
 
     private ObservableList<Pesanan> listMasterPesanan = FXCollections.observableArrayList();
     private String currentFilter = "Semua";
@@ -43,6 +63,11 @@ public class KelolaPesananController {
         if (btnFilterKonfirmasi != null) btnFilterKonfirmasi.setOnAction(e -> handleFilterKonfirmasi());
         if (btnFilterDimasak != null) btnFilterDimasak.setOnAction(e -> handleFilterDimasak());
         if (btnFilterDikirim != null) btnFilterDikirim.setOnAction(e -> handleFilterDikirim());
+
+        if (listAntrean != null) {
+            listAntrean.setOrientation(Orientation.HORIZONTAL);
+            listAntrean.setCellFactory(lv -> antreanCell());
+        }
 
         loadDataDariXML();
     }
@@ -67,11 +92,93 @@ public class KelolaPesananController {
         perbaruiJumlahPesanan(listMasterPesanan.size());
         System.out.println("LOG SINARING -> Berhasil memasukkan data ke TableView Kelola Pesanan!");
 
+        // Setiap kali data dimuat ulang, antrean (queue) ikut dibangun ulang
+        // supaya selalu sinkron dengan status pesanan yang terbaru di XML.
+        bangunAntreanPesanan();
+
     } catch (Exception e) { 
         System.out.println("LOG SINARING -> CRASH UTAMA PADA SAAT MEMBACA XML PESANAN:");
         e.printStackTrace(); 
     }
 }
+
+    /**
+     * Membangun ulang antrean (queue) dari listMasterPesanan.
+     * Urutan mengikuti urutan data pada XML, yaitu urutan pesanan itu di-input
+     * (enqueue) pertama kali oleh pelanggan, sehingga pesanan yang paling awal
+     * masuk otomatis berada di posisi Head/depan antrean (FIFO).
+     * Hanya pesanan berstatus "Dikonfirmasi" yang dianggap menunggu di antrean;
+     * begitu status berubah (mis. jadi "Dimasak"), pesanan itu otomatis keluar
+     * dari antrean pada pembangunan ulang berikutnya.
+     */
+    private void bangunAntreanPesanan() {
+        antreanPesanan.clear();
+        for (Pesanan p : listMasterPesanan) {
+            if (p.getStatusPesanan().equalsIgnoreCase(STATUS_ANTREAN)) {
+                antreanPesanan.offer(p); // enqueue di posisi paling belakang (Tail)
+            }
+        }
+        tampilkanAntreanPesanan();
+    }
+
+    /** Menampilkan isi antrean saat ini ke ListView, beserta info jumlahnya. */
+    private void tampilkanAntreanPesanan() {
+        if (listAntrean != null) {
+            listAntrean.setItems(FXCollections.observableArrayList(antreanPesanan));
+        }
+        if (lblJumlahAntrean != null) {
+            lblJumlahAntrean.setText(antreanPesanan.size() + " dalam antrean");
+        }
+        if (btnSelesaikanAntrean != null) {
+            btnSelesaikanAntrean.setDisable(antreanPesanan.isEmpty());
+        }
+    }
+
+    /**
+     * Membuat ListCell untuk menampilkan satu baris antrean, lengkap dengan
+     * nomor urut dan penanda visual khusus untuk pesanan di posisi Head (terdepan).
+     */
+    private ListCell<Pesanan> antreanCell() {
+        return new ListCell<Pesanan>() {
+            @Override
+            protected void updateItem(Pesanan p, boolean empty) {
+                super.updateItem(p, empty);
+                if (empty || p == null) {
+                    setGraphic(null);
+                    setText(null);
+                    return;
+                }
+
+                boolean isHead = getIndex() == 0;
+
+                Label lblRank = new Label(isHead ? "HEAD" : "#" + (getIndex() + 1));
+                lblRank.getStyleClass().add(isHead ? "antrean-rank-head" : "antrean-rank");
+
+                Label lblId = new Label(p.getIdPesanan());
+                lblId.getStyleClass().add("antrean-id");
+
+                Label lblPelanggan = new Label(p.getUsernamePelanggan());
+                lblPelanggan.getStyleClass().add("antrean-detail");
+                lblPelanggan.setMaxWidth(150.0);
+
+                Label lblMenu = new Label(p.getNamaMenu());
+                lblMenu.getStyleClass().add("antrean-detail");
+                lblMenu.setMaxWidth(150.0);
+
+                VBox kolomTeks = new VBox(2.0, lblId, lblPelanggan, lblMenu);
+
+                VBox kartu = new VBox(6.0, lblRank, kolomTeks);
+                kartu.setAlignment(Pos.TOP_LEFT);
+                kartu.setPrefWidth(160.0);
+                kartu.setMinWidth(160.0);
+                kartu.setPrefHeight(150.0);
+                kartu.getStyleClass().add(isHead ? "antrean-item-head" : "antrean-item");
+
+                setGraphic(kartu);
+                setText(null);
+            }
+        };
+    }
     private void applyFilter() {
         if (currentFilter.equals("Semua")) {
             tableKelolaPesanan.setItems(listMasterPesanan);
@@ -167,6 +274,73 @@ public class KelolaPesananController {
         }
     }
 
+    /**
+     * Tombol "Selesaikan Antrean Terdepan".
+     * Melakukan dequeue (poll) terhadap antrean: pesanan yang paling awal
+     * masuk (Head) dikeluarkan dari antrean, lalu status pesanan itu otomatis
+     * diubah dari "Dikonfirmasi" menjadi "Dimasak" dan disimpan ke XML.
+     */
+    @FXML
+    void handleSelesaikanAntreanTerdepan() {
+        Pesanan head = antreanPesanan.poll(); // dequeue: ambil & keluarkan elemen paling depan
+
+        if (head == null) {
+            tampilkanAlert("Antrean pesanan kosong, tidak ada pesanan yang menunggu diproses.", Alert.AlertType.INFORMATION, "Antrean Pesanan");
+            return;
+        }
+
+        boolean sukses = Pesanan.updateStatusPesanan(head.getIdPesanan(), STATUS_SETELAH_ANTREAN);
+        if (!sukses) {
+            System.out.println("LOG SINARING -> Gagal memproses antrean untuk id=" + head.getIdPesanan());
+            tampilkanAlert("Gagal memperbarui status pesanan " + head.getIdPesanan() + ".", Alert.AlertType.ERROR, "Antrean Pesanan");
+            // Data belum berubah di XML, jadi muat ulang supaya antrean & tabel tetap konsisten.
+            loadDataDariXML();
+            applyFilter();
+            return;
+        }
+
+        // Muat ulang data dari XML: tabel & antrean akan otomatis sinkron kembali,
+        // dan pesanan yang baru diproses tidak lagi muncul di antrean karena
+        // statusnya sudah bukan "Dikonfirmasi".
+        loadDataDariXML();
+        applyFilter();
+
+        tampilkanAlert("Pesanan " + head.getIdPesanan() + " dikeluarkan dari antrean dan statusnya kini \"" + STATUS_SETELAH_ANTREAN + "\".", Alert.AlertType.INFORMATION, "Antrean Pesanan");
+    }
+
+    /**
+     * Tombol "Tandai Selesai".
+     * Mengubah status pesanan yang dipilih di tabel dari "Dimasak" menjadi
+     * "Selesai" (pesanan sudah selesai diproses/dikonfirmasi dan dimasak).
+     */
+    @FXML
+    void handleTandaiSelesai() {
+        Pesanan selected = tableKelolaPesanan.getSelectionModel().getSelectedItem();
+        if (selected == null) {
+            tampilkanAlert("Pilih pesanan yang ingin ditandai selesai terlebih dahulu.", Alert.AlertType.WARNING, "Tandai Selesai");
+            return;
+        }
+
+        if (selected.getStatusPesanan().equalsIgnoreCase(STATUS_SELESAI)) {
+            tampilkanAlert("Pesanan " + selected.getIdPesanan() + " sudah berstatus \"Selesai\".", Alert.AlertType.INFORMATION, "Tandai Selesai");
+            return;
+        }
+
+        if (!selected.getStatusPesanan().equalsIgnoreCase(STATUS_SETELAH_ANTREAN)) {
+            tampilkanAlert("Pesanan harus berstatus \"" + STATUS_SETELAH_ANTREAN + "\" terlebih dahulu (sudah dikonfirmasi & dimasak) sebelum bisa ditandai selesai.", Alert.AlertType.WARNING, "Tandai Selesai");
+            return;
+        }
+
+        boolean sukses = Pesanan.updateStatusPesanan(selected.getIdPesanan(), STATUS_SELESAI);
+        if (sukses) {
+            loadDataDariXML();
+            applyFilter();
+            tampilkanAlert("Pesanan " + selected.getIdPesanan() + " berhasil ditandai selesai.", Alert.AlertType.INFORMATION, "Tandai Selesai");
+        } else {
+            tampilkanAlert("Gagal menandai pesanan " + selected.getIdPesanan() + " sebagai selesai.", Alert.AlertType.ERROR, "Tandai Selesai");
+        }
+    }
+
     @FXML
     void handleVerifikasiPembayaran() {
         Pesanan selected = tableKelolaPesanan.getSelectionModel().getSelectedItem();
@@ -190,8 +364,12 @@ public class KelolaPesananController {
     }
 
     private void tampilkanAlert(String pesan, Alert.AlertType tipe) {
+        tampilkanAlert(pesan, tipe, "Verifikasi Pembayaran");
+    }
+
+    private void tampilkanAlert(String pesan, Alert.AlertType tipe, String judul) {
         Alert alert = new Alert(tipe);
-        alert.setTitle("Verifikasi Pembayaran");
+        alert.setTitle(judul);
         alert.setHeaderText(null);
         alert.setContentText(pesan);
         alert.showAndWait();

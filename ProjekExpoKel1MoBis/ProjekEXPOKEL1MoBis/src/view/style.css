@@ -160,6 +160,121 @@
     -fx-background-color: #269154;
 }
 
+/* Tombol Tandai Selesai (mengubah status pesanan dari Dimasak -> Selesai) */
+.btn-selesai {
+    -fx-background-color: #5B4FCF;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+}
+
+.btn-selesai:hover {
+    -fx-background-color: #4A3FB0;
+}
+
+/* ============================================================
+   ANTREAN PESANAN (QUEUE / FIFO) — di halaman Kelola Pesanan
+   ============================================================ */
+
+/* Reset dasar ListView antrean (orientasi horizontal) */
+.list-antrean {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}
+
+.list-antrean .list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 0 8 0 0;
+    -fx-border-color: transparent;
+}
+
+.list-antrean .scroll-bar:horizontal {
+    -fx-pref-height: 8px;
+}
+
+.list-antrean .corner {
+    -fx-background-color: transparent;
+}
+
+/* Kartu satu item antrean (dibangun lewat cell factory di controller) */
+.antrean-item {
+    -fx-background-color: #FBF8F3;
+    -fx-background-radius: 10;
+    -fx-border-color: #EFE7DD;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-padding: 12 14 12 14;
+}
+
+/* Item paling depan (Head antrean) ditonjolkan */
+.antrean-item-head {
+    -fx-background-color: #FDF0CE;
+    -fx-background-radius: 10;
+    -fx-border-color: #E8B93A;
+    -fx-border-radius: 10;
+    -fx-border-width: 1.4;
+    -fx-padding: 12 14 12 14;
+}
+
+.antrean-rank {
+    -fx-background-color: #ECE3D6;
+    -fx-background-radius: 100;
+    -fx-text-fill: #4A2E1B;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-padding: 3 8 3 8;
+    -fx-alignment: center;
+}
+
+.antrean-rank-head {
+    -fx-background-color: #C87A0D;
+    -fx-background-radius: 100;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-padding: 3 8 3 8;
+    -fx-alignment: center;
+}
+
+.antrean-id {
+    -fx-font-weight: bold;
+    -fx-font-size: 12.5px;
+    -fx-text-fill: #3A2415;
+}
+
+.antrean-detail {
+    -fx-font-size: 11px;
+    -fx-text-fill: #8A7C6E;
+}
+
+.antrean-kosong {
+    -fx-font-size: 12.5px;
+    -fx-text-fill: #A79B8E;
+    -fx-alignment: center;
+    -fx-padding: 20 0 0 0;
+}
+
+/* Tombol Selesaikan Antrean Terdepan */
+.btn-antrean {
+    -fx-background-color: #C87A0D;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+}
+
+.btn-antrean:hover {
+    -fx-background-color: #A8650A;
+}
+
+.btn-antrean:disabled {
+    -fx-background-color: #ECE3D6;
+    -fx-text-fill: #A79B8E;
+    -fx-cursor: default;
+}
+
 /* ============================================================
    KELOLA MENU — Redesain Card, Table View & Modal
    ============================================================ */
