@@ -16,11 +16,12 @@ public class PiutangRow {
     private final StringProperty sisaTagihan;
     private final StringProperty jatuhTempo;
     private final StringProperty status;
+    private final String kategori; // "MERAH" | "KUNING" | "HIJAU" — dipakai untuk styling tabel saja
 
     public PiutangRow(String pelanggan, String idPesanan,
                       String totalTagihan, String dpDibayar,
                       String sisaTagihan, String jatuhTempo,
-                      String status) {
+                      String status, String kategori) {
         this.pelanggan     = new SimpleStringProperty(pelanggan);
         this.idPesanan     = new SimpleStringProperty(idPesanan);
         this.totalTagihan  = new SimpleStringProperty(totalTagihan);
@@ -28,6 +29,7 @@ public class PiutangRow {
         this.sisaTagihan   = new SimpleStringProperty(sisaTagihan);
         this.jatuhTempo    = new SimpleStringProperty(jatuhTempo);
         this.status        = new SimpleStringProperty(status);
+        this.kategori      = kategori;
     }
 
     // --- Property getters (dibutuhkan PropertyValueFactory) ---
@@ -47,4 +49,5 @@ public class PiutangRow {
     public String getSisaTagihan()  { return sisaTagihan.get(); }
     public String getJatuhTempo()   { return jatuhTempo.get(); }
     public String getStatus()       { return status.get(); }
+    public String getKategori()     { return kategori; }
 }

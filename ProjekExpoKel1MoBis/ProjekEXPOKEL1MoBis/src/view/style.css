@@ -598,3 +598,207 @@
 .btn-kirim-pesanan:hover {
     -fx-background-color: #A94D20;
 }
+
+/* ============================================================
+   LAPORAN KEUANGAN — Table View "Ringkasan Bulanan" (Redesain)
+   ============================================================ */
+
+.table-laporan {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-laporan .column-header-background {
+    -fx-background-color: #FAF6F1;
+    -fx-background-radius: 10 10 0 0;
+}
+
+.table-laporan .column-header,
+.table-laporan .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #F0E8DF transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-size: 40px;
+}
+
+.table-laporan .column-header .label {
+    -fx-text-fill: #9C8E82;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER-LEFT;
+}
+
+.table-laporan .table-row-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: transparent transparent #F3EEE7 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-laporan .table-row-cell:odd {
+    -fx-background-color: #FDFAF6;
+}
+
+.table-laporan .table-row-cell:hover {
+    -fx-background-color: #FCEEE0;
+}
+
+.table-laporan .table-row-cell:selected {
+    -fx-background-color: #FCEEE0;
+}
+
+.table-laporan .table-row-cell:selected .table-cell {
+    -fx-text-fill: #3A2415;
+}
+
+.table-laporan .table-cell {
+    -fx-alignment: CENTER-LEFT;
+    -fx-padding: 14 16 14 16;
+    -fx-font-size: 13.5px;
+    -fx-text-fill: #4A3A2E;
+    -fx-border-color: transparent;
+}
+
+.table-laporan .arrow-image,
+.table-laporan .column-resize-line {
+    -fx-background-color: transparent;
+}
+
+.table-laporan .scroll-bar:vertical {
+    -fx-pref-width: 8px;
+}
+
+/* Kolom BULAN — sedikit ditonjolkan (bold, gelap) */
+.table-laporan .col-bulan-laporan .table-cell {
+    -fx-font-weight: 600;
+    -fx-text-fill: #2C1810;
+}
+
+/* Kolom PENDAPATAN — hijau */
+.table-laporan .col-pendapatan-laporan .table-cell {
+    -fx-font-weight: 600;
+    -fx-text-fill: #128260;
+}
+
+/* Kolom PENGELUARAN — oranye */
+.table-laporan .col-pengeluaran-laporan .table-cell {
+    -fx-font-weight: 600;
+    -fx-text-fill: #BF5810;
+}
+
+/* Kolom LABA BERSIH — oranye tua, tebal */
+.table-laporan .col-laba-laporan .table-cell {
+    -fx-font-weight: 700;
+    -fx-text-fill: #B8541F;
+}
+
+/* Kolom MARGIN — abu netral */
+.table-laporan .col-margin-laporan .table-cell {
+    -fx-font-weight: 500;
+    -fx-text-fill: #93807A;
+}
+
+/* ============================================================
+   PIUTANG PELANGGAN — Table View "Daftar Piutang" (Redesain)
+   ============================================================ */
+
+.table-piutang {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-piutang .column-header-background {
+    -fx-background-color: #FAF6F1;
+    -fx-background-radius: 10 10 0 0;
+}
+
+.table-piutang .column-header,
+.table-piutang .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #F0E8DF transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-size: 40px;
+}
+
+.table-piutang .column-header .label {
+    -fx-text-fill: #9C8E82;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER-LEFT;
+}
+
+.table-piutang .table-row-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: transparent transparent #F3EEE7 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-table-cell-border-color: transparent;
+}
+
+/* Tint baris sesuai urgensi jatuh tempo */
+.table-piutang .table-row-cell.row-merah {
+    -fx-background-color: #FEF5F5;
+}
+.table-piutang .table-row-cell.row-merah:hover {
+    -fx-background-color: #FCE9E9;
+}
+
+.table-piutang .table-row-cell.row-kuning {
+    -fx-background-color: #FFFDF3;
+}
+.table-piutang .table-row-cell.row-kuning:hover {
+    -fx-background-color: #FFF7E0;
+}
+
+.table-piutang .table-row-cell.row-hijau:hover {
+    -fx-background-color: #FCEEE0;
+}
+
+.table-piutang .table-row-cell:selected {
+    -fx-background-color: #FCEEE0;
+}
+
+.table-piutang .table-row-cell:selected .table-cell {
+    -fx-text-fill: #3A2415;
+}
+
+.table-piutang .table-cell {
+    -fx-alignment: CENTER-LEFT;
+    -fx-padding: 14 16 14 16;
+    -fx-font-size: 13px;
+    -fx-text-fill: #4A3A2E;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.table-piutang .arrow-image,
+.table-piutang .column-resize-line {
+    -fx-background-color: transparent;
+}
+
+.table-piutang .scroll-bar:vertical {
+    -fx-pref-width: 8px;
+}
+
+/* Badge/pill status pada kolom STATUS */
+.badge-piutang {
+    -fx-background-radius: 12;
+    -fx-padding: 4 12 4 12;
+    -fx-font-size: 11.5px;
+    -fx-font-weight: bold;
+}
+.badge-piutang.badge-merah {
+    -fx-background-color: #FFE2E2;
+    -fx-text-fill: #C50E15;
+}
+.badge-piutang.badge-kuning {
+    -fx-background-color: #FEF3C6;
+    -fx-text-fill: #C76C25;
+}
+.badge-piutang.badge-hijau {
+    -fx-background-color: #D0FAE5;
+    -fx-text-fill: #0D825E;
+}

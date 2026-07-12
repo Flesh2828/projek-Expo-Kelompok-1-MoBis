@@ -6,7 +6,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
@@ -59,6 +61,86 @@ public class OwnerPiutangController {
         colJatuhTempo  .setCellValueFactory(new PropertyValueFactory<>("jatuhTempo"));
         colStatus      .setCellValueFactory(new PropertyValueFactory<>("status"));
 
+        // --- Styling tampilan tabel (warna teks per kolom) ---
+        terapkanGayaTeks(colPelanggan,    "-fx-font-weight: 600; -fx-text-fill: #2C1810;");
+        terapkanGayaTeks(colIdPesanan,    "-fx-font-weight: 500; -fx-text-fill: #9B8776;");
+        terapkanGayaTeks(colTotalTagihan, "-fx-font-weight: 500; -fx-text-fill: #46332D;");
+        terapkanGayaTeks(colDpDibayar,    "-fx-font-weight: 600; -fx-text-fill: #10825F;");
+        terapkanGayaTeks(colJatuhTempo,   "-fx-font-weight: 500; -fx-text-fill: #8A7566;");
+
+        // Kolom SISA TAGIHAN — merah tebal khusus baris yang sudah lewat jatuh tempo
+        colSisaTagihan.setCellFactory(col -> new TableCell<PiutangRow, String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(item);
+                    PiutangRow row = ambilBarisSaatIni(this);
+                    boolean terlambat = row != null && "MERAH".equals(row.getKategori());
+                    setStyle(terlambat
+                            ? "-fx-font-weight: 700; -fx-text-fill: #C10007;"
+                            : "-fx-font-weight: 600; -fx-text-fill: #2C1810;");
+                }
+            }
+        });
+
+        // Kolom STATUS — badge/pill berwarna sesuai urgensi
+        colStatus.setCellFactory(col -> new TableCell<PiutangRow, String>() {
+            private final Label badge = new Label();
+            {
+                badge.getStyleClass().add("badge-piutang");
+            }
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setGraphic(null);
+                } else {
+                    PiutangRow row = ambilBarisSaatIni(this);
+                    String kategori = (row != null) ? row.getKategori() : "HIJAU";
+                    badge.getStyleClass().removeAll("badge-merah", "badge-kuning", "badge-hijau");
+                    switch (kategori) {
+                        case "MERAH":
+                            badge.getStyleClass().add("badge-merah");
+                            break;
+                        case "KUNING":
+                            badge.getStyleClass().add("badge-kuning");
+                            break;
+                        default:
+                            badge.getStyleClass().add("badge-hijau");
+                            break;
+                    }
+                    badge.setText(item);
+                    setGraphic(badge);
+                }
+            }
+        });
+
+        // Tint latar baris (merah/kuning muda) sesuai urgensi jatuh tempo
+        tablePiutang.setRowFactory(tv -> new TableRow<PiutangRow>() {
+            @Override
+            protected void updateItem(PiutangRow item, boolean empty) {
+                super.updateItem(item, empty);
+                getStyleClass().removeAll("row-merah", "row-kuning", "row-hijau");
+                if (!empty && item != null) {
+                    switch (item.getKategori()) {
+                        case "MERAH":
+                            getStyleClass().add("row-merah");
+                            break;
+                        case "KUNING":
+                            getStyleClass().add("row-kuning");
+                            break;
+                        default:
+                            getStyleClass().add("row-hijau");
+                            break;
+                    }
+                }
+            }
+        });
+
         muatDataPiutang();
         mulaiAutoRefresh();
         System.out.println("Halaman Piutang Pelanggan diinisialisasi.");
@@ -100,23 +182,39 @@ public class OwnerPiutangController {
             String tglStr   = p.getTanggalPengiriman();
             LocalDate tglJT = parseTanggal(tglStr);
             String statusLabel;
+            String kategori; // MERAH | KUNING | HIJAU — dipakai untuk styling tabel saja
 
             if (tglJT != null) {
                 long selisih = hari.toEpochDay() - tglJT.toEpochDay(); // positif = sudah lewat
+
+                // --- Hitungan kartu ringkasan (LOGIKA ASLI, tidak diubah) ---
                 if (selisih > 7) {
-                    statusLabel = "Lewat >7 hari";
                     melewatiJT++;
-                } else if (selisih >= 0) {
-                    statusLabel = "Jatuh tempo";
-                    akanJT++;
                 } else if (selisih >= -7) {
-                    statusLabel = "Akan JT (≤7 hr)";
                     akanJT++;
+                }
+
+                // --- Label & kategori untuk tampilan tabel ---
+                if (selisih > 7) {
+                    statusLabel = "Lewat " + selisih + " hari";
+                    kategori = "MERAH";
+                } else if (selisih > 0) {
+                    statusLabel = "Lewat " + selisih + " hari";
+                    kategori = "KUNING";
+                } else if (selisih == 0) {
+                    statusLabel = "Jatuh tempo hari ini";
+                    kategori = "KUNING";
+                } else if (selisih >= -7) {
+                    long sisaHari = -selisih;
+                    statusLabel = sisaHari + " hari lagi";
+                    kategori = sisaHari <= 3 ? "KUNING" : "HIJAU";
                 } else {
                     statusLabel = "Belum jatuh tempo";
+                    kategori = "HIJAU";
                 }
             } else {
                 statusLabel = "Belum jatuh tempo";
+                kategori = "HIJAU";
             }
 
             dataPiutang.add(new PiutangRow(
@@ -126,7 +224,8 @@ public class OwnerPiutangController {
                     "Rp 0",                     // DP — sistem saat ini tidak menyimpan DP terpisah
                     "Rp " + formatRp(tagihan),  // Sisa = total (belum ada pembayaran parsial)
                     tglStr,
-                    statusLabel
+                    statusLabel,
+                    kategori
             ));
         }
 
@@ -142,6 +241,37 @@ public class OwnerPiutangController {
     // ======================================================
     //  Utilitas
     // ======================================================
+
+    /** Memasang cell factory sederhana yang mewarnai teks kolom sesuai desain kartu Daftar Piutang. */
+    private void terapkanGayaTeks(TableColumn<PiutangRow, String> kolom, String gayaCss) {
+        if (kolom == null) return;
+        kolom.setCellFactory(col -> new TableCell<PiutangRow, String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(item);
+                    setStyle(gayaCss);
+                }
+            }
+        });
+    }
+
+    /**
+     * Mengambil data PiutangRow untuk baris tempat sel ini berada, berdasarkan index
+     * langsung dari TableView.getItems(). Sengaja TIDAK memakai cell.getTableRow().getItem(),
+     * karena pada TableView yang tervirtualisasi nilainya bisa telat/kosong (null) sesaat
+     * saat sel baru dibuat/di-scroll — itulah yang tadinya membuat semua baris "jatuh"
+     * ke warna hijau (default) walau datanya sebenarnya merah/kuning.
+     */
+    private PiutangRow ambilBarisSaatIni(TableCell<PiutangRow, ?> cell) {
+        int index = cell.getIndex();
+        if (index < 0 || index >= cell.getTableView().getItems().size()) return null;
+        return cell.getTableView().getItems().get(index);
+    }
 
     private String formatRp(double angka) {
         return RUPIAH.format((long) angka);

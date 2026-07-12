@@ -13,6 +13,7 @@
 
 <VBox prefHeight="1200.0" prefWidth="1500.0" spacing="25.0"
       style="-fx-background-color: #FFFFFF;"
+      stylesheets="@style.css"
       xmlns="http://javafx.com/javafx/25"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="controller.OwnerLaporanController">
@@ -67,13 +68,13 @@
       <!-- ===== TABEL RINGKASAN BULANAN ===== -->
       <VBox style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.04), 12, 0, 0, 4);">
          <Label style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #2B1B15; -fx-padding: 0 0 12 0;" text="Ringkasan Bulanan" />
-         <TableView fx:id="tableRingkasan" prefHeight="250.0" style="-fx-background-radius: 8;" VBox.vgrow="ALWAYS">
+         <TableView fx:id="tableRingkasan" prefHeight="250.0" styleClass="table-laporan" VBox.vgrow="ALWAYS">
             <columns>
-               <TableColumn fx:id="colBulan"       prefWidth="150.0" text="BULAN" />
-               <TableColumn fx:id="colPendapatan"  prefWidth="220.0" text="PENDAPATAN" />
-               <TableColumn fx:id="colPengeluaran" prefWidth="220.0" text="PENGELUARAN (Est.)" />
-               <TableColumn fx:id="colLabaBersih"  prefWidth="220.0" text="LABA BERSIH" />
-               <TableColumn fx:id="colMargin"      prefWidth="120.0" text="MARGIN" />
+               <TableColumn fx:id="colBulan"       styleClass="col-bulan-laporan"       prefWidth="150.0" text="BULAN" />
+               <TableColumn fx:id="colPendapatan"  styleClass="col-pendapatan-laporan"  prefWidth="220.0" text="PENDAPATAN" />
+               <TableColumn fx:id="colPengeluaran" styleClass="col-pengeluaran-laporan" prefWidth="220.0" text="PENGELUARAN" />
+               <TableColumn fx:id="colLabaBersih"  styleClass="col-laba-laporan"        prefWidth="220.0" text="LABA BERSIH" />
+               <TableColumn fx:id="colMargin"      styleClass="col-margin-laporan"      prefWidth="120.0" text="MARGIN" />
             </columns>
          </TableView>
       </VBox>

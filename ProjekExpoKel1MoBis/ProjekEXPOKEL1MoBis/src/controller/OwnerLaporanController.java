@@ -9,6 +9,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -62,6 +63,13 @@ public class OwnerLaporanController {
         if (colPengeluaran != null) colPengeluaran.setCellValueFactory(new PropertyValueFactory<>("pengeluaran"));
         if (colLabaBersih  != null) colLabaBersih .setCellValueFactory(new PropertyValueFactory<>("labaBersih"));
         if (colMargin      != null) colMargin     .setCellValueFactory(new PropertyValueFactory<>("margin"));
+
+        // Warna teks tiap kolom (menyesuaikan tampilan kartu "Ringkasan Bulanan")
+        terapkanGayaSel(colBulan,       "-fx-font-weight: 600; -fx-text-fill: #2C1810;");
+        terapkanGayaSel(colPendapatan,  "-fx-font-weight: 600; -fx-text-fill: #128260;");
+        terapkanGayaSel(colPengeluaran, "-fx-font-weight: 600; -fx-text-fill: #BF5810;");
+        terapkanGayaSel(colLabaBersih,  "-fx-font-weight: 700; -fx-text-fill: #B8541F;");
+        terapkanGayaSel(colMargin,      "-fx-font-weight: 500; -fx-text-fill: #93807A;");
 
         muatDataDariXML();
         mulaiAutoRefresh();
@@ -233,6 +241,28 @@ public class OwnerLaporanController {
         if (lblTotalPendapatan  != null) lblTotalPendapatan .setText("Rp " + formatRp(totalPendapatan));
         if (lblTotalPengeluaran != null) lblTotalPengeluaran.setText("Rp " + formatRp(totalPengeluaran));
         if (lblTotalLaba        != null) lblTotalLaba        .setText("Rp " + formatRp(totalLaba));
+    }
+
+    // ======================================================
+    //  Utilitas Tampilan Tabel (styling teks per kolom)
+    // ======================================================
+
+    /** Memasang cell factory sederhana yang mewarnai teks kolom sesuai desain kartu ringkasan. */
+    private void terapkanGayaSel(TableColumn<RingkasanBulanan, String> kolom, String gayaCss) {
+        if (kolom == null) return;
+        kolom.setCellFactory(col -> new TableCell<RingkasanBulanan, String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(item);
+                    setStyle(gayaCss);
+                }
+            }
+        });
     }
 
     // ======================================================
