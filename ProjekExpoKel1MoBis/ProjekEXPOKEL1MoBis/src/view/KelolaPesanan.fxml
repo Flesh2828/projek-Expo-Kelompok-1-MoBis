@@ -37,6 +37,11 @@
                         <Font size="12.0" />
                      </font>
                   </Button>
+                  <Button onAction="#handleHapusPesanan" prefHeight="30.0" prefWidth="140.0" styleClass="btn-hapus" text="🗑  Hapus">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Button>
                   <Button onAction="#handleVerifikasiPembayaran" prefHeight="30.0" prefWidth="200.0" styleClass="btn-verifikasi" text="✔  Verifikasi Pembayaran">
                      <font>
                         <Font size="12.0" />

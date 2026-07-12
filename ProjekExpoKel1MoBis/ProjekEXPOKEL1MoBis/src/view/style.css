@@ -173,6 +173,19 @@
     -fx-background-color: #4A3FB0;
 }
 
+/* Tombol Hapus Pesanan (menghapus pesanan berstatus Selesai secara permanen) */
+.btn-hapus {
+    -fx-background-color: #E0554A;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+}
+
+.btn-hapus:hover {
+    -fx-background-color: #C0392B;
+}
+
 /* ============================================================
    ANTREAN PESANAN (QUEUE / FIFO) — di halaman Kelola Pesanan
    ============================================================ */

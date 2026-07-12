@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><orders>
-    <order id="ORD-06">
-        <username>Pelanggan Aktif</username>
-        <menu>Nasi Box Spesial</menu>
-        <porsi>10</porsi>
-        <tanggal>25 Jun 2026</tanggal>
-        <alamat>Jl. Contoh No. 1</alamat>
-        <catatan/>
-        <status_pesanan>Selesai</status_pesanan>
-        <status_bayar>Lunas</status_bayar>
-        <total>250000.0</total>
-    </order>
+    
     <order id="ORD-055">
         <username>Pelanggan Aktif</username>
         <menu>Nasi Box Spesial</menu>

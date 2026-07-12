@@ -341,6 +341,48 @@ public class KelolaPesananController {
         }
     }
 
+    /**
+     * Tombol "Hapus Pesanan".
+     * Hanya mengizinkan penghapusan pesanan yang statusnya sudah "Selesai",
+     * supaya pesanan yang masih berjalan (Dikonfirmasi/Dimasak/Dikirim)
+     * tidak bisa terhapus tanpa sengaja. Data juga langsung dihapus dari
+     * pesanan.xml, bukan cuma disembunyikan dari tabel.
+     */
+    @FXML
+    void handleHapusPesanan() {
+        Pesanan selected = tableKelolaPesanan.getSelectionModel().getSelectedItem();
+        if (selected == null) {
+            tampilkanAlert("Pilih pesanan yang ingin dihapus terlebih dahulu.", Alert.AlertType.WARNING, "Hapus Pesanan");
+            return;
+        }
+
+        if (!selected.getStatusPesanan().equalsIgnoreCase(STATUS_SELESAI)) {
+            tampilkanAlert("Hanya pesanan berstatus \"" + STATUS_SELESAI + "\" yang bisa dihapus.", Alert.AlertType.WARNING, "Hapus Pesanan");
+            return;
+        }
+
+        Alert konfirmasi = new Alert(Alert.AlertType.CONFIRMATION);
+        konfirmasi.initOwner(getOwnerWindow());
+        konfirmasi.setTitle("Konfirmasi Hapus Pesanan");
+        konfirmasi.setHeaderText(null);
+        konfirmasi.setContentText("Hapus pesanan " + selected.getIdPesanan() + " secara permanen? Data ini tidak bisa dikembalikan.");
+        konfirmasi.getDialogPane().getScene().getWindow().centerOnScreen();
+
+        java.util.Optional<ButtonType> hasil = konfirmasi.showAndWait();
+        if (!hasil.isPresent() || hasil.get() != ButtonType.OK) {
+            return;
+        }
+
+        boolean sukses = Pesanan.hapusPesanan(selected.getIdPesanan());
+        if (sukses) {
+            loadDataDariXML();
+            applyFilter();
+            tampilkanAlert("Pesanan " + selected.getIdPesanan() + " berhasil dihapus.", Alert.AlertType.INFORMATION, "Hapus Pesanan");
+        } else {
+            tampilkanAlert("Gagal menghapus pesanan " + selected.getIdPesanan() + ".", Alert.AlertType.ERROR, "Hapus Pesanan");
+        }
+    }
+
     @FXML
     void handleVerifikasiPembayaran() {
         Pesanan selected = tableKelolaPesanan.getSelectionModel().getSelectedItem();
@@ -369,10 +411,20 @@ public class KelolaPesananController {
 
     private void tampilkanAlert(String pesan, Alert.AlertType tipe, String judul) {
         Alert alert = new Alert(tipe);
+        alert.initOwner(getOwnerWindow());
         alert.setTitle(judul);
         alert.setHeaderText(null);
         alert.setContentText(pesan);
+        alert.getDialogPane().getScene().getWindow().centerOnScreen();
         alert.showAndWait();
+    }
+
+    /** Ambil window aktif saat ini supaya semua dialog/Alert punya owner yang jelas. */
+    private javafx.stage.Window getOwnerWindow() {
+        if (tableKelolaPesanan != null && tableKelolaPesanan.getScene() != null) {
+            return tableKelolaPesanan.getScene().getWindow();
+        }
+        return null;
     }
 
     @FXML

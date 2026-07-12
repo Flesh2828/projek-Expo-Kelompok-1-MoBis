@@ -172,9 +172,7 @@ public class EditProfilController {
         konfirmasi.getDialogPane().getScene().getWindow().centerOnScreen();
 
         Optional<ButtonType> hasil = konfirmasi.showAndWait();
-        if (hasil.isPresent() && hasil.get() == ButtonType.OK) {
-            // Lanjutkan penghapusan akun
-        } else {
+        if (!hasil.isPresent() || hasil.get() != ButtonType.OK) {
             return;
         }
 
