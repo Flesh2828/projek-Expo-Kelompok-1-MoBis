@@ -31,7 +31,7 @@ public class AdminDashboardController {
         setTombolAktif(btnRingkasan);
     }
 
-    // ubah konten tengah admin
+    // konten tengah admin
     public void bukaHalamanAdmin(String fxmlPath) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
@@ -43,7 +43,7 @@ public class AdminDashboardController {
         }
     }
 
-    // tandai tombol sidebar yang sedang aktif (sama seperti Owner & Pelanggan)
+    // tombol sidebar yang aktif untuk nge direct (sama seperti Owner & Pelanggan)
     private void setTombolAktif(Button tombolAktif) {
         Button[] semuaTombol = {btnRingkasan, btnKelolaPesanan, btnKelolaMenu};
 

@@ -18,7 +18,6 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import model.Menu;
 import model.Pesanan;
-
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -43,8 +42,7 @@ public class AdminRingkasanController {
     @FXML private Text txtTrendPendapatan;
     @FXML private Text txtMenuAktif;
     @FXML private Text txtMenuAktifSub;
-
-    // Label lama (dibiarkan tetap ada kalau suatu saat dipakai lagi di FXML)
+    // --- Label ---
     @FXML private Label lblTotalPesanan;
     @FXML private Label lblPesananHariIni;
     @FXML private Label lblPendapatan;
@@ -178,7 +176,7 @@ public class AdminRingkasanController {
                 txtKapasitasPorsi.setText(totalPorsiKeseluruhan + " / " + KAPASITAS_MAKS_PORSI + " porsi");
             }
 
-            // Tampilkan alert cuma kalau kapasitas sudah cukup tinggi (>= 50 porsi)
+            // Tampilan alert cuma kalau kapasitas sudah cukup tinggi (>= 50 porsi)
             if (boxAlertKapasitas != null) {
                 boolean tampilkanAlert = totalPorsiKeseluruhan >= 50;
                 boxAlertKapasitas.setVisible(tampilkanAlert);
