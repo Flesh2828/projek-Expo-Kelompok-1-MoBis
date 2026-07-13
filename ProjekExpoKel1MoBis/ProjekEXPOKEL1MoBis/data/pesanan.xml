@@ -19,7 +19,7 @@
         <tanggal>25 Jun 2026</tanggal>
         <alamat>Jl. Contoh No. 1</alamat>
         <catatan />
-        <status_pesanan>Dimasak</status_pesanan>
+        <status_pesanan>Selesai</status_pesanan>
         <status_bayar>Lunas</status_bayar>
         <total>250000.0</total>
     </order>
@@ -30,7 +30,7 @@
         <tanggal>25 Jun 2026</tanggal>
         <alamat>Jl. Contoh No. 1</alamat>
         <catatan />
-        <status_pesanan>Dimasak</status_pesanan>
+        <status_pesanan>Selesai</status_pesanan>
         <status_bayar>Lunas</status_bayar>
         <total>250000.0</total>
     </order>
@@ -52,7 +52,7 @@
         <tanggal>25 Jun 2026</tanggal>
         <alamat>Jl. Contoh No. 1</alamat>
         <catatan>bismillah</catatan>
-        <status_pesanan>Dikonfirmasi</status_pesanan>
+        <status_pesanan>Dimasak</status_pesanan>
         <status_bayar>Lunas</status_bayar>
         <total>250000.0</total>
     </order>
@@ -141,7 +141,7 @@
         <alamat>jalan godean km 3</alamat>
         <catatan>bismillah</catatan>
         <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Belum Lunas</status_bayar>
+        <status_bayar>Lunas</status_bayar>
         <total>25000.0</total>
     </order>
     <order id="ORD-045">
@@ -163,7 +163,40 @@
         <alamat>jalan kabupaten</alamat>
         <catatan>plis bisa</catatan>
         <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Belum Lunas</status_bayar>
+        <status_bayar>Lunas</status_bayar>
         <total>20000.0</total>
+    </order>
+    <order id="ORD-02">
+        <username>Hafidz</username>
+        <menu>Catering Prasmanan</menu>
+        <porsi>1</porsi>
+        <tanggal>2026-07-13</tanggal>
+        <alamat>jalan wates </alamat>
+        <catatan>coba</catatan>
+        <status_pesanan>Dikonfirmasi</status_pesanan>
+        <status_bayar>Lunas</status_bayar>
+        <total>45000.0</total>
+    </order>
+    <order id="ORD-059">
+        <username>Hafidz</username>
+        <menu>Nasi Gudeg Spesial</menu>
+        <porsi>1</porsi>
+        <tanggal>2026-07-13</tanggal>
+        <alamat>jalan imogiri barat</alamat>
+        <catatan>bisa plis</catatan>
+        <status_pesanan>Dikonfirmasi</status_pesanan>
+        <status_bayar>Lunas</status_bayar>
+        <total>30000.0</total>
+    </order>
+    <order id="ORD-030">
+        <username>Hafidz</username>
+        <menu>Nasi Padang Spesial</menu>
+        <porsi>1</porsi>
+        <tanggal>2026-07-13</tanggal>
+        <alamat>jalan godean km 4</alamat>
+        <catatan>wah </catatan>
+        <status_pesanan>Dikonfirmasi</status_pesanan>
+        <status_bayar>Belum Bayar</status_bayar>
+        <total>25000.0</total>
     </order>
 </orders>
