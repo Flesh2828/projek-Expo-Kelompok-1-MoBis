@@ -110,7 +110,7 @@ public class AdminRingkasanController {
             LocalDate hariIni = LocalDate.now();
             String namaHari = HARI_INDO[hariIni.getDayOfWeek().getValue() - 1];
             String tanggal = hariIni.getDayOfMonth() + " " + BULAN_SINGKAT[hariIni.getMonthValue() - 1] + " " + hariIni.getYear();
-            txtSubJudul.setText(namaHari + ", " + tanggal + " \u00B7 Selamat datang, Dewi");
+            txtSubJudul.setText(namaHari + ", " + tanggal + " \u00B7 Selamat datang, Bambang");
         }
     }
 
