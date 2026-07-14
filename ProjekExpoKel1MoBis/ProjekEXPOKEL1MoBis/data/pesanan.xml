@@ -41,7 +41,7 @@
         <tanggal>25 Jun 2026</tanggal>
         <alamat>Jl. Contoh No. 1</alamat>
         <catatan />
-        <status_pesanan>Dimasak</status_pesanan>
+        <status_pesanan>Selesai</status_pesanan>
         <status_bayar>Lunas</status_bayar>
         <total>250000.0</total>
     </order>
@@ -63,7 +63,7 @@
         <tanggal>25 Jun 2026</tanggal>
         <alamat>Jl. Contoh No. 1</alamat>
         <catatan />
-        <status_pesanan>Dikonfirmasi</status_pesanan>
+        <status_pesanan>Selesai</status_pesanan>
         <status_bayar>Lunas</status_bayar>
         <total>250000.0</total>
     </order>
@@ -196,7 +196,18 @@
         <alamat>jalan godean km 4</alamat>
         <catatan>wah </catatan>
         <status_pesanan>Dikonfirmasi</status_pesanan>
-        <status_bayar>Belum Bayar</status_bayar>
+        <status_bayar>Lunas</status_bayar>
         <total>25000.0</total>
+    </order>
+    <order id="ORD-036">
+        <username>Hafidz</username>
+        <menu>Catering Prasmanan</menu>
+        <porsi>1</porsi>
+        <tanggal>2026-06-05</tanggal>
+        <alamat>Jalan ke rumah meswa</alamat>
+        <catatan>tidak pakai kol</catatan>
+        <status_pesanan>Dikonfirmasi</status_pesanan>
+        <status_bayar>Belum bayar</status_bayar>
+        <total>45000.0</total>
     </order>
 </orders>

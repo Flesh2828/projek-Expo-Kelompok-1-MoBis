@@ -121,6 +121,8 @@ public class DaftarMenuController {
             imageName = "catering.jpg";
         } else if (name.contains("box") || name.contains("geprek")) {
             imageName = "nasiboxspecial.jpg";
+        } else if (name.contains("magelangan") || name.contains("magelangan")) {
+            imageName = "nasi-goreng-magelangan.png";
         }
 
         try {
