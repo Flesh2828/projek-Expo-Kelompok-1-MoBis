@@ -8,7 +8,6 @@
         <status>aktif</status>
     </menu>
 
-    
 
     <menu id="MNU-487">
         <nama>Nasi Gudeg Spesial</nama>
@@ -23,5 +22,12 @@
         <harga>25000.0</harga>
         <status>aktif</status>
     </menu>
+
+    <menu id="MNU-945">
+        <nama>Magelangan</nama>
+        <deskripsi>Nasi, telur, sayur, mie</deskripsi>
+        <harga>20000.0</harga>
+        <status>aktif</status>
+    </menu>
     
-<menu id="MNU-945"><nama>Magelangan</nama><deskripsi>Nasi, telur, sayur, mie</deskripsi><harga>20000.0</harga><status>aktif</status></menu></menus>
+</menus>
