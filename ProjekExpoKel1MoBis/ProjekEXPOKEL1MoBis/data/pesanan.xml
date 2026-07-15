@@ -199,4 +199,4 @@
         <status_bayar>Belum bayar</status_bayar>
         <total>45000.0</total>
     </order>
-</orders>
+<order id="ORD-073"><username>Hafidz</username><menu>Nasi Gudeg Spesial</menu><porsi>1</porsi><tanggal>2026-07-15</tanggal><alamat>jalan jalan</alamat><catatan>hohoho</catatan><status_pesanan>Dikonfirmasi</status_pesanan><status_bayar>Belum Bayar</status_bayar><total>30000.0</total></order></orders>

@@ -173,7 +173,16 @@ public class OwnerPiutangController {
         LocalDate hari = LocalDate.now();
 
         for (Pesanan p : semuaPesanan) {
-            if (!"Belum Lunas".equalsIgnoreCase(p.getStatusPembayaran())) continue;
+            // PENTING: data status pembayaran di pesanan.xml bervariasi teksnya
+            // ("Belum Bayar", "Belum bayar", "Belum Lunas", dst — semuanya berarti
+            // pesanan tsb masih piutang / belum lunas). Sebelumnya kode ini hanya
+            // mencocokkan string persis "Belum Lunas" sehingga data seperti
+            // "Belum Bayar"/"Belum bayar" tidak pernah cocok dan baris piutang
+            // tidak pernah muncul di tabel. Sekarang: anggap piutang jika status
+            // MENGANDUNG kata "belum" (huruf besar/kecil diabaikan), konsisten
+            // dengan logika yang sudah dipakai di AdminRingkasanController.
+            String statusBayar = p.getStatusPembayaran();
+            if (statusBayar == null || !statusBayar.toLowerCase().contains("belum")) continue;
 
             double tagihan = p.getTotalHarga();
             totalPiutang += tagihan;
